@@ -1,0 +1,1003 @@
+[
+  {
+    "id": 136,
+    "date": "2019-03-06T14:46:01",
+    "date_gmt": "2019-03-06T05:46:01",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=136"
+    },
+    "modified": "2019-03-07T15:44:28",
+    "modified_gmt": "2019-03-07T06:44:28",
+    "slug": "contact",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/contact",
+    "title": {
+      "rendered": "お問い合わせ"
+    },
+    "content": {
+      "rendered": "\n<p>内見の希望や質問はこちらからお問い合わせください</p>\n\n\n\n<div class=\"wpcf7 no-js\" id=\"wpcf7-f134-o1\" lang=\"ja\" dir=\"ltr\" data-wpcf7-id=\"134\">\n<div class=\"screen-reader-response\"><p role=\"status\" aria-live=\"polite\" aria-atomic=\"true\"></p> <ul></ul></div>\n<form action=\"/wp-json/wp/v2/pages?per_page=100&#038;page=1&#038;_embed=1#wpcf7-f134-o1\" method=\"post\" class=\"wpcf7-form init\" aria-label=\"コンタクトフォーム\" novalidate=\"novalidate\" data-status=\"init\">\n<fieldset class=\"hidden-fields-container\"><input type=\"hidden\" name=\"_wpcf7\" value=\"134\" /><input type=\"hidden\" name=\"_wpcf7_version\" value=\"6.1.2\" /><input type=\"hidden\" name=\"_wpcf7_locale\" value=\"ja\" /><input type=\"hidden\" name=\"_wpcf7_unit_tag\" value=\"wpcf7-f134-o1\" /><input type=\"hidden\" name=\"_wpcf7_container_post\" value=\"0\" /><input type=\"hidden\" name=\"_wpcf7_posted_data_hash\" value=\"\" />\n</fieldset>\n<p><label> お名前 (必須)<br />\n<span class=\"wpcf7-form-control-wrap\" data-name=\"your-name\"><input size=\"40\" maxlength=\"400\" class=\"wpcf7-form-control wpcf7-text wpcf7-validates-as-required\" aria-required=\"true\" aria-invalid=\"false\" value=\"\" type=\"text\" name=\"your-name\" /></span> </label>\n</p>\n<p><label> メールアドレス (必須)<br />\n<span class=\"wpcf7-form-control-wrap\" data-name=\"your-email\"><input size=\"40\" maxlength=\"400\" class=\"wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email\" aria-required=\"true\" aria-invalid=\"false\" value=\"\" type=\"email\" name=\"your-email\" /></span> </label>\n</p>\n<p><label> メッセージ本文<br />\n<span class=\"wpcf7-form-control-wrap\" data-name=\"your-message\"><textarea cols=\"40\" rows=\"10\" maxlength=\"2000\" class=\"wpcf7-form-control wpcf7-textarea\" aria-invalid=\"false\" name=\"your-message\"></textarea></span> </label>\n</p>\n<p><input class=\"wpcf7-form-control wpcf7-submit has-spinner\" type=\"submit\" value=\"送信\" />\n</p><div class=\"wpcf7-response-output\" aria-hidden=\"true\"></div>\n</form>\n</div>\n\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>内見の希望や質問はこちらからお問い合わせください</p>\n",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-136",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/136",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=136"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 3,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/136/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 888,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/136/revisions/888"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=136"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=136"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "date": "2019-03-05T16:36:51",
+    "date_gmt": "2019-03-05T07:36:51",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=27"
+    },
+    "modified": "2019-03-12T14:46:46",
+    "modified_gmt": "2019-03-12T05:46:46",
+    "slug": "events",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/events",
+    "title": {
+      "rendered": "イベント情報"
+    },
+    "content": {
+      "rendered": "\n\n\n<p></p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-27",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/27",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=27"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 8,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/27/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 180,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/27/revisions/180"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=27"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=27"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "date": "2019-03-05T16:36:30",
+    "date_gmt": "2019-03-05T07:36:30",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=25"
+    },
+    "modified": "2019-03-12T14:47:48",
+    "modified_gmt": "2019-03-12T05:47:48",
+    "slug": "procedures",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/procedures",
+    "title": {
+      "rendered": "入居の流れとQ&#038;A"
+    },
+    "content": {
+      "rendered": "\n<h2 class=\"wp-block-heading\">入居の流れ</h2>\n\n\n\n<h3 class=\"wp-block-heading\">１．まずは見学へ</h3>\n\n\n\n<p>実際にヘッドクオーターズ神戸を見にきてください。 お問い合わせフォームにて内見希望の旨をお伝えくださればすぐお返事を致します。 <br>日程・時間の調整をしましょう。当日の待ち合わせ場所は物件すぐ近くの交番前がわかりやすいので定番です。</p>\n\n\n\n<h3 class=\"wp-block-heading\">２．お互いについてよく話しましょう</h3>\n\n\n\n<p>シェアハウスは単なる安い共同アパートではありません。ともに暮らす仲間とつくりあげるコミュニティの価値が大切だと考えています。見学の間にお部屋や設備を一通りご説明したあと、少しの時間リビングでゆっくり座ってお話しましょう。<br>こちらのコミュニティのことをお話しますので、あなたが望むシェアハウス生活はどのようなものかお聞かせください。もしあなたがシェアハウス生活が初めてなら不安もあるでしょうから、いろいろお話したいと思います。<br>そしてご入居の判断を頂ければと思います。<br>（およそ一週間以内にはお返事頂ければ幸いです。こちらからご入居のお断りをする場合もございますが、ご了承ください。）</p>\n\n\n\n<h3 class=\"wp-block-heading\">３．入居のお手続き</h3>\n\n\n\n<p>お互いの合意ののち入居日が決まりましたらご連絡ください。 契約を交わしますので、本人確認書類と印鑑のご用意をお願いします。 <br>また、入居までに初期費用と当月分家賃のお支払をお願いすることになります。<br>ヘッドクオーターズ神戸は、原則連帯保証人は不要です。また、契約形態は定期賃貸借契約です。 </p>\n\n\n\n<p></p>\n\n\n\n<h3 class=\"wp-block-heading\">４．入居開始</h3>\n\n\n\n<p>入居前日までに到着時間をお知らせください。ヘッドクオーターズ神戸には各部屋に布団もありますから、最低限身の回り品だけ持ってきて頂ければ住み始めることはできます。<br>入居後は日をあけないうちに入居者であつまり歓迎会をします。みんなで笑顔で食卓を囲み、お互いについて知り合いましょう。 一緒に温かいコミュニティを作りましょう。</p>\n\n\n\n<h2 class=\"wp-block-heading\">Q &amp; A</h2>\n\n\n\n<h3 class=\"wp-block-heading\">Q　入居する際に必要な費用は？</h3>\n\n\n\n<p>各部屋の当月分日割り家賃のほか、全部屋に共通して入居時初期費用5万円が必要です。この内訳は、契約手数料・清掃費2.5万円＋デポジット2.5万円になります。デポジットは退去時に問題がなければ全額お返しします。<br>（いわゆる礼金・仲介手数料は必要ありません）<br></p>\n\n\n\n<p>その後毎月必要なのは、家賃に加え、全部屋共通の共益費（水道光熱費、ネット費、消耗品費が含まれる）が12,000円となります。<br>※共益費は状況により変動する可能性があります。<br><br></p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　連帯保証人は必要ですか？</h3>\n\n\n\n<p>連帯保証人は原則不要です。契約に必要な物は、本人確認書類と印鑑です。 <br>また、緊急時に連絡がとれる電話番号とをお知らせください。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　短期の入居は出来ますか？</h3>\n\n\n\n<p>基本的には6ヶ月以上の入居を想定しておりますが、短期での入居も相談可能です（基本家賃より割増の場合あり）。<br>ちなみに通常の退去は1ヶ月前予告がルールです。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　見学をしなくても申し込みが出来ますか？</h3>\n\n\n\n<p>基本的にはご見学いただきお話をした上でご入居の判断のお互いさせて頂く方針です。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　入居審査はありますか？</h3>\n\n\n\n<p>主に、内見時のコミュニケーションを一番重視しています。加えて『入居申し込みフォーム』にていくつかの質問もさせて頂きますが、コミュニティにてお互いを尊重し楽しく暮らせる方であれば問題はありません。<br>契約後、もしそれまでの申告内容に虚偽があった場合には、入居期間の如何にかかわらず契約解除となる場合がありますので、予めご了承ください。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　引越しの際は、何が必要ですか？</h3>\n\n\n\n<p>生活に必要な設備は基本的に備えていますし、各部屋の備品（ベッド、布団、机、イス、エアコン）もひととおり揃っています。<br>部屋内に個人で冷蔵庫、調理器具、ヒーターなどを持ち込むことは遠慮頂いております。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　布団は自分で用意をするのでしょうか？</h3>\n\n\n\n<p>洗濯済みの布団、シーツはありますが、もし個人で用意したい場合はそのようにして頂いて大丈夫です。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　退去予告時期はどのくらいですか？</h3>\n\n\n\n<p>退去は必ず1ヶ月前までにご連絡ください。 通知が1ヶ月未満の場合は退去通知の日から1ヶ月分の家賃をお支払いいただきます。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　退去時にかかる費用はありますか？</h3>\n\n\n\n<p>普通に住んで頂いてるかぎり、基本的には追加費用はかかりません。デポジットも全額お返しします。<br>ただし、経年変化と善管注意義務の範囲を超えて部屋にダメージを残した場合は、相応の弁済を頂く可能性があります。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　友人の訪問・宿泊は可能ですか？</h3>\n\n\n\n<p>ご友人の訪問や宿泊は可能です。ただし、シェアハウスは入居者みんなの「家」ですから、知らない人があいさつなしに居る状態は好ましくありません。お連れ頂いた時点で入居者用グループメッセンジャーで知らせて頂くルールになります。<br>また、23時を超えて滞在する場合は共益費相当として1人1泊500円をお支払頂くことにしています。</p>\n\n\n\n<h3 class=\"wp-block-heading\">Q　年齢制限はありますか？</h3>\n\n\n\n<p>機械的に年齢制限を設けることはしていません。ただしコミュニティに合うかどうかは見させて頂きますので、どうぞご了承していただければ幸いです。</p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>入居の流れ １．まずは見学へ 実際にヘッドクオーターズ神戸を見にきてください。 お問い合わせフォームにて内見希望の旨をお伝えくださればすぐお返事を致します。 日程・時間の調整をしましょう。当日の待ち合わせ場所は物件すぐ近&#8230;</p>\n",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-25",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/25",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=25"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 5,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/25/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 211,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/25/revisions/211"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=25"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=25"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "date": "2019-03-05T16:36:10",
+    "date_gmt": "2019-03-05T07:36:10",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=23"
+    },
+    "modified": "2020-03-31T04:51:19",
+    "modified_gmt": "2020-03-30T19:51:19",
+    "slug": "location",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/location",
+    "title": {
+      "rendered": "アクセスと周辺情報"
+    },
+    "content": {
+      "rendered": "\n<h2 class=\"wp-block-heading\">アクセス</h2>\n\n\n\n<p>東洋と西洋の文化が出会う街、神戸の中心三宮からJRと阪急線でそれぞれ2駅、JR摩耶駅または阪急王子公園駅から徒歩約7分。地元の元気な商店街のど真ん中の、遊ぶにも生活するにも便利な場所です。神戸大学にも近いです。</p>\n\n\n\n<p>建物は水道筋商店街のメインストリート沿いの、アーケードの中にあります。１Fには靴下屋さんが入っているビルです。<br>ビルの隣の隣が「水道筋交番」なので、地図アプリでは「水道筋交番」を検索するとわかりやすいと思います。</p>\n\n\n\n<figure class=\"wp-block-image\"><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg\" alt=\"\" class=\"wp-image-146\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/001-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/001-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/001.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<div class=\"ggmap\" style=\"margin: 44px auto\"><iframe loading=\"lazy\" style=\"width: 100%!important\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.705955110255!2d135.2213546154854!3d34.71259578043149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008e9e3c1483df%3A0x3d7192bcf2a2c46a!2z44CSNjU3LTA4MzEg5YW15bqr55yM56We5oi45biC54GY5Yy65rC06YGT562L77yT5LiB55uuIOeUsuWNl-OCouOCu-ODg-ODiOODk-ODqw!5e0!3m2!1sja!2sjp!4v1551407700193\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe></div>\n\n\n\n<h2 class=\"wp-block-heading\">周辺情報</h2>\n\n\n\n<p>格安な八百屋さん・・・徒歩0.1分！<br>コンビニ（ローソン ）・・・徒歩1分<br>スーパー（マルハチ）・・・徒歩2分<br>100円ショップ（Can do）・・・徒歩2分<br>バス停（水道筋3丁目／6丁目）・・・徒歩１分<br>公園（王子公園）・・・徒歩8分</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/076-1024x678.jpg\" alt=\"\" data-id=\"158\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9%e3%81%a8%e5%91%a8%e8%be%ba%e6%83%85%e5%a0%b1/attachment/076/\" class=\"wp-image-158\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/076-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/076-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/076-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/076.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/077-1024x678.jpg\" alt=\"\" data-id=\"159\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9%e3%81%a8%e5%91%a8%e8%be%ba%e6%83%85%e5%a0%b1/attachment/077/\" class=\"wp-image-159\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/077-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/077-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/077-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/077.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/078-1024x678.jpg\" alt=\"\" data-id=\"160\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9%e3%81%a8%e5%91%a8%e8%be%ba%e6%83%85%e5%a0%b1/attachment/078/\" class=\"wp-image-160\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/078-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/078-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/078-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/078.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/079-1024x678.jpg\" alt=\"\" data-id=\"161\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9%e3%81%a8%e5%91%a8%e8%be%ba%e6%83%85%e5%a0%b1/attachment/079/\" class=\"wp-image-161\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/079-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/079-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/079-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/079.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/091-1024x682.jpg\" alt=\"\" data-id=\"162\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9%e3%81%a8%e5%91%a8%e8%be%ba%e6%83%85%e5%a0%b1/attachment/091/\" class=\"wp-image-162\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/091-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/091-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/091-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/091.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>アクセス 東洋と西洋の文化が出会う街、神戸の中心三宮からJRと阪急線でそれぞれ2駅、JR摩耶駅または阪急王子公園駅から徒歩約7分。地元の元気な商店街のど真ん中の、遊ぶにも生活するにも便利な場所です。神戸大学にも近いです。&#8230;</p>\n",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-23",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/23",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=23"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 13,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/23/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 739,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/23/revisions/739"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=23"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=23"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "date": "2019-03-05T16:35:53",
+    "date_gmt": "2019-03-05T07:35:53",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=21"
+    },
+    "modified": "2023-02-24T12:26:50",
+    "modified_gmt": "2023-02-24T03:26:50",
+    "slug": "rooms",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/rooms",
+    "title": {
+      "rendered": "お部屋紹介"
+    },
+    "content": {
+      "rendered": "\n<p class=\"has-medium-font-size\">お部屋は全部で10室あります。３Fと4Fが同じ構造で5部屋ずつ。</p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"802\" height=\"1024\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-802x1024.png\" alt=\"\" class=\"wp-image-1064\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-802x1024.png 802w, https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-235x300.png 235w, https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-768x980.png 768w, https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-1204x1536.png 1204w, https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-1605x2048.png 1605w, https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図.png 1810w\" sizes=\"auto, (max-width: 802px) 100vw, 802px\" /></figure>\n\n\n\n<p class=\"has-medium-font-size\">以前は収納がほとんど無かったため、最近は暮らしやすくするためにほとんどの部屋にロフトベッドや勉強机を設置しています。</p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">301号室</h2>\n\n\n\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg\" alt=\"\" class=\"wp-image-957\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2021/09/301-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2021/09/301-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2021/09/301-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2021/09/301-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<p><strong>広さ</strong>　8.0 ㎡ 4.9 畳<br><strong>賃料</strong>　￥38,000　<br><strong>設備等</strong>　3F。 洋室、CFフローリング。 窓の向きは北。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">302号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-1 is-cropped wp-block-gallery-2 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"769\" height=\"1024\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg\" alt=\"\" data-id=\"862\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1.jpeg\" data-link=\"https://theheadquarters.jp/rooms/%e5%90%8d%e7%a7%b0%e6%9c%aa%e8%a8%ad%e5%ae%9a%e3%82%a2%e3%83%ab%e3%83%8f%e3%82%99%e3%83%a0-1-%ef%bc%8f-1\" class=\"wp-image-862\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg 769w, https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-225x300.jpeg 225w, https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-768x1023.jpeg 768w, https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1.jpeg 961w\" sizes=\"auto, (max-width: 769px) 100vw, 769px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　8.0 ㎡ 4.9 畳<br><strong>賃料</strong>　￥38,000　<br><strong>設備等</strong>　3F。 洋室、CFフローリング。 窓の向きは南西。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">303号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-3 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg\" alt=\"\" data-id=\"485\" data-link=\"https://theheadquarters.jp/rooms/303sa/\" class=\"wp-image-485\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-768x512.jpg 768w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg\" alt=\"\" data-id=\"486\" data-link=\"https://theheadquarters.jp/rooms/303sb/\" class=\"wp-image-486\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-768x512.jpg 768w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　9.2 ㎡ 5.7 畳<br><strong>賃料</strong>　￥40,000<br><strong>設備等</strong>　3F。 洋室、CFフローリング。  窓の向きは南西。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">304号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-4 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/072-1024x682.jpg\" alt=\"\" data-id=\"104\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%81%8a%e9%83%a8%e5%b1%8b%e7%b4%b9%e4%bb%8b/attachment/072/\" class=\"wp-image-104\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/072-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/072-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/072-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/072.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/073-1024x678.jpg\" alt=\"\" data-id=\"105\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e3%81%8a%e9%83%a8%e5%b1%8b%e7%b4%b9%e4%bb%8b/attachment/073/\" class=\"wp-image-105\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/073-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/073-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/073-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/073.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　9.7 ㎡ 6 畳<br><strong>賃料</strong>　￥42,000　<br><strong>設備等</strong>　3F。　洋室、CFフローリング。 窓の向きは南東。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">305号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-5 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg\" alt=\"\" data-id=\"906\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-scaled.jpg\" data-link=\"https://theheadquarters.jp/rooms/%e6%96%b0305a\" class=\"wp-image-906\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg\" alt=\"\" data-id=\"905\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-scaled.jpg\" data-link=\"https://theheadquarters.jp/rooms/%e6%96%b0305b\" class=\"wp-image-905\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　9.8 ㎡ 6 畳<br><strong>賃料</strong>　￥42,000<br><strong>設備等</strong>　3F。 洋室、CFフローリング。  窓の向きは南東。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">406号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-1 is-cropped wp-block-gallery-6 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg\" alt=\"\" data-id=\"554\" data-link=\"https://theheadquarters.jp/rooms/attachment/406/\" class=\"wp-image-554\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/09/406-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/09/406-768x512.jpg 768w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　8.0 ㎡ 4.9 畳<br><strong>賃料</strong>　￥42,000　<br><strong>設備等</strong>　4F。 洋室、CFフローリング。 窓の向きは北西。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">407号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-1 is-cropped wp-block-gallery-7 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"768\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg\" alt=\"\" data-id=\"555\" data-link=\"https://theheadquarters.jp/rooms/room407/\" class=\"wp-image-555\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-300x225.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-768x576.jpg 768w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　8.0 ㎡ 4.9 畳<br><strong>賃料</strong>　￥41,000<br><strong>設備等</strong>　4F。 洋室、CFフローリング。  窓の向きは南西。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">408号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-8 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"768\" src=\"https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg\" alt=\"\" data-id=\"704\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2020/02/408a-scaled.jpg\" data-link=\"https://theheadquarters.jp/rooms/408a\" class=\"wp-image-704\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2020/02/408a-300x225.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2020/02/408a-768x576.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1536x1152.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2020/02/408a-2048x1536.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"768\" src=\"https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg\" alt=\"\" data-id=\"705\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2020/02/408b-scaled.jpg\" data-link=\"https://theheadquarters.jp/rooms/408b\" class=\"wp-image-705\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2020/02/408b-300x225.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2020/02/408b-768x576.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1536x1152.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2020/02/408b-2048x1536.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　9.2 ㎡ 5.7 畳<br><strong>賃料</strong>　￥44,000　<br><strong>設備等</strong>　4F。 洋室、CFフローリング。 窓の向きは南西。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">409号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-9 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg\" alt=\"\" data-id=\"1083\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-scaled.jpg\" data-link=\"https://theheadquarters.jp/rooms/d5622158779da808105ef7488dd73ac7\" class=\"wp-image-1083\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg\" alt=\"\" data-id=\"1082\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-scaled.jpg\" data-link=\"https://theheadquarters.jp/rooms/253353e4999db63bdb3b295a8e9ce3ec\" class=\"wp-image-1082\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　9.7 ㎡ 6 畳<br><strong>賃料</strong>　￥46,000　<br><strong>設備等</strong>　4F。 洋室、CFフローリング。 窓の向きは南東。 </p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">410号室</h2>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-10 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg\" alt=\"\" data-id=\"1096\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808.jpg\" data-link=\"https://theheadquarters.jp/rooms/0e54fb48d4fe8542ec02d3655a041808\" class=\"wp-image-1096\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg\" alt=\"\" data-id=\"1095\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a.jpg\" data-link=\"https://theheadquarters.jp/rooms/a49008df88078820f4f81bb17a8fa12a\" class=\"wp-image-1095\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1536x1024.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-2048x1365.jpg 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p><strong>広さ</strong>　9.8 ㎡ 6 畳<br><strong>賃料</strong>　￥46,000　<br><strong>設備等</strong>　4F。 洋室、CFフローリング。 窓の向きは南東。<br></p>\n\n\n\n<p><br>※各部屋の賃料以外に、共益費が必要になります。（¥13,000円、2023年1月現在）</p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>お部屋は全部で10室あります。３Fと4Fが同じ構造で5部屋ずつ。 以前は収納がほとんど無かったため、最近は暮らしやすくするためにほとんどの部屋にロフトベッドや勉強机を設置しています。 301号室 広さ　8.0 ㎡ 4.9&#8230;</p>\n",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-21",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/21",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=21"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 37,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/21/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 1099,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/21/revisions/1099"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=21"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=21"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "date": "2019-03-05T16:35:36",
+    "date_gmt": "2019-03-05T07:35:36",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=19"
+    },
+    "modified": "2021-09-07T05:24:52",
+    "modified_gmt": "2021-09-06T20:24:52",
+    "slug": "facilities",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/facilities",
+    "title": {
+      "rendered": "共用部の紹介"
+    },
+    "content": {
+      "rendered": "\n<p>ヘッドクオーターズ神戸の共用部や設備はとても充実しています。全体の床面積の３分の１近く、屋上も入れれば約半分が共用部。水回りの設備も人数に対して多めです。<br>ビル自体は古めですが、共用部はハウスキーパーさんが週に１回掃除してくれるし、住民は基本的に綺麗好きなのでとても快適な生活が送れますよ。<br></p>\n\n\n\n<h2 class=\"wp-block-heading\">リビングスペース</h2>\n\n\n\n<p>５Fは主に共有部になっており、特に広いリビングでくつろいだりみんなでご飯を食べたりできます。<br>テレビやゲーム機も置いてあります。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-11 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg\" alt=\"\" data-id=\"430\" data-link=\"https://theheadquarters.jp/facilities/hqinterior-3/\" class=\"wp-image-430\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg\" alt=\"\" data-id=\"431\" data-link=\"https://theheadquarters.jp/facilities/hqinterior-6/\" class=\"wp-image-431\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg\" alt=\"\" data-id=\"432\" data-link=\"https://theheadquarters.jp/facilities/hqinterior-5/\" class=\"wp-image-432\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg\" alt=\"\" data-id=\"435\" data-link=\"https://theheadquarters.jp/facilities/hqinterior-1-10mm-1/\" class=\"wp-image-435\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">キッチン</h2>\n\n\n\n<p>楽しく豊かな暮らしは「食」から。調理道具も充実させています。<br>30Lで300℃まであがるオーブンレンジ、パンが美味しいBALMUDAトースター、柔らかい肉が楽しめる低温調理器、圧力鍋、スロージューサーやミルミキサー、製パン機、おしゃれな自動コーヒーロースター、そしてみんなで楽しめるガス式たこ焼き器など。<br>ガスコンロは２口、別にIHも１台あります。<br>冷蔵庫は5階キッチンに２台＋冷凍ストッカー1台、居住フロアの４Fと３Fにも冷蔵庫が１台ずつあります。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-12 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg\" alt=\"\" data-id=\"436\" data-link=\"https://theheadquarters.jp/facilities/dscf0932/\" class=\"wp-image-436\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-768x512.jpg 768w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg\" alt=\"\" data-id=\"413\" data-link=\"https://theheadquarters.jp/2019/06/29/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e3%81%84%e3%81%84%e3%81%a8%e3%81%93%e3%82%8d/hqposts-3/\" class=\"wp-image-413\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg\" alt=\"\" data-id=\"437\" data-link=\"https://theheadquarters.jp/facilities/hqinterior-7-1/\" class=\"wp-image-437\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg\" alt=\"\" data-id=\"438\" data-link=\"https://theheadquarters.jp/facilities/hqinterior-4-1/\" class=\"wp-image-438\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">スタディ/ワークルーム</h2>\n\n\n\n<p>集中して勉強したり、在宅で仕事をしたりしたいひとのための、勉強部屋兼仕事部屋です。<br>各居室にもデスクと机はありますが、やはり気分を変えたり別のスペースがあるといいですね。</p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg\" alt=\"\" class=\"wp-image-912\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-768x511.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1536x1023.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2.jpg 1568w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<figure class=\"wp-block-gallery columns-2 is-cropped wp-block-gallery-13 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg\" alt=\"\" data-id=\"915\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2.jpg\" data-link=\"https://theheadquarters.jp/facilities/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2\" class=\"wp-image-915\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-768x511.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1536x1023.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2.jpg 1568w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg\" alt=\"\" data-id=\"916\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0.jpg\" data-link=\"https://theheadquarters.jp/facilities/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0\" class=\"wp-image-916\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-768x511.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1536x1023.jpg 1536w, https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0.jpg 1568w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">屋上</h2>\n\n\n\n<p>ヘッドクオーターズ神戸の目玉である眺めの良い屋上です♪<br>暖かい季節はBBQをしたり、夕涼みに吹き抜ける風を感じながら飲むビールは格別です。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-14 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg\" alt=\"\" data-id=\"502\" data-link=\"https://theheadquarters.jp/facilities/hqbbq6-1/\" class=\"wp-image-502\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg\" alt=\"\" data-id=\"498\" data-link=\"https://theheadquarters.jp/2019/08/08/%e5%b1%8b%e4%b8%8a%e3%81%8c%e7%b6%ba%e9%ba%97%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%9f%e3%82%88%ef%bc%81/hqbbq8/\" class=\"wp-image-498\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1-1024x682.jpg\" alt=\"\" data-id=\"505\" data-link=\"https://theheadquarters.jp/facilities/hqbbq5-1/\" class=\"wp-image-505\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91-1024x682.jpg\" alt=\"\" data-id=\"514\" data-link=\"https://theheadquarters.jp/facilities/hqbbq91/\" class=\"wp-image-514\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg\" alt=\"\" data-id=\"511\" data-link=\"https://theheadquarters.jp/facilities/hqbbq2-2/\" class=\"wp-image-511\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /><figcaption class=\"blocks-gallery-item__caption\">六甲山脈とプチ夜景</figcaption></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"683\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg\" alt=\"\" data-id=\"570\" data-link=\"https://theheadquarters.jp/facilities/69f1de8be6f750b5997011dc209e6356-2/\" class=\"wp-image-570\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-768x512.jpg 768w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /><figcaption class=\"blocks-gallery-item__caption\">歓迎会を屋上でやったりします。素敵でしょ</figcaption></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg\" alt=\"\" data-id=\"510\" data-link=\"https://theheadquarters.jp/facilities/hqbbq1-2/\" class=\"wp-image-510\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /><figcaption class=\"blocks-gallery-item__caption\">開放感抜群、住民が自由に使えます</figcaption></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">浴室</h2>\n\n\n\n<p>バスタブのある浴室と、シャワー専用ブースの２つがあります。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-15 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/036-1024x678.jpg\" alt=\"\" data-id=\"85\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/036/\" class=\"wp-image-85\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/036-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/036-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/036-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/036.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"684\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/037-1024x684.jpg\" alt=\"\" data-id=\"86\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/037/\" class=\"wp-image-86\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/037-1024x684.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/037-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/037-768x513.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/037.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/038-1024x678.jpg\" alt=\"\" data-id=\"87\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/038/\" class=\"wp-image-87\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/038-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/038-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/038-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/038.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/039-1024x678.jpg\" alt=\"\" data-id=\"88\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/039/\" class=\"wp-image-88\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/039-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/039-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/039-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/039.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"684\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/040-1024x684.jpg\" alt=\"\" data-id=\"89\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/040/\" class=\"wp-image-89\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/040-1024x684.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/040-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/040-768x513.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/040.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">ランドリー</h2>\n\n\n\n<p>日々の暮らしを楽に。ヒートポンプ式乾燥機付きのドラム型全自動洗濯機を4Fと３Fに1台ずつ、計２台設置。洗面台は多くて５Fに1台、４Fに3台、３Fに２台の計６台あります。洗濯機の洗剤は共益費から出ます。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-16 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/053-1024x678.jpg\" alt=\"\" data-id=\"141\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/053/\" class=\"wp-image-141\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/053-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/053-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/053-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/053.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"768\" height=\"1024\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/IMG_4212-768x1024.jpg\" alt=\"\" data-id=\"197\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/img_4212/\" class=\"wp-image-197\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/IMG_4212-768x1024.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/IMG_4212-225x300.jpg 225w\" sizes=\"auto, (max-width: 768px) 100vw, 768px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-1024x682.jpg\" alt=\"\" data-id=\"480\" data-link=\"https://theheadquarters.jp/facilities/s__16310298/\" class=\"wp-image-480\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-768x511.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298.jpg 1568w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">トイレ</h2>\n\n\n\n<p>トイレは３F、４F、５Fの各フロアに１つずつ、計３箇所。すべてウォシュレット付きです。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-17 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"684\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg\" alt=\"\" data-id=\"94\" data-link=\"https://theheadquarters.jp/facilities/041-2/\" class=\"wp-image-94\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-768x513.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/041-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg\" alt=\"\" data-id=\"95\" data-link=\"https://theheadquarters.jp/facilities/042-2/\" class=\"wp-image-95\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/042-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"768\" height=\"1024\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg\" alt=\"\" data-id=\"512\" data-link=\"https://theheadquarters.jp/facilities/4cf2aa84-c7ec-4b0c-ab64-82362e519820/\" class=\"wp-image-512\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-225x300.jpg 225w, https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820.jpg 1440w\" sizes=\"auto, (max-width: 768px) 100vw, 768px\" /></figure></li></ul></figure>\n\n\n\n<h2 class=\"wp-block-heading\">エントランス</h2>\n\n\n\n<p>建物はアーケードの商店街に面しており買い物は濡れずに徒歩３秒！でOK。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-18 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/001-1024x678.jpg\" alt=\"\" data-id=\"146\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/001/\" class=\"wp-image-146\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/001-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/001-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/001.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"678\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/002-1024x678.jpg\" alt=\"\" data-id=\"147\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/002/\" class=\"wp-image-147\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/002-1024x678.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/002-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/002-768x508.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/002.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"684\" src=\"http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/004-1024x684.jpg\" alt=\"\" data-id=\"148\" data-link=\"http://edisontest.sakura.ne.jp/thq/%e5%85%b1%e6%9c%89%e9%83%a8%e7%b4%b9%e4%bb%8b/attachment/004/\" class=\"wp-image-148\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/03/004-1024x684.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/03/004-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/03/004-768x513.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/03/004.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>ヘッドクオーターズ神戸の共用部や設備はとても充実しています。全体の床面積の３分の１近く、屋上も入れれば約半分が共用部。水回りの設備も人数に対して多めです。ビル自体は古めですが、共用部はハウスキーパーさんが週に１回掃除して&#8230;</p>\n",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-19",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/19",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=19"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 42,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/19/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 964,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/19/revisions/964"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=19"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=19"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "date": "2019-03-05T16:34:26",
+    "date_gmt": "2019-03-05T07:34:26",
+    "guid": {
+      "rendered": "http://edisontest.sakura.ne.jp/thq/?page_id=16"
+    },
+    "modified": "2022-04-01T04:52:53",
+    "modified_gmt": "2022-03-31T19:52:53",
+    "slug": "overview",
+    "status": "publish",
+    "type": "page",
+    "link": "https://theheadquarters.jp/overview",
+    "title": {
+      "rendered": "全体概要"
+    },
+    "content": {
+      "rendered": "\n<div class=\"wp-block-image\"><figure class=\"aligncenter size-large is-resized\"><img loading=\"lazy\" decoding=\"async\" src=\"https://theheadquarters.jp/wp-content/uploads/2020/08/Black_A-2-1024x659.png\" alt=\"\" class=\"wp-image-761\" width=\"259\" height=\"167\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2020/08/Black_A-2-1024x659.png 1024w, https://theheadquarters.jp/wp-content/uploads/2020/08/Black_A-2-300x193.png 300w, https://theheadquarters.jp/wp-content/uploads/2020/08/Black_A-2-768x494.png 768w, https://theheadquarters.jp/wp-content/uploads/2020/08/Black_A-2-1536x989.png 1536w, https://theheadquarters.jp/wp-content/uploads/2020/08/Black_A-2.png 1563w\" sizes=\"auto, (max-width: 259px) 100vw, 259px\" /></figure></div>\n\n\n\n<h2 class=\"wp-block-heading\">コンセプト</h2>\n\n\n\n<p>The Headquarters Kobe は、神戸市灘区の王子公園駅近くにある、活気ある水道筋商店街の中心に位置するシェアハウスです。<br>地元から日本から世界から集まるオープンマインドな住人たちが、共に暮らし、遊び、刺激しあい、楽しい生活をシェアする場所です。</p>\n\n\n\n<p>三ノ宮にはハウスを出て約10分で行けるし、神戸大学にも近い。大阪に方面もすぐ行けます。<br>水道筋商店街は安くて新鮮な食材や生活必需品、手づくりのお惣菜もすぐ手に入るとても便利な商店街。大きなお風呂に入りたくなったら温泉が湧く銭湯だってあります。<br><br>ハウスで朝「おはよう」から始まって、夜に帰れば「ただいま」そして誰かが「おかえり」、「おつかれ」と声をかけてくれる。キッチンでご飯を一緒に作って食べたり、たまにはパーティをやったり。屋上で息抜きの読書をしたり、夏はバーベキューやプールも楽しめる。</p>\n\n\n\n<p>シェアハウスで仲間たちとシェアするものは、単なるhouseではなく日々のlifeです。たくさんの喜びと、時として悲しみもシェアしながら、ここで得た出会いや学びが後の人生の宝物となるでしょう。<br><br>Headquartersとは、住人が集い、巣立っていき、そしていつまでも残る心のよりどころです。</p>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">建物概要</h2>\n\n\n\n<p>ヘッドクオーターズ神戸は、商店に面した小さな5階建てビルの3階〜5階そして屋上までを使っています。部屋数は全部で10室で３階と４階に5部屋ずつ。５Fぜんぶ共有スペースです！</p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"789\" src=\"https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-1024x789.png\" alt=\"\" class=\"wp-image-1086\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-1024x789.png 1024w, https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-300x231.png 300w, https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-768x592.png 768w, https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-1536x1184.png 1536w, https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-2048x1579.png 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<p>風が気持ちよく通り抜ける5階のほとんどがキッチン・リビング・バスなど広い共有部です。３Fと４F含めすべてのフロアにトイレと洗面台も。<br>お風呂×１、シャワーブース×１、洗面台×６面、トイレ×３台（すべてウォシュレット付き）、洗濯乾燥機×２台、キッチンはガスコンロ２口＋IH１台、冷蔵／冷凍庫は計５台で設備も充実です。<br><br>ワンフロアが約70平米なので、３フロアで約210平米、屋上も含めれば280平米近い大きさです。ひとりあたり面積で見ればシェアハウスの中でもけっこう広いんですよ。</p>\n\n\n\n<figure class=\"wp-block-gallery columns-3 is-cropped wp-block-gallery-19 is-layout-flex wp-block-gallery-is-layout-flex\"><ul class=\"blocks-gallery-grid\"><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-1024x682.jpg\" alt=\"\" data-id=\"452\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1.jpg\" data-link=\"https://theheadquarters.jp/overview/hqinterior-6-1\" class=\"wp-image-452\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-1024x682.jpg\" alt=\"\" data-id=\"454\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2.jpg\" data-link=\"https://theheadquarters.jp/overview/hqinterior-4-2\" class=\"wp-image-454\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li><li class=\"blocks-gallery-item\"><figure><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"682\" src=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg\" alt=\"\" data-id=\"510\" data-full-url=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2.jpg\" data-link=\"https://theheadquarters.jp/facilities/hqbbq1-2\" class=\"wp-image-510\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg 1024w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-300x200.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-768x512.jpg 768w, https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2.jpg 1280w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure></li></ul></figure>\n\n\n\n<p></p>\n\n\n\n<h2 class=\"wp-block-heading\">運営者</h2>\n\n\n\n<p>　はじめまして。株式会社Never2Lateの代表、星野と申します。企業向けの経営コンサルティング事業の傍らシェアハウス事業を営んでおります。</p>\n\n\n\n<div class=\"wp-block-image\"><figure class=\"aligncenter size-large is-resized\"><img loading=\"lazy\" decoding=\"async\" src=\"https://theheadquarters.jp/wp-content/uploads/2020/08/68444758_2308666869169973_6899610136319361024_n.jpg\" alt=\"\" class=\"wp-image-762\" width=\"204\" height=\"204\" srcset=\"https://theheadquarters.jp/wp-content/uploads/2020/08/68444758_2308666869169973_6899610136319361024_n.jpg 960w, https://theheadquarters.jp/wp-content/uploads/2020/08/68444758_2308666869169973_6899610136319361024_n-300x300.jpg 300w, https://theheadquarters.jp/wp-content/uploads/2020/08/68444758_2308666869169973_6899610136319361024_n-150x150.jpg 150w, https://theheadquarters.jp/wp-content/uploads/2020/08/68444758_2308666869169973_6899610136319361024_n-768x768.jpg 768w\" sizes=\"auto, (max-width: 204px) 100vw, 204px\" /></figure></div>\n\n\n\n<p>　このシェアハウス事業への取り組みの原点は、私が大学時代に4年間過ごした寮生活にあります。そこでは1年生から4年生が各部屋に相部屋となって住み、たまに訪れる社会人のOBなども交えながら語り合い、笑い合い、時にはぶつかり合って学びながらひとつ屋根の下で共同生活をしていました。<br><br>　当時も自宅住まいや一人暮らしの学生から「寮なんか住んで面白いの？」、「自由はある？」、「当番とか面倒じゃない？」などと言われていました。しかし寮で過ごした時間は欠け替えのないもので、そこでともに過ごした仲間たちとの関係は私の一生の宝ものとなっています。多様な他者との生活の交わりの中で、自分の世界の認識が広がっていったと記憶しています。 </p>\n\n\n\n<p>　果たして昨今、SNSでは表層的なコミュニケーションが溢れる一方、リアルな個人の関係性は分断が進んでいるようにも思えます。そんな世の中で、ひとが一人で部屋に閉じこもって住むよりも便利に楽しく暮らせ、人間関係の中で繋がりや安心感、学びや出会いを得られる共同生活の場、それがシェアハウスなのかなと思っています。</p>\n\n\n\n<p> 　そんな思いから素敵な暮らしの場を作りたいと、この事業を行っています。<br>よろしくお願いします。 </p>\n",
+      "protected": false
+    },
+    "excerpt": {
+      "rendered": "<p>コンセプト The Headquarters Kobe は、神戸市灘区の王子公園駅近くにある、活気ある水道筋商店街の中心に位置するシェアハウスです。地元から日本から世界から集まるオープンマインドな住人たちが、共に暮らし、&#8230;</p>\n",
+      "protected": false
+    },
+    "author": 1,
+    "featured_media": 0,
+    "parent": 0,
+    "menu_order": 0,
+    "comment_status": "closed",
+    "ping_status": "closed",
+    "template": "",
+    "meta": {
+      "footnotes": ""
+    },
+    "tags": [],
+    "class_list": [
+      "post-16",
+      "page",
+      "type-page",
+      "status-publish",
+      "article cf"
+    ],
+    "aioseo_notices": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/16",
+          "targetHints": {
+            "allow": [
+              "GET"
+            ]
+          }
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/types/page"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1"
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/comments?post=16"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 42,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/16/revisions"
+        }
+      ],
+      "predecessor-version": [
+        {
+          "id": 1089,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/pages/16/revisions/1089"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/media?parent=16"
+        }
+      ],
+      "wp:term": [
+        {
+          "taxonomy": "post_tag",
+          "embeddable": true,
+          "href": "https://theheadquarters.jp/wp-json/wp/v2/tags?post=16"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    },
+    "_embedded": {
+      "author": [
+        {
+          "id": 1,
+          "name": "hirohoshi",
+          "url": "",
+          "description": "",
+          "link": "https://theheadquarters.jp/archives/author/hirohoshi",
+          "slug": "hirohoshi",
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/b8552bd61044e9a6163342c514e7c192ef89643e3eefe88d3b1a415f53f35f02?s=96&d=mm&r=g"
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users/1",
+                "targetHints": {
+                  "allow": [
+                    "GET"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://theheadquarters.jp/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

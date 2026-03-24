@@ -1,52 +1,111 @@
 ---
-import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+const p = isEn ? '/en' : '';
+
+// JA → EN path mapping
+function _enPath(path: string): string {
+  const map: Record<string, string> = {
+    '/': '/en/',
+    '/blog/hq-kobe': '/en/hq-kobe',
+    '/facilities': '/en/facilities',
+    '/rooms': '/en/rooms',
+    '/location': '/en/location',
+    '/procedures': '/en/procedures',
+    '/contact': '/en/contact',
+    '/blog': '/en/',
+  };
+  return map[path] ?? '/en/';
+}
+
+// EN → JA path mapping
+function _jaPath(path: string): string {
+  const map: Record<string, string> = {
+    '/en/': '/',
+    '/en': '/',
+    '/en/hq-kobe': '/blog/hq-kobe',
+    '/en/facilities': '/facilities',
+    '/en/rooms': '/rooms',
+    '/en/location': '/location',
+    '/en/procedures': '/procedures',
+    '/en/contact': '/contact',
+  };
+  return map[path] ?? '/';
+}
 ---
 
 <header>
+	<div class="site-title">
+		<a href={isEn ? '/en/' : '/'}>
+			<img src="/images/logo.png" alt="The Headquarters Kobe" />
+		</a>
+	</div>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-
 		<div class="internal-links">
-			<HeaderLink href="/overview">Overview</HeaderLink>
-			<HeaderLink href="/facilities">Facilities</HeaderLink>
-			<HeaderLink href="/rooms">Rooms</HeaderLink>
-			<HeaderLink href="/location">Location</HeaderLink>
-			<HeaderLink href="/contact">Contact</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href={`${p}/`} sub="Home">{isEn ? 'Home' : 'ホーム'}</HeaderLink>
+			<HeaderLink href={isEn ? '/en/hq-kobe' : '/blog/hq-kobe'} sub="About">{isEn ? 'About' : 'ハウスについて'}</HeaderLink>
+			<HeaderLink href={`${p}/facilities`} sub="Facilities">{isEn ? 'Facilities' : '共用部の紹介'}</HeaderLink>
+			<HeaderLink href={`${p}/rooms`} sub="Rooms">{isEn ? 'Rooms' : 'お部屋紹介'}</HeaderLink>
+			<HeaderLink href={`${p}/location`} sub="Location">{isEn ? 'Location' : 'アクセスと周辺情報'}</HeaderLink>
+			<HeaderLink href={`${p}/procedures`} sub="Procedures">{isEn ? 'Procedures' : '入居の流れとQ&A'}</HeaderLink>
+			{!isEn && <HeaderLink href="/blog" sub="Blog">ブログ</HeaderLink>}
+			<HeaderLink href={`${p}/contact`} sub="Contact">{isEn ? 'Contact' : 'お問い合わせ'}</HeaderLink>
 		</div>
 	</nav>
+	<div class="lang-switcher">
+		<a href={isEn ? _jaPath(pathname) : _enPath(pathname)} class="lang-btn">
+			{isEn ? '🇯🇵' : '🇬🇧'}
+		</a>
+	</div>
 </header>
 
 <style>
 	header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
 		margin: 0;
-		padding: 0 1em;
+		padding: 0 1.5em;
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 1em;
+	}
+	.site-title { flex-shrink: 0; }
+	.site-title a { display: inline-block; text-decoration: none; }
+	.site-title img { height: 40px; width: auto; display: block; }
+	nav { flex: 1; }
+	.internal-links {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: 0;
 	}
 	nav a {
 		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
+		color: rgb(var(--gray-dark));
+		border-bottom: 3px solid transparent;
 		text-decoration: none;
+		font-size: 0.78em;
+		white-space: nowrap;
 	}
+	nav a:hover { color: rgb(var(--black)); }
 	nav a.active {
-		text-decoration: none;
+		color: rgb(var(--black));
+		font-weight: 600;
 		border-bottom-color: var(--accent);
 	}
+	.lang-switcher { flex-shrink: 0; }
+	.lang-btn {
+		display: inline-block;
+		font-size: 1.4em;
+		text-decoration: none;
+		line-height: 1;
+		opacity: 0.85;
+		transition: opacity 0.2s;
+	}
+	.lang-btn:hover { opacity: 1; }
 </style>

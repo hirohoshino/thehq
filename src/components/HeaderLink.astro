@@ -1,24 +1,43 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'> & { sub?: string };
 
-const { href, class: className, ...props } = Astro.props;
+const { href, sub, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const bulkSlug = pathname.match(/^\/blog\/bulk\/([^/]+)$/)?.[1];
+const isActive =
+  href === pathname ||
+  (bulkSlug !== undefined && href === '/' + bulkSlug);
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
-	<slot />
+	<span class="main"><slot /></span>
+	{sub && <span class="sub">{sub}</span>}
 </a>
 <style>
 	a {
 		display: inline-block;
+		text-align: center;
 		text-decoration: none;
+		line-height: 1.2;
 	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
+	.main {
+		display: block;
+		font-size: 0.85em;
+		font-weight: 600;
+	}
+	.sub {
+		display: block;
+		font-size: 0.62em;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgb(var(--gray));
+	}
+	a.active .main {
+		font-weight: 700;
+	}
+	a.active .sub {
+		color: var(--accent);
 	}
 </style>

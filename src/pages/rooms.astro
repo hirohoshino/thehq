@@ -1,3 +1,12 @@
 ---
-return Astro.redirect('/blog/bulk/rooms', 301);
+import { getCollection, render } from 'astro:content';
+import BlogPost from '../layouts/BlogPost.astro';
+
+const all = await getCollection('blog');
+const post = all.find((p) => p.id === 'bulk/rooms');
+if (!post) throw new Error('bulk/rooms not found');
+const { Content } = await render(post);
 ---
+<BlogPost {...post.data}>
+  <Content />
+</BlogPost>

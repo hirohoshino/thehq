@@ -1,3 +1,145 @@
 ---
-return Astro.redirect('/blog/bulk/contact', 301);
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
+
+<html lang="ja">
+  <head>
+    <BaseHead title="お問い合わせ | The Headquarters Kobe" description="内見のご希望やご質問はこちらからお気軽にお問い合わせください。" />
+    <style>
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 3em 1em 4em;
+      }
+      h1 {
+        margin-bottom: 0.3em;
+      }
+      .lead {
+        color: #666;
+        margin-bottom: 2em;
+        font-size: 0.95em;
+      }
+      .form-group {
+        margin-bottom: 1.5em;
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4em;
+        font-size: 0.9em;
+      }
+      label .req {
+        color: #e05;
+        margin-left: 4px;
+        font-size: 0.8em;
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 0.7em 0.9em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+        font-family: inherit;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #2337ff;
+      }
+      textarea {
+        min-height: 160px;
+        resize: vertical;
+      }
+      button[type="submit"] {
+        background: #2337ff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.75em 2.5em;
+        font-size: 1em;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button[type="submit"]:hover {
+        background: #000d8a;
+      }
+      .success-msg {
+        display: none;
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+        border-radius: 8px;
+        padding: 1.2em 1.5em;
+        color: #166534;
+        margin-top: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>お問い合わせ</h1>
+      <p class="lead">内見のご希望やご質問など、お気軽にお問い合わせください。</p>
+
+      <form
+        action="https://formspree.io/f/mojkgzdz"
+        method="POST"
+        id="contact-form"
+      >
+        <div class="form-group">
+          <label for="name">お名前<span class="req">必須</span></label>
+          <input type="text" id="name" name="name" required placeholder="山田 太郎" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">メールアドレス<span class="req">必須</span></label>
+          <input type="email" id="email" name="email" required placeholder="example@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">件名</label>
+          <input type="text" id="subject" name="subject" placeholder="内見希望・質問など" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">メッセージ本文<span class="req">必須</span></label>
+          <textarea id="message" name="message" required placeholder="ご希望の日程や、ご質問をご記入ください。"></textarea>
+        </div>
+
+        <button type="submit">送信する</button>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        お問い合わせありがとうございます。内容を確認後、ご連絡いたします。
+      </div>
+    </main>
+    <Footer />
+
+    <script>
+      const form = document.getElementById('contact-form') as HTMLFormElement;
+      const successMsg = document.getElementById('success-msg') as HTMLElement;
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          form.reset();
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>

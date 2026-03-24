@@ -1,0 +1,142 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="The Headquarters Kobe — Sharehouse in Kobe, Japan" description="A sharehouse in the heart of the Suidosuji shopping arcade, Nada, Kobe. Open-minded residents from Japan and around the world." />
+  </head>
+
+  <body>
+    <Header />
+
+    <main style="max-width: 1080px; margin: 0 auto; padding: 24px;">
+
+      <section class="hero heroOverlay">
+        <img src="/images/hero.jpg" alt="The Headquarters Kobe" class="heroImage" />
+        <div class="heroText">
+          <p class="kicker">THE HEADQUARTERS KOBE</p>
+          <h1>Where life and people naturally connect.</h1>
+          <p class="lead">A sharehouse in the heart of Kobe's Suidosuji arcade. Share daily life with open-minded residents from Japan and around the world.</p>
+          <div class="heroActions">
+            <a class="btnPrimary" href="/en/contact">Inquire / Book a Viewing</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">About The Headquarters Kobe</h2>
+        <div class="card prose">
+          <p>
+            Located near Ojikoen Station in Nada Ward, Kobe — right in the middle of the lively Suidosuji shopping arcade.
+            Open-minded residents from the neighborhood, across Japan, and around the world live together here, sharing inspiration and everyday life.
+          </p>
+          <p>
+            Sannomiya (Kobe's city center) is about 10 minutes away. Kobe University is close, and Osaka is easily accessible.
+            Fresh produce and daily essentials are steps away at the shopping arcade, with a hot spring bathhouse nearby too.
+          </p>
+          <p>
+            Every morning starts with a "good morning," and every evening someone greets you home. Cook together, host parties, read on the rooftop, or fire up the BBQ in summer.
+            What you share here isn't just a house — it's life itself.
+          </p>
+          <div class="aboutStats">
+            <div><span class="statNum">10</span><span class="statLabel"> rooms</span></div>
+            <div><span class="statNum">5F</span><span class="statLabel"> building (3F–5F + rooftop)</span></div>
+            <div><span class="statNum">~280</span><span class="statLabel"> m²</span></div>
+          </div>
+          <a class="aboutLink" href="/en/hq-kobe">Learn more →</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">Instagram</h2>
+        <p class="muted">See life at the house</p>
+        <div class="instaGrid">
+          <img src="/images/insta-1.jpg" alt="Instagram photo 1" />
+          <img src="/images/insta-2.jpg" alt="Instagram photo 2" />
+          <img src="/images/insta-3.jpg" alt="Instagram photo 3" />
+        </div>
+        <p style="margin-top:16px;">
+          <a class="btnGhost" href="https://www.instagram.com/theheadquarters.kobe/" target="_blank" rel="noopener">
+            View on Instagram →
+          </a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">About the House</h2>
+        <div class="infoGrid">
+          <a class="infoCard" href="/en/hq-kobe">
+            <div class="infoKicker">ABOUT</div>
+            <div class="infoTitle">About the House</div>
+            <div class="infoDesc">Concept, atmosphere, and residents of The Headquarters Kobe.</div>
+          </a>
+          <a class="infoCard" href="/en/facilities">
+            <div class="infoKicker">FACILITIES</div>
+            <div class="infoTitle">Common Areas</div>
+            <div class="infoDesc">Kitchen, bath, rooftop, and all shared spaces.</div>
+          </a>
+          <a class="infoCard" href="/en/rooms">
+            <div class="infoKicker">ROOMS</div>
+            <div class="infoTitle">Room Guide</div>
+            <div class="infoDesc">Vacancies, pricing, and photos of each room.</div>
+          </a>
+          <a class="infoCard" href="/en/location">
+            <div class="infoKicker">ACCESS</div>
+            <div class="infoTitle">Access & Area</div>
+            <div class="infoDesc">A short walk from Ojikoen Station, right next to Suidosuji arcade.</div>
+          </a>
+          <a class="infoCard" href="/en/procedures">
+            <div class="infoKicker">HOW TO</div>
+            <div class="infoTitle">Move-in Process & FAQ</div>
+            <div class="infoDesc">From viewing to move-in day, plus frequently asked questions.</div>
+          </a>
+          <a class="infoCard" href="/en/contact">
+            <div class="infoKicker">CONTACT</div>
+            <div class="infoTitle">Contact Us</div>
+            <div class="infoDesc">Viewings, vacancy checks, and any other inquiries welcome.</div>
+          </a>
+        </div>
+      </section>
+
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .hero { padding: 48px 24px 24px; text-align: center; }
+  .kicker { margin: 0 0 12px; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; color: rgb(var(--gray)); }
+  .hero h1 { margin: 0 0 16px; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.2; }
+  .lead { margin: 0 auto 24px; max-width: 56ch; font-size: 18px; color: rgb(var(--gray)); }
+  .heroActions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btnPrimary, .btnGhost { display: inline-block; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700; }
+  .btnPrimary { background: var(--accent); color: white; }
+  .btnGhost { border: 1px solid rgba(var(--gray), 35%); color: rgb(var(--gray-dark)); background: rgba(255,255,255,.7); }
+  .heroImage { display: block; width: 100%; max-width: 1080px; height: clamp(260px, 46vw, 520px); object-fit: cover; border-radius: 20px; margin: 28px auto 0; box-shadow: 0 18px 60px rgba(0,0,0,.12); }
+  .heroOverlay { position: relative; padding: 0; }
+  .heroOverlay .heroImage { height: clamp(320px, 52vw, 560px); border-radius: 24px; margin: 0 auto; filter: brightness(0.82); }
+  .heroOverlay .heroText { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; text-align: center; color: white; }
+  .heroOverlay .kicker { color: rgba(255,255,255,.8); }
+  .heroOverlay h1 { color: white; text-shadow: 0 6px 24px rgba(0,0,0,.35); }
+  .heroOverlay .lead { color: rgba(255,255,255,.9); }
+  .section { padding: 32px; background: linear-gradient(180deg, rgba(var(--gray-light), 0.6), rgba(var(--gray-light), 0.2)); border-radius: 24px; margin-top: 32px; }
+  .sectionTitle { margin: 0 0 16px; font-size: 22px; }
+  .card { background: white; border-radius: 16px; padding: 20px; box-shadow: var(--box-shadow); }
+  .muted { color: rgb(var(--gray)); font-size: 14px; }
+  .instaGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .instaGrid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; }
+  .infoGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+  .infoCard { display: block; padding: 22px 20px; border-radius: 16px; background: white; box-shadow: var(--box-shadow); text-decoration: none; color: inherit; transition: transform .15s ease, box-shadow .15s ease; }
+  .infoCard:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+  .infoKicker { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .infoTitle { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: rgb(var(--gray-dark)); }
+  .infoDesc { font-size: 13px; color: rgb(var(--gray)); line-height: 1.5; }
+  .aboutStats { display: flex; gap: 32px; margin: 20px 0 16px; padding: 20px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+  .statNum { font-size: 1.8rem; font-weight: 700; color: #1a1a2e; }
+  .statLabel { font-size: 0.85rem; color: #666; }
+  .aboutLink { display: inline-block; margin-top: 12px; font-size: 0.9rem; font-weight: 600; color: #3355cc; text-decoration: none; }
+  .aboutLink:hover { text-decoration: underline; }
+</style>

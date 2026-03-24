@@ -1,49 +1,463 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+
+// 全記事取得
+const entries = await getCollection('blog');
+
+// 固定ページ（kind: page）
+const pages = entries
+  .filter((e) => e.data.kind === 'page')
+  .sort((a, b) =>
+    (a.slug ?? a.id ?? '').localeCompare(b.slug ?? b.id ?? '', 'ja')
+  );
+
+// トップ用ページ（overview優先）
+const home =
+  pages.find((e) => (e.id ?? '').toLowerCase() === 'bulk/overview') ??
+  pages.find((e) => (e.slug ?? '').toLowerCase() === 'bulk/overview') ??
+  pages[0];
+
+if (!home) throw new Error('No page entries found (kind: page).');
+
+// Astro v5: rendered.html を使用
+const html = home.rendered?.html ?? '';
+if (!html) throw new Error('Home page has no rendered.html.');
+
+// 最新ブログ（kind: post）
+const latestPosts = entries
+  .filter((e) => e.data.kind === 'post')
+  .sort((a, b) => b.data.pubDate - a.data.pubDate)
+  .slice(0, 3)
+  .map((post) => {
+    const match = post.body?.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+    const desc = post.data.description.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code))).replace(/&amp;/g, '&').replace(/&quot;/g, '"');
+    return { ...post, firstImage: match ? match[1] : (post.data.coverImage ?? null), desc };
+  });
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<html lang="ja">
+  <head>
+    <BaseHead title="The Headquarters Kobe" description="神戸・水道筋のシェアハウス The Headquarters Kobe" />
+  </head>
+
+  <body>
+    <Header />
+
+    <!-- Hero（全幅） -->
+    <section class="hero heroOverlay">
+      <img src="/images/hero.jpg" alt="The Headquarters Kobe" class="heroImage" />
+      <div class="heroText">
+        <p class="kicker">THE HEADQUARTERS KOBE</p>
+        <h1>ここで過ごした日々が、一生の宝になる。</h1>
+        <p class="lead">神戸・水道筋のシェアハウス。集まって、笑って、共に育つ場所。</p>
+        <div class="heroActions">
+          <a class="btnPrimary" href="/contact">内見・お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+    <main style="max-width: 1080px; margin: 0 auto; padding: 24px;">
+
+      <!-- 最新ブログ -->
+      <section class="section">
+        <h2 class="sectionTitle">最新ブログ</h2>
+        <div class="grid">
+          {latestPosts.map((post) => (
+            <a class="card linkCard" href={`/blog/${post.id}/`}>
+              {post.firstImage && <img src={post.firstImage} alt={post.data.title} class="cardThumb" />}
+              <div class="cardBody">
+                {post.data.categories.length > 0 && (
+                  <div class="cardCats">
+                    {post.data.categories.map((cat) => <span class="catBadge" data-cat={cat}>{cat}</span>)}
+                  </div>
+                )}
+                <h3>{post.data.title}</h3>
+                <p>{post.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Overview -->
+      <section class="section">
+        <h2 class="sectionTitle">The Headquarters Kobe について</h2>
+        <p>
+          神戸市灘区・王子公園駅近く、活気ある水道筋商店街のど真ん中にあるシェアハウスです。
+          地元から日本から世界から集まるオープンマインドな住人たちが、共に暮らし、刺激しあい、楽しい生活をシェアしています。
+        </p>
+        <p>
+          三ノ宮まで約10分、神戸大学にも近く、大阪方面へのアクセスも抜群。
+          商店街では安くて新鮮な食材がすぐ手に入り、近くには温泉が湧く銭湯も。
+        </p>
+        <p>
+          朝の「おはよう」から夜の「ただいま」まで、誰かがいる。一緒にご飯を作ったり、屋上でバーベキューやプールを楽しんだり。
+          シェアするのは単なる住まいではなく、日々の<em>life</em>です。
+        </p>
+        <div class="aboutStats">
+          <div><span class="statNum">10</span><span class="statLabel">室</span></div>
+          <div><span class="statNum">5F</span><span class="statLabel">建て（3〜5F＋屋上）</span></div>
+          <div><span class="statNum">約280</span><span class="statLabel">㎡</span></div>
+        </div>
+        <a class="aboutLink" href="/blog/hq-kobe">詳しく見る →</a>
+      </section>
+<section class="section">
+  <h2 class="sectionTitle">Instagram</h2>
+  <p class="muted">暮らしの様子はこちら</p>
+
+  <div class="instaGrid">
+    <img src="/images/insta-1.jpg" alt="Instagram photo 1" />
+    <img src="/images/insta-2.jpg" alt="Instagram photo 2" />
+    <img src="/images/insta-3.jpg" alt="Instagram photo 3" />
+  </div>
+
+  <p style="margin-top:16px;">
+    <a class="btnGhost"
+       href="https://www.instagram.com/theheadquarters.kobe/"
+       target="_blank"
+       rel="noopener">
+      Instagramで見る →
+    </a>
+  </p>
+</section>
+<section class="section">
+  <h2 class="sectionTitle">住まいについて</h2>
+  <div class="infoGrid">
+    <a class="infoCard" href="/blog/hq-kobe">
+      <div class="infoKicker">ABOUT</div>
+      <div class="infoTitle">ハウスについて</div>
+      <div class="infoDesc">The Headquarters Kobeの概要・雰囲気・住人について。</div>
+    </a>
+    <a class="infoCard" href="/facilities">
+      <div class="infoKicker">FACILITIES</div>
+      <div class="infoTitle">共用部の紹介</div>
+      <div class="infoDesc">キッチン・バス・屋上など共用スペースの紹介。</div>
+    </a>
+    <a class="infoCard" href="/rooms">
+      <div class="infoKicker">ROOMS</div>
+      <div class="infoTitle">お部屋紹介</div>
+      <div class="infoDesc">空室状況・料金・各部屋の雰囲気をチェック。</div>
+    </a>
+    <a class="infoCard" href="/location">
+      <div class="infoKicker">ACCESS</div>
+      <div class="infoTitle">アクセスと周辺情報</div>
+      <div class="infoDesc">王子公園駅から徒歩圏内。水道筋商店街のすぐそば。</div>
+    </a>
+    <a class="infoCard" href="/procedures">
+      <div class="infoKicker">HOW TO</div>
+      <div class="infoTitle">入居の流れとQ&A</div>
+      <div class="infoDesc">内見から契約まで。よくある質問もまとめています。</div>
+    </a>
+    <a class="infoCard" href="/contact">
+      <div class="infoKicker">CONTACT</div>
+      <div class="infoTitle">お問い合わせ</div>
+      <div class="infoDesc">内見・空室確認・その他のご相談はこちらから。</div>
+    </a>
+  </div>
+</section>
+
+    </main>
+    <Footer />
+  </body>
 </html>
+
+<style>
+  .hero {
+    padding: 72px 24px 40px;
+    text-align: center;
+  }
+  .kicker {
+    margin: 0 0 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgb(var(--gray));
+  }
+  .hero h1 {
+    margin: 0 0 16px;
+    font-size: clamp(34px, 5vw, 54px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .lead {
+    margin: 0 auto 24px;
+    max-width: 56ch;
+    font-size: 18px;
+    color: rgb(var(--gray));
+  }
+  .heroActions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btnPrimary,
+  .btnGhost {
+    display: inline-block;
+    padding: 12px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .btnPrimary {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+  }
+  .btnPrimary:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  .btnGhost {
+    border: 1px solid rgba(var(--gray), 35%);
+    color: rgb(var(--gray-dark));
+    background: rgba(255,255,255,.7);
+  }
+
+  .section {
+    padding: 32px 24px;
+  }
+  .sectionTitle {
+    margin: 0 0 16px;
+    font-size: 22px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+  }
+  .cardThumb {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+    margin: 0;
+  }
+  .cardBody {
+    padding: 16px 20px 20px;
+  }
+  .cardBody p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.85em;
+    color: rgb(var(--gray));
+    margin: 0;
+  }
+  .cardBody h3 {
+    font-size: 1em;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  .cardCats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .catBadge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 100px;
+    padding: 3px 10px;
+    border: 1px solid currentColor;
+  }
+  .catBadge[data-cat="ハウス暮らし"] { color: #d97706; background: #fffbeb; }
+  .catBadge[data-cat="イベント"]     { color: #7c3aed; background: #f5f3ff; }
+  .catBadge[data-cat="ゲスト"]       { color: #059669; background: #ecfdf5; }
+  .catBadge[data-cat="改装・設備"]   { color: #b45309; background: #fdf6e3; }
+  .catBadge[data-cat="商店街"]       { color: #dc2626; background: #fff5f5; }
+
+  .linkCard {
+    text-decoration: none;
+    color: inherit;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .linkCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  }
+.hero {
+  padding: 48px 24px 24px;
+  text-align: center;
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  max-width: 1080px;
+  height: clamp(260px, 46vw, 520px);
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 28px auto 0;
+  box-shadow: 0 18px 60px rgba(0,0,0,.12);
+}
+.heroOverlay {
+  position: relative;
+  padding: 0;
+}
+
+.heroOverlay .heroImage {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1189 / 438;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 0;
+  margin: 0 auto;
+  display: block;
+  filter: brightness(0.82);
+}
+
+.heroOverlay .heroText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  color: white;
+}
+
+.heroOverlay .kicker {
+  color: rgba(255,255,255,.8);
+}
+
+.heroOverlay h1 {
+  color: white;
+  text-shadow: 0 6px 24px rgba(0,0,0,.35);
+}
+
+.heroOverlay .lead {
+  color: rgba(255,255,255,.9);
+}
+
+.heroOverlay .btnGhost {
+  border-color: rgba(255,255,255,.6);
+  color: white;
+  background: rgba(0,0,0,.25);
+}
+.muted {
+  color: rgb(var(--gray));
+  font-size: 14px;
+}
+
+.instaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.instaGrid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.infoCard {
+  display: block;
+  padding: 22px 20px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.infoCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.12);
+}
+
+.infoKicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.infoTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: rgb(var(--gray-dark));
+}
+
+.infoDesc {
+  font-size: 13px;
+  color: rgb(var(--gray));
+  line-height: 1.5;
+}
+.section {
+  padding: 32px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--gray-light), 0.6),
+    rgba(var(--gray-light), 0.2)
+  );
+  border-radius: 24px;
+  margin-top: 32px;
+}
+.aboutStats {
+  display: flex;
+  gap: 32px;
+  margin: 20px 0 16px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.aboutStats div {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.statNum {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+.statLabel {
+  font-size: 0.85rem;
+  color: #666;
+}
+.aboutLink {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3355cc;
+  text-decoration: none;
+}
+.aboutLink:hover { text-decoration: underline; }
+
+</style>
+

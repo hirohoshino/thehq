@@ -1,114 +1,131 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog'))
+  .filter((e) => e.data.kind === 'post')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function firstImage(body: string | undefined): string | null {
+  const m = body?.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+  return m ? m[1] : null;
+}
+function decode(s: string): string {
+  return s.replace(/&#(\d+);/g, (_, c) => String.fromCharCode(Number(c))).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+}
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ブログ | The Headquarters Kobe</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1 class="pageTitle">ブログ</h1>
+      <div class="grid">
+        {posts.map((post) => {
+          const img = firstImage(post.body) ?? post.data.coverImage ?? null;
+          const cats: string[] = post.data.categories ?? [];
+          return (
+            <a class="card" href={`/blog/${post.id}/`}>
+              {img && <img src={img} alt={post.data.title} class="thumb" />}
+              <div class="body">
+                {cats.length > 0 && (
+                  <div class="cats">
+                    {cats.map((cat) => <span class="badge" data-cat={cat}>{cat}</span>)}
+                  </div>
+                )}
+                <h2>{decode(post.data.title)}</h2>
+                <p class="date"><FormattedDate date={post.data.pubDate} /></p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>
+
+<style>
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .pageTitle {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 721px) and (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform .15s ease, box-shadow .15s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  }
+  .thumb {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .body {
+    padding: 16px 20px 20px;
+    flex: 1;
+  }
+  .cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 100px;
+    padding: 3px 10px;
+    border: 1px solid currentColor;
+  }
+  .badge[data-cat="ハウス暮らし"] { color: #d97706; background: #fffbeb; }
+  .badge[data-cat="イベント"]     { color: #7c3aed; background: #f5f3ff; }
+  .badge[data-cat="ゲスト"]       { color: #059669; background: #ecfdf5; }
+  .badge[data-cat="改装・設備"]   { color: #b45309; background: #fdf6e3; }
+  .badge[data-cat="商店街"]       { color: #dc2626; background: #fff5f5; }
+  h2 {
+    font-size: 1rem;
+    margin: 0 0 6px;
+    line-height: 1.4;
+  }
+  .date {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+  }
+</style>

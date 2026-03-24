@@ -3,6 +3,8 @@ title: "DAZN加入"
 description: "住人にせがまれてダズン？ダゾーン？はじめましたｗ 国外のサッカー日本代表戦は確かダゾーンでしか見れないんですよね。皆ですぐスポーツ観戦して盛り上がれるのも、シェアハウスならではの楽しみのひとつですね😊"
 pubDate: 2021-09-08
 kind: post
+coverImage: "https://theheadquarters.jp/wp-content/uploads/2021/09/rakuhouse1.jpg"
+categories: ["改装・設備"]
 ---
 住人にせがまれてダズン？ダゾーン？はじめましたｗ
 

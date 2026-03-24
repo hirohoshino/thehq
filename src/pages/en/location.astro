@@ -1,0 +1,12 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+const all = await getCollection('blog');
+const post = all.find((p) => p.id === 'en/location');
+if (!post) throw new Error('en/location not found');
+const { Content } = await render(post);
+---
+<BlogPost {...post.data}>
+  <Content />
+</BlogPost>

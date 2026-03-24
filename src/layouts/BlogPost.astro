@@ -6,9 +6,13 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+	prev?: CollectionEntry<'blog'> | null;
+	next?: CollectionEntry<'blog'> | null;
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, categories = [], prev, next } = Astro.props;
+const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCode(Number(c))).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 ---
 
 <html lang="en">
@@ -44,6 +48,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
+				font-size: 1.8rem;
+				line-height: 1.3;
 			}
 			.date {
 				margin-bottom: 0.5em;
@@ -51,6 +57,62 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.last-updated-on {
 				font-style: italic;
+			}
+			.catBadges {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 6px;
+				justify-content: center;
+				margin-bottom: 12px;
+			}
+			.catBadge {
+				font-size: 11px;
+				font-weight: 600;
+				letter-spacing: 0.03em;
+				border-radius: 100px;
+				padding: 3px 10px;
+				border: 1px solid currentColor;
+			}
+			.catBadge[data-cat="ハウス暮らし"] { color: #d97706; background: #fffbeb; }
+			.catBadge[data-cat="イベント"]     { color: #7c3aed; background: #f5f3ff; }
+			.catBadge[data-cat="ゲスト"]       { color: #059669; background: #ecfdf5; }
+			.catBadge[data-cat="改装・設備"]   { color: #b45309; background: #fdf6e3; }
+			.catBadge[data-cat="商店街"]       { color: #dc2626; background: #fff5f5; }
+			.post-nav {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 2em auto 1em;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 12px;
+			}
+			.post-nav a {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+				padding: 14px 18px;
+				border: 1px solid #e5e7eb;
+				border-radius: 12px;
+				text-decoration: none;
+				color: inherit;
+				transition: background .15s, border-color .15s;
+			}
+			.post-nav a:hover {
+				background: #f9fafb;
+				border-color: #c1c8d0;
+			}
+			.post-nav .nav-next { text-align: right; }
+			.post-nav .nav-label {
+				font-size: 11px;
+				color: #9ca3af;
+				font-weight: 600;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+			}
+			.post-nav .nav-title {
+				font-size: 14px;
+				font-weight: 600;
+				line-height: 1.4;
 			}
 		</style>
 	</head>
@@ -75,12 +137,33 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							}
 						</div>
 						<h1>{title}</h1>
+						{categories.length > 0 && (
+							<div class="catBadges">
+								{categories.map((cat: string) => (
+									<span class="catBadge" data-cat={cat}>{cat}</span>
+								))}
+							</div>
+						)}
 						<hr />
 					</div>
 					<slot />
 				</div>
 			</article>
 		</main>
+		<nav class="post-nav">
+			{next ? (
+				<a href={`/blog/${next.id}/`} class="nav-prev">
+					<span class="nav-label">← 次の記事</span>
+					<span class="nav-title">{decode(next.data.title)}</span>
+				</a>
+			) : <div />}
+			{prev ? (
+				<a href={`/blog/${prev.id}/`} class="nav-next">
+					<span class="nav-label">前の記事 →</span>
+					<span class="nav-title">{decode(prev.data.title)}</span>
+				</a>
+			) : <div />}
+		</nav>
 		<Footer />
 	</body>
 </html>

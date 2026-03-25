@@ -56,5 +56,3 @@ But beyond that, communal life offers so much more: laughter, connection, a sens
 A sharehouse that's rich in learning and connection — that's what I hope this place can be. With that in mind, I run this business to offer a space that colors some of the most important pages of the lives of those who live here.
 
 <p style="margin:32px 0 16px; text-align:right;">Hoshino and Company LLC<br>Representative: Hironari Hoshino</p>
-
-<img src="/images/hoshino.jpg" alt="Owner" style="max-width:280px; display:block; margin:0 auto; border-radius:12px;" />

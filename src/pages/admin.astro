@@ -1,0 +1,291 @@
+---
+// 管理ページ: 空室状況の更新・空き待ちリスト閲覧・一斉通知
+// パスワードはCloudflare側の環境変数 ADMIN_PASSWORD と照合(API側で検証)
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>管理ページ | The Headquarters Kobe</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 1.5em 1em 4em;
+        color: #222;
+        background: #fafafa;
+      }
+      h1 { font-size: 1.3em; }
+      h2 { font-size: 1.05em; margin-top: 0; }
+      .card {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 1.2em;
+        margin-bottom: 1.2em;
+      }
+      input[type='password'], input[type='text'], textarea {
+        width: 100%;
+        padding: 0.6em 0.8em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+        font-family: inherit;
+      }
+      textarea { min-height: 180px; resize: vertical; }
+      button {
+        padding: 0.6em 1.4em;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.95em;
+        font-family: inherit;
+        cursor: pointer;
+        background: #2337ff;
+        color: #fff;
+      }
+      button:hover { opacity: 0.9; }
+      button[disabled] { opacity: 0.5; cursor: not-allowed; }
+      button.danger { background: #ea580c; }
+      button.ghost { background: #eee; color: #333; }
+      .rooms-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin: 0.8em 0;
+      }
+      .room-toggle {
+        padding: 0.8em 0.2em;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        background: #f3f4f6;
+        font-weight: 600;
+        font-size: 0.95em;
+      }
+      .room-toggle .state { display: block; font-size: 0.7em; font-weight: 400; color: #888; }
+      .room-toggle.vacant {
+        background: #f0fdf4;
+        border-color: #22c55e;
+        color: #14532d;
+      }
+      .room-toggle.vacant .state { color: #16a34a; font-weight: 600; }
+      table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+      th, td { text-align: left; padding: 0.5em 0.6em; border-bottom: 1px solid #eee; vertical-align: top; }
+      th { background: #f9fafb; white-space: nowrap; }
+      .muted { color: #999; }
+      .msg { padding: 0.7em 1em; border-radius: 6px; margin: 0.8em 0; display: none; font-size: 0.9em; }
+      .msg.ok { background: #f0fdf4; border: 1px solid #86efac; color: #166534; display: block; }
+      .msg.err { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; display: block; }
+      .hidden { display: none; }
+      .row { display: flex; gap: 0.6em; align-items: center; flex-wrap: wrap; }
+      label { font-size: 0.85em; font-weight: 600; display: block; margin: 0.8em 0 0.3em; }
+      .badge { display: inline-block; padding: 0.1em 0.6em; border-radius: 999px; font-size: 0.8em; }
+      .badge.active { background: #f0fdf4; color: #166534; }
+      .badge.unsubscribed { background: #f3f4f6; color: #999; }
+    </style>
+  </head>
+  <body>
+    <h1>The Headquarters Kobe 管理ページ</h1>
+
+    <!-- ログイン -->
+    <div class="card" id="login-card">
+      <h2>ログイン</h2>
+      <div class="row">
+        <input type="password" id="password" placeholder="管理パスワード" style="flex:1" />
+        <button id="login-btn">ログイン</button>
+      </div>
+      <div class="msg" id="login-msg"></div>
+    </div>
+
+    <div id="panel" class="hidden">
+      <!-- 空室状況 -->
+      <div class="card">
+        <h2>空室状況</h2>
+        <p style="font-size:0.85em;color:#666">タップで 満室 ⇄ 空室 を切替 → 「保存」でサイトに即反映されます。</p>
+        <div class="rooms-grid" id="rooms-grid"></div>
+        <label for="note">補足メモ(サイトに表示・任意)</label>
+        <input type="text" id="note" placeholder="例: 4月上旬から入居可" />
+        <div class="row" style="margin-top:0.8em">
+          <button id="save-status-btn">保存(サイトに反映)</button>
+          <span class="muted" id="status-updated"></span>
+        </div>
+        <div class="msg" id="status-msg"></div>
+      </div>
+
+      <!-- 一斉通知 -->
+      <div class="card">
+        <h2>空き待ちリストへ通知</h2>
+        <p style="font-size:0.85em;color:#666">
+          空室に切り替えて保存した後、ここから登録者全員へメールを送れます。件名・本文は空欄のままなら空室状況から自動生成されます。
+        </p>
+        <label for="mail-subject">件名(空欄=自動)</label>
+        <input type="text" id="mail-subject" placeholder="【The Headquarters Kobe】空室が出ました" />
+        <label for="mail-message">本文(空欄=自動。宛名と配信停止リンクは自動で付きます)</label>
+        <textarea id="mail-message" placeholder="空欄の場合は空室情報入りの標準文面を送信します"></textarea>
+        <div class="row" style="margin-top:0.8em">
+          <button class="ghost" id="notify-preview-btn">送信内容を確認</button>
+          <button class="danger hidden" id="notify-send-btn">上記の内容で送信する</button>
+        </div>
+        <div class="msg" id="notify-msg"></div>
+      </div>
+
+      <!-- 空き待ちリスト -->
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <h2>空き待ちリスト</h2>
+          <button class="ghost" id="reload-btn">再読込</button>
+        </div>
+        <div id="waitlist-summary" class="muted" style="font-size:0.9em;margin-bottom:0.5em"></div>
+        <div style="overflow-x:auto">
+          <table id="waitlist-table">
+            <thead>
+              <tr><th>登録日</th><th>名前</th><th>メール</th><th>希望時期</th><th>備考</th><th>状態</th><th>最終通知</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const ROOMS = ['301','302','303','304','305','406','407','408','409','410'];
+      const $ = (id: string) => document.getElementById(id) as any;
+      let vacantSet = new Set<string>();
+
+      const pw = () => localStorage.getItem('hq_admin_pw') || '';
+      const headers = () => ({ Authorization: `Bearer ${pw()}`, 'Content-Type': 'application/json' });
+      const fmtDate = (iso: string | null) => iso ? new Date(iso).toLocaleString('ja-JP', { dateStyle: 'short', timeStyle: 'short' }) : '—';
+
+      function showMsg(id: string, text: string, ok: boolean) {
+        const el = $(id);
+        el.textContent = text;
+        el.className = 'msg ' + (ok ? 'ok' : 'err');
+      }
+
+      function renderRooms() {
+        const grid = $('rooms-grid');
+        grid.innerHTML = '';
+        for (const r of ROOMS) {
+          const div = document.createElement('div');
+          const vacant = vacantSet.has(r);
+          div.className = 'room-toggle' + (vacant ? ' vacant' : '');
+          div.innerHTML = `${r}<span class="state">${vacant ? '空室' : '満室'}</span>`;
+          div.onclick = () => {
+            vacant ? vacantSet.delete(r) : vacantSet.add(r);
+            renderRooms();
+          };
+          grid.appendChild(div);
+        }
+      }
+
+      async function loadStatus() {
+        const res = await fetch('/api/status');
+        const s = await res.json();
+        vacantSet = new Set(s.vacantRooms || []);
+        $('note').value = s.note || '';
+        $('status-updated').textContent = s.updatedAt ? `最終更新: ${fmtDate(s.updatedAt)}` : '';
+        renderRooms();
+      }
+
+      async function loadWaitlist() {
+        const res = await fetch('/api/admin/waitlist', { headers: headers() });
+        if (!res.ok) throw new Error('unauthorized');
+        const data = await res.json();
+        const tbody = $('waitlist-table').querySelector('tbody');
+        tbody.innerHTML = '';
+        const active = data.entries.filter((e: any) => e.status === 'active').length;
+        $('waitlist-summary').textContent = `登録 ${data.entries.length}件(配信対象 ${active}件)`;
+        for (const e of data.entries) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${fmtDate(e.created_at)}</td>
+            <td>${esc(e.name)}</td>
+            <td>${esc(e.email)}</td>
+            <td>${esc(e.desired_time || '—')}</td>
+            <td>${esc(e.note || '—')}</td>
+            <td><span class="badge ${e.status}">${e.status === 'active' ? '配信中' : '停止'}</span></td>
+            <td>${fmtDate(e.notified_at)}</td>`;
+          tbody.appendChild(tr);
+        }
+      }
+
+      function esc(s: string) {
+        const d = document.createElement('div');
+        d.textContent = s ?? '';
+        return d.innerHTML;
+      }
+
+      async function enterPanel() {
+        try {
+          await loadWaitlist();
+          await loadStatus();
+          $('login-card').classList.add('hidden');
+          $('panel').classList.remove('hidden');
+        } catch {
+          localStorage.removeItem('hq_admin_pw');
+          showMsg('login-msg', 'パスワードが違います。', false);
+        }
+      }
+
+      $('login-btn').onclick = () => {
+        localStorage.setItem('hq_admin_pw', $('password').value);
+        enterPanel();
+      };
+      $('password').addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter') $('login-btn').click();
+      });
+
+      $('save-status-btn').onclick = async () => {
+        const res = await fetch('/api/admin/status', {
+          method: 'POST',
+          headers: headers(),
+          body: JSON.stringify({ vacantRooms: [...vacantSet], note: $('note').value }),
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          showMsg('status-msg', `保存しました(空室 ${data.status.vacantRooms.length}室)。サイトに反映済みです。`, true);
+          $('status-updated').textContent = `最終更新: ${fmtDate(data.status.updatedAt)}`;
+        } else {
+          showMsg('status-msg', '保存に失敗しました。', false);
+        }
+      };
+
+      $('notify-preview-btn').onclick = () => {
+        const rooms = [...vacantSet].map((r) => `${r}号室`).join('、');
+        const subject = $('mail-subject').value.trim() || `【The Headquarters Kobe】空室が出ました${rooms ? `(${rooms})` : ''}`;
+        const summary = $('waitlist-summary').textContent;
+        showMsg('notify-msg', `件名「${subject}」を ${summary} に送信します。よろしければ「上記の内容で送信する」を押してください。`, true);
+        $('notify-send-btn').classList.remove('hidden');
+      };
+
+      $('notify-send-btn').onclick = async () => {
+        $('notify-send-btn').disabled = true;
+        const res = await fetch('/api/admin/notify', {
+          method: 'POST',
+          headers: headers(),
+          body: JSON.stringify({ subject: $('mail-subject').value, message: $('mail-message').value }),
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          showMsg('notify-msg', `送信しました(${data.sent}/${data.total}件)。`, true);
+          loadWaitlist();
+        } else {
+          showMsg('notify-msg', `送信に失敗しました: ${JSON.stringify(data.errors || data.error)}`, false);
+        }
+        $('notify-send-btn').disabled = false;
+        $('notify-send-btn').classList.add('hidden');
+      };
+
+      $('reload-btn').onclick = () => loadWaitlist();
+
+      // 保存済みパスワードがあれば自動ログイン
+      if (pw()) enterPanel();
+    </script>
+  </body>
+</html>

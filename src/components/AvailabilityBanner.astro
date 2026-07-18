@@ -1,0 +1,94 @@
+---
+// 空室状況バナー: /api/status をクライアント側で取得して表示する。
+// 静的ビルドのままリアルタイムに状況を反映できる。
+interface Props {
+  lang?: string;
+}
+const { lang = 'ja' } = Astro.props;
+---
+
+<div class="availability-banner" data-lang={lang} hidden>
+  <span class="ab-badge" aria-hidden="true"></span>
+  <span class="ab-text"></span>
+  <a class="ab-cta" href="#"></a>
+</div>
+
+<style>
+  .availability-banner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6em 1em;
+    max-width: 1080px;
+    margin: 1em auto;
+    padding: 0.9em 1.2em;
+    border-radius: 10px;
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+  .availability-banner.is-full {
+    background: #fff7ed;
+    border: 1px solid #fdba74;
+    color: #7c2d12;
+  }
+  .availability-banner.is-vacant {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #14532d;
+  }
+  .ab-badge {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .is-full .ab-badge { background: #f97316; }
+  .is-vacant .ab-badge { background: #22c55e; }
+  .ab-text { flex: 1 1 200px; }
+  .ab-cta {
+    flex-shrink: 0;
+    padding: 0.5em 1.2em;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .is-full .ab-cta { background: #ea580c; }
+  .is-full .ab-cta:hover { background: #c2410c; }
+  .is-vacant .ab-cta { background: #16a34a; }
+  .is-vacant .ab-cta:hover { background: #15803d; }
+</style>
+
+<script>
+  (async () => {
+    const el = document.querySelector('.availability-banner') as HTMLElement | null;
+    if (!el) return;
+    const isEn = el.dataset.lang === 'en';
+    try {
+      const res = await fetch('/api/status');
+      if (!res.ok) return;
+      const s = await res.json();
+      const vacant: string[] = s.vacantRooms || [];
+      const text = el.querySelector('.ab-text') as HTMLElement;
+      const cta = el.querySelector('.ab-cta') as HTMLAnchorElement;
+      if (vacant.length === 0) {
+        el.classList.add('is-full');
+        text.textContent = isEn
+          ? "Currently full — join the waiting list and we'll email you as soon as a room opens up."
+          : '現在満室です。空き待ちにご登録いただくと、空室が出た際にメールでお知らせします。';
+        cta.textContent = isEn ? 'Join the Waiting List' : '空き待ちに登録する';
+        cta.href = '/waitlist/';
+      } else {
+        const rooms = vacant.map((r) => (isEn ? `Room ${r}` : `${r}号室`)).join(isEn ? ', ' : '、');
+        el.classList.add('is-vacant');
+        text.textContent = (isEn ? 'Rooms available now: ' : 'ただいま空室あり: ') + rooms + (s.note ? ` — ${s.note}` : '');
+        cta.textContent = isEn ? 'Inquire / Book a Viewing' : '内見を申し込む';
+        cta.href = isEn ? '/en/contact/' : '/contact/';
+      }
+      el.hidden = false;
+    } catch (e) {
+      /* API未設定時は何も表示しない */
+    }
+  })();
+</script>

@@ -15,5 +15,8 @@
     "astro": "^5.16.11",
     "sharp": "^0.34.3",
     "turndown": "^7.2.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.112.0"
   }
 }

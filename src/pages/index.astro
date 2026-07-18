@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import AvailabilityBanner from '../components/AvailabilityBanner.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -89,6 +90,10 @@ const latestPosts = entries
         </div>
       </div>
     </section>
+
+    <div style="padding: 0 24px;">
+      <AvailabilityBanner lang="ja" />
+    </div>
 
     <main style="max-width: 1080px; margin: 0 auto; padding: 24px;">
 

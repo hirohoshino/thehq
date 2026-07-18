@@ -1,0 +1,178 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead
+      title="空き待ち登録 | The Headquarters Kobe"
+      description="神戸・水道筋のシェアハウスThe Headquarters Kobeの空き待ち登録。空室が出た際に先着順でメールでお知らせします。登録無料・いつでも配信停止できます。"
+    />
+    <style>
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 3em 1em 4em;
+      }
+      h1 { margin-bottom: 0.3em; }
+      .lead {
+        color: #666;
+        margin-bottom: 2em;
+        font-size: 0.95em;
+        line-height: 1.7;
+      }
+      .form-group { margin-bottom: 1.5em; }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4em;
+        font-size: 0.9em;
+      }
+      label .req {
+        color: #e05;
+        margin-left: 4px;
+        font-size: 0.8em;
+      }
+      input[type='text'],
+      input[type='email'],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.7em 0.9em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+        font-family: inherit;
+        box-sizing: border-box;
+      }
+      input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #2337ff;
+      }
+      textarea { min-height: 100px; resize: vertical; }
+      .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+      button[type='submit'] {
+        background: #ea580c;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 0.75em 2.5em;
+        font-size: 1em;
+        font-family: inherit;
+        cursor: pointer;
+      }
+      button[type='submit']:hover { background: #c2410c; }
+      button[disabled] { opacity: 0.6; cursor: wait; }
+      .success-msg, .error-msg {
+        display: none;
+        border-radius: 8px;
+        padding: 1.2em 1.5em;
+        margin-top: 1.5em;
+        line-height: 1.7;
+      }
+      .success-msg { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+      .error-msg { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+      .privacy-note { font-size: 0.8em; color: #888; margin-top: 1em; line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>空き待ち登録</h1>
+      <p class="lead">
+        現在満室の場合でも、空き待ちにご登録いただくと空室が出た際に<strong>先着順でメールでお知らせ</strong>します。
+        家賃¥38,000〜46,000/月+共益費¥13,500、礼金・仲介手数料なし。登録は無料で、いつでも配信停止できます。
+      </p>
+
+      <form id="waitlist-form">
+        <div class="form-group">
+          <label for="name">お名前<span class="req">必須</span></label>
+          <input type="text" id="name" name="name" required placeholder="山田 太郎" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">メールアドレス<span class="req">必須</span></label>
+          <input type="email" id="email" name="email" required placeholder="example@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="desired">入居希望時期</label>
+          <select id="desired" name="desired">
+            <option value="">選択してください</option>
+            <option value="すぐにでも">すぐにでも</option>
+            <option value="1〜3ヶ月以内">1〜3ヶ月以内</option>
+            <option value="3〜6ヶ月以内">3〜6ヶ月以内</option>
+            <option value="6ヶ月以上先">6ヶ月以上先</option>
+            <option value="時期は未定">時期は未定</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="note">ご希望・ご質問など(任意)</label>
+          <textarea id="note" name="note" placeholder="希望のお部屋タイプ、ご質問などがあればご記入ください。"></textarea>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <button type="submit" id="submit-btn">空き待ちに登録する</button>
+        <p class="privacy-note">
+          ご登録いただいたメールアドレスは、空室のお知らせ以外には使用しません。
+          お知らせメール内のリンクからいつでも配信停止できます。
+        </p>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        空き待ち登録が完了しました。空室が出ましたら、ご登録のメールアドレスへお知らせします。
+      </div>
+      <div class="error-msg" id="error-msg">
+        送信に失敗しました。時間をおいて再度お試しいただくか、<a href="/contact/">お問い合わせフォーム</a>からご連絡ください。
+      </div>
+    </main>
+    <Footer />
+
+    <script>
+      const form = document.getElementById('waitlist-form') as HTMLFormElement;
+      const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+      const successMsg = document.getElementById('success-msg') as HTMLElement;
+      const errorMsg = document.getElementById('error-msg') as HTMLElement;
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        errorMsg.style.display = 'none';
+        const data = Object.fromEntries(new FormData(form).entries());
+        try {
+          const res = await fetch('/api/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const result = await res.json();
+          if (res.ok && result.ok) {
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+            // GA4 コンバージョンイベント
+            const w = window as any;
+            if (typeof w.gtag === 'function') {
+              w.gtag('event', 'waitlist_submit', {
+                event_category: 'conversion',
+                desired_time: (data.desired as string) || '(unset)',
+              });
+            }
+          } else {
+            errorMsg.style.display = 'block';
+            btn.disabled = false;
+          }
+        } catch {
+          errorMsg.style.display = 'block';
+          btn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

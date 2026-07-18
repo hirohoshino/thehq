@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import AvailabilityBanner from '../components/AvailabilityBanner.astro';
 import BlogPost from '../layouts/BlogPost.astro';
 
 const all = await getCollection('blog');
@@ -8,5 +9,6 @@ if (!post) throw new Error('bulk/rooms not found');
 const { Content } = await render(post);
 ---
 <BlogPost {...post.data}>
+  <AvailabilityBanner lang="ja" />
   <Content />
 </BlogPost>

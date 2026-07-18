@@ -15,6 +15,32 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
+
+// --- SEO: タイトルサフィックスと日英hreflang ---
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const isEnPage = path === '/en/' || path.startsWith('/en/');
+const hasBrand = title.includes('The Headquarters');
+const fullTitle = hasBrand
+	? title
+	: isEnPage
+		? `${title} | The Headquarters Kobe — Sharehouse in Kobe`
+		: `${title}｜神戸のシェアハウス The Headquarters Kobe`;
+
+// 日英対応ページの対応表（ja→en）
+const langPairs: Record<string, string> = {
+	'/': '/en/',
+	'/rooms/': '/en/rooms/',
+	'/facilities/': '/en/facilities/',
+	'/location/': '/en/location/',
+	'/procedures/': '/en/procedures/',
+	'/contact/': '/en/contact/',
+	'/blog/hq-kobe/': '/en/hq-kobe/',
+};
+const enToJa: Record<string, string> = Object.fromEntries(
+	Object.entries(langPairs).map(([ja, en]) => [en, ja]),
+);
+const jaPath = langPairs[path] ? path : enToJa[path];
+const enPath = langPairs[path] ?? (enToJa[path] ? path : undefined);
 ---
 
 <!-- Global Metadata -->
@@ -37,21 +63,32 @@ const { title, description, image = FallbackImage } = Astro.props;
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- hreflang (日英対応ページのみ) -->
+{jaPath && enPath && (
+	<>
+		<link rel="alternate" hreflang="ja" href={new URL(jaPath, Astro.site)} />
+		<link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site)} />
+		<link rel="alternate" hreflang="x-default" href={new URL(jaPath, Astro.site)} />
+	</>
+)}
+
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content={isEnPage ? "en_US" : "ja_JP"} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image.src, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={fullTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />

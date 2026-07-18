@@ -8,7 +8,13 @@ export async function getStaticPaths() {
 		.filter((p) => p.data.kind === 'post')
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-	return all.map((post) => {
+	// 生成対象: 通常記事(en配下を除く) + About的固定ページ(hq-kobe)のみ。
+	// en/配下は /en/ 直下ページと重複、bulk/rooms等のkind:pageは /rooms 等と重複するため除外。
+	const routable = all.filter(
+		(p) => (p.data.kind === 'post' && !p.id.startsWith('en/')) || p.id === 'hq-kobe',
+	);
+
+	return routable.map((post) => {
 		const idx = posts.findIndex((p) => p.id === post.id);
 		const prev = idx >= 0 && idx < posts.length - 1 ? posts[idx + 1] : null;
 		const next = idx > 0 ? posts[idx - 1] : null;

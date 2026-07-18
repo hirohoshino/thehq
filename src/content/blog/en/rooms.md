@@ -97,4 +97,4 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 **Rent** ¥46,000/month
 **Details** 4F. Western-style room, vinyl flooring. Southeast-facing window.
 
-※ In addition to room rent, a common fee is required for all rooms. (¥13,000/month, as of January 2023)
+※ In addition to room rent, a common fee is required for all rooms. (¥13,500/month as of July 2026 — includes utilities, internet, and consumables)

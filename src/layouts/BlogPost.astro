@@ -12,10 +12,13 @@ type Props = CollectionEntry<'blog'>['data'] & {
 };
 
 const { title, description, pubDate, updatedDate, heroImage, categories = [], prev, next, kind = 'post' } = Astro.props;
+// 言語: en/ 配下のコンテンツやenページから lang="en" が渡る。既定は日本語。
+const lang = (Astro.props as { lang?: string }).lang === 'en' ? 'en' : 'ja';
+const isEn = lang === 'en';
 const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCode(Number(c))).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 ---
 
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
@@ -114,6 +117,44 @@ const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCo
 				font-weight: 600;
 				line-height: 1.4;
 			}
+			.cta-block {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 2.5em auto 1em;
+				padding: 28px 24px;
+				text-align: center;
+				background: #fffbeb;
+				border: 1px solid #fde68a;
+				border-radius: 16px;
+			}
+			.cta-block p {
+				margin: 0 0 1em;
+				font-size: 0.95em;
+			}
+			.cta-buttons {
+				display: flex;
+				gap: 12px;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.cta-primary {
+				display: inline-block;
+				padding: 12px 28px;
+				background: #d97706;
+				color: #fff !important;
+				border-radius: 100px;
+				font-weight: 700;
+				text-decoration: none;
+			}
+			.cta-secondary {
+				display: inline-block;
+				padding: 12px 28px;
+				border: 1.5px solid #d97706;
+				color: #b45309;
+				border-radius: 100px;
+				font-weight: 700;
+				text-decoration: none;
+			}
 		</style>
 	</head>
 
@@ -149,6 +190,25 @@ const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCo
 					<slot />
 				</div>
 			</article>
+			<aside class="cta-block">
+				{isEn ? (
+					<>
+						<p>Interested in living at The Headquarters Kobe? Rooms from ¥38,000/month. No key money, no agency fee.</p>
+						<div class="cta-buttons">
+							<a class="cta-primary" href="/en/contact/">Inquire / Book a Viewing</a>
+							<a class="cta-secondary" href="/en/rooms/">See Rooms &amp; Rent</a>
+						</div>
+					</>
+				) : (
+					<>
+						<p>The Headquarters Kobe で暮らしてみませんか？ 家賃¥38,000〜、礼金・仲介手数料なし。</p>
+						<div class="cta-buttons">
+							<a class="cta-primary" href="/contact/">内見・空室状況を問い合わせる</a>
+							<a class="cta-secondary" href="/rooms/">お部屋と家賃を見る</a>
+						</div>
+					</>
+				)}
+			</aside>
 		</main>
 		<nav class="post-nav">
 			{next ? (

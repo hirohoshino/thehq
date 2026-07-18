@@ -35,7 +35,7 @@ Shortly after you move in, we'll gather all residents for a welcome party. Let's
 In addition to the prorated rent for the first month, an initial fee of ¥50,000 applies to all rooms. This breaks down as: ¥25,000 for contract/cleaning fees + ¥25,000 refundable deposit. The deposit is fully refunded upon move-out if there are no issues.
 (No key money or agency fees required.)
 
-Monthly costs after move-in: rent + common fee of ¥12,000 per month (covering utilities, internet, and consumables).
+Monthly costs after move-in: rent + common fee of ¥13,500 per month (covering utilities, internet, and consumables).
 *Common fees may vary depending on circumstances.
 
 ### Q: Is a guarantor required?

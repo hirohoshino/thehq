@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theheadquarters.jp/sitemap-index.xml

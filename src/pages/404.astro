@@ -1,0 +1,31 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="ja">
+	<head>
+		<BaseHead
+			title="ページが見つかりません（404）"
+			description="お探しのページは移動または削除された可能性があります。"
+		/>
+		<meta name="robots" content="noindex" />
+	</head>
+	<body>
+		<Header />
+		<main style="max-width: 720px; margin: 0 auto; padding: 4em 1em; text-align: center;">
+			<h1>404 - ページが見つかりません</h1>
+			<p>お探しのページは移動または削除された可能性があります。</p>
+			<p style="margin-top: 2em;">
+				<a href="/" style="margin-right: 1.5em;">トップページへ</a>
+				<a href="/rooms/" style="margin-right: 1.5em;">お部屋と家賃</a>
+				<a href="/blog/">ブログ</a>
+			</p>
+			<p style="margin-top: 1em;">
+				<a href="/contact/">内見・お問い合わせはこちら</a>
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

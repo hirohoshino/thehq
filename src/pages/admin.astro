@@ -53,28 +53,63 @@
       button.ghost { background: #eee; color: #333; }
       .rooms-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
         margin: 0.8em 0;
       }
+      @media (min-width: 560px) {
+        .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      }
       .room-toggle {
-        padding: 0.8em 0.2em;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5em;
+        padding: 0.7em 0.9em;
+        border: 2px solid #e5e7eb;
+        border-radius: 10px;
         cursor: pointer;
         user-select: none;
-        background: #f3f4f6;
-        font-weight: 600;
-        font-size: 0.95em;
+        background: #f9fafb;
+        transition: background 0.2s, border-color 0.2s;
       }
-      .room-toggle .state { display: block; font-size: 0.7em; font-weight: 400; color: #888; }
+      .room-toggle .room-no { font-weight: 700; font-size: 1.05em; color: #6b7280; }
+      .room-toggle .state {
+        font-size: 0.75em;
+        font-weight: 600;
+        color: #9ca3af;
+        margin-left: auto;
+      }
+      /* スイッチ本体 */
+      .switch {
+        flex-shrink: 0;
+        width: 46px;
+        height: 26px;
+        border-radius: 999px;
+        background: #d1d5db;
+        position: relative;
+        transition: background 0.2s;
+      }
+      .switch::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        transition: left 0.2s;
+      }
       .room-toggle.vacant {
         background: #f0fdf4;
         border-color: #22c55e;
-        color: #14532d;
       }
-      .room-toggle.vacant .state { color: #16a34a; font-weight: 600; }
+      .room-toggle.vacant .room-no { color: #14532d; }
+      .room-toggle.vacant .state { color: #16a34a; }
+      .room-toggle.vacant .switch { background: #22c55e; }
+      .room-toggle.vacant .switch::after { left: 23px; }
       table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
       th, td { text-align: left; padding: 0.5em 0.6em; border-bottom: 1px solid #eee; vertical-align: top; }
       th { background: #f9fafb; white-space: nowrap; }
@@ -175,7 +210,9 @@
           const div = document.createElement('div');
           const vacant = vacantSet.has(r);
           div.className = 'room-toggle' + (vacant ? ' vacant' : '');
-          div.innerHTML = `${r}<span class="state">${vacant ? '空室' : '満室'}</span>`;
+          div.setAttribute('role', 'switch');
+          div.setAttribute('aria-checked', String(vacant));
+          div.innerHTML = `<span class="room-no">${r}</span><span class="state">${vacant ? '空室' : '満室'}</span><span class="switch"></span>`;
           div.onclick = () => {
             vacant ? vacantSet.delete(r) : vacantSet.add(r);
             renderRooms();

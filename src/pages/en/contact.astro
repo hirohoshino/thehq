@@ -75,7 +75,11 @@ import Footer from '../../components/Footer.astro';
         e.preventDefault();
         const data = new FormData(form);
         const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-        if (res.ok) { form.reset(); form.style.display = 'none'; successMsg.style.display = 'block'; }
+        if (res.ok) {
+          form.reset(); form.style.display = 'none'; successMsg.style.display = 'block';
+          const w = window as any;
+          if (typeof w.gtag === 'function') w.gtag('event', 'contact_submit', { event_category: 'conversion' });
+        }
       });
     </script>
   </body>

@@ -9,7 +9,7 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 function firstImage(body: string | undefined): string | null {
-  const m = body?.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+  const m = body?.match(/!\[.*?\]\(((?:https?:\/\/|\/)[^)]+)\)/);
   return m ? m[1] : null;
 }
 function decode(s: string): string {

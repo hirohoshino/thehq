@@ -110,4 +110,33 @@ function _jaPath(path: string): string {
 		transition: opacity 0.2s;
 	}
 	.lang-btn:hover { opacity: 1; }
+
+	/* Mobile: logo+lang on top row, nav becomes swipeable single row below */
+	@media (max-width: 900px) {
+		header {
+			flex-wrap: wrap;
+			padding: 8px 12px 0;
+			gap: 0;
+			justify-content: flex-start;
+		}
+		.site-title { order: 1; }
+		.site-title img { height: 34px; }
+		.lang-switcher { order: 2; margin-left: auto; }
+		nav {
+			order: 3;
+			flex: 1 1 100%;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none;
+			margin: 0 -12px;
+			padding: 0 12px;
+		}
+		nav::-webkit-scrollbar { display: none; }
+		.internal-links {
+			width: max-content;
+			justify-content: flex-start;
+			gap: 0.2em;
+		}
+		nav a { padding: 0.7em 0.5em; }
+	}
 </style>

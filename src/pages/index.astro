@@ -95,7 +95,7 @@ const latestPosts = entries
       <AvailabilityBanner lang="ja" />
     </div>
 
-    <main style="max-width: 1080px; margin: 0 auto; padding: 24px;">
+    <main style="width: auto; max-width: 1080px; margin: 0 auto; padding: 24px;">
 
       <!-- 最新ブログ -->
       <section class="section">
@@ -495,5 +495,13 @@ const latestPosts = entries
 }
 .aboutLink:hover { text-decoration: underline; }
 
+
+@media (max-width: 600px) {
+  .heroOverlay .heroImage {
+    aspect-ratio: auto;
+    min-height: 380px;
+  }
+  .heroOverlay h1 { font-size: 1.5em; }
+}
 </style>
 

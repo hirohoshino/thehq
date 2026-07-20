@@ -12,7 +12,7 @@ import Footer from '../../components/Footer.astro';
   <body>
     <Header />
 
-    <main style="max-width: 1080px; margin: 0 auto; padding: 24px;">
+    <main style="width: auto; max-width: 1080px; margin: 0 auto; padding: 24px;">
 
       <section class="hero heroOverlay">
         <img src="/images/hero.jpg" alt="The Headquarters Kobe" class="heroImage" />
@@ -139,4 +139,12 @@ import Footer from '../../components/Footer.astro';
   .statLabel { font-size: 0.85rem; color: #666; }
   .aboutLink { display: inline-block; margin-top: 12px; font-size: 0.9rem; font-weight: 600; color: #3355cc; text-decoration: none; }
   .aboutLink:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .heroOverlay .heroImage {
+    aspect-ratio: auto;
+    min-height: 380px;
+  }
+  .heroOverlay h1 { font-size: 1.5em; }
+}
 </style>

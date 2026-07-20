@@ -33,7 +33,7 @@ const latestPosts = entries
   .sort((a, b) => b.data.pubDate - a.data.pubDate)
   .slice(0, 3)
   .map((post) => {
-    const match = post.body?.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
+    const match = post.body?.match(/!\[.*?\]\(((?:https?:\/\/|\/)[^)]+)\)/);
     const desc = post.data.description.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code))).replace(/&amp;/g, '&').replace(/&quot;/g, '"');
     return { ...post, firstImage: match ? match[1] : (post.data.coverImage ?? null), desc };
   });

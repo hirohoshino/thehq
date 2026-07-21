@@ -6,6 +6,8 @@ kind: post
 categories: ["イベント"]
 ---
 
+*🇬🇧 English translation follows the Japanese text below.*
+
 3月1日、ハウスのみんなで須磨アルプスへハイキングに行ってきました。目指すは名所「馬の背」。神戸の市街地からすぐの低山なのに、そこだけ切り立った岩尾根が続く、"プチ・アルプス"として有名なスポットです。電車でさくっと行けるのもうれしいところ。
 
 ![朝日を受けて輝く馬の背の岩尾根](/images/blog/umanose-hiking-2026/umanose-6.jpg)
@@ -60,3 +62,60 @@ categories: ["イベント"]
 ## 山も海も、電車ですぐ
 
 The Headquarters Kobeのある神戸は、山も海も気軽に行ける街。ハウスではこんな外遊びイベントもゆるく開催しています。一緒に出かける仲間がいる暮らしに興味があれば、[お部屋と家賃](/rooms/)をのぞいてみてください。
+
+---
+
+On March 1st, the whole house headed out to Suma Alps for a hike, with our sights set on the famous "Umanose" (Horse's Back) ridge. It's a low mountain right on the edge of Kobe's city center, yet it has this stretch of dramatic, exposed rock ridge that's earned it the nickname "mini Alps." Being just a short train ride away makes it an easy escape.
+
+![The Umanose rock ridge glowing in the morning sun](/images/blog/umanose-hiking-2026/umanose-6.jpg)
+
+## Early March, but spring was already in the air
+
+As we started climbing, we found early-blooming cherry blossoms already out along the trail — deep pink blooms — along with red camellias. The air was still cool, but the mountain was clearly gearing up for spring.
+
+<div class="photoGrid photoGrid--portrait">
+  <img src="/images/blog/umanose-hiking-2026/umanose-3.jpg" alt="Early cherry blossoms blooming along the trail" loading="lazy" />
+  <img src="/images/blog/umanose-hiking-2026/umanose-4.jpg" alt="Red camellia blossoms among the greenery" loading="lazy" />
+</div>
+
+## And finally, Umanose itself
+
+And here it is: Umanose. The trees disappear and give way to a bare granite ridge. It drops off sharply on both sides, which makes for quite a thrill. There were stairs and sections with chains to hold onto, and we made our way across carefully, calling out to each other the whole way.
+
+![A wide view of the sheer granite ridge of Umanose](/images/blog/umanose-hiking-2026/umanose-5.jpg)
+
+<div class="photoGrid">
+  <img src="/images/blog/umanose-hiking-2026/umanose-12.jpg" alt="Housemates making their way along the rocky ridge trail" loading="lazy" />
+  <img src="/images/blog/umanose-hiking-2026/umanose-14.jpg" alt="A member climbing stairs bolted into the rock face" loading="lazy" />
+</div>
+
+## The reward at the top: Kobe's city and sea
+
+This view was our reward for the climb. Beyond Kobe's cityscape, you can see all the way out across Osaka Bay. The breeze felt amazing, and for a while nobody said a word — we just stood there taking it all in.
+
+![A resident giving a peace sign at the summit with the view behind them](/images/blog/umanose-hiking-2026/umanose-1.jpg)
+
+<div class="photoGrid">
+  <img src="/images/blog/umanose-hiking-2026/umanose-2.jpg" alt="Two people admiring Kobe's city and sea from the summit" loading="lazy" />
+  <img src="/images/blog/umanose-hiking-2026/umanose-7.jpg" alt="Looking down over Kobe's neighborhoods from between the mountains" loading="lazy" />
+</div>
+
+<div class="photoGrid photoGrid--portrait">
+  <img src="/images/blog/umanose-hiking-2026/umanose-11.jpg" alt="A member spreading their arms wide on the rocks" loading="lazy" />
+  <img src="/images/blog/umanose-hiking-2026/umanose-13.jpg" alt="Arms raised on the rocky outcrop under a blue sky" loading="lazy" />
+</div>
+
+## After the descent, a detour to Suma Beach
+
+Since we'd already made it all the way to Suma, we swung by Suma Beach on the way back. The sea was still chilly in March, but a few of us couldn't resist getting our shoes wet at the water's edge anyway. Being able to go from a mountain hike straight to a sandy beach is one of the best things about Kobe.
+
+![Housemates standing on the sand at Suma Beach](/images/blog/umanose-hiking-2026/umanose-8.jpg)
+
+<div class="photoGrid">
+  <img src="/images/blog/umanose-hiking-2026/umanose-9.jpg" alt="A sign reading 'Welcome to Suma Beach'" loading="lazy" />
+  <img src="/images/blog/umanose-hiking-2026/umanose-10.jpg" alt="Clear waves rolling in at Suma Beach" loading="lazy" />
+</div>
+
+## Mountains and sea, both just a train ride away
+
+Kobe, home to The Headquarters Kobe, is a city where you can easily reach both the mountains and the sea. We love hosting laid-back outdoor outings like this one at the house. If living with people who'll come along on adventures like this sounds like your thing, come take a look at [our rooms and rent](/rooms/).

@@ -50,7 +50,7 @@ function _jaPath(path: string): string {
 			<HeaderLink href={`${p}/rooms`} sub="Rooms">{isEn ? 'Rooms' : 'お部屋紹介'}</HeaderLink>
 			<HeaderLink href={`${p}/location`} sub="Location">{isEn ? 'Location' : 'アクセスと周辺情報'}</HeaderLink>
 			<HeaderLink href={`${p}/procedures`} sub="Procedures">{isEn ? 'Procedures' : '入居の流れとQ&A'}</HeaderLink>
-			{!isEn && <HeaderLink href="/blog" sub="Blog">ブログ</HeaderLink>}
+			<HeaderLink href="/blog" sub="Blog">{isEn ? 'Blog' : 'ブログ'}</HeaderLink>
 			<HeaderLink href={`${p}/contact`} sub="Contact">{isEn ? 'Contact' : 'お問い合わせ'}</HeaderLink>
 		</div>
 	</nav>

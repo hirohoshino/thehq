@@ -130,6 +130,11 @@ import Footer from '../components/Footer.astro';
       form?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const data = new FormData(form);
+        try {
+          const a = JSON.parse(localStorage.getItem('hq_attr') || '{}');
+          ['gclid','utm_source','utm_medium','utm_campaign','utm_term','utm_content','first_referrer','first_landing'].forEach((k) => { if (a[k]) data.set(k, a[k]); });
+          data.set('page_url', location.href);
+        } catch (err) {}
         const res = await fetch(form.action, {
           method: 'POST',
           body: data,

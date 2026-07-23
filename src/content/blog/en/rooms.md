@@ -16,16 +16,16 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 ![](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥38,000/month
-**Details** 3F. Western-style room, vinyl flooring. North-facing window.
+**Rent** ¥39,000/month
+**Details** 3F. Western-style room, vinyl flooring. Northwest-facing window.
 
 ## Room 302
 
 *   ![](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥38,000/month
-**Details** 3F. Western-style room, vinyl flooring. Southwest-facing window.
+**Rent** ¥40,000/month
+**Details** 3F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 303
 
@@ -33,8 +33,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
 
 **Size** 9.2 m² (5.7 tatami)
-**Rent** ¥40,000/month
-**Details** 3F. Western-style room, vinyl flooring. Southwest-facing window.
+**Rent** ¥43,000/month
+**Details** 3F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 304
 
@@ -42,8 +42,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/073-1024x678.jpg)
 
 **Size** 9.7 m² (6 tatami)
-**Rent** ¥42,000/month
-**Details** 3F. Western-style room, vinyl flooring. Southeast-facing window.
+**Rent** ¥43,000/month
+**Details** 3F. Western-style room, vinyl flooring. East-facing window.
 
 ## Room 305
 
@@ -51,24 +51,24 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
 
 **Size** 9.8 m² (6 tatami)
-**Rent** ¥42,000/month
-**Details** 3F. Western-style room, vinyl flooring. Southeast-facing window.
+**Rent** ¥44,000/month
+**Details** 3F. Western-style room, vinyl flooring. East-facing window.
 
 ## Room 406
 
 *   ![](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥42,000/month
-**Details** 4F. Western-style room, vinyl flooring. Northwest-facing window.
+**Rent** ¥45,000/month
+**Details** 4F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 407
 
 *   ![](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥41,000/month
-**Details** 4F. Western-style room, vinyl flooring. Southwest-facing window.
+**Rent** ¥43,000/month
+**Details** 4F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 408
 
@@ -76,8 +76,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
 
 **Size** 9.2 m² (5.7 tatami)
-**Rent** ¥44,000/month
-**Details** 4F. Western-style room, vinyl flooring. Southwest-facing window.
+**Rent** ¥46,000/month
+**Details** 4F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 409
 
@@ -86,7 +86,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 **Size** 9.7 m² (6 tatami)
 **Rent** ¥46,000/month
-**Details** 4F. Western-style room, vinyl flooring. Southeast-facing window.
+**Details** 4F. Western-style room, vinyl flooring. East-facing window.
 
 ## Room 410
 
@@ -94,7 +94,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
 
 **Size** 9.8 m² (6 tatami)
-**Rent** ¥46,000/month
-**Details** 4F. Western-style room, vinyl flooring. Southeast-facing window.
+**Rent** ¥47,000/month
+**Details** 4F. Western-style room, vinyl flooring. East-facing window.
 
-※ In addition to room rent, a common fee is required for all rooms. (¥13,500/month as of July 2026 — includes utilities, internet, and consumables)
+※ In addition to room rent, a common fee is required for all rooms. (¥14,000/month as of July 2026 — includes utilities, internet, and consumables)

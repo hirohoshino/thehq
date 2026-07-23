@@ -16,7 +16,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 ![](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥39,000/month
+**Rent** ¥%RENT_301%/month
 **Details** 3F. Western-style room, vinyl flooring. Northwest-facing window.
 
 ## Room 302
@@ -24,7 +24,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥40,000/month
+**Rent** ¥%RENT_302%/month
 **Details** 3F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 303
@@ -33,7 +33,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
 
 **Size** 9.2 m² (5.7 tatami)
-**Rent** ¥43,000/month
+**Rent** ¥%RENT_303%/month
 **Details** 3F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 304
@@ -42,7 +42,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/073-1024x678.jpg)
 
 **Size** 9.7 m² (6 tatami)
-**Rent** ¥43,000/month
+**Rent** ¥%RENT_304%/month
 **Details** 3F. Western-style room, vinyl flooring. East-facing window.
 
 ## Room 305
@@ -51,7 +51,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
 
 **Size** 9.8 m² (6 tatami)
-**Rent** ¥44,000/month
+**Rent** ¥%RENT_305%/month
 **Details** 3F. Western-style room, vinyl flooring. East-facing window.
 
 ## Room 406
@@ -59,7 +59,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥45,000/month
+**Rent** ¥%RENT_406%/month
 **Details** 4F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 407
@@ -67,7 +67,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
-**Rent** ¥43,000/month
+**Rent** ¥%RENT_407%/month
 **Details** 4F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 408
@@ -76,7 +76,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
 
 **Size** 9.2 m² (5.7 tatami)
-**Rent** ¥46,000/month
+**Rent** ¥%RENT_408%/month
 **Details** 4F. Western-style room, vinyl flooring. South-facing window.
 
 ## Room 409
@@ -85,7 +85,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
 
 **Size** 9.7 m² (6 tatami)
-**Rent** ¥46,000/month
+**Rent** ¥%RENT_409%/month
 **Details** 4F. Western-style room, vinyl flooring. East-facing window.
 
 ## Room 410
@@ -94,7 +94,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 *   ![](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
 
 **Size** 9.8 m² (6 tatami)
-**Rent** ¥47,000/month
+**Rent** ¥%RENT_410%/month
 **Details** 4F. Western-style room, vinyl flooring. East-facing window.
 
-※ In addition to room rent, a common fee is required for all rooms. (¥14,000/month as of July 2026 — includes utilities, internet, and consumables)
+※ In addition to room rent, a common fee is required for all rooms. (¥%COMMON_FEE%/month as of July 2026 — includes utilities, internet, and consumables)

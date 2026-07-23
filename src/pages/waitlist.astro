@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { rentRange, commonFeeYen } from '../data/pricing.mjs';
 ---
 
 <html lang="ja">
@@ -84,7 +85,7 @@ import Footer from '../components/Footer.astro';
       <h1>空き待ち登録</h1>
       <p class="lead">
         現在満室の場合でも、空き待ちにご登録いただくと空室が出た際に<strong>先着順でメールでお知らせ</strong>します。
-        家賃¥39,000〜47,000/月+共益費¥14,000、礼金・仲介手数料なし。登録は無料で、いつでも配信停止できます。
+        家賃{rentRange}/月+共益費{commonFeeYen}、礼金・仲介手数料なし。登録は無料で、いつでも配信停止できます。
       </p>
 
       <form id="waitlist-form">

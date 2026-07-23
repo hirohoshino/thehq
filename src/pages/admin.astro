@@ -110,6 +110,42 @@
       .room-toggle.vacant .state { color: #16a34a; }
       .room-toggle.vacant .switch { background: #22c55e; }
       .room-toggle.vacant .switch::after { left: 23px; }
+      .rent-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin: 0.8em 0;
+      }
+      @media (min-width: 560px) {
+        .rent-grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      .rent-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        padding: 0.5em 0.7em;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: #f9fafb;
+      }
+      .rent-item .rn { font-weight: 700; color: #6b7280; font-size: 0.95em; min-width: 2.7em; }
+      .rent-item .yen { color: #9ca3af; }
+      .rent-item input {
+        width: 100%;
+        padding: 0.35em 0.4em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 0.95em;
+        font-family: inherit;
+        text-align: right;
+      }
+      input[type='number'] {
+        padding: 0.6em 0.8em;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+        font-family: inherit;
+      }
       table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
       th, td { text-align: left; padding: 0.5em 0.6em; border-bottom: 1px solid #eee; vertical-align: top; }
       th { background: #f9fafb; white-space: nowrap; }
@@ -153,6 +189,22 @@
         <div class="msg" id="status-msg"></div>
       </div>
 
+      <!-- 家賃・共益費 -->
+      <div class="card">
+        <h2>家賃・共益費</h2>
+        <p style="font-size:0.85em;color:#666">
+          各室の家賃と共益費を編集 →「保存」でGitHubにコミットし、<strong>約30〜60秒後の自動デプロイでサイトに反映</strong>されます（空室状況と違い即時ではありません）。反映はトップ・お部屋ページ・構造化データ等すべてに自動で行き渡ります。
+        </p>
+        <div class="rent-grid" id="rent-grid"></div>
+        <label for="common-fee">共益費（円/月・全室共通）</label>
+        <input type="number" id="common-fee" inputmode="numeric" min="0" step="500" style="max-width:220px" />
+        <div class="row" style="margin-top:0.9em">
+          <button id="save-rent-btn">保存（コミットして反映）</button>
+          <span class="muted" id="rent-updated"></span>
+        </div>
+        <div class="msg" id="rent-msg"></div>
+      </div>
+
       <!-- 一斉通知 -->
       <div class="card">
         <h2>空き待ちリストへ通知</h2>
@@ -192,6 +244,7 @@
       const ROOMS = ['301','302','303','304','305','406','407','408','409','410'];
       const $ = (id: string) => document.getElementById(id) as any;
       let vacantSet = new Set<string>();
+      let rentSha: string | null = null;
 
       const pw = () => localStorage.getItem('hq_admin_pw') || '';
       const headers = () => ({ Authorization: `Bearer ${pw()}`, 'Content-Type': 'application/json' });
@@ -258,12 +311,33 @@
         return d.innerHTML;
       }
 
+      async function loadRent() {
+        const res = await fetch('/api/admin/rent', { headers: headers() });
+        if (!res.ok) throw new Error('rent_load_failed');
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || 'rent_load_failed');
+        rentSha = data.sha || null;
+        const grid = $('rent-grid');
+        grid.innerHTML = '';
+        for (const r of ROOMS) {
+          const div = document.createElement('div');
+          div.className = 'rent-item';
+          div.innerHTML = `<span class="rn">${r}</span><span class="yen">¥</span><input type="number" inputmode="numeric" min="1000" step="1000" id="rent-${r}" value="${data.rents?.[r] ?? ''}" />`;
+          grid.appendChild(div);
+        }
+        $('common-fee').value = data.commonFee ?? '';
+        $('rent-updated').textContent = data.asOf ? `表示基準: ${data.asOf}` : '';
+      }
+
       async function enterPanel() {
         try {
           await loadWaitlist();
           await loadStatus();
           $('login-card').classList.add('hidden');
           $('panel').classList.remove('hidden');
+          loadRent().catch((e) =>
+            showMsg('rent-msg', `家賃データの読込に失敗しました（GITHUB_TOKEN未設定の可能性）: ${e.message}`, false)
+          );
         } catch {
           localStorage.removeItem('hq_admin_pw');
           showMsg('login-msg', 'パスワードが違います。', false);
@@ -291,6 +365,43 @@
         } else {
           showMsg('status-msg', '保存に失敗しました。', false);
         }
+      };
+
+      $('save-rent-btn').onclick = async () => {
+        const rents: Record<string, number> = {};
+        for (const r of ROOMS) {
+          const v = parseInt($(`rent-${r}`).value, 10);
+          if (!Number.isFinite(v) || v < 1000) {
+            showMsg('rent-msg', `${r}号室の家賃が不正です。`, false);
+            return;
+          }
+          rents[r] = v;
+        }
+        const commonFee = parseInt($('common-fee').value, 10);
+        if (!Number.isFinite(commonFee) || commonFee < 0) {
+          showMsg('rent-msg', '共益費が不正です。', false);
+          return;
+        }
+        const btn = $('save-rent-btn');
+        btn.disabled = true;
+        showMsg('rent-msg', 'コミット中…', true);
+        try {
+          const res = await fetch('/api/admin/rent', {
+            method: 'POST',
+            headers: headers(),
+            body: JSON.stringify({ rents, commonFee, sha: rentSha }),
+          });
+          const data = await res.json();
+          if (res.ok && data.ok) {
+            rentSha = data.sha || rentSha;
+            showMsg('rent-msg', 'コミットしました。約30〜60秒後の自動デプロイでサイトに反映されます。', true);
+          } else {
+            showMsg('rent-msg', `保存に失敗しました: ${data.error || res.status}`, false);
+          }
+        } catch (e: any) {
+          showMsg('rent-msg', `保存に失敗しました: ${e.message}`, false);
+        }
+        btn.disabled = false;
       };
 
       $('notify-preview-btn').onclick = () => {

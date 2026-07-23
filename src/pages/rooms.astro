@@ -2,13 +2,18 @@
 import { getCollection, render } from 'astro:content';
 import AvailabilityBanner from '../components/AvailabilityBanner.astro';
 import BlogPost from '../layouts/BlogPost.astro';
+import { minRentYen, rentRange, commonFeeYen } from '../data/pricing.mjs';
 
 const all = await getCollection('blog');
 const post = all.find((p) => p.id === 'bulk/rooms');
 if (!post) throw new Error('bulk/rooms not found');
 const { Content } = await render(post);
+
+// 家賃はデータソース(rooms.json)から算出した値でtitle/descriptionを動的生成
+const title = `お部屋紹介と家賃（${minRentYen}〜）`;
+const description = `神戸のシェアハウスThe Headquarters Kobeの全10室の広さ・家賃一覧。家賃${rentRange}/月＋共益費${commonFeeYen}（水道光熱費・ネット込み）。ロフトベッド・勉強机つきの個室です。`;
 ---
-<BlogPost {...post.data}>
+<BlogPost {...post.data} title={title} description={description}>
   <AvailabilityBanner lang="ja" />
   <Content />
 </BlogPost>

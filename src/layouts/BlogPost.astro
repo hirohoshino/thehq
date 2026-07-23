@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import { minRentYen } from '../data/pricing.mjs';
 
 type Props = CollectionEntry<'blog'>['data'] & {
 	prev?: CollectionEntry<'blog'> | null;
@@ -193,7 +194,7 @@ const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCo
 			<aside class="cta-block">
 				{isEn ? (
 					<>
-						<p>Interested in living at The Headquarters Kobe? Rooms from ¥39,000/month. No key money, no agency fee.</p>
+						<p>Interested in living at The Headquarters Kobe? Rooms from {minRentYen}/month. No key money, no agency fee.</p>
 						<div class="cta-buttons">
 							<a class="cta-primary" href="/en/contact/">Inquire / Book a Viewing</a>
 							<a class="cta-secondary" href="/en/rooms/">See Rooms &amp; Rent</a>
@@ -201,7 +202,7 @@ const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCo
 					</>
 				) : (
 					<>
-						<p>The Headquarters Kobe で暮らしてみませんか？ 家賃¥39,000〜、礼金・仲介手数料なし。満室の場合も<a href="/waitlist/">空き待ち登録</a>で空室が出た際にメールでお知らせします。</p>
+						<p>The Headquarters Kobe で暮らしてみませんか？ 家賃{minRentYen}〜、礼金・仲介手数料なし。満室の場合も<a href="/waitlist/">空き待ち登録</a>で空室が出た際にメールでお知らせします。</p>
 						<div class="cta-buttons">
 							<a class="cta-primary" href="/contact/">内見・空室状況を問い合わせる</a>
 							<a class="cta-secondary" href="/rooms/">お部屋と家賃を見る</a>

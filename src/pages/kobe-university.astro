@@ -4,10 +4,11 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import AvailabilityBanner from '../components/AvailabilityBanner.astro';
+import { rentRange, commonFeeYen, monthlyBand, totalRange } from '../data/pricing.mjs';
 
 const title = '神戸大学の学生に人気のシェアハウス｜The Headquarters Kobe（灘区・水道筋）';
 const description =
-  '神戸大学へ通える灘区・水道筋のシェアハウス。大学にも三宮にも商店街にも近く、家具付き・月5〜6万円台・初期費用も計5万円、礼金/仲介手数料なし・保証人原則不要。神大生・受験生の一人暮らしに。';
+  `神戸大学へ通える灘区・水道筋のシェアハウス。大学にも三宮にも商店街にも近く、家具付き・月${monthlyBand}・初期費用も計5万円、礼金/仲介手数料なし・保証人原則不要。神大生・受験生の一人暮らしに。`;
 
 // 神大関連ブログを抽出（優先順）
 const entries = await getCollection('blog');
@@ -29,7 +30,7 @@ const relatedPosts = wanted
 // FAQ（本文とJSON-LDで共用）
 const faqs = [
   { q: 'HQから神戸大学へ通えますか？', a: 'はい。HQは神戸大学と三宮のちょうど中間、灘区にあります。最寄りの「水道筋3丁目」バス停は徒歩1分で、市バス乗り継ぎなら片道210円で神大正門前まで。阪急王子公園駅・JR摩耶駅も徒歩6〜7分、自転車でも通えます。' },
-  { q: '毎月かかる費用はどれくらいですか？', a: '家賃は¥39,000〜47,000。これに共益費¥14,000（水道光熱費・ネット・消耗品込み）を加えて、毎月の支払いは5〜6万円台（部屋により¥53,000〜¥61,000）です。' },
+  { q: '毎月かかる費用はどれくらいですか？', a: `家賃は${rentRange}。これに共益費${commonFeeYen}（水道光熱費・ネット・消耗品込み）を加えて、毎月の支払いは${monthlyBand}（部屋により${totalRange}）です。` },
   { q: '入居時の初期費用は？', a: '契約手数料・清掃費とデポジットで計5万円のみ。デポジットは退去時に問題がなければ全額返金します。礼金・仲介手数料はいただきません。' },
   { q: '保証人は必要ですか？', a: '連帯保証人は原則不要です。契約に必要なのは本人確認書類と印鑑、緊急連絡先のみです。' },
   { q: '家具や家電は自分で用意しますか？', a: 'ベッド・布団・机・イス・エアコンは各部屋に備え付け。生活に必要な設備も揃っているので、バッグ1つですぐに暮らし始められます。' },
@@ -127,12 +128,12 @@ const jsonLd = {
 
       <!-- 費用 -->
       <section class="kuSection">
-        <h2 class="kuTitle">家具付き・月5万円台・初期費用も5万円</h2>
+        <h2 class="kuTitle">家具付き・月{monthlyBand}・初期費用も5万円</h2>
         <div class="feeGrid">
           <div class="feeCard">
             <div class="feeLabel">毎月</div>
-            <div class="feeMain">家賃 ¥39,000〜47,000</div>
-            <div class="feeSub">＋ 共益費¥14,000（水道光熱費・ネット・消耗品込み）<br /><strong>= 月々5〜6万円台</strong></div>
+            <div class="feeMain">家賃 {rentRange}</div>
+            <div class="feeSub">＋ 共益費{commonFeeYen}（水道光熱費・ネット・消耗品込み）<br /><strong>= 月々{monthlyBand}</strong></div>
           </div>
           <div class="feeCard">
             <div class="feeLabel">入居時</div>

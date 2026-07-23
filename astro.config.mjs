@@ -3,6 +3,7 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
+import remarkPricing from './plugins/remark-pricing.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,4 +11,7 @@ export default defineConfig({
 	integrations: [mdx(), sitemap({
 		filter: (page) => !page.includes('/admin'),
 	})],
+	markdown: {
+		remarkPlugins: [remarkPricing],
+	},
 });

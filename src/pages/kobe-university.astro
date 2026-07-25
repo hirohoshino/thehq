@@ -1,33 +1,34 @@
 ---
-import { getCollection } from 'astro:content';
+// 神戸大学生・受験生向けランディングページ（LP）
+// 方針: グローバルナビ無し / 外部への回遊リンク0 / CTAは「見学を申し込む」1本 /
+//       フォームはページ内に埋め込み、hq_attr（gclid・utm・referrer）を付与して送信する。
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import AvailabilityBanner from '../components/AvailabilityBanner.astro';
-import { rentRange, commonFeeYen, monthlyBand, totalRange } from '../data/pricing.mjs';
+import {
+  rentRange,
+  commonFeeYen,
+  monthlyBand,
+  totalRange,
+  minRent,
+  maxRent,
+  commonFee,
+  totalMin,
+  totalMax,
+  asOf,
+} from '../data/pricing.mjs';
+
+const fmt = (n) => Number(n).toLocaleString('en-US');
+
+// 費用バーの幅（SVG座標）: 最大月額を基準に按分する
+const BAR_W = 560;
+const wRentMax = Math.round((maxRent / totalMax) * BAR_W);
+const wRentMin = Math.round((minRent / totalMax) * BAR_W);
+const wFee = Math.round((commonFee / totalMax) * BAR_W);
 
 const title = '神戸大学の学生に人気のシェアハウス｜The Headquarters Kobe（灘区・水道筋）';
 const description =
-  `神戸大学へ通える灘区・水道筋のシェアハウス。大学にも三宮にも商店街にも近く、家具付き・月${monthlyBand}・初期費用も計5万円、礼金/仲介手数料なし・保証人原則不要。神大生・受験生の一人暮らしに。`;
+  `神戸大学へ通える灘区・水道筋のシェアハウス。市バス乗り継ぎなら片道210円で神大正門前へ。家具付き・月${monthlyBand}・初期費用は計5万円、礼金/仲介手数料なし・保証人原則不要。神大生・受験生の一人暮らしに。`;
 
-// 神大関連ブログを抽出（優先順）
-const entries = await getCollection('blog');
-const wanted = [
-  '神戸大生に聞いた',
-  '神戸大学への通学方法',
-  '神大に合格',
-  '神戸大学大学院',
-  '大学生がシェアハウスに住んで',
-];
-const relatedPosts = wanted
-  .map((kw) => entries.find((e) => e.data.kind === 'post' && (e.data.title ?? '').includes(kw)))
-  .filter((e) => e)
-  .map((post) => {
-    const match = post.body?.match(/!\[.*?\]\((https?:\/\/[^)]+)\)/);
-    return { id: post.id, title: post.data.title, img: match ? match[1] : (post.data.coverImage ?? null) };
-  });
-
-// FAQ（本文とJSON-LDで共用）
 const faqs = [
   { q: 'HQから神戸大学へ通えますか？', a: 'はい。HQは神戸大学と三宮のちょうど中間、灘区にあります。最寄りの「水道筋3丁目」バス停は徒歩1分で、市バス乗り継ぎなら片道210円で神大正門前まで。阪急王子公園駅・JR摩耶駅も徒歩6〜7分、自転車でも通えます。' },
   { q: '毎月かかる費用はどれくらいですか？', a: `家賃は${rentRange}。これに共益費${commonFeeYen}（水道光熱費・ネット・消耗品込み）を加えて、毎月の支払いは${monthlyBand}（部屋により${totalRange}）です。` },
@@ -55,122 +56,275 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
 
-  <body>
-    <Header />
+  <body class="lp">
+    <!-- LP用の最小ヘッダー: ロゴのみ。グローバルナビは置かない -->
+    <header class="lpBar">
+      <div class="lpBarInner">
+        <span class="lpBrand">
+          <img src="/images/logo.png" alt="" width="26" height="26" />
+          <span>The Headquarters Kobe</span>
+        </span>
+        <a class="btn btnPrimary btnSm" href="#entry">見学を申し込む</a>
+      </div>
+    </header>
 
     <!-- Hero -->
-    <section class="kuHero">
-      <img src="/images/hero.jpg" alt="The Headquarters Kobe" class="kuHeroImg" />
-      <div class="kuHeroText">
-        <p class="kuKicker">FOR KOBE UNIVERSITY STUDENTS</p>
+    <section class="hero">
+      <img src="/images/hero.jpg" alt="The Headquarters Kobe のリビング" class="heroImg" />
+      <div class="heroInner">
+        <p class="kicker">FOR KOBE UNIVERSITY STUDENTS</p>
         <h1>神戸のど真ん中で、<br />学生生活を。</h1>
-        <p class="kuLead">
-          神戸大学にも、三宮にも、水道筋商店街にも近い。灘区のシェアハウス The Headquarters Kobe。<br />
-          学生は、24時間学生じゃないから。
+        <p class="heroLead">
+          神戸大学にも、三宮にも、水道筋商店街にも近い。<br />灘区のシェアハウス The Headquarters Kobe。
         </p>
-        <div class="kuActions">
-          <a class="cta" href="/contact">内見・お問い合わせ</a>
-          <a class="ctaGhost" href="/rooms">お部屋と家賃を見る</a>
-        </div>
+        <a class="btn btnPrimary btnLg" href="#entry">見学を申し込む（無料）</a>
+        <p class="heroNote">まずは見に来るだけでOK。しつこい営業はしません。</p>
       </div>
     </section>
 
-    <main class="kuMain">
+    <!-- 数値サマリー -->
+    <section class="stats">
+      <div class="statsInner">
+        <div class="stat"><div class="statNum">月{monthlyBand}</div><div class="statCap">家賃＋共益費（水道光熱・ネット込）</div></div>
+        <div class="stat"><div class="statNum">初期費用 5万円</div><div class="statCap">礼金・仲介手数料は0円</div></div>
+        <div class="stat"><div class="statNum">神大まで 210円</div><div class="statCap">市バス乗り継ぎ・片道</div></div>
+        <div class="stat"><div class="statNum">保証人 原則不要</div><div class="statCap">家具・家電つき</div></div>
+      </div>
+    </section>
+
+    <main class="wrap">
       <AvailabilityBanner lang="ja" />
 
-      <!-- 3つの近い -->
-      <section class="kuSection">
-        <h2 class="kuTitle">大学にも、三宮にも、商店街にも。3つの「近い」</h2>
-        <p class="kuIntro">
+      <!-- ① 立地 -->
+      <section class="sec">
+        <p class="secKicker">LOCATION</p>
+        <h2 class="secTitle">大学にも、三宮にも、商店街にも。<br class="brSp" />3つの「近い」が同時に揃う場所</h2>
+        <p class="secLead">
           神大生に「HQの良かったところ」を聞くと、多くが同じ3つを挙げます。大学に近いこと、神戸の中心・三宮に近いこと、そして足元の商店街で毎日の暮らしがしやすいこと。
         </p>
-        <div class="threeGrid">
-          <div class="threeCard">
-            <div class="threeIcon">🎓</div>
+
+        <figure class="fig">
+          <svg class="figSvg" viewBox="0 0 760 400" role="img" aria-label="HQを中心に、神戸大学・三宮・水道筋商店街への距離を示した図">
+            <defs>
+              <linearGradient id="gHq" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2337ff" />
+                <stop offset="100%" stop-color="#5a6bff" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="760" height="400" rx="18" fill="#f7f8fc" />
+
+            <!-- 接続線 -->
+            <line x1="380" y1="200" x2="380" y2="95" class="ln" />
+            <line x1="380" y1="200" x2="608" y2="318" class="ln" />
+            <line x1="380" y1="200" x2="152" y2="318" class="ln" />
+
+            <!-- 神戸大学 -->
+            <rect x="286" y="52" width="188" height="52" rx="12" class="node" />
+            <text x="380" y="74" class="tNode">神戸大学（六甲台）</text>
+            <text x="380" y="92" class="tNodeSub">六甲台キャンパス</text>
+            <text x="396" y="145" class="tEdge">バス乗り継ぎ 約25分</text>
+            <text x="396" y="163" class="tEdgeStrong">片道 210円</text>
+
+            <!-- 三宮 -->
+            <rect x="524" y="292" width="168" height="52" rx="12" class="node" />
+            <text x="608" y="314" class="tNode">三宮</text>
+            <text x="608" y="332" class="tNodeSub">神戸の中心街</text>
+            <text x="516" y="252" class="tEdge">電車で 約10分</text>
+
+            <!-- 水道筋商店街 -->
+            <rect x="60" y="292" width="184" height="52" rx="12" class="node" />
+            <text x="152" y="314" class="tNode">水道筋商店街</text>
+            <text x="152" y="332" class="tNodeSub">八百屋・スーパー・銭湯</text>
+            <text x="190" y="252" class="tEdgeStrong">徒歩 0分</text>
+
+            <!-- HQ -->
+            <rect x="278" y="172" width="204" height="58" rx="14" fill="url(#gHq)" />
+            <text x="380" y="197" class="tHq">The Headquarters Kobe</text>
+            <text x="380" y="216" class="tHqSub">兵庫県神戸市灘区</text>
+          </svg>
+        </figure>
+
+        <div class="grid3">
+          <div class="card">
             <h3>大学に近い</h3>
             <p>HQは神戸大学と三宮のちょうど中間。徒歩1分の「水道筋3丁目」バス停から乗り継げば片道210円で神大正門前へ。阪急王子公園駅・JR摩耶駅も徒歩6〜7分、自転車でも通えます。</p>
           </div>
-          <div class="threeCard">
-            <div class="threeIcon">🌆</div>
+          <div class="card">
             <h3>三宮に近い</h3>
             <p>三ノ宮まで約10分。授業終わりの遊びも、バイト探しも、買い物も映画も。神戸の中心がすぐそこにある学生生活。</p>
           </div>
-          <div class="threeCard">
-            <div class="threeIcon">🛒</div>
+          <div class="card">
             <h3>商店街が足元</h3>
             <p>活気ある水道筋商店街のど真ん中。安い八百屋やスーパー、炭酸泉の銭湯・灘温泉まで徒歩圏。毎日の生活が歩いて完結します。</p>
           </div>
         </div>
-        <blockquote class="kuQuote">
+
+        <blockquote class="quote">
           「交通のアクセスがいい。他の国公立は都心から離れた場所が多いけど、神大は遊びもバイト探しもイベントも映画も行きやすい」
-          <cite>— H.G.さん（国際人間科学部）</cite>
+          <cite>H.G.さん／国際人間科学部</cite>
         </blockquote>
       </section>
 
-      <!-- 社会的証明 -->
-      <section class="kuSection alt">
-        <h2 class="kuTitle">神大生が、代々暮らしてきた家</h2>
-        <p class="kuIntro">
-          国際人間科学部・経済学部・発達科学・文学部（博士）まで、これまで多くの神戸大学の学生・院生がHQで暮らしてきました。卒業生10人に、住んだ理由と本音を聞いています。
+      <!-- ② 通学ルート -->
+      <section class="sec secAlt">
+        <p class="secKicker">COMMUTE</p>
+        <h2 class="secTitle">神大までの通学は、3ルート。<br class="brSp" />学生のおすすめは「バス乗り継ぎ」</h2>
+        <p class="secLead">
+          市バスはICカードで乗り継ぐと2区間目が無料。だから片道210円で神大正門前まで行けます。混みやすい36系統も、阪急六甲の一つ手前「六甲口」から乗るので座れる確率が高い、というのが住人の評価です。
         </p>
-        <div class="quoteGrid">
-          <blockquote class="kuQuote">
+
+        <figure class="fig">
+          <svg class="figSvg" viewBox="0 0 760 330" role="img" aria-label="HQから神戸大学への3つの通学ルートと運賃を示した図">
+            <rect x="0" y="0" width="760" height="330" rx="18" fill="#f7f8fc" />
+
+            <!-- ルート1 -->
+            <rect x="24" y="46" width="712" height="76" rx="12" class="lane laneBest" />
+            <rect x="40" y="60" width="74" height="22" rx="11" class="pill" />
+            <text x="77" y="75" class="tPill">おすすめ</text>
+            <text x="40" y="108" class="tFare">片道 210円</text>
+            <line x1="176" y1="84" x2="700" y2="84" class="route routeBest" />
+            <circle cx="176" cy="84" r="7" class="dot dotBest" />
+            <circle cx="350" cy="84" r="6" class="dot dotBest" />
+            <circle cx="524" cy="84" r="6" class="dot dotBest" />
+            <circle cx="700" cy="84" r="7" class="dot dotBest" />
+            <text x="176" y="68" class="tStop">HQ</text>
+            <text x="350" y="68" class="tStop">水道筋3丁目</text>
+            <text x="524" y="68" class="tStop">六甲口</text>
+            <text x="700" y="68" class="tStop" text-anchor="end">神大正門前</text>
+            <text x="263" y="104" class="tSeg">徒歩1分</text>
+            <text x="437" y="104" class="tSeg">市バス 92系統</text>
+            <text x="612" y="104" class="tSeg">36系統に乗換</text>
+
+            <!-- ルート2 -->
+            <rect x="24" y="134" width="712" height="76" rx="12" class="lane" />
+            <text x="40" y="178" class="tFare tFareSub">片道 340円</text>
+            <line x1="176" y1="172" x2="700" y2="172" class="route" />
+            <circle cx="176" cy="172" r="7" class="dot" />
+            <circle cx="350" cy="172" r="6" class="dot" />
+            <circle cx="524" cy="172" r="6" class="dot" />
+            <circle cx="700" cy="172" r="7" class="dot" />
+            <text x="176" y="156" class="tStop">HQ</text>
+            <text x="350" y="156" class="tStop">JR摩耶</text>
+            <text x="524" y="156" class="tStop">JR六甲道</text>
+            <text x="700" y="156" class="tStop" text-anchor="end">神大正門前</text>
+            <text x="263" y="192" class="tSeg">徒歩6分</text>
+            <text x="437" y="192" class="tSeg">JR神戸線</text>
+            <text x="612" y="192" class="tSeg">市バス36系統</text>
+
+            <!-- ルート3 -->
+            <rect x="24" y="222" width="712" height="76" rx="12" class="lane" />
+            <text x="40" y="266" class="tFare tFareSub">片道 370円</text>
+            <line x1="176" y1="260" x2="700" y2="260" class="route" />
+            <circle cx="176" cy="260" r="7" class="dot" />
+            <circle cx="350" cy="260" r="6" class="dot" />
+            <circle cx="524" cy="260" r="6" class="dot" />
+            <circle cx="700" cy="260" r="7" class="dot" />
+            <text x="176" y="244" class="tStop">HQ</text>
+            <text x="350" y="244" class="tStop">阪急王子公園</text>
+            <text x="524" y="244" class="tStop">阪急六甲</text>
+            <text x="700" y="244" class="tStop" text-anchor="end">神大正門前</text>
+            <text x="263" y="280" class="tSeg">徒歩7分</text>
+            <text x="437" y="280" class="tSeg">阪急神戸線</text>
+            <text x="612" y="280" class="tSeg">市バス36系統</text>
+          </svg>
+          <figcaption>このほか、自転車・原付でも通えます。帰りは下り坂なので、歩いて30分弱かけて帰る住人も。</figcaption>
+        </figure>
+      </section>
+
+      <!-- ③ 費用 -->
+      <section class="sec">
+        <p class="secKicker">COST</p>
+        <h2 class="secTitle">毎月{monthlyBand}、入居時は5万円だけ。</h2>
+        <p class="secLead">
+          家賃に共益費を足した金額が、そのまま毎月の支払いです。水道光熱費もネットもトイレットペーパーも込み。ワンルームを借りて家具・家電を揃え、礼金や仲介手数料を払うより、始めやすく、毎月の負担も軽くなります。
+        </p>
+
+        <figure class="fig">
+          <svg class="figSvg" viewBox="0 0 760 330" role="img" aria-label="毎月の費用の内訳と、入居時にかかる初期費用の内訳を示した図">
+            <rect x="0" y="0" width="760" height="330" rx="18" fill="#f7f8fc" />
+
+            <!-- 毎月 -->
+            <text x="40" y="46" class="tSecLabel">毎月の支払い</text>
+            <text x="720" y="46" class="tTotal" text-anchor="end">{totalRange}</text>
+
+            <rect x={40} y={66} width={wRentMax} height="44" rx="8" fill="#2337ff" />
+            <rect x={40 + wRentMax} y={66} width={wFee} height="44" rx="8" fill="#9aa6ff" />
+            <line x1={40 + wRentMin} y1="60" x2={40 + wRentMin} y2="116" class="tick" />
+
+            <text x={40 + wRentMax / 2} y="94" class="tBar">家賃 {fmt(minRent)}〜{fmt(maxRent)}円</text>
+            <text x={40 + wRentMax + wFee / 2} y="94" class="tBarSm">共益費</text>
+            <text x={40 + wRentMax + wFee / 2} y="132" class="tUnder">{fmt(commonFee)}円</text>
+            <text x={40 + wRentMin} y="132" class="tUnder" text-anchor="middle">最安の部屋</text>
+            <text x="40" y="158" class="tNote">共益費に含まれるもの：水道・電気・ガス・インターネット・共用部の消耗品・清掃</text>
+
+            <!-- 初期費用 -->
+            <text x="40" y="212" class="tSecLabel">入居時にかかる費用</text>
+            <text x="720" y="212" class="tTotal" text-anchor="end">合計 50,000円</text>
+
+            <rect x="40" y="232" width="330" height="44" rx="8" fill="#2337ff" />
+            <rect x="378" y="232" width="330" height="44" rx="8" fill="#c9cffb" />
+            <text x="205" y="260" class="tBar">契約手数料・清掃費 25,000円</text>
+            <text x="543" y="256" class="tBarDark">デポジット 25,000円</text>
+            <text x="543" y="271" class="tBarDarkSm">退去時に問題がなければ全額返金</text>
+
+            <text x="40" y="306" class="tZero">礼金 0円</text>
+            <text x="150" y="306" class="tZero">仲介手数料 0円</text>
+            <text x="310" y="306" class="tZero">家具・家電 0円</text>
+            <text x="450" y="306" class="tZero">連帯保証人 原則不要</text>
+          </svg>
+          <figcaption>金額は{asOf}のものです。部屋ごとの家賃は見学時にご案内します。</figcaption>
+        </figure>
+      </section>
+
+      <!-- ④ 暮らし -->
+      <section class="sec secAlt">
+        <p class="secKicker">LIFE</p>
+        <h2 class="secTitle">勉強も、暮らしも。</h2>
+        <div class="photoRow">
+          <img src="/images/insta-1.jpg" alt="キッチンで料理をする住人たち" loading="lazy" />
+          <img src="/images/insta-2.jpg" alt="屋上で過ごす住人たち" loading="lazy" />
+          <img src="/images/insta-3.jpg" alt="桜の下でのハウスイベント" loading="lazy" />
+        </div>
+        <div class="grid4">
+          <div class="feat"><h3>個室にロフトベッド＋勉強机</h3><p>眠る場所と勉強する場所を分けられる、集中できる自分の部屋。</p></div>
+          <div class="feat"><h3>広いリビングと揃ったキッチン</h3><p>自炊で食費を抑えつつ、誰かと食卓を囲める。ひとりで抱え込まない暮らし。</p></div>
+          <div class="feat"><h3>屋上でBBQ・プール</h3><p>授業や研究の合間の息抜き。摩耶山・六甲もすぐそば。</p></div>
+          <div class="feat"><h3>世界中の住人と国際交流</h3><p>国際色ゆたかな神大と相性よく、英語を使う機会も日常に。「国内留学」感覚で。</p></div>
+        </div>
+      </section>
+
+      <!-- ⑤ 社会的証明 -->
+      <section class="sec">
+        <p class="secKicker">VOICES</p>
+        <h2 class="secTitle">神大生が、代々暮らしてきた家</h2>
+        <p class="secLead">
+          国際人間科学部・経済学部・発達科学・文学部（博士）まで、これまで多くの神戸大学の学生・院生がHQで暮らしてきました。
+        </p>
+        <div class="grid2">
+          <blockquote class="quote">
             「スーパーや八百屋が近くて生活しやすく、リビングに上がれば誰かとその日あったことを話せる。家具家電付きで、旅行に行くようなバッグ1つで生活を始められたのが決め手でした」
-            <cite>— Yさん（国際人間科学部）</cite>
+            <cite>Yさん／国際人間科学部</cite>
           </blockquote>
-          <blockquote class="kuQuote">
+          <blockquote class="quote">
             「家具もいらず生活費も抑えられて、価値観の違う人と暮らすからこそ考えが広がる。マジで迷ったら、住んでみたほうがいい」
-            <cite>— K.S.さん（経済学部）</cite>
+            <cite>K.S.さん／経済学部</cite>
           </blockquote>
         </div>
-        <a class="kuLink" href="/blog/bulk/kobe-university-share-house-voices/">元住人10人のインタビューを読む →</a>
       </section>
 
-      <!-- 費用 -->
-      <section class="kuSection">
-        <h2 class="kuTitle">家具付き・月{monthlyBand}・初期費用も5万円</h2>
-        <div class="feeGrid">
-          <div class="feeCard">
-            <div class="feeLabel">毎月</div>
-            <div class="feeMain">家賃 {rentRange}</div>
-            <div class="feeSub">＋ 共益費{commonFeeYen}（水道光熱費・ネット・消耗品込み）<br /><strong>= 月々{monthlyBand}</strong></div>
-          </div>
-          <div class="feeCard">
-            <div class="feeLabel">入居時</div>
-            <div class="feeMain">初期費用 計5万円のみ</div>
-            <div class="feeSub">契約手数料・清掃費2.5万円 ＋ 退去時に返金されるデポジット2.5万円。<strong>礼金・仲介手数料は0円。</strong></div>
-          </div>
-          <div class="feeCard">
-            <div class="feeLabel">安心</div>
-            <div class="feeMain">保証人 原則不要</div>
-            <div class="feeSub">家具家電（ベッド・布団・机・イス・エアコン）付き。バッグ1つで入居できます。</div>
-          </div>
-        </div>
-        <p class="kuNote">ワンルームを借りて家具・家電を揃え、礼金・仲介手数料を払うより、始めやすく、毎月の負担も軽く。</p>
-      </section>
-
-      <!-- 勉強も暮らしも -->
-      <section class="kuSection alt">
-        <h2 class="kuTitle">勉強も、暮らしも。</h2>
-        <div class="featGrid">
-          <div class="featItem"><h3>個室にロフトベッド＋勉強机</h3><p>眠る場所と勉強する場所を分けられる、集中できる自分の部屋。</p></div>
-          <div class="featItem"><h3>広いリビングと揃ったキッチン</h3><p>自炊で食費を抑えつつ、誰かと食卓を囲める。ひとりで抱え込まない暮らし。</p></div>
-          <div class="featItem"><h3>屋上でBBQ・プール</h3><p>授業や研究の合間の息抜き。摩耶山・六甲もすぐそば。</p></div>
-          <div class="featItem"><h3>世界中の住人と国際交流</h3><p>国際色ゆたかな神大と相性よく、英語を使う機会も日常に。「国内留学」感覚で。</p></div>
-        </div>
-      </section>
-
-      <!-- 保護者の方へ -->
-      <section class="kuSection parents">
-        <h2 class="kuTitle">保護者の方へ</h2>
+      <!-- ⑥ 保護者の方へ -->
+      <section class="sec secParents">
+        <p class="secKicker">FOR PARENTS</p>
+        <h2 class="secTitle">保護者の方へ</h2>
         <p>
-          はじめての一人暮らしでも安心して送り出していただけるよう——連帯保証人は原則不要、初期費用は計5万円、家具家電も付いています。管理者が常に住人とつながり、困りごとにはすぐ対応します。内見時にはリビングでゆっくりお話しし、どんな暮らしかを実際に見ていただけます。
+          はじめての一人暮らしでも安心して送り出していただけるよう——連帯保証人は原則不要、初期費用は計5万円、家具家電も付いています。管理者が常に住人とつながり、困りごとにはすぐ対応します。内見時にはリビングでゆっくりお話しし、どんな暮らしかを実際に見ていただけます。保護者の方だけでの見学、オンラインでのご相談も歓迎です。
         </p>
       </section>
 
-      <!-- FAQ -->
-      <section class="kuSection">
-        <h2 class="kuTitle">よくある質問</h2>
+      <!-- ⑦ FAQ -->
+      <section class="sec">
+        <p class="secKicker">FAQ</p>
+        <h2 class="secTitle">よくある質問</h2>
         <div class="faqList">
           {faqs.map((f) => (
             <details class="faqItem">
@@ -181,105 +335,269 @@ const jsonLd = {
         </div>
       </section>
 
-      <!-- 関連ブログ -->
-      {relatedPosts.length > 0 && (
-        <section class="kuSection alt">
-          <h2 class="kuTitle">神大生の暮らし、もっと読む</h2>
-          <div class="grid">
-            {relatedPosts.map((post) => (
-              <a class="card linkCard" href={`/blog/${post.id}/`}>
-                {post.img && <img src={post.img} alt={post.title} class="cardThumb" />}
-                <div class="cardBody"><h3>{post.title}</h3></div>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
+      <!-- ⑧ 申し込みフォーム（ページ内完結） -->
+      <section class="sec secEntry" id="entry">
+        <h2 class="entryTitle">まずは、見に来てください。</h2>
+        <p class="entryLead">
+          気になったら一度、遊びに来てメンバーと話すだけでも大歓迎です。空き状況や部屋ごとの家賃も、その場でお伝えします。満室のときは「空き待ち」としてお受けし、空室が出た際に優先してご案内します。
+        </p>
 
-      <!-- 最終CTA -->
-      <section class="kuFinal">
-        <h2>まずは、見に来てください。</h2>
-        <p>気になったら一度、遊びに来てメンバーと話すだけでも大歓迎です。今のお部屋の空き状況はお問い合わせください。満室のときは空き待ち登録を。</p>
-        <div class="kuActions center">
-          <a class="cta" href="/contact">内見・お問い合わせ</a>
-          <a class="ctaGhost" href="/waitlist">空き待ち登録</a>
+        <form class="form" id="lp-form" action="https://formspree.io/f/mojkgzdz" method="POST">
+          <input type="hidden" name="lp" value="kobe-university" />
+
+          <div class="field">
+            <label for="lp-name">お名前<span class="req">必須</span></label>
+            <input type="text" id="lp-name" name="name" required placeholder="山田 太郎" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="lp-email">メールアドレス<span class="req">必須</span></label>
+            <input type="email" id="lp-email" name="email" required placeholder="example@email.com" autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="lp-kind">ご希望</label>
+            <select id="lp-kind" name="kind">
+              <option value="見学希望">見学したい</option>
+              <option value="オンライン相談">まずオンラインで相談したい</option>
+              <option value="空き待ち登録">空き待ちに登録したい</option>
+              <option value="質問のみ">質問だけしたい</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="lp-status">今の状況</label>
+            <select id="lp-status" name="status">
+              <option value="神戸大学の在学生">神戸大学の在学生</option>
+              <option value="神戸大学の受験生・受験予定">神戸大学の受験生・受験予定</option>
+              <option value="保護者">保護者</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="lp-message">ご希望の日程・ご質問</label>
+            <textarea id="lp-message" name="message" placeholder="「今週末に見学したい」「4月から入居できますか」など、お気軽にどうぞ。"></textarea>
+          </div>
+
+          <button class="btn btnPrimary btnLg btnBlock" type="submit">この内容で送信する</button>
+          <p class="formNote">通常1〜2日以内にご返信します。しつこい営業の連絡はしません。</p>
+        </form>
+
+        <div class="done" id="lp-done" hidden>
+          <strong>送信しました。ありがとうございます。</strong>
+          <p>内容を確認のうえ、こちらからご連絡します。しばらくお待ちください。</p>
         </div>
       </section>
     </main>
 
-    <Footer />
+    <footer class="lpFoot">
+      <p>The Headquarters Kobe（兵庫県神戸市灘区）／ 運営：Hoshino and Company LLC</p>
+      <p class="copy">&copy; 2026 Hoshino and Company LLC</p>
+    </footer>
+
+    <!-- モバイル用の追従CTA -->
+    <div class="stickyCta">
+      <a class="btn btnPrimary btnBlock" href="#entry">見学を申し込む（無料）</a>
+    </div>
+
+    <script>
+      const form = document.getElementById('lp-form');
+      const done = document.getElementById('lp-done');
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = '送信中…'; }
+
+        const data = new FormData(form);
+        // 流入元（gclid / utm / referrer）を添付する。BaseHead が localStorage に保存している。
+        try {
+          const a = JSON.parse(localStorage.getItem('hq_attr') || '{}');
+          ['gclid','utm_source','utm_medium','utm_campaign','utm_term','utm_content','first_referrer','first_landing'].forEach((k) => {
+            if (a[k]) data.set(k, a[k]);
+          });
+          data.set('page_url', location.href);
+        } catch (err) {}
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { Accept: 'application/json' },
+          });
+          if (res.ok) {
+            form.hidden = true;
+            if (done) done.hidden = false;
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'contact_submit', { event_category: 'conversion', event_label: 'kobe-university-lp' });
+            }
+            document.getElementById('entry')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            throw new Error('bad response');
+          }
+        } catch (err) {
+          if (btn) { btn.disabled = false; btn.textContent = 'この内容で送信する'; }
+          alert('送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+        }
+      });
+    </script>
   </body>
 </html>
 
 <style>
-  .kuHero { position: relative; }
-  .kuHeroImg {
-    width: 100%; display: block;
-    aspect-ratio: 1189 / 438; object-fit: cover; object-position: center;
-    filter: brightness(0.72);
+  /* ---------- 基本 ---------- */
+  .lp { margin: 0; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px 40px; }
+
+  .btn {
+    display: inline-block; border: 0; border-radius: 999px; cursor: pointer;
+    font-family: inherit; font-weight: 700; text-decoration: none; text-align: center;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
   }
-  .kuHeroText {
-    position: absolute; inset: 0; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
-    padding: 24px; color: #fff;
-  }
-  .kuKicker { margin: 0 0 12px; letter-spacing: .14em; font-size: 12px; color: rgba(255,255,255,.85); }
-  .kuHeroText h1 { margin: 0 0 16px; color: #fff; font-size: clamp(30px, 5vw, 52px); line-height: 1.12; text-shadow: 0 6px 24px rgba(0,0,0,.55); }
-  .kuLead { margin: 0 auto 22px; max-width: 60ch; font-size: clamp(15px, 2.2vw, 18px); color: rgba(255,255,255,.92); text-shadow: 0 2px 12px rgba(0,0,0,.4); }
-  .kuActions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .kuActions.center { justify-content: center; }
-  .cta, .ctaGhost { display: inline-block; padding: 13px 22px; border-radius: 12px; text-decoration: none; font-weight: 700; }
-  .cta { background: var(--accent); color: #fff; }
-  .cta:hover { filter: brightness(1.08); }
-  .ctaGhost { border: 2px solid rgba(255,255,255,.85); color: #fff; background: rgba(0,0,0,.2); }
-  .kuMain { max-width: 1080px; margin: 0 auto; padding: 8px 24px 24px; }
+  .btnPrimary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(35,55,255,.28); }
+  .btnPrimary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btnSm { padding: 8px 16px; font-size: 13px; }
+  .btnLg { padding: 16px 34px; font-size: 17px; }
+  .btnBlock { display: block; width: 100%; }
 
-  .kuSection { padding: 40px 28px; margin-top: 28px; border-radius: 24px; }
-  .kuSection.alt { background: linear-gradient(180deg, rgba(var(--gray-light), .6), rgba(var(--gray-light), .2)); }
-  .kuSection.parents { background: #f0fdf4; border: 1px solid #bbf7d0; }
-  .kuTitle { margin: 0 0 14px; font-size: clamp(20px, 3vw, 26px); }
-  .kuIntro { margin: 0 0 22px; color: rgb(var(--gray-dark)); max-width: 68ch; }
+  /* ---------- ヘッダー ---------- */
+  .lpBar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgb(var(--gray-light)); }
+  .lpBarInner { max-width: 1000px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .lpBrand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 14px; color: rgb(var(--gray-dark)); }
+  .lpBrand img { border-radius: 6px; }
 
-  .threeGrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-  .threeCard { background: #fff; border-radius: 16px; padding: 22px 20px; box-shadow: var(--box-shadow); }
-  .threeIcon { font-size: 30px; }
-  .threeCard h3 { margin: 8px 0; font-size: 17px; }
-  .threeCard p { margin: 0; font-size: 14px; color: rgb(var(--gray)); line-height: 1.65; }
+  /* ---------- ヒーロー ---------- */
+  .hero { position: relative; }
+  .heroImg { width: 100%; display: block; height: clamp(420px, 62vh, 620px); object-fit: cover; object-position: center; filter: brightness(.6); }
+  .heroInner { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; color: #fff; }
+  .kicker { margin: 0 0 14px; letter-spacing: .18em; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.9); }
+  .heroInner h1 { margin: 0 0 18px; color: #fff; font-size: clamp(32px, 5.6vw, 58px); line-height: 1.1; text-shadow: 0 6px 28px rgba(0,0,0,.5); }
+  .heroLead { margin: 0 auto 30px; max-width: 62ch; font-size: clamp(15px, 2.1vw, 18px); line-height: 1.85; color: rgba(255,255,255,.95); text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+  .heroNote { margin: 14px 0 0; font-size: 12.5px; color: rgba(255,255,255,.85); }
 
-  .kuQuote { margin: 22px 0 0; padding: 16px 20px; background: #fff; border-left: 4px solid var(--accent); border-radius: 8px; font-size: 15px; line-height: 1.7; box-shadow: var(--box-shadow); }
-  .kuQuote cite { display: block; margin-top: 8px; font-size: 13px; color: rgb(var(--gray)); font-style: normal; }
-  .quoteGrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-  .kuLink { display: inline-block; margin-top: 18px; font-weight: 700; color: var(--accent); text-decoration: none; }
-  .kuLink:hover { text-decoration: underline; }
+  /* ---------- 数値サマリー ---------- */
+  .stats { background: rgb(var(--gray-dark)); color: #fff; }
+  .statsInner { max-width: 1000px; margin: 0 auto; padding: 22px 20px; display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); }
+  .stat { text-align: center; }
+  .statNum { font-size: clamp(15px, 2vw, 19px); font-weight: 700; letter-spacing: .01em; }
+  .statCap { margin-top: 5px; font-size: 11.5px; color: rgba(255,255,255,.72); line-height: 1.5; }
 
-  .feeGrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-  .feeCard { background: #fff; border-radius: 16px; padding: 22px 20px; box-shadow: var(--box-shadow); }
-  .feeLabel { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; }
-  .feeMain { font-size: 19px; font-weight: 700; margin: 8px 0 8px; color: rgb(var(--gray-dark)); }
-  .feeSub { font-size: 13.5px; color: rgb(var(--gray)); line-height: 1.65; }
-  .kuNote { margin: 18px 0 0; font-size: 14px; color: rgb(var(--gray)); }
+  /* ---------- セクション ---------- */
+  .sec { padding: 56px 30px; margin-top: 26px; border-radius: 24px; }
+  .sec.secAlt { background: linear-gradient(180deg, rgba(var(--gray-light), .55), rgba(var(--gray-light), .18)); }
+  .sec.secParents { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .secKicker { margin: 0 0 8px; font-size: 11px; font-weight: 700; letter-spacing: .16em; color: var(--accent); }
+  .secTitle { margin: 0 0 16px; font-size: clamp(21px, 3.2vw, 30px); line-height: 1.4; }
+  .secLead { margin: 0 0 28px; max-width: 66ch; color: rgb(var(--gray-dark)); line-height: 1.9; font-size: 15px; }
+  .brSp { display: none; }
 
-  .featGrid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .featItem { background: #fff; border-radius: 14px; padding: 18px 20px; box-shadow: var(--box-shadow); }
-  .featItem h3 { margin: 0 0 6px; font-size: 16px; }
-  .featItem p { margin: 0; font-size: 14px; color: rgb(var(--gray)); line-height: 1.6; }
+  /* ---------- 図版 ---------- */
+  .fig { margin: 0 0 28px; }
+  .figSvg { width: 100%; height: auto; display: block; }
+  .fig figcaption { margin-top: 12px; font-size: 12.5px; color: rgb(var(--gray)); line-height: 1.7; }
 
+  .ln { stroke: #c3cadd; stroke-width: 2; stroke-dasharray: 5 5; }
+  .node { fill: #fff; stroke: #d7dcea; stroke-width: 1.5; }
+  .tNode { font-size: 15px; font-weight: 700; fill: #222939; text-anchor: middle; }
+  .tNodeSub { font-size: 11px; fill: #78839f; text-anchor: middle; }
+  .tHq { font-size: 15px; font-weight: 700; fill: #fff; text-anchor: middle; }
+  .tHqSub { font-size: 11px; fill: rgba(255,255,255,.85); text-anchor: middle; }
+  .tEdge { font-size: 12.5px; fill: #60739f; }
+  .tEdgeStrong { font-size: 13.5px; font-weight: 700; fill: #2337ff; }
+
+  .lane { fill: #fff; stroke: #e3e7f2; stroke-width: 1.5; }
+  .lane.laneBest { stroke: #2337ff; stroke-width: 2; }
+  .pill { fill: #2337ff; }
+  .tPill { font-size: 11px; font-weight: 700; fill: #fff; text-anchor: middle; }
+  .tFare { font-size: 17px; font-weight: 700; fill: #2337ff; }
+  .tFare.tFareSub { fill: #60739f; }
+  .route { stroke: #d7dcea; stroke-width: 3; }
+  .route.routeBest { stroke: #2337ff; }
+  .dot { fill: #fff; stroke: #b9c1d8; stroke-width: 3; }
+  .dot.dotBest { stroke: #2337ff; }
+  .tStop { font-size: 12px; font-weight: 700; fill: #222939; text-anchor: middle; }
+  .tSeg { font-size: 11px; fill: #78839f; text-anchor: middle; }
+
+  .tSecLabel { font-size: 13px; font-weight: 700; fill: #60739f; }
+  .tTotal { font-size: 19px; font-weight: 700; fill: #222939; }
+  .tBar { font-size: 14px; font-weight: 700; fill: #fff; text-anchor: middle; }
+  .tBarSm { font-size: 12px; font-weight: 700; fill: #fff; text-anchor: middle; }
+  .tBarDark { font-size: 13px; font-weight: 700; fill: #1c2547; text-anchor: middle; }
+  .tBarDarkSm { font-size: 10.5px; fill: #4a5477; text-anchor: middle; }
+  .tUnder { font-size: 11px; fill: #78839f; text-anchor: middle; }
+  .tNote { font-size: 11px; fill: #78839f; }
+  .tick { stroke: #fff; stroke-width: 2; stroke-dasharray: 4 4; }
+  .tZero { font-size: 12.5px; font-weight: 700; fill: #16794a; }
+
+  /* ---------- カード ---------- */
+  .grid3 { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
+  .grid2 { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+  .grid4 { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+  .card { background: #fff; border-radius: 16px; padding: 24px 22px; box-shadow: var(--box-shadow); }
+  .card h3 { margin: 0 0 10px; font-size: 17px; }
+  .card p { margin: 0; font-size: 14px; color: rgb(var(--gray)); line-height: 1.85; }
+  .feat { background: #fff; border-radius: 14px; padding: 20px 22px; box-shadow: var(--box-shadow); }
+  .feat h3 { margin: 0 0 6px; font-size: 15.5px; }
+  .feat p { margin: 0; font-size: 13.5px; color: rgb(var(--gray)); line-height: 1.8; }
+
+  .quote { margin: 24px 0 0; padding: 20px 24px; background: #fff; border-left: 4px solid var(--accent); border-radius: 10px; font-size: 15px; line-height: 1.95; box-shadow: var(--box-shadow); }
+  .grid2 .quote { margin: 0; }
+  .quote cite { display: block; margin-top: 12px; font-size: 12.5px; color: rgb(var(--gray)); font-style: normal; }
+
+  .photoRow { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); margin-bottom: 22px; }
+  .photoRow img { width: 100%; height: 190px; object-fit: cover; border-radius: 14px; display: block; }
+
+  /* ---------- FAQ ---------- */
   .faqList { display: grid; gap: 10px; }
-  .faqItem { background: #fff; border-radius: 12px; padding: 4px 20px; box-shadow: var(--box-shadow); }
-  .faqItem summary { cursor: pointer; padding: 14px 0; font-weight: 700; font-size: 15px; }
-  .faqItem p { margin: 0 0 14px; font-size: 14px; color: rgb(var(--gray)); line-height: 1.7; }
+  .faqItem { background: #fff; border-radius: 12px; padding: 2px 22px; box-shadow: var(--box-shadow); }
+  .faqItem summary { cursor: pointer; padding: 16px 0; font-weight: 700; font-size: 15px; }
+  .faqItem p { margin: 0 0 16px; font-size: 14px; color: rgb(var(--gray)); line-height: 1.9; }
 
-  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--box-shadow); }
-  .cardThumb { width: 100%; height: 150px; object-fit: cover; display: block; }
-  .cardBody { padding: 14px 18px; }
-  .cardBody h3 { font-size: 14px; margin: 0; line-height: 1.5; }
-  .linkCard { text-decoration: none; color: inherit; transition: transform .15s ease, box-shadow .15s ease; }
-  .linkCard:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+  /* ---------- フォーム ---------- */
+  .secEntry { background: linear-gradient(160deg, #eef1ff, #f7f8fc); border: 1px solid #d9deff; scroll-margin-top: 70px; }
+  .entryTitle { margin: 0 0 12px; font-size: clamp(23px, 3.6vw, 32px); text-align: center; }
+  .entryLead { margin: 0 auto 32px; max-width: 60ch; text-align: center; color: rgb(var(--gray-dark)); font-size: 14.5px; line-height: 1.9; }
+  .form { max-width: 560px; margin: 0 auto; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-weight: 700; font-size: 13.5px; margin-bottom: 7px; }
+  .req { color: #e0245e; font-size: 11px; margin-left: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; box-sizing: border-box; padding: 13px 14px; font-size: 15px; font-family: inherit;
+    border: 1px solid #ccd3e6; border-radius: 10px; background: #fff; transition: border-color .15s, box-shadow .15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(35,55,255,.12); }
+  .field textarea { min-height: 130px; resize: vertical; }
+  .formNote { margin: 14px 0 0; text-align: center; font-size: 12.5px; color: rgb(var(--gray)); }
+  .done { max-width: 560px; margin: 0 auto; padding: 28px 26px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 14px; color: #14532d; text-align: center; }
+  .done p { margin: 10px 0 0; font-size: 14px; line-height: 1.8; }
 
-  .kuFinal { margin-top: 28px; padding: 48px 28px; border-radius: 24px; text-align: center; background: linear-gradient(135deg, rgba(var(--accent-rgb, 51,85,204), .1), rgba(var(--gray-light), .5)); }
-  .kuFinal h2 { margin: 0 0 12px; font-size: clamp(22px, 3.4vw, 30px); }
-  .kuFinal p { margin: 0 auto 22px; max-width: 60ch; color: rgb(var(--gray-dark)); }
-  .kuFinal .cta { background: var(--accent); }
-  .kuFinal .ctaGhost { border-color: rgba(var(--gray), 45%); color: rgb(var(--gray-dark)); background: #fff; }
+  /* ---------- フッター ---------- */
+  .lpFoot { margin-top: 40px; padding: 30px 20px 34px; background: rgb(var(--gray-dark)); color: rgba(255,255,255,.8); text-align: center; font-size: 12.5px; line-height: 1.9; }
+  .lpFoot p { margin: 0; }
+  .lpFoot .copy { margin-top: 6px; color: rgba(255,255,255,.5); font-size: 11.5px; }
+
+  /* ---------- 追従CTA（モバイル） ---------- */
+  .stickyCta { display: none; }
+
+  /* ---------- レスポンシブ ---------- */
+  @media (max-width: 900px) {
+    .grid3, .grid2, .photoRow { grid-template-columns: 1fr; }
+    .statsInner { grid-template-columns: repeat(2, 1fr); }
+    .photoRow img { height: 210px; }
+  }
+  @media (max-width: 720px) {
+    .wrap { padding: 0 14px 40px; }
+    .sec { padding: 40px 20px; border-radius: 18px; }
+    .grid4 { grid-template-columns: 1fr; }
+    .brSp { display: inline; }
+    .lpBrand span:last-child { display: none; }
+    .lpFoot { padding-bottom: 96px; }
+    .stickyCta {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-top: 1px solid rgb(var(--gray-light));
+    }
+    .stickyCta .btn { padding: 15px 20px; font-size: 16px; }
+  }
 </style>

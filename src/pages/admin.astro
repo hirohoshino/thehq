@@ -205,6 +205,25 @@
         <div class="msg" id="rent-msg"></div>
       </div>
 
+      <!-- BBQ LP 公開スイッチ -->
+      <div class="card">
+        <h2>BBQ LP「天空の貸切バーベキュー場」</h2>
+        <p style="font-size:0.85em;color:#666">
+          屋上BBQの集客ページ <a href="/bbq/" target="_blank" rel="noopener">/bbq/</a> の公開・停止を切り替えます。タップして「保存」で<strong>即時反映</strong>されます（空室状況と同じ方式・再ビルド不要）。停止中は「受付停止中」ページが表示されます。
+        </p>
+        <div class="rooms-grid" id="bbq-toggles"></div>
+        <p style="font-size:0.8em;color:#999;margin-top:-0.2em">
+          ※「検索エンジンに載せる」がOFFの間は noindex で配信されます（広告・SNS流入のみ）。数字を見てから解禁する運用です。
+        </p>
+        <label for="bbq-message">停止中に表示する補足メッセージ（任意）</label>
+        <input type="text" id="bbq-message" placeholder="例: 8月中旬から再開予定です" />
+        <div class="row" style="margin-top:0.8em">
+          <button id="save-bbq-btn">保存(即時反映)</button>
+          <span class="muted" id="bbq-updated"></span>
+        </div>
+        <div class="msg" id="bbq-msg"></div>
+      </div>
+
       <!-- 一斉通知 -->
       <div class="card">
         <h2>空き待ちリストへ通知</h2>
@@ -245,6 +264,12 @@
       const $ = (id: string) => document.getElementById(id) as any;
       let vacantSet = new Set<string>();
       let rentSha: string | null = null;
+      let bbqState: { enabled: boolean; indexable: boolean; suspendMessage: string; updatedAt: string | null } = {
+        enabled: false,
+        indexable: false,
+        suspendMessage: '',
+        updatedAt: null,
+      };
 
       const pw = () => localStorage.getItem('hq_admin_pw') || '';
       const headers = () => ({ Authorization: `Bearer ${pw()}`, 'Content-Type': 'application/json' });
@@ -329,12 +354,47 @@
         $('rent-updated').textContent = data.asOf ? `表示基準: ${data.asOf}` : '';
       }
 
+      const BBQ_SWITCHES = [
+        { key: 'enabled', label: 'LPを公開する', on: '公開中', off: '停止中' },
+        { key: 'indexable', label: '検索エンジンに載せる', on: '掲載', off: 'noindex' },
+      ];
+
+      function renderBbq() {
+        const grid = $('bbq-toggles');
+        grid.innerHTML = '';
+        for (const sw of BBQ_SWITCHES) {
+          const val = !!(bbqState as any)[sw.key];
+          const div = document.createElement('div');
+          div.className = 'room-toggle' + (val ? ' vacant' : '');
+          div.setAttribute('role', 'switch');
+          div.setAttribute('aria-checked', String(val));
+          div.innerHTML = `<span class="room-no" style="font-size:0.88em">${sw.label}</span><span class="state">${val ? sw.on : sw.off}</span><span class="switch"></span>`;
+          div.onclick = () => {
+            (bbqState as any)[sw.key] = !val;
+            renderBbq();
+          };
+          grid.appendChild(div);
+        }
+      }
+
+      async function loadBbq() {
+        const res = await fetch('/api/admin/bbq', { headers: headers() });
+        if (!res.ok) throw new Error('bbq_load_failed');
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || 'bbq_load_failed');
+        bbqState = { ...bbqState, ...data.state };
+        $('bbq-message').value = bbqState.suspendMessage || '';
+        $('bbq-updated').textContent = bbqState.updatedAt ? `最終更新: ${fmtDate(bbqState.updatedAt)}` : '';
+        renderBbq();
+      }
+
       async function enterPanel() {
         try {
           await loadWaitlist();
           await loadStatus();
           $('login-card').classList.add('hidden');
           $('panel').classList.remove('hidden');
+          loadBbq().catch((e) => showMsg('bbq-msg', `BBQ LPの状態を読み込めませんでした: ${e.message}`, false));
           loadRent().catch((e) =>
             showMsg('rent-msg', `家賃データの読込に失敗しました（GITHUB_TOKEN未設定の可能性）: ${e.message}`, false)
           );
@@ -400,6 +460,40 @@
           }
         } catch (e: any) {
           showMsg('rent-msg', `保存に失敗しました: ${e.message}`, false);
+        }
+        btn.disabled = false;
+      };
+
+      $('save-bbq-btn').onclick = async () => {
+        const btn = $('save-bbq-btn');
+        btn.disabled = true;
+        try {
+          const res = await fetch('/api/admin/bbq', {
+            method: 'POST',
+            headers: headers(),
+            body: JSON.stringify({
+              enabled: bbqState.enabled,
+              indexable: bbqState.indexable,
+              suspendMessage: $('bbq-message').value,
+            }),
+          });
+          const data = await res.json();
+          if (res.ok && data.ok) {
+            bbqState = { ...bbqState, ...data.state };
+            $('bbq-updated').textContent = `最終更新: ${fmtDate(data.state.updatedAt)}`;
+            showMsg(
+              'bbq-msg',
+              bbqState.enabled
+                ? `公開中です（検索エンジン: ${bbqState.indexable ? '掲載' : 'noindex'}）。/bbq/ に即時反映されています。`
+                : '停止しました。/bbq/ は「受付停止中」ページを表示します。',
+              true
+            );
+            renderBbq();
+          } else {
+            showMsg('bbq-msg', `保存に失敗しました: ${data.error || res.status}`, false);
+          }
+        } catch (e: any) {
+          showMsg('bbq-msg', `保存に失敗しました: ${e.message}`, false);
         }
         btn.disabled = false;
       };

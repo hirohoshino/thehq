@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>天空の貸切バーベキュー場｜ザ・テラス水道筋（神戸・三宮から10分）</title>
+<meta name="description" content="神戸・水道筋商店街の屋上にある「天空の貸切バーベキュー場」。65㎡のプライベートテラスを1組貸切、六甲山と街の灯りを眺めながら手ぶらBBQ。食材・ドリンク持ち込み自由、片付け・ゴミ捨ておまかせ。三宮から約10分。">
+<meta name="theme-color" content="#0d0f12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="天空の貸切バーベキュー場｜ザ・テラス水道筋（神戸・三宮から10分）">
+<meta property="og:description" content="水道筋商店街の空の上、天空の貸切バーベキュー場。65㎡の屋上を1組貸切、持ち込み自由・片付けおまかせ。">
+<meta property="og:image" content="https://theheadquarters.jp/bbq/img/hero-night.jpg">
+<meta property="og:url" content="https://theheadquarters.jp/bbq/">
+<meta property="og:site_name" content="ザ・テラス水道筋">
+<link rel="canonical" href="https://theheadquarters.jp/bbq/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ===================== Google Analytics 4 ===================== -->
+<script>
+/* ▼ 計測ID。既存 theheadquarters.jp と同じプロパティに送信 ▼ */
+var GA4_ID = "G-VSH7Z981XF";
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+(function(){
+  if(!/^G-[A-Z0-9]+$/.test(GA4_ID)) return;
+  var s=document.createElement('script'); s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id='+GA4_ID;
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', GA4_ID, {page_title:'BBQ LP｜ザ・テラス水道筋'});
+})();
+</script>
+<!-- =============================================================== -->
+<style>
+:root{
+  --bg:#0c0e11; --bg2:#12151a; --panel:#161a20; --line:#262b33;
+  --ink:#ece8e1; --ink2:#a6abb4; --ink3:#767c86;
+  --gold:#d7a54a; --gold-soft:#e9c37e;
+  --serif:'Noto Serif JP',"Hiragino Mincho ProN",serif;
+  --sans:'Zen Kaku Gothic New',"Hiragino Sans","Noto Sans JP",sans-serif;
+  --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.9;
+  font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:.02em}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.narrow{max-width:800px;margin:0 auto}
+
+/* ---------- header ---------- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:60;padding:16px 0;
+  transition:background .4s,backdrop-filter .4s,padding .4s;}
+.hdr.scrolled{background:rgba(10,12,15,.86);backdrop-filter:blur(14px);padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.06)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--serif);font-size:17px;letter-spacing:.16em;line-height:1.3}
+.logo small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.34em;color:var(--gold);margin-top:3px}
+.nav{display:flex;gap:26px;font-size:13px;color:var(--ink2);letter-spacing:.08em}
+.nav a:hover{color:var(--gold-soft)}
+@media(max-width:900px){.nav{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:linear-gradient(135deg,#d7a54a,#c08b2e);color:#17130a;font-weight:700;
+  padding:13px 26px;border-radius:999px;font-size:14px;letter-spacing:.06em;
+  box-shadow:0 8px 26px rgba(215,165,74,.24);transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(215,165,74,.36)}
+.btn.lg{padding:19px 46px;font-size:16.5px}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.24);box-shadow:none;font-weight:500}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold-soft)}
+.hdr .btn{padding:11px 22px;font-size:13px}
+@media(max-width:560px){.hdr .btn{padding:10px 16px;font-size:12px}.logo{font-size:15px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('./img/hero-night.jpg') center 52%/cover no-repeat;
+  filter:brightness(1.16) contrast(1.06) saturate(1.06);
+  transform:scale(1.06);animation:kb 22s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+/* 写真をしっかり見せる：上半分は素のまま、テキスト帯だけ下から暗くする */
+.hero::after{content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(6,8,11,.6) 0%,rgba(6,8,11,.1) 16%,rgba(6,8,11,0) 32%,rgba(6,8,11,.5) 56%,rgba(8,10,13,.88) 80%,rgba(12,14,17,1) 100%),
+    linear-gradient(90deg,rgba(6,8,11,.66) 0%,rgba(6,8,11,.3) 40%,rgba(6,8,11,0) 70%)}
+.hero .wrap{position:relative;z-index:3;padding-top:130px;padding-bottom:66px;width:100%}
+.eyebrow{font-size:11.5px;letter-spacing:.34em;color:#f3dda9;margin-bottom:24px;
+  display:flex;align-items:center;gap:14px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 16px rgba(0,0,0,.85)}
+.eyebrow::before{content:"";width:38px;height:1px;background:var(--gold);opacity:.85;
+  box-shadow:0 0 6px rgba(0,0,0,.8);flex:none}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(34px,5.7vw,64px);line-height:1.26;
+  letter-spacing:.07em;text-shadow:0 2px 30px rgba(0,0,0,.75),0 0 60px rgba(0,0,0,.5)}
+.hero h1 .brk{display:none}
+.hero h1 em{font-style:normal;display:block;
+  color:#f7e5bb;text-shadow:0 2px 4px rgba(0,0,0,.85),0 4px 26px rgba(0,0,0,.8),0 0 70px rgba(0,0,0,.6)}
+.hero h1 .h1sub{display:block;font-size:clamp(17px,2.3vw,26px);font-weight:600;letter-spacing:.05em;
+  line-height:1.6;margin-top:16px;color:#f0ece4;text-shadow:0 2px 18px rgba(0,0,0,.85)}
+.hero p.lead{margin-top:24px;max-width:540px;color:#d8d4cc;font-size:clamp(14px,1.6vw,16.5px);line-height:1.95;
+  text-shadow:0 1px 16px rgba(0,0,0,.8)}
+.hero-cta{margin-top:36px;display:flex;gap:12px 26px;flex-wrap:wrap;align-items:center}
+.textlink{font-size:13.5px;letter-spacing:.06em;color:var(--gold-soft);
+  border-bottom:1px solid rgba(233,195,126,.35);padding-bottom:3px;transition:color .3s,border-color .3s}
+.textlink::after{content:" →"}
+.textlink:hover{color:#fff;border-color:#fff}
+.hero-meta{margin-top:44px;display:flex;flex-wrap:wrap;gap:14px 30px;font-size:12.5px;color:#b8bcc3;letter-spacing:.06em}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta i{width:5px;height:5px;border-radius:50%;background:var(--gold);display:block}
+.scrollhint{position:absolute;bottom:24px;right:26px;z-index:4;
+  font-size:9.5px;letter-spacing:.3em;color:#8f949c;display:flex;flex-direction:column;align-items:center;gap:9px}
+.scrollhint::after{content:"";width:1px;height:44px;background:linear-gradient(180deg,var(--gold),transparent);animation:sd 2.2s ease-in-out infinite}
+@keyframes sd{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+@media(max-width:700px){
+  .scrollhint{display:none}
+  .hero{min-height:96svh}
+  .hero .wrap{padding-top:0;padding-bottom:40px}
+  .hero::after{background:linear-gradient(180deg,rgba(6,8,11,.6) 0%,rgba(6,8,11,.08) 12%,rgba(6,8,11,0) 26%,rgba(6,8,11,.42) 40%,rgba(6,8,11,.82) 52%,rgba(8,10,13,.94) 64%,rgba(12,14,17,1) 100%)}
+  .hero-bg{background-image:url('./img/hero-night-sp.jpg');background-position:50% 42%;
+    filter:brightness(1.06) contrast(1.05) saturate(1.04)}
+  .hero h1{font-size:clamp(31px,8.6vw,41px);line-height:1.3;letter-spacing:.04em}
+  .hero h1 .brk{display:block;height:0}
+  .hero h1 .h1sub{font-size:14.5px;margin-top:12px;line-height:1.7}
+  .hero p.lead{font-size:13.5px;line-height:1.9;margin-top:20px}
+  .hero-cta{margin-top:28px;gap:16px;flex-direction:column;align-items:flex-start}
+  .hero-cta .btn.lg{padding:15px 30px;font-size:14.5px;width:auto}
+  .hero-meta{margin-top:28px;gap:9px 18px;font-size:11px}
+  .eyebrow{margin-bottom:16px;font-size:10px;letter-spacing:.16em}
+  .eyebrow::before{width:22px}
+  .hdr .btn{padding:9px 15px;font-size:11.5px}
+  .sec{padding:74px 0}
+  .sec-head{margin-bottom:38px}
+}
+
+/* ---------- sections ---------- */
+section{position:relative}
+.sec{padding:110px 0}
+.sec.tight{padding:82px 0}
+.sec.alt{background:var(--bg2)}
+.sec-head{margin-bottom:56px}
+.sec-head .kicker{font-size:11px;letter-spacing:.38em;color:var(--gold);margin-bottom:18px;display:block}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(23px,3.4vw,36px);line-height:1.58;letter-spacing:.045em}
+.sec-head p{margin-top:20px;color:var(--ink2);font-size:15px;line-height:2.05;max-width:660px}
+.center{text-align:center}
+.center .sec-head p{margin-left:auto;margin-right:auto}
+.center .sec-head .kicker{display:block}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- value ---------- */
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:880px){.vals{grid-template-columns:1fr}}
+.val{background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  transition:transform .5s,border-color .5s}
+.val:hover{transform:translateY(-5px);border-color:rgba(215,165,74,.4)}
+.val figure{aspect-ratio:4/3;overflow:hidden}
+.val img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s}
+.val:hover img{transform:scale(1.06)}
+.val .body{padding:30px 26px 34px}
+.val .no{font-family:var(--serif);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:14px}
+.val h3{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.65;letter-spacing:.04em;margin-bottom:14px}
+.val p{color:var(--ink2);font-size:14px;line-height:2.05}
+
+/* ---------- split ---------- */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.split.rev{direction:rtl}.split.rev>*{direction:ltr}
+@media(max-width:880px){.split{grid-template-columns:1fr;gap:36px;direction:ltr}}
+.split figure{position:relative;border-radius:4px;overflow:hidden}
+.split figure img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.split h3{font-family:var(--serif);font-size:clamp(20px,2.6vw,28px);font-weight:600;line-height:1.65;letter-spacing:.045em;margin-bottom:22px}
+.split p{color:var(--ink2);font-size:15px;line-height:2.1}
+.split p + p{margin-top:18px}
+.tagline{font-size:11px;letter-spacing:.34em;color:var(--gold);margin-bottom:16px;display:block}
+
+/* ---------- gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gal figure{overflow:hidden;cursor:zoom-in;position:relative;background:#000}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1s,opacity .4s}
+.gal figure:hover img{transform:scale(1.07);opacity:.86}
+.gal .w2{grid-column:span 2}
+.gal .h2{grid-row:span 2}
+.gal figure{aspect-ratio:1/1}
+.gal figure.w2{aspect-ratio:2/1}
+.gal figure.h2{aspect-ratio:1/2}
+.gal figure.w2.h2{aspect-ratio:1/1}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr)}
+ .gal .h2{grid-row:span 1}.gal figure.h2{aspect-ratio:1/1}.gal figure.w2.h2{aspect-ratio:2/1}}
+
+/* ---------- scenes ---------- */
+.scenes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:900px){.scenes{grid-template-columns:repeat(2,1fr)}}
+.scene{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:3px}
+.scene img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s}
+.scene:hover img{transform:scale(1.07)}
+.scene span{position:absolute;left:0;right:0;bottom:0;padding:56px 18px 20px;z-index:2;
+  background:linear-gradient(180deg,transparent,rgba(6,8,10,.9));
+  font-family:var(--serif);font-size:15px;letter-spacing:.06em;line-height:1.6}
+
+/* ---------- spec ---------- */
+.spec{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+@media(max-width:820px){.spec{grid-template-columns:1fr;gap:0}}
+.spec dl{display:flex;border-bottom:1px solid var(--line);padding:17px 0;gap:18px;font-size:14.5px}
+.spec dt{width:96px;flex:none;color:var(--gold);letter-spacing:.09em;font-size:13px;padding-top:1px}
+.spec dd{color:var(--ink2);line-height:1.95}
+
+.kit{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+@media(max-width:820px){.kit{grid-template-columns:1fr}}
+.kit div{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--gold);
+  padding:20px 22px;border-radius:3px}
+.kit h4{font-size:13px;letter-spacing:.16em;color:var(--gold-soft);margin-bottom:11px;font-weight:700}
+.kit p{font-size:13.5px;color:var(--ink2);line-height:1.95}
+
+/* ---------- price ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+@media(max-width:960px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:32px 30px;position:relative}
+.plan.feat{border-color:rgba(215,165,74,.55);background:linear-gradient(160deg,rgba(215,165,74,.09),var(--panel) 55%)}
+.plan .badge{position:absolute;top:-11px;left:28px;background:var(--gold);color:#17130a;
+  font-size:10.5px;font-weight:700;letter-spacing:.16em;padding:5px 14px;border-radius:999px}
+.plan h3{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.05em;margin-bottom:6px}
+.plan .sub{font-size:12.5px;color:var(--ink3);margin-bottom:20px;letter-spacing:.05em}
+.plan .price{font-family:var(--serif);font-size:34px;color:var(--gold-soft);line-height:1.2;letter-spacing:.01em}
+.plan .price small{font-size:14px;color:var(--ink2);font-family:var(--sans);margin-left:4px;letter-spacing:.06em}
+.plan .note{margin-top:16px;font-size:13px;color:var(--ink2);line-height:1.95;border-top:1px solid var(--line);padding-top:16px}
+
+.opts{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:30px 30px 26px}
+.opts h4{font-family:var(--serif);font-size:17px;letter-spacing:.06em;margin-bottom:20px;font-weight:600}
+.opts ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+@media(max-width:760px){.opts ul{grid-template-columns:1fr}}
+.opts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--ink2)}
+.opts li b{color:var(--ink);font-weight:500;white-space:nowrap}
+.fineprint{margin-top:20px;font-size:12.5px;color:var(--ink3);line-height:1.95}
+
+/* ---------- reviews ---------- */
+.score{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center;margin-bottom:44px}
+.score .num{font-family:var(--serif);font-size:62px;color:var(--gold-soft);line-height:1}
+.score .stars{color:var(--gold);letter-spacing:.22em;font-size:19px}
+.score .cnt{font-size:12.5px;color:var(--ink3);letter-spacing:.1em;margin-top:6px}
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:880px){.revs{grid-template-columns:1fr}}
+.rev{background:var(--panel);border:1px solid var(--line);padding:28px 26px;border-radius:4px;font-size:14px;color:var(--ink2);line-height:2.05}
+.rev .st{color:var(--gold);letter-spacing:.2em;font-size:13px;margin-bottom:14px}
+.rev .who{margin-top:16px;font-size:12px;color:var(--ink3);letter-spacing:.06em}
+
+/* ---------- access ---------- */
+.access{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+@media(max-width:880px){.access{grid-template-columns:1fr;gap:34px}}
+.routes{list-style:none;margin-top:6px}
+.routes li{display:flex;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink2)}
+.routes li b{color:var(--gold-soft);font-weight:500;font-size:13.5px;letter-spacing:.06em;min-width:150px}
+.mapbox{border:1px solid var(--line);border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:var(--panel)}
+.mapbox iframe{width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05) brightness(.85)}
+.accessimgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.accessimgs img{aspect-ratio:4/3;object-fit:cover;border-radius:3px}
+
+/* ---------- rules / faq ---------- */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.rules{grid-template-columns:1fr}}
+.rulebox{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:28px 28px 24px}
+.rulebox h4{font-family:var(--serif);font-size:16.5px;letter-spacing:.06em;margin-bottom:16px;font-weight:600}
+.rulebox ul{list-style:none}
+.rulebox li{position:relative;padding-left:20px;font-size:13.5px;color:var(--ink2);line-height:1.95;margin-bottom:9px}
+.rulebox li::before{content:"";position:absolute;left:4px;top:12px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.8}
+.rulebox.warn{border-left:2px solid #b4553f}
+.rulebox.warn li::before{background:#c1674f}
+
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:22px 44px 22px 30px;position:relative;
+  font-size:15px;letter-spacing:.03em;transition:color .3s}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";position:absolute;left:0;top:22px;font-family:var(--serif);color:var(--gold);font-size:14px}
+.faq summary::after{content:"";position:absolute;right:12px;top:31px;width:9px;height:9px;
+  border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);transform:rotate(45deg);transition:transform .35s}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq summary:hover{color:var(--gold-soft)}
+.faq .a{padding:0 30px 26px 30px;color:var(--ink2);font-size:14px;line-height:2.1}
+
+/* ---------- final cta ---------- */
+.final{position:relative;padding:130px 0;overflow:hidden;text-align:center}
+.final-bg{position:absolute;inset:0;background:url('./img/party-lights.jpg') center 45%/cover no-repeat}
+.final::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,15,.9),rgba(10,12,15,.8))}
+.final .wrap{position:relative;z-index:3}
+.final h2{font-family:var(--serif);font-size:clamp(24px,4vw,40px);font-weight:600;line-height:1.6;letter-spacing:.05em}
+.final p{margin:26px auto 40px;max-width:600px;color:#cfcbc3;font-size:15px;line-height:2.1}
+.final .sm{margin-top:26px;font-size:12.5px;color:var(--ink3);letter-spacing:.04em;line-height:1.9}
+
+/* ---------- footer ---------- */
+footer{background:#07090b;padding:56px 0 120px;border-top:1px solid var(--line)}
+.f-in{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+footer .logo{margin-bottom:14px}
+footer p{font-size:12.5px;color:var(--ink3);line-height:2}
+.f-links{display:flex;gap:24px;font-size:12.5px;color:var(--ink3);flex-wrap:wrap}
+.f-links a:hover{color:var(--gold-soft)}
+.copy{margin-top:38px;font-size:11.5px;color:#4d525a;letter-spacing:.06em}
+
+/* ---------- sticky mobile cta ---------- */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(10,12,15,.94);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.08);
+  display:flex;gap:12px;align-items:center;transform:translateY(110%);transition:transform .45s}
+.sticky.show{transform:none}
+.sticky .txt{flex:1;min-width:0}
+.sticky .txt b{display:block;font-size:12.5px;letter-spacing:.05em}
+.sticky .txt span{font-size:10.5px;color:var(--ink3)}
+.sticky .btn{padding:13px 22px;font-size:13.5px}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(6,7,9,.96);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:94vw;max-height:88vh;object-fit:contain;border-radius:3px;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.lb .x{position:absolute;top:20px;right:26px;font-size:30px;color:#fff;opacity:.75;line-height:1}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);font-size:34px;color:#fff;opacity:.55;padding:20px;user-select:none}
+.lb .nav:hover{opacity:1}
+.lb .prev{left:6px}.lb .next{right:6px}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#top" class="logo">ザ・テラス水道筋<small>KOBE ROOFTOP TERRACE</small></a>
+    <nav class="nav">
+      <a href="#about">スペース</a>
+      <a href="#gallery">ギャラリー</a>
+      <a href="#equip">設備</a>
+      <a href="#price">料金</a>
+      <a href="#access">アクセス</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+    <a class="btn" data-cta="header" href="https://www.spacemarket.com/p/Ia69P0gMMJIJy1VO" target="_blank" rel="noopener">空き状況を見る</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow">神戸・水道筋商店街／屋上貸切テラス</span>
+    <h1><em>天空の貸切<b class="brk"></b>バーベキュー場</em><span class="h1sub">三宮から10分、屋上まるごと貸切。</span></h1>
+    <p class="lead">65㎡のプライベート屋上を、1組だけで。<br>
+      食材の持ち込み自由、片付けもおまかせ。</p>
+    <div class="hero-cta">
+      <a class="btn lg" data-cta="hero" href="https://www.spacemarket.com/p/Ia69P0gMMJIJy1VO" target="_blank" rel="noopener">空き状況・料金を見る</a>
+      <a class="textlink" href="#about">スペースの詳細を見る</a>
+    </div>
+    <div class="hero-meta">
+      <span><i></i>1組貸切・相席なし</span>
+      <span><i></i>食材・ドリンク持込自由</span>
+      <span><i></i>片付け／ゴミ捨ておまかせ</span>
+      <span><i></i>13名着席・最大18名</span>
+    </div>
+  </div>
+  <div class="scrollhint">SCROLL</div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="sec" id="about">
+  <div class="wrap narrow center rv">
+    <div class="sec-head">
+      <span class="kicker">CONCEPT</span>
+      <h2>「人目を気にせず、ゆっくり」が<br>いちばんのごちそう。</h2>
+      <p>混み合うBBQ場でも、煙の気になるベランダでもなく。
+        エレベーターで上がった先にあるのは、その日あなたたちだけの屋上です。
+        隣のグループの声も、時間に追われる感覚もありません。
+        肉が焼ける音と、商店街のざわめきが遠くに聞こえるだけ。
+        神戸の街の上で過ごす、少し贅沢な数時間をどうぞ。</p>
+    </div>
+  </div>
+
+  <div class="wrap rv" style="margin-top:20px">
+    <div class="vals">
+      <article class="val">
+        <figure><img src="./img/rooftop-day.jpg" alt="貸切の屋上テラス"></figure>
+        <div class="body">
+          <span class="no">01</span>
+          <h3>屋上まるごと、1組だけ</h3>
+          <p>65㎡（約40畳）のオープンスペースを丸ごと貸切。他のグループとの相席は一切ありません。ソファ席・テーブル席・ウッドデッキを、好きなように使ってください。</p>
+        </div>
+      </article>
+      <article class="val">
+        <figure><img src="./img/grill-meat.jpg" alt="大型ガスグリルでのBBQ"></figure>
+        <div class="body">
+          <span class="no">02</span>
+          <h3>手ぶらで来て、そのまま帰る</h3>
+          <p>3連バーナーの大型ガスグリル、調理器具、クーラーボックス、食器まで完備。食材とドリンクは持ち込み自由。後片付けとゴミ捨てはこちらにおまかせいただけます。</p>
+        </div>
+      </article>
+      <article class="val">
+        <figure><img src="./img/nightview.jpg" alt="屋上から見る神戸の夜景"></figure>
+        <div class="body">
+          <span class="no">03</span>
+          <h3>六甲の山並みと、街の灯り</h3>
+          <p>昼は六甲山脈を一望する抜けのいい空。日が落ちればストリングライトが灯り、アーケードの明かりが浮かぶプチ夜景に。同じ場所で二度おいしい時間帯です。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT 1 ============ -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="split rv">
+      <figure><img src="./img/party-night.jpg" alt="夜の屋上でのBBQパーティー"></figure>
+      <div>
+        <span class="tagline">THE EVENING</span>
+        <h3>日が落ちると、<br>屋上の空気が変わる。</h3>
+        <p>夕方から灯りはじめるストリングライトと、眼下に広がる水道筋のアーケード。ビル6階相当の高さから見下ろす神戸の街は、観光地の夜景とはまた違う、生活の灯りが並ぶ景色です。</p>
+        <p>グリルの前に立つ人、ソファで飲む人、写真を撮る人。屋上ぜんぶが自分たちのものなので、席替えも自由。時間を気にせず、だらだらと過ごせます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT 2 ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="split rev rv">
+      <figure><img src="./img/tarp-day.jpg" alt="昼のテラスでくつろぐグループ"></figure>
+      <div>
+        <span class="tagline">THE DAYTIME</span>
+        <h3>昼は昼で、<br>抜けるように気持ちいい。</h3>
+        <p>風がまっすぐ通り抜けるオープンスペース。人工芝とウッドデッキの上に、屋外用ソファとテーブルを配置しています。日差しが強い日はタープを張れば、涼しい日陰の下で。</p>
+        <p>夏場は大型プールのオプションも。子ども連れでの利用、ママ会、休日のランチBBQにも使われています。ペット同伴もOKです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="sec alt" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">GALLERY</span>
+      <h2>写真で見る、ザ・テラス水道筋</h2>
+      <p>タップで拡大できます。</p>
+    </div>
+    <div class="gal rv" id="gal">
+      <figure class="w2 h2"><img src="./img/hero-night.jpg" alt="夜の屋上テラス全景" loading="lazy"></figure>
+      <figure><img src="./img/rooftop-wide.jpg" alt="昼の屋上テラス" loading="lazy"></figure>
+      <figure><img src="./img/grill-night.jpg" alt="夜のBBQグリル" loading="lazy"></figure>
+      <figure><img src="./img/party-sofa.jpg" alt="ソファ席でのパーティー" loading="lazy"></figure>
+      <figure><img src="./img/drinks.jpg" alt="クーラーボックスとドリンク" loading="lazy"></figure>
+      <figure class="w2"><img src="./img/group-day.jpg" alt="昼のテラスでくつろぐグループ" loading="lazy"></figure>
+      <figure><img src="./img/chairs-light.jpg" alt="ライトアップされた屋外チェア" loading="lazy"></figure>
+      <figure><img src="./img/grill-cook.jpg" alt="グリルで焼く様子" loading="lazy"></figure>
+      <figure><img src="./img/pool-night.jpg" alt="夜のプール" loading="lazy"></figure>
+      <figure><img src="./img/friends.jpg" alt="屋上での記念撮影" loading="lazy"></figure>
+      <figure><img src="./img/party-lights.jpg" alt="ライトの下でのパーティー" loading="lazy"></figure>
+      <figure><img src="./img/pool-day.jpg" alt="昼のプール" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCENES ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">SCENE</span>
+      <h2>こんな使われ方をしています</h2>
+    </div>
+    <div class="scenes rv">
+      <div class="scene"><img src="./img/grill-meat.jpg" alt="貸切BBQ" loading="lazy"><span>貸切BBQ・打ち上げ</span></div>
+      <div class="scene"><img src="./img/friends.jpg" alt="誕生日会" loading="lazy"><span>誕生日会・記念日</span></div>
+      <div class="scene"><img src="./img/tarp-day.jpg" alt="ママ会・女子会" loading="lazy"><span>女子会・ママ会</span></div>
+      <div class="scene"><img src="./img/party-lights.jpg" alt="歓送迎会・同窓会" loading="lazy"><span>歓送迎会・同窓会</span></div>
+    </div>
+    <p class="fineprint rv" style="text-align:center;margin-top:26px">
+      ほかに、商品撮影・ポートレート・YouTube／MV撮影・ライブ配信などの撮影利用にもご利用いただけます（商用撮影可）。
+    </p>
+  </div>
+</section>
+
+<!-- ============ EQUIPMENT ============ -->
+<section class="sec alt" id="equip">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SPACE &amp; EQUIPMENT</span>
+      <h2>持ってくるのは、食材と飲みものだけ。</h2>
+      <p>BBQに必要な道具はひと通り揃っています。近くの水道筋商店街には精肉店・鮮魚店・青果店が並んでいるので、当日その場で買い出しをして上がってくる、という使い方もおすすめです。</p>
+    </div>
+
+    <div class="spec rv">
+      <dl><dt>広さ</dt><dd>65㎡（約40畳）／ビル屋上・6階相当</dd></dl>
+      <dl><dt>定員</dt><dd>13名着席・最大18名まで（人数オプション）</dd></dl>
+      <dl><dt>タイプ</dt><dd>屋外オープンスペース（屋根なし・タープ設置可）</dd></dl>
+      <dl><dt>設備</dt><dd>トイレ／シンク／電源／Wi-Fi（光回線）／キッチン設備</dd></dl>
+      <dl><dt>火器</dt><dd>大型ガスグリル（3連バーナー）／ホットプレート／たこ焼き器</dd></dl>
+      <dl><dt>家具</dt><dd>屋外用ソファ・テーブル・チェア（最大約20名分）</dd></dl>
+      <dl><dt>持込</dt><dd>食材・ドリンク・アルコールすべて持込自由</dd></dl>
+      <dl><dt>その他</dt><dd>子ども連れ可／ペット可／土足可／商用撮影可</dd></dl>
+    </div>
+
+    <div class="kit rv">
+      <div>
+        <h4>BBQ・調理まわり</h4>
+        <p>大型ガスグリル（3連バーナー）、トング、包丁、はさみ、まな板、あぶらひき、ホットプレート、たこ焼き器、洗いもの用シンク</p>
+      </div>
+      <div>
+        <h4>保冷・衛生</h4>
+        <p>クーラーボックス、保冷剤、ゴミ袋、キッチンペーパー、除菌グッズ、毎回のスタッフ清掃</p>
+      </div>
+      <div>
+        <h4>空間・くつろぎ</h4>
+        <p>屋外用ソファ／テーブル／チェア、ウッドデッキパネル、人工芝、ストリングライト、タープ（オプション）、大型プール（オプション）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICE ============ -->
+<section class="sec" id="price">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">PLAN &amp; PRICE</span>
+      <h2>料金は、時間単位でシンプルに。</h2>
+      <p>ご予約日時・人数によって金額は変動します。下記は目安です。確定金額と空き状況は予約ページでご確認いただけます。</p>
+    </div>
+
+    <div class="plans rv">
+      <div class="plan feat">
+        <span class="badge">人気No.1</span>
+        <h3>BBQ 4時間以上パック</h3>
+        <p class="sub">がっつり焼いて、ゆっくり飲む定番プラン</p>
+        <div class="price">¥3,349<small>〜 / 時間</small></div>
+        <p class="note">＋ 維持管理費 ¥1,000／回<br>BBQグリル利用オプション（¥3,850／回）とあわせてご予約ください。</p>
+      </div>
+      <div class="plan">
+        <h3>撮影利用</h3>
+        <p class="sub">商品撮影・ポートレート・コスプレ・配信</p>
+        <div class="price">¥2,887<small>〜 / 時間</small></div>
+        <p class="note">2時間〜／＋維持管理費 ¥500。自然光・夜景どちらも使えます。商用撮影可。</p>
+      </div>
+      <div class="plan">
+        <h3>下見プラン</h3>
+        <p class="sub">幹事さん向け・スタッフ案内つきの現地確認</p>
+        <div class="price">¥577<small>〜 / 時間</small></div>
+        <p class="note">15分以内の現地確認のみの有人案内プランで、BBQ等の本番利用はできず、システム上1時間単位で表示されますが料金は1時間分となりますので、ご予約リクエスト前に問い合わせで日程をご確認ください。</p>
+      </div>
+    </div>
+
+    <div class="opts rv">
+      <h4>オプション</h4>
+      <ul>
+        <li><span>BBQグリル利用</span><b>¥3,850 / 回</b></li>
+        <li><span>タープ設置</span><b>¥2,200 / 枚</b></li>
+        <li><span>プール使用</span><b>¥3,850 / 回</b></li>
+        <li><span>ガス式たこ焼き器レンタル</span><b>¥2,200 / 回</b></li>
+        <li><span>追加人数①（8〜10名）</span><b>¥3,300 / 回</b></li>
+        <li><span>追加人数②（11〜13名）</span><b>¥6,600 / 回</b></li>
+        <li><span>追加人数③（14〜18名・椅子なし）</span><b>¥2,200 / 回</b></li>
+      </ul>
+      <p class="fineprint">※表示はすべて税込の目安金額です（2026年7月時点）。曜日・時間帯・季節により変動します。<br>
+        ※お支払いはクレジットカード／Amazon Pay／楽天ペイ／あと払い（ペイディ）などに対応しています。<br>
+        ※最新の料金・空き状況・キャンセルポリシーは予約ページをご確認ください。</p>
+    </div>
+
+    <div class="center rv" style="margin-top:44px">
+      <a class="btn lg" data-cta="price" href="https://www.spacemarket.com/p/Ia69P0gMMJIJy1VO" target="_blank" rel="noopener">空き状況・確定金額を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">REVIEWS</span>
+      <h2>実際に使った方の声</h2>
+    </div>
+    <div class="score rv">
+      <div class="num">4.7</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="cnt">37件のレビュー評価／三ノ宮エリア BBQスペース レビュー数 1位</div>
+      </div>
+    </div>
+    <div class="revs rv">
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        場所・金額・設備を考えると、リーズナブルでいいレンタルスペースだと感じました。
+        <div class="who">2025年8月 ご利用</div>
+      </div>
+      <div class="rev">
+        <div class="st">★★★★★</div>
+        掲載情報の正確さ、ホストの対応ともに満点。書いてある通りの設備で、当日も安心して使えました。
+        <div class="who">2024年8月 ご利用（評価5.0／掲載情報・ホスト対応）</div>
+      </div>
+      <div class="rev">
+        <div class="st">★★★★☆</div>
+        清潔感・お得感・入退室のわかりやすさ、どれも高評価。屋上を貸切で使える満足度は高いです。
+        <div class="who">2024年8月 ご利用</div>
+      </div>
+    </div>
+    <p class="fineprint rv" style="text-align:center">※スペースマーケット掲載のレビューより抜粋・要約（2026年7月時点）。</p>
+  </div>
+</section>
+
+<!-- ============ ACCESS ============ -->
+<section class="sec" id="access">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">ACCESS</span>
+      <h2>三宮から約10分、<br>商店街のちょうど真ん中。</h2>
+      <p>〒657-0831 兵庫県神戸市灘区水道筋3丁目21<br>
+        水道筋商店街のアーケードに面したビルの屋上です。買い出しは階下でそのまま済ませられます。</p>
+    </div>
+    <div class="access rv">
+      <div>
+        <ul class="routes">
+          <li><b>JR神戸線 摩耶駅</b>徒歩 6分</li>
+          <li><b>阪急神戸本線 王子公園駅</b>徒歩 7分</li>
+          <li><b>阪神本線 西灘駅</b>徒歩 13分</li>
+          <li><b>阪神本線 大石駅</b>徒歩 16分</li>
+          <li><b>JR神戸線 灘駅</b>徒歩 16分</li>
+          <li><b>阪神本線 岩屋駅</b>徒歩 18分</li>
+        </ul>
+        <div class="accessimgs">
+          <img src="./img/shotengai.jpg" alt="水道筋商店街" loading="lazy">
+          <img src="./img/street.jpg" alt="ビル周辺の様子" loading="lazy">
+        </div>
+        <p class="fineprint">※専用駐車場のご用意はありません。公共交通機関、または近隣のコインパーキングをご利用ください。</p>
+      </div>
+      <div>
+        <div class="mapbox">
+          <iframe src="https://maps.google.com/maps?q=34.7125963,135.2235479&z=17&hl=ja&output=embed" loading="lazy" title="ザ・テラス水道筋 地図"></iframe>
+        </div>
+        <p class="fineprint"><a href="https://maps.app.goo.gl/nrNnfjFei4X8dDKF6" target="_blank" rel="noopener" data-map-link style="color:var(--gold-soft);border-bottom:1px solid rgba(215,165,74,.4)">Googleマップで開く →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RULES ============ -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">HOUSE RULES</span>
+      <h2>気持ちよく使っていただくために</h2>
+      <p>住宅と商店街に囲まれた立地のため、近隣への配慮をお願いしています。静かに、ゆっくり楽しみたい方に向いた場所です。</p>
+    </div>
+    <div class="rules rv">
+      <div class="rulebox">
+        <h4>ご利用条件</h4>
+        <ul>
+          <li>8名以上でのご利用は、半数以上が社会人（25歳以上）の場合にかぎりお受けしています</li>
+          <li>外見での年齢判断が難しい場合、身分証のご提示をお願いすることがあります</li>
+          <li>喫煙は屋上のみ可（館内は禁煙）。携帯灰皿を必ずご持参ください</li>
+          <li>子ども連れ・ペット同伴OK。土足でご利用いただけます</li>
+        </ul>
+      </div>
+      <div class="rulebox warn">
+        <h4>禁止事項</h4>
+        <ul>
+          <li>スピーカーを使用した音出し・楽器の使用</li>
+          <li>過度な「コール」、大声での笑い声や手叩きなど騒音を発する行為</li>
+          <li>異臭・強い匂いのするものの持ち込み</li>
+          <li>吸い殻のポイ捨て、その他近隣に迷惑を及ぼす行為</li>
+          <li>泥酔による乱暴・嘔吐（汚損時は1箇所につき最低1万円以上の実費をご請求します）</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fineprint rv">※注意に従っていただけない場合、また近隣から警察等を呼ばれた場合は、利用を即時中止とすることがあります。その場合の費用返還はいたしかねます。</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap narrow">
+    <div class="sec-head center rv">
+      <span class="kicker">FAQ</span>
+      <h2>よくあるご質問</h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>食材やお酒は持ち込めますか？</summary>
+        <div class="a">はい、食材・ドリンク・アルコールすべて持ち込み自由です。追加料金もかかりません。真下の水道筋商店街に精肉店・鮮魚店・青果店・スーパーが揃っているので、当日買い出しをしてそのまま上がってくる方が多いです。</div></details>
+      <details><summary>後片付けやゴミの処分は必要ですか？</summary>
+        <div class="a">片付け・ゴミ処理はおまかせいただけます。使った器材はシンクで軽くすすいでいただければ、あとはそのままお帰りいただいて大丈夫です。ゴミ袋も用意しています。</div></details>
+      <details><summary>BBQをするには何を予約すればいいですか？</summary>
+        <div class="a">「BBQ 4時間以上パック」に加えて、オプションの「BBQグリル利用（¥3,850／回）」をお選びください。グリル本体・ガス・調理器具一式が含まれます。</div></details>
+      <details><summary>何名まで利用できますか？</summary>
+        <div class="a">13名まで着席、人数オプションのご利用で最大18名（14名以降は椅子なし）まで対応できます。8名以上でのご利用には年齢条件がありますので、上記「ご利用条件」をご確認ください。</div></details>
+      <details><summary>雨が降ったらどうなりますか？</summary>
+        <div class="a">屋根のないオープンスペースのため、天候の影響を受けます。小雨程度であればタープ設置オプション（¥2,200／枚）で対応できます。荒天時の取り扱いは予約ページ記載のキャンセルポリシーをご確認のうえ、事前にご相談ください。</div></details>
+      <details><summary>音楽をかけたり、盛り上がっても大丈夫ですか？</summary>
+        <div class="a">周囲が住宅と商店街のため、スピーカーでの音出し・楽器の使用はご遠慮いただいています。大声でのコールや手叩きもNGです。「静かにゆっくり過ごしたい」方に向いた場所とお考えください。</div></details>
+      <details><summary>子どもやペットを連れて行けますか？</summary>
+        <div class="a">どちらもOKです。夏場は大型プールのオプション（¥3,850／回）もご利用いただけます。屋上のため、お子さまからは目を離さないようお願いします。</div></details>
+      <details><summary>予約前に見学できますか？</summary>
+        <div class="a">はい、「下見プラン（¥577〜／時間）」でスタッフがご案内します。15分以内の現地確認のみのプランで、BBQなどの本番利用はできません。システム上の最小単位が1時間表示になっているため料金は1時間分ですが、実際のご滞在は15分以内となります。常時ご案内できるわけではないので、ご予約リクエストの前に問い合わせから日程をご確認ください。</div></details>
+      <details><summary>支払い方法は？</summary>
+        <div class="a">クレジットカード（Visa／Mastercard／JCB／AMEX／Diners／Discover）、プリペイドカード、Amazon Pay、楽天ペイ、あと払い（ペイディ）、後払い（Paid）に対応しています。決済は予約ページ上で完結します。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="final-bg"></div>
+  <div class="wrap">
+    <div class="rv">
+      <h2>次の週末は、<br>天空の貸切バーベキュー場へ。</h2>
+      <p>空き状況の確認・お見積り・ご予約は、下のボタンからそのまま進めます。<br>気になる点があれば、予約ページのメッセージからお気軽にご相談ください。</p>
+      <a class="btn lg" data-cta="final" href="https://www.spacemarket.com/p/Ia69P0gMMJIJy1VO" target="_blank" rel="noopener">空き状況を確認して予約する</a>
+      <p class="sm">ご予約はスペースマーケットの予約ページで完結します。<br>ザ・テラス水道筋／兵庫県神戸市灘区水道筋3丁目21</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-in">
+      <div>
+        <div class="logo">ザ・テラス水道筋<small>KOBE ROOFTOP TERRACE</small></div>
+        <p>〒657-0831 兵庫県神戸市灘区水道筋3丁目21<br>
+          天空の貸切バーベキュー場／屋上テラス・パーティー・撮影スペース</p>
+      </div>
+      <div class="f-links">
+        <a href="#about">スペース</a>
+        <a href="#gallery">ギャラリー</a>
+        <a href="#equip">設備</a>
+        <a href="#price">料金</a>
+        <a href="#access">アクセス</a>
+        <a href="#faq">FAQ</a>
+        <a data-cta="footer" href="https://www.spacemarket.com/p/Ia69P0gMMJIJy1VO" target="_blank" rel="noopener">予約する</a>
+      </div>
+    </div>
+    <p class="copy">© ザ・テラス水道筋 THE TERRACE MIZUDOSUJI. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ STICKY CTA ============ -->
+<div class="sticky" id="sticky">
+  <div class="txt"><b>天空の貸切バーベキュー場</b><span>三宮から約10分／持込自由・片付けおまかせ</span></div>
+  <a class="btn" data-cta="sticky" href="https://www.spacemarket.com/p/Ia69P0gMMJIJy1VO" target="_blank" rel="noopener">予約する</a>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb">
+  <span class="x">&times;</span>
+  <span class="nav prev">&#8249;</span>
+  <img src="" alt="">
+  <span class="nav next">&#8250;</span>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"ザ・テラス水道筋",
+  "alternateName":"天空の貸切バーベキュー場",
+  "description":"神戸市灘区・水道筋商店街の屋上にある「天空の貸切バーベキュー場」。BBQ・パーティー・撮影に利用可能。",
+  "image":"https://theheadquarters.jp/bbq/img/hero-night.jpg",
+  "address":{"@type":"PostalAddress","streetAddress":"水道筋3丁目21","addressLocality":"神戸市灘区","addressRegion":"兵庫県","postalCode":"657-0831","addressCountry":"JP"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"37"},
+  "priceRange":"¥2,887〜¥3,349/時間",
+  "url":"https://theheadquarters.jp/bbq/",
+  "hasMap":"https://maps.app.goo.gl/nrNnfjFei4X8dDKF6"
+}
+</script>
+
+<script>
+(function(){
+  // header
+  var hdr=document.getElementById('hdr'), sticky=document.getElementById('sticky');
+  function onScroll(){
+    var y=window.scrollY||0;
+    hdr.classList.toggle('scrolled', y>60);
+    sticky.classList.toggle('show', y>window.innerHeight*0.85);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // reveal
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  // lightbox
+  var imgs=[].slice.call(document.querySelectorAll('#gal img')), i=0,
+      lb=document.getElementById('lb'), lbi=lb.querySelector('img');
+  function show(n){ i=(n+imgs.length)%imgs.length; lbi.src=imgs[i].src; lbi.alt=imgs[i].alt; lb.classList.add('on'); document.body.style.overflow='hidden'; }
+  function hide(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+  imgs.forEach(function(im,n){ im.parentElement.addEventListener('click',function(){show(n)}) });
+  lb.addEventListener('click',hide);
+  lb.querySelector('.prev').addEventListener('click',function(e){e.stopPropagation();show(i-1)});
+  lb.querySelector('.next').addEventListener('click',function(e){e.stopPropagation();show(i+1)});
+  lbi.addEventListener('click',function(e){e.stopPropagation()});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('on'))return;
+    if(e.key==='Escape')hide(); if(e.key==='ArrowLeft')show(i-1); if(e.key==='ArrowRight')show(i+1);
+  });
+
+  // accordion: one at a time
+  var ds=[].slice.call(document.querySelectorAll('.faq details')), armed=false;
+  setTimeout(function(){armed=true;},800);
+  ds.forEach(function(d){ d.addEventListener('toggle',function(){
+    if(d.open){
+      ds.forEach(function(o){ if(o!==d) o.open=false; });
+      if(armed) track('faq_open',{faq_question:d.querySelector('summary').textContent.trim()});
+    }
+  })});
+
+  /* ================= GA4 イベント計測 ================= */
+  function track(name, params){
+    try{ if(typeof gtag==='function') gtag('event', name, params||{}); }catch(e){}
+  }
+
+  // 1) CTAクリック（予約ページへの離脱）= 実質のコンバージョン
+  document.querySelectorAll('a[data-cta]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var where = a.getAttribute('data-cta');
+      track('cta_click', {cta_location: where, link_url: a.href});
+      track('generate_lead', {cta_location: where, value: 1, currency: 'JPY'});
+    });
+  });
+
+  // 2) セクション到達
+  var secObs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        track('section_view', {section_name: e.target.id});
+        secObs.unobserve(e.target);
+      }
+    });
+  },{threshold:.35});
+  ['about','gallery','equip','price','access','faq'].forEach(function(id){
+    var el=document.getElementById(id); if(el) secObs.observe(el);
+  });
+
+  // 3) スクロール深度
+  var depths=[25,50,75,90], hit={};
+  window.addEventListener('scroll', function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(h<=0) return;
+    var pct=(window.scrollY/h)*100;
+    depths.forEach(function(d){
+      if(!hit[d] && pct>=d){ hit[d]=1; track('scroll_depth',{percent_scrolled:d}); }
+    });
+  },{passive:true});
+
+  // 4) ギャラリー拡大・地図クリック
+  document.querySelectorAll('#gal figure').forEach(function(f,n){
+    f.addEventListener('click', function(){ track('gallery_open',{image_index:n+1}); });
+  });
+  var ml=document.querySelector('[data-map-link]');
+  if(ml) ml.addEventListener('click', function(){ track('map_click',{}); });
+
+  // 5) 滞在30秒（関心の強さ）
+  setTimeout(function(){ track('engaged_30s',{}); }, 30000);
+})();
+</script>
+</body>
+</html>

@@ -11,7 +11,7 @@ Kobe is where East meets West — and The Headquarters Kobe is right in the thic
 
 The building is situated along the main street of the Suidosuji shopping arcade, under the covered roof. The 1st floor is home to a sock shop — and right next door to the "Suidosuji Koban" (police box), which makes it easy to find on any map app: just search for "水道筋交番."
 
-![](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg)
+![Entrance of the building inside the Suidosuji shopping arcade](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg)
 
 ## Neighborhood
 
@@ -22,8 +22,3 @@ Supermarket (Maruhachi) — 2 min walk
 Bus stop (Suidosuji 3-chome / 6-chome) — 1 min walk
 Park (Ojikoen) — 8 min walk
 
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/076-1024x678.jpg)
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/077-1024x678.jpg)
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/078-1024x678.jpg)
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/079-1024x678.jpg)
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/091-1024x682.jpg)

@@ -11,7 +11,7 @@ kind: page
 建物は水道筋商店街のメインストリート沿いの、アーケードの中にあります。１Fには靴下屋さんが入っているビルです。  
 ビルの隣の隣が「水道筋交番」なので、地図アプリでは「水道筋交番」を検索するとわかりやすいと思います。
 
-![](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg)
+![水道筋商店街のアーケード内にある建物の入口](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg)
 
 ## 周辺情報
 
@@ -22,12 +22,3 @@ kind: page
 バス停（水道筋3丁目／6丁目）・・・徒歩１分  
 公園（王子公園）・・・徒歩8分
 
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/076-1024x678.jpg)
-    
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/077-1024x678.jpg)
-    
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/078-1024x678.jpg)
-    
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/079-1024x678.jpg)
-    
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/091-1024x682.jpg)

@@ -14,15 +14,15 @@ categories: ["ハウス暮らし"]
 
 一人は青年海外協力隊でケニアとタンザニアに行った経験があり、もう一人はアフリカビジネスを行うベンチャー企業で働いているため学んだそうです。
 
-![](https://theheadquarters.jp/wp-content/uploads/2021/08/S__5177425-1024x682.jpg)
+![住人のスワヒリ語利用率２０％！の写真（1）](https://theheadquarters.jp/wp-content/uploads/2021/08/S__5177425-1024x682.jpg)
 
   
 ちなみにスワヒリ語とはアフリカ東海岸のタンザニア・ケニアを中心として国語・公用語として使用されている言語だそうで、「基本的にはアフリカの言語の一つであるバントゥー諸語の系統であるが、アラビア語の語彙、さらにポルトガル語、トルコ語、インド系言語、マレー語、ペルシア語、英語などの語彙がまじって形成された」そうですね。交易結果によるちゃんぽんなんでしょうか。  
 使われているのは↓このあたりらしい（画像は借り物）。
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2021/08/01_Swahili-Map.png)
+*   ![住人のスワヒリ語利用率２０％！の写真（2）](https://theheadquarters.jp/wp-content/uploads/2021/08/01_Swahili-Map.png)
     
-*   ![](https://theheadquarters.jp/wp-content/uploads/2021/08/swahili.jpg)
+*   ![住人のスワヒリ語利用率２０％！の写真（3）](https://theheadquarters.jp/wp-content/uploads/2021/08/swahili.jpg)
     
 
 というわけで、もしスワヒリ語を勉強したいなら、ぜひヘッドクオーターズ神戸へ！おそらく神戸のシェアハウスでは一番スワヒリ語に詳しいのはうちでしょう笑。

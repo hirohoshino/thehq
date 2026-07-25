@@ -6,13 +6,13 @@ kind: page
 ---
 お部屋は全部で10室あります。３Fと4Fが同じ構造で5部屋ずつ。
 
-![](https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-802x1024.png)
+![建物全体の間取り図](https://theheadquarters.jp/wp-content/uploads/2021/11/物件建物全体図-802x1024.png)
 
 以前は収納がほとんど無かったため、最近は暮らしやすくするためにほとんどの部屋にロフトベッドや勉強机を設置しています。
 
 ## 301号室
 
-![](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
+![301号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
 
 **広さ**　8.0 ㎡ 4.9 畳  
 **賃料**　￥%RENT_301%　  
@@ -20,7 +20,7 @@ kind: page
 
 ## 302号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
+*   ![302号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
     
 
 **広さ**　8.0 ㎡ 4.9 畳  
@@ -29,9 +29,9 @@ kind: page
 
 ## 303号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
+*   ![303号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
     
-*   ![](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
+*   ![303号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
     
 
 **広さ**　9.2 ㎡ 5.7 畳  
@@ -40,10 +40,6 @@ kind: page
 
 ## 304号室
 
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/072-1024x682.jpg)
-    
-*   ![](http://edisontest.sakura.ne.jp/thq/wp-content/uploads/2019/03/073-1024x678.jpg)
-    
 
 **広さ**　9.7 ㎡ 6 畳  
 **賃料**　￥%RENT_304%　  
@@ -51,9 +47,9 @@ kind: page
 
 ## 305号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
+*   ![305号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
     
-*   ![](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
+*   ![305号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
     
 
 **広さ**　9.8 ㎡ 6 畳  
@@ -62,7 +58,7 @@ kind: page
 
 ## 406号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
+*   ![406号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
     
 
 **広さ**　8.0 ㎡ 4.9 畳  
@@ -71,7 +67,7 @@ kind: page
 
 ## 407号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
+*   ![407号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
     
 
 **広さ**　8.0 ㎡ 4.9 畳  
@@ -80,9 +76,9 @@ kind: page
 
 ## 408号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
+*   ![408号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
     
-*   ![](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
+*   ![408号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
     
 
 **広さ**　9.2 ㎡ 5.7 畳  
@@ -91,9 +87,9 @@ kind: page
 
 ## 409号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
+*   ![409号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
     
-*   ![](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
+*   ![409号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
     
 
 **広さ**　9.7 ㎡ 6 畳  
@@ -102,9 +98,9 @@ kind: page
 
 ## 410号室
 
-*   ![](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
+*   ![410号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
     
-*   ![](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
+*   ![410号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
     
 
 **広さ**　9.8 ㎡ 6 畳  

@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 import remarkPricing from './plugins/remark-pricing.mjs';
+import rehypeImgAttrs from './plugins/rehype-img-attrs.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +14,6 @@ export default defineConfig({
 	})],
 	markdown: {
 		remarkPlugins: [remarkPricing],
+		rehypePlugins: [rehypeImgAttrs],
 	},
 });

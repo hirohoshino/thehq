@@ -14,7 +14,7 @@ categories: ["ハウス暮らし"]
 これで原価が１千円いかないはずなので、お得です。ヘッドクオーターズのシェアハウス生活は楽しくて美味しいよ😆  
 次回はクリームたっぷり加えて作ってみよう♪
 
-![](https://theheadquarters.jp/wp-content/uploads/2020/02/f7c663c0b792e34b24c2ca069b13464f-1024x683.jpg)
+![自家製ケーキの写真（1）](https://theheadquarters.jp/wp-content/uploads/2020/02/f7c663c0b792e34b24c2ca069b13464f-1024x683.jpg)
 
 ---
 
@@ -24,4 +24,4 @@ It's basically a chiffon cake recipe with yogurt added for extra moistness, plus
 The whole thing probably cost less than 1,000 yen to make, so it's a great deal too. Life at The Headquarters share house is fun and delicious 😆  
 Next time, let's load it up with plenty of cream ♪
 
-![](https://theheadquarters.jp/wp-content/uploads/2020/02/f7c663c0b792e34b24c2ca069b13464f-1024x683.jpg)
+![自家製ケーキの写真（2）](https://theheadquarters.jp/wp-content/uploads/2020/02/f7c663c0b792e34b24c2ca069b13464f-1024x683.jpg)

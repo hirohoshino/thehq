@@ -38,6 +38,10 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 304
 
+*   ![Interior of Room 409, identical in layout to Room 304 (1)](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
+*   ![Interior of Room 409, identical in layout to Room 304 (2)](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
+
+*Photos show Room 409. Room 304 has exactly the same layout — it just gets slightly less sunlight.*
 
 **Size** 9.7 m² (6 tatami)
 **Rent** ¥%RENT_304%/month

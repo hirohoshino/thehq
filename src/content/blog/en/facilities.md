@@ -45,16 +45,17 @@ The rooftop is one of the highlights of The Headquarters Kobe — with a great v
 In the warmer months, it's the perfect spot for a BBQ, or to enjoy a cold beer while catching the evening breeze.
 
 *   ![Rooftop (1)](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
-*   ![Rooftop (2)](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg)
-*   ![Rooftop (3)](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1-1024x682.jpg)
-*   ![Rooftop (4)](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91-1024x682.jpg)
-*   ![Mt. Rokko and a glimpse of the night view](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg) Mt. Rokko and a glimpse of the night view
-*   ![Welcome parties on the rooftop — pretty special](https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg) Welcome parties on the rooftop — pretty special
 *   ![Open and free — residents can use it anytime](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg) Open and free — residents can use it anytime
+*   ![Welcome parties on the rooftop — pretty special](https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg) Welcome parties on the rooftop — pretty special
+*   ![Mt. Rokko and a glimpse of the night view](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg) Mt. Rokko and a glimpse of the night view
 
 ## Bathroom
 
 Two options: a full bathtub room, and a separate shower booth.
+
+*   ![Bathroom with a bathtub](https://theheadquarters.jp/wp-content/uploads/2019/03/038-1024x678.jpg)
+*   ![Separate shower booth](https://theheadquarters.jp/wp-content/uploads/2019/03/039-1024x678.jpg)
+*   ![Passage from the washroom to the bathroom](https://theheadquarters.jp/wp-content/uploads/2019/03/036-1024x678.jpg)
 
 
 ## Laundry
@@ -62,6 +63,7 @@ Two options: a full bathtub room, and a separate shower booth.
 Making daily life easier: 2 drum-type washer-dryers (heat pump type) — one on 4F and one on 3F. 6 sinks total: 1 on 5F, 3 on 4F, 2 on 3F. Laundry detergent is covered by the common fees.
 
 *   ![Laundry (1)](https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-1024x682.jpg)
+*   ![Sinks and a drum-type washer-dryer](https://theheadquarters.jp/wp-content/uploads/2026/07/IMG_8891-1024x682.jpg)
 
 ## Toilets
 
@@ -74,4 +76,7 @@ One toilet on each floor (3F, 4F, 5F) — 3 in total. All equipped with washlets
 ## Entrance
 
 The building faces the covered shopping arcade — groceries are literally 3 seconds away, no rain required.
+
+*   ![Entrance of the building inside the Suidosuji shopping arcade](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg) The entrance is right below the sign reading 東亜建測株式会社 (Toa Kensoku Co., Ltd.)
+
 

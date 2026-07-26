@@ -56,28 +56,29 @@ kind: page
 
 *   ![屋上の様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
     
-*   ![屋上の様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg)
+*   ![開放感抜群、住民が自由に使えます](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
     
-*   ![屋上の様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1-1024x682.jpg)
-    
-*   ![屋上の様子（4）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq91-1024x682.jpg)
-    
-*   ![六甲山脈とプチ夜景](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg)
-    
-    六甲山脈とプチ夜景
+    開放感抜群、住民が自由に使えます
     
 *   ![歓迎会を屋上でやったりします。素敵でしょ](https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg)
     
     歓迎会を屋上でやったりします。素敵でしょ
     
-*   ![開放感抜群、住民が自由に使えます](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
+*   ![六甲山脈とプチ夜景](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg)
     
-    開放感抜群、住民が自由に使えます
+    六甲山脈とプチ夜景
     
 
 ## 浴室
 
 バスタブのある浴室と、シャワー専用ブースの２つがあります。
+
+*   ![バスタブのある浴室](https://theheadquarters.jp/wp-content/uploads/2019/03/038-1024x678.jpg)
+    
+*   ![シャワー専用ブース](https://theheadquarters.jp/wp-content/uploads/2019/03/039-1024x678.jpg)
+    
+*   ![洗面所から浴室への通路](https://theheadquarters.jp/wp-content/uploads/2019/03/036-1024x678.jpg)
+    
 
 
 ## ランドリー
@@ -85,6 +86,8 @@ kind: page
 日々の暮らしを楽に。ヒートポンプ式乾燥機付きのドラム型全自動洗濯機を4Fと３Fに1台ずつ、計２台設置。洗面台は多くて５Fに1台、４Fに3台、３Fに２台の計６台あります。洗濯機の洗剤は共益費から出ます。
 
 *   ![ランドリーの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-1024x682.jpg)
+    
+*   ![洗面台とドラム式洗濯乾燥機](https://theheadquarters.jp/wp-content/uploads/2026/07/IMG_8891-1024x682.jpg)
     
 
 ## トイレ
@@ -101,4 +104,9 @@ kind: page
 ## エントランス
 
 建物はアーケードの商店街に面しており買い物は濡れずに徒歩３秒！でOK。
+
+*   ![水道筋商店街のアーケード内にある建物の入口](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg)
+    
+    東亜建測株式会社という看板の下が入口です
+    
 

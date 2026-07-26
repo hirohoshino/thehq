@@ -40,6 +40,12 @@ kind: page
 
 ## 304号室
 
+*   ![304号室と同じ構造の409号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
+    
+*   ![304号室と同じ構造の409号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
+    
+
+※写真は409号室のものです。409と全く同じ構造です。日当たりだけ若干悪いです。
 
 **広さ**　9.7 ㎡ 6 畳  
 **賃料**　￥%RENT_304%　  

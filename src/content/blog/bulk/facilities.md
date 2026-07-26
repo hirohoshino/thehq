@@ -85,9 +85,11 @@ kind: page
 
 日々の暮らしを楽に。ヒートポンプ式乾燥機付きのドラム型全自動洗濯機を4Fと３Fに1台ずつ、計２台設置。洗面台は多くて５Fに1台、４Fに3台、３Fに２台の計６台あります。洗濯機の洗剤は共益費から出ます。
 
-*   ![ランドリーの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-1024x682.jpg)
-    
 *   ![洗面台とドラム式洗濯乾燥機](https://theheadquarters.jp/wp-content/uploads/2026/07/IMG_8891-1024x682.jpg)
+    
+*   ![洗面台が並ぶランドリースペース](https://theheadquarters.jp/wp-content/uploads/2019/03/054-1024x678.jpg)
+    
+*   ![ヒートポンプ式乾燥機付きのドラム型全自動洗濯機](https://theheadquarters.jp/wp-content/uploads/2026/07/laundry-washer-1024x768.jpg)
     
 
 ## トイレ
@@ -107,6 +109,8 @@ kind: page
 
 *   ![水道筋商店街のアーケード内にある建物の入口](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg)
     
-    東亜建測株式会社という看板の下が入口です
+    東亜建測株式会社という看板の下が入口です。階段をあがって２Fに行くとさらに上に行くドアがあるので、そこから上がシェアハウスです。
+    
+*   ![2Fの階段。この扉から上がシェアハウス](https://theheadquarters.jp/wp-content/uploads/2019/03/005-1024x678.jpg)
     
 

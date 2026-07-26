@@ -62,8 +62,9 @@ Two options: a full bathtub room, and a separate shower booth.
 
 Making daily life easier: 2 drum-type washer-dryers (heat pump type) — one on 4F and one on 3F. 6 sinks total: 1 on 5F, 3 on 4F, 2 on 3F. Laundry detergent is covered by the common fees.
 
-*   ![Laundry (1)](https://theheadquarters.jp/wp-content/uploads/2019/07/S__16310298-1024x682.jpg)
 *   ![Sinks and a drum-type washer-dryer](https://theheadquarters.jp/wp-content/uploads/2026/07/IMG_8891-1024x682.jpg)
+*   ![Laundry space with a row of sinks](https://theheadquarters.jp/wp-content/uploads/2019/03/054-1024x678.jpg)
+*   ![Heat-pump drum-type washer-dryer](https://theheadquarters.jp/wp-content/uploads/2026/07/laundry-washer-1024x768.jpg)
 
 ## Toilets
 
@@ -77,6 +78,7 @@ One toilet on each floor (3F, 4F, 5F) — 3 in total. All equipped with washlets
 
 The building faces the covered shopping arcade — groceries are literally 3 seconds away, no rain required.
 
-*   ![Entrance of the building inside the Suidosuji shopping arcade](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg) The entrance is right below the sign reading 東亜建測株式会社 (Toa Kensoku Co., Ltd.)
+*   ![Entrance of the building inside the Suidosuji shopping arcade](https://theheadquarters.jp/wp-content/uploads/2019/03/001-1024x678.jpg) The entrance is right below the sign reading 東亜建測株式会社 (Toa Kensoku Co., Ltd.). Go up the stairs to the 2nd floor and you'll find another door leading further up — everything above that is the share house.
+*   ![Stairs on the 2nd floor — the share house starts beyond this door](https://theheadquarters.jp/wp-content/uploads/2019/03/005-1024x678.jpg)
 
 

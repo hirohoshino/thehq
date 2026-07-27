@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import thumbs from '../../data/thumbs.json';
 
 const posts = (await getCollection('blog'))
   .filter((e) => e.data.kind === 'post')
@@ -11,6 +12,11 @@ const posts = (await getCollection('blog'))
 function firstImage(body: string | undefined): string | null {
   const m = body?.match(/!\[.*?\]\(((?:https?:\/\/|\/)[^)]+)\)/);
   return m ? m[1] : null;
+}
+// 一覧用サムネイル（public/thumbs/）へ差し替える。無ければ元画像にフォールバック。
+const thumbMap: Record<string, { src: string; w: number; h: number }> = thumbs as any;
+function thumbOf(u: string) {
+  return thumbMap[u] ?? { src: undefined, w: undefined, h: undefined };
 }
 function decode(s: string): string {
   return s.replace(/&#(\d+);/g, (_, c) => String.fromCharCode(Number(c))).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
@@ -33,7 +39,7 @@ function decode(s: string): string {
           const cats: string[] = post.data.categories ?? [];
           return (
             <a class="card" href={`/blog/${post.id}/`}>
-              {img && <img src={img} alt={post.data.title} class="thumb" />}
+              {img && <img src={thumbOf(img).src ?? img} width={thumbOf(img).w} height={thumbOf(img).h} loading="lazy" decoding="async" alt={decode(post.data.title)} class="thumb" />}
               <div class="body">
                 {cats.length > 0 && (
                   <div class="cats">

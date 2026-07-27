@@ -104,6 +104,13 @@ img {
 	height: auto;
 	border-radius: 8px;
 }
+/* WebP配信のために <img> を <picture> で包んでいる。
+   picture は既定で inline box になり、内側の img の max-width:100% が
+   コンテナではなく picture 自身を基準にしてしまうため、レイアウトが崩れる。
+   display:contents で picture をレイアウトから外し、従来と同じ配置を保つ。 */
+picture {
+	display: contents;
+}
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));

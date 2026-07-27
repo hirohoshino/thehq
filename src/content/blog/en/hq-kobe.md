@@ -26,18 +26,18 @@ Headquarters is a place where residents gather, grow, and launch into the world 
 
 The Headquarters Kobe occupies floors 3 through 5 (plus the rooftop) of a compact 5-story building facing the shopping arcade. There are 10 rooms in total — 5 on the 3rd floor and 5 on the 4th floor. The entire 5th floor is shared space!
 
-![The Headquarters Kobe — Sharehouse in Ko — photo 1](https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-1024x789.png)
+![Floor plan diagram of the sharehouse from the entrance up to the rooftop](https://theheadquarters.jp/wp-content/uploads/2022/04/建物概要-1024x789.png)
 
 The breezy 5th floor is mostly shared space — a large kitchen, living room, bath, and more. Every floor, including 3F and 4F, has toilets and sinks.
 1 bathtub room, 1 shower booth, 6 sinks, 3 toilets (all with washlet), 2 washer-dryers, a kitchen with 2 gas burners + 1 IH cooktop, and 5 refrigerators/freezers — fully equipped.
 
 Each floor is about 70 sqm, totaling around 210 sqm across three floors. Including the rooftop, that's close to 280 sqm. Per person, it's actually quite spacious for a sharehouse.
 
-![The Headquarters Kobe — Sharehouse in Ko — photo 2](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-1024x682.jpg)
+![Shared living room with sofas, low white tables and a TV](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-1024x682.jpg)
 
-![The Headquarters Kobe — Sharehouse in Ko — photo 3](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-1024x682.jpg)
+![Long shared kitchen with counters, open shelving and a gas stove](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-1024x682.jpg)
 
-![The Headquarters Kobe — Sharehouse in Ko — photo 4](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
+![Rooftop deck with lounge furniture under the night city skyline](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
 
 ## About the Owner
 

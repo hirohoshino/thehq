@@ -25,3 +25,8 @@ pnpm-debug.log*
 
 # wrangler local state
 .wrangler/
+
+# ビルド時に scripts/optimize-images.mjs が生成する画像（リポジトリには入れない）
+public/**/*.webp
+public/thumbs/
+src/data/thumbs.json

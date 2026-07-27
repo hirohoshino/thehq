@@ -12,37 +12,37 @@ categories: ["改装・設備"]
   
 風が通りぬける屋上で六甲山や街のプチ夜景を見ながらの夏の夕涼みは最高です😆。バーベキューも早くやりたいなぁ。  
 
-![屋上が綺麗になったよ！の写真（1）](https://theheadquarters.jp/wp-content/uploads/2019/08/image-1024x600.png)
+![屋上リニューアルのビフォーアフター比較](https://theheadquarters.jp/wp-content/uploads/2019/08/image-1024x600.png)
 
   
 下記のサイトで外部貸し出ししているので、ぜひ遊びに来てね！😊  
 [https://www.spacemarket.com/…/oefsyy…/rooms/Ia69P0gMMJIJy1VO](https://www.spacemarket.com/spaces/oefsyyzp32lal2qo/rooms/Ia69P0gMMJIJy1VO?fbclid=IwAR2hYSQmLIkEG31tnODK7kLF4qb6s2LBn8Kyrl05Lscoedr0q7MYzyzVaO8)
 
-![屋上が綺麗になったよ！の写真（2）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-1024x682.jpg)
+![夜のウッドデッキと人工芝、奥に街あかり](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-1024x682.jpg)
 
 六甲山脈から大阪方面の景色は抜け感たっぷり
 
-![屋上が綺麗になったよ！の写真（3）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-1024x682.jpg)
+![イルミネーションを灯した夜の屋上とビル群](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-1024x682.jpg)
 
 摩耶山方面もプチ夜景です
 
-![屋上が綺麗になったよ！の写真（4）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1024x682.jpg)
+![屋上に設置したステンレス製のガスグリル](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1024x682.jpg)
 
-![屋上が綺麗になったよ！の写真（5）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1024x682.jpg)
+![青空の下のウッドデッキと人工芝、遠くに山並み](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1024x682.jpg)
 
 昼はまだ暑いけどタープを掛けます
 
-![屋上が綺麗になったよ！の写真（6）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg)
+![ウッドデッキに並ぶラタン調のソファとテーブル](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg)
 
-![屋上が綺麗になったよ！の写真（7）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq9a.jpg)
+![屋上のソファで料理を囲んで談笑する住人たち](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq9a.jpg)
 
 工事中でも先に楽しんでしまいました笑
 
-![屋上が綺麗になったよ！の写真（8）](https://theheadquarters.jp/wp-content/uploads/2019/09/69f1de8be6f750b5997011dc209e6356-1-1024x683.jpg)
+![夜の屋上で肉を焼くグリルと集まる人たち](https://theheadquarters.jp/wp-content/uploads/2019/09/69f1de8be6f750b5997011dc209e6356-1-1024x683.jpg)
 
 後日の写真。新住民の歓迎会をやりました😊
 
-![屋上が綺麗になったよ！の写真（9）](https://theheadquarters.jp/wp-content/uploads/2019/09/81683033aeaccc67e95ec230cdd6f674-1-1024x683.jpg)
+![グリルの網で焼かれる肉と野菜のアップ](https://theheadquarters.jp/wp-content/uploads/2019/09/81683033aeaccc67e95ec230cdd6f674-1-1024x683.jpg)
 
 ガスのグリルは手早く強力です。
 
@@ -52,36 +52,36 @@ Thanks for waiting — the rooftop is finally looking beautiful again! Three lon
   
 Cooling off up on the rooftop in the evening breeze, with views of Mount Rokko and the city's little night skyline, is the best in summer 😆. Can't wait to have a barbecue up there soon.  
 
-![屋上が綺麗になったよ！の写真（10）](https://theheadquarters.jp/wp-content/uploads/2019/08/image-1024x600.png)
+![Before-and-after comparison of the rooftop renovation](https://theheadquarters.jp/wp-content/uploads/2019/08/image-1024x600.png)
 
   
 We're also renting the space out through the site below, so come check it out! 😊  
 [https://www.spacemarket.com/…/oefsyy…/rooms/Ia69P0gMMJIJy1VO](https://www.spacemarket.com/spaces/oefsyyzp32lal2qo/rooms/Ia69P0gMMJIJy1VO?fbclid=IwAR2hYSQmLIkEG31tnODK7kLF4qb6s2LBn8Kyrl05Lscoedr0q7MYzyzVaO8)
 
-![屋上が綺麗になったよ！の写真（11）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-1024x682.jpg)
+![Rooftop wood deck at night with city lights beyond](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-1024x682.jpg)
 
 The view from the Rokko mountain range toward Osaka feels wonderfully open
 
-![屋上が綺麗になったよ！の写真（12）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-1024x682.jpg)
+![Illuminated rooftop at night with surrounding buildings](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-1024x682.jpg)
 
 There's a nice little night view toward Mount Maya too
 
-![屋上が綺麗になったよ！の写真（13）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1024x682.jpg)
+![Stainless steel gas grill installed on the rooftop](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq5-1024x682.jpg)
 
-![屋上が綺麗になったよ！の写真（14）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1024x682.jpg)
+![Wood deck and turf under a blue sky with mountains beyond](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1024x682.jpg)
 
 It's still hot during the day, so we put up a tarp for shade
 
-![屋上が綺麗になったよ！の写真（15）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg)
+![Rattan-style sofas and a low table on the wood deck](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq8-1024x682.jpg)
 
-![屋上が綺麗になったよ！の写真（16）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq9a.jpg)
+![Residents chatting around food on the rooftop sofas](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq9a.jpg)
 
 Even mid-construction, we couldn't resist enjoying it early lol
 
-![屋上が綺麗になったよ！の写真（17）](https://theheadquarters.jp/wp-content/uploads/2019/09/69f1de8be6f750b5997011dc209e6356-1-1024x683.jpg)
+![Grilling meat at night as people gather on the rooftop](https://theheadquarters.jp/wp-content/uploads/2019/09/69f1de8be6f750b5997011dc209e6356-1-1024x683.jpg)
 
 A photo from a bit later — we threw a welcome party for our new housemates 😊
 
-![屋上が綺麗になったよ！の写真（18）](https://theheadquarters.jp/wp-content/uploads/2019/09/81683033aeaccc67e95ec230cdd6f674-1-1024x683.jpg)
+![Close-up of meat and vegetables cooking on the grill](https://theheadquarters.jp/wp-content/uploads/2019/09/81683033aeaccc67e95ec230cdd6f674-1-1024x683.jpg)
 
 The gas grill heats up fast and packs plenty of power.

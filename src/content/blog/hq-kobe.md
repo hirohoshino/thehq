@@ -25,18 +25,18 @@ Headquartersとは、住人が集い、巣立っていき、そしていつま�
 
 ヘッドクオーターズ神戸は、商店に面した小さな5階建てビルの3階〜5階そして屋上までを使っています。部屋数は全部で10室で３階と４階に5部屋ずつ。５Fぜんぶ共有スペースです！
 
-![The Headquarters Kobe（神戸のシェアハウス）の写真（1）](/wp-content/uploads/2022/04/建物概要-1024x789.png)
+![3〜5階と屋上の使い方を示す建物のフロア構成図](/wp-content/uploads/2022/04/建物概要-1024x789.png)
 
 風が気持ちよく通り抜ける5階のほとんどがキッチン・リビング・バスなど広い共有部です。３Fと４F含めすべてのフロアにトイレと洗面台も。  
 お風呂×１、シャワーブース×１、洗面台×６面、トイレ×３台（すべてウォシュレット付き）、洗濯乾燥機×２台、キッチンはガスコンロ２口＋IH１台、冷蔵／冷凍庫は計５台で設備も充実です。  
   
 ワンフロアが約70平米なので、３フロアで約210平米、屋上も含めれば280平米近い大きさです。ひとりあたり面積で見ればシェアハウスの中でもけっこう広いんですよ。
 
-![The Headquarters Kobe（神戸のシェアハウス）の写真（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-1024x682.jpg)
+![観葉植物とソファ、ダーツのある5階のリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1-1024x682.jpg)
 
-![The Headquarters Kobe（神戸のシェアハウス）の写真（3）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-1024x682.jpg)
+![調理器具が並ぶ細長い共用キッチン](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-2-1024x682.jpg)
 
-![The Headquarters Kobe（神戸のシェアハウス）の写真（4）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
+![夜の屋上のウッドデッキとソファ、街あかり](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
 
 ## 運営者
 

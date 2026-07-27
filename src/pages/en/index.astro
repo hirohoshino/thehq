@@ -2,6 +2,8 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import AvailabilityBanner from '../../components/AvailabilityBanner.astro';
+import { minRentYen, commonFeeYen } from '../../data/pricing.mjs';
 import { img } from '../../data/site-images.mjs';
 
 // 日本語トップと同じく、幅違いWebPがあればそれを配信する（無ければ元のJPEG）。
@@ -11,7 +13,7 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
 
 <html lang="en">
   <head>
-    <BaseHead title="The Headquarters Kobe — Sharehouse in Kobe, Japan" description="A sharehouse in the heart of the Suidosuji shopping arcade, Nada, Kobe. Open-minded residents from Japan and around the world." />
+    <BaseHead title="The Headquarters Kobe — Share House in Kobe, Japan" description={`A share house in the heart of the Suidosuji shopping arcade, Nada, Kobe. Rooms from ${minRentYen}/month, no key money, no agency fee. Open-minded residents from Japan and around the world.`} />
     {hero.webpSrcset && (
       <link
         rel="preload"
@@ -44,18 +46,21 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
         <div class="heroText">
           <p class="kicker">THE HEADQUARTERS KOBE</p>
           <h1>Where life and people naturally connect.</h1>
-          <p class="lead">A sharehouse in the heart of Kobe's Suidosuji arcade. Share daily life with open-minded residents from Japan and around the world.</p>
+          <p class="lead">A share house in the heart of Kobe's Suidosuji arcade. Share daily life with open-minded residents from Japan and around the world.</p>
+          <p class="heroPrice">Rooms from {minRentYen}/month (+{commonFeeYen} common fee) · No key money, no agency fee</p>
           <div class="heroActions">
             <a class="btnPrimary" href="/en/contact">Inquire / Book a Viewing</a>
           </div>
         </div>
       </section>
 
+      <AvailabilityBanner lang="en" />
+
       <section class="section">
         <h2 class="sectionTitle">About The Headquarters Kobe</h2>
         <div class="card prose">
           <p>
-            Located near Ojikoen Station in Nada Ward, Kobe — right in the middle of the lively Suidosuji shopping arcade.
+            The Headquarters Kobe is a share house near Ojikoen Station in Nada Ward, Kobe — right in the middle of the lively Suidosuji shopping arcade.
             Open-minded residents from the neighborhood, across Japan, and around the world live together here, sharing inspiration and everyday life.
           </p>
           <p>
@@ -122,7 +127,7 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
           <a class="infoCard" href="/en/rooms">
             <div class="infoKicker">ROOMS</div>
             <div class="infoTitle">Room Guide</div>
-            <div class="infoDesc">Vacancies, pricing, and photos of each room.</div>
+            <div class="infoDesc">Vacancies, photos, and rent for each room — from {minRentYen}/month.</div>
           </a>
           <a class="infoCard" href="/en/location">
             <div class="infoKicker">ACCESS</div>
@@ -152,6 +157,7 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
   .kicker { margin: 0 0 12px; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; color: rgb(var(--gray)); }
   .hero h1 { margin: 0 0 16px; font-size: clamp(28px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.2; }
   .lead { margin: 0 auto 24px; max-width: 56ch; font-size: 18px; color: rgb(var(--gray)); }
+  .heroPrice { margin: -8px auto 20px; font-size: 15px; font-weight: 600; color: rgba(255,255,255,.95); text-shadow: 0 2px 12px rgba(0,0,0,.4); }
   .heroActions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   .btnPrimary, .btnGhost { display: inline-block; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700; }
   .btnPrimary { background: var(--accent); color: white; }

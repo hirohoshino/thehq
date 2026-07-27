@@ -97,6 +97,8 @@
 /blog/bulk/e7a59ee5a4a7e381abe59088e6a0bcefbc81e381a9e38193e381abe4bd8fe38280efbc9fe38080e3808032303231e5b9b4/ /blog/bulk/kobe-university-where-to-live/ 301
 /blog/bulk/e5a4a7e5ada6e7949fe3818ce382b7e382a7e382a2e3838fe382a6e382b9e381abe4bd8fe38293e381a7e889afe3818be381a3e3819fe38193e381a832e381a4/ /blog/bulk/student-sharehouse-two-benefits/ 301
 /blog/bulk/e7a59ee688b8e381a7e983a8e5b18be68ea2e38197e38292e38199e3828be9ab98e6a0a1e7949fe5bf85e8a68befbc81e382b7e382a7e382a2e3838fe382a6e382b9/ /blog/bulk/kobe-student-room-hunting/ 301
+/blog/bulk/e887aae7828ae68ea8e38197e3838fe382a6e382b9/ /blog/bulk/sharehouse-cooking/ 301
+/blog/bulk/e59586e5ba97e8a197e381aee38387e382a3e383bce38397e381aae3818ae9ad9ae5b18be38195e38293/ /blog/bulk/suidosuji-fish-shop/ 301
 
 # ==== 動的リダイレクト(静的ルールの後に配置すること) ====
 /blog/en/* /en/:splat 301

@@ -1,7 +1,8 @@
 ---
-title: "大学生がシェアハウスに住んで良かったこと2つ"
-description: "うちに住んでくれてる大学生の女性が海外挑戦のために退去が決まったのだけど、記念にシェアハウスに住んだ感想を寄稿してくれました。 僕は単に不動産業という範疇に含まれるビジネスとして物理的な部屋を提供し家賃をもらうだけのこと&#8230;"
+title: "大学生がシェアハウスに住んで良かったこと2つ｜退去する住人からの寄稿"
+description: "海外挑戦のため退去が決まった大学生の住人が、シェアハウスに住んで良かったことを2つ寄稿してくれました。行動範囲が広がったこと、そして他人の生き方から刺激を受けられたこと。神戸・水道筋のシェアハウスでの2年間の記録です。"
 pubDate: 2024-06-10
+updatedDate: 2026-07-27
 kind: post
 categories: ["ハウス暮らし"]
 coverImage: "https://theheadquarters.jp/wp-content/uploads/2024/06/図1.jpg"
@@ -19,7 +20,7 @@ coverImage: "https://theheadquarters.jp/wp-content/uploads/2024/06/図1.jpg"
 
 ＊＊＊＊  
   
-1.コミュニティと行動範囲が広がる
+## 1. コミュニティと行動範囲が広がる
 
 シェアハウスは住人の趣味が様々に交差する場所です。誰かに誘われて、初めて挑戦したことがたくさん！自分の趣味が広がります。
 
@@ -36,7 +37,7 @@ coverImage: "https://theheadquarters.jp/wp-content/uploads/2024/06/図1.jpg"
 
 たぶん普通に1人暮らしを始めてたら、やってなかっただろうな、ということがたくさんあります。シェアハウスのみんなが誘ってくれたり、自分がやりたいことに付き合ってもらったり…。日常の過ごし方のレパートリーが増えたような気がします。
 
-2.「生き方」に刺激を受けられる
+## 2.「生き方」に刺激を受けられる
 
 シェアハウスに暮らすということは、他人の人生を近くで見守ることでもあります。特に、私はこの1年で仕事を辞めたり、学校を休学したりして、新しい挑戦を始めるシェアハウス退去住人を何人か見送りました。  
 人生の節目に立ち会えるって本当におもしろい。人生の岐路にある悩みや葛藤をこぼれ聞いたり、決断を間近で見送ったりする中で、自分自身の生き方を強く考えさせられます。
@@ -52,6 +53,8 @@ coverImage: "https://theheadquarters.jp/wp-content/uploads/2024/06/図1.jpg"
 
 日々誰かに助けられていた。あと誰かの言動を見て素敵だな、こうなりたいなと思うことに、溢れていました。私は心配性で、将来が不安で、堅実な選択を重ねる事が多いです。ただそれだけでなく、会いたい人に会いに行ったり、街中で話しかけた人と友達になったり…。突飛に見えるけれど、楽しい予感のする方へ軽やかに飛びこむことを大切にできるようになりました。  
 ここに住んだことは、間違いなく私の人生を豊かにした選択だったと思います。一生の宝物です。
+
+## 最後に
 
 シェアハウスと一口に言っても、物件によって交流の程度にばらつきがあります。このシェアハウスでも時期やメンバーによって濃淡があります。でもここは、すごくあたたかくていい場所です。一度訪ねて、今住んでいるメンバーと話してみるだけでも構いません。私の大好きなこの場所に、あなたが関わってくれると、また久しぶりに訪ねてくれると嬉しいです。
 
@@ -99,6 +102,15 @@ Came home exhausted after a shift at my part-time job. I was kind of in the mood
 
 (On a trip to India with three housemates) I couldn't help but laugh at how ×× turned on the social charm on the bus. They were handing out snacks to kids around us, doing magic tricks, constantly striking up conversations with whoever was nearby. My instinct is always to worry — "is this bothering people, maybe I shouldn't..." — reading the room before I do anything. But watching them go for it with that "yeah!" energy, and actually end up on friendly terms with tons of people, I thought it was wonderful. I want to be more openly friendly like that too, whether in Japan or abroad — to make more friends without hesitating, to have more confidence in myself, and to be as friendly to everyone as ×× is.
 
+## この記事を読んだ方へ
+
+寄稿してくれたのは神戸大学の学生さんでした。同じように神大生・院生・留学生の元住人10人にも話を聞いています。
+
+- [神戸大生に聞いた、シェアハウス暮らしのリアル｜元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/)
+- [神大に合格！どこに住む？｜住むエリアと住み方](https://theheadquarters.jp/blog/bulk/kobe-university-where-to-live/)
+- [お部屋と家賃を見る](https://theheadquarters.jp/rooms/)
+- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
+
 ---
 
 Every day, someone was helping me out in some way. And I was constantly running into people whose words or actions made me think, "that's wonderful, I want to be like that." I tend to be a worrier — anxious about the future, always leaning toward the safe, steady choice. But even so, I've become someone who goes to see the people I want to see, who makes friends with strangers I strike up conversations with on the street. It might look impulsive from the outside, but I've learned to value leaping lightly toward whatever feels like it'll be fun.
@@ -106,4 +118,9 @@ Every day, someone was helping me out in some way. And I was constantly running 
 Living here was, without a doubt, a choice that made my life richer. It's a treasure I'll carry with me for the rest of my life.
 
 "Share house" is a broad term, and how much residents actually connect with each other varies a lot from property to property. Even here, the atmosphere shifts depending on the season and who's living here at the time. But this place — it's a really warm, wonderful place. Even just stopping by once and talking with whoever's living here now is more than enough. I'd be so happy if you let this place I love so much become a part of your life too, and if you come back to visit again sometime.
-</content>
+
+*Note: the English text above is an excerpt from the closing part of the original Japanese essay.*
+
+- [Kobe University students on what share house life is really like](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/)
+- [Rooms and rent](https://theheadquarters.jp/en/rooms/)
+- [Inquire / book a viewing](https://theheadquarters.jp/en/contact/)

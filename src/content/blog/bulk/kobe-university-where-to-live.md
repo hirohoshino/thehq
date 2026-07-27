@@ -1,54 +1,71 @@
 ---
-title: "神大に合格！どこに住む？　　2021年"
-description: "ヘッドクオーターズの近くにある素敵な大学（笑）、神戸大学に合格された皆さんおめでとうございます！本記事では晴れて神戸大学に合格したひとに向けて、どこに住むべきか、どんな大学生活にしていくかという合格の次の悩みについてほん&#8230;"
+title: "神大に合格！どこに住む？｜神戸大学生の住むエリアと住み方を現役生が解説"
+description: "神戸大学に合格したら次は住まい選び。神大生が住む3つのエリア（大学近辺・三宮・六甲と三宮の間）と、一人暮らし・寮・シェアハウスの違いを、当時の現役神戸大生が実体験をもとに解説します。"
 pubDate: 2021-03-16
+updatedDate: 2026-07-27
 kind: post
 categories: ["ハウス暮らし"]
 ---
 
 *🇬🇧 English translation follows the Japanese text below.*
 
+> **編集注**：この記事は2021年3月に、当時ヘッドクォーターズに住んでいた現役の神戸大学生が書いたものです。オンライン授業に関する記述など、執筆当時の状況を反映した部分があります。エリアの特徴や住み方の比較は今も参考になるはずです。最新の入居条件は[お部屋と家賃](https://theheadquarters.jp/rooms/)をご覧ください。
+
+
 ヘッドクオーターズの近くにある素敵な大学（笑）、神戸大学に合格された皆さんおめでとうございます！  
 本記事では晴れて神戸大学に合格したひとに向けて、どこに住むべきか、どんな大学生活にしていくかという合格の次の悩みについてほんの少し役立てるものとなるよう書いてみました。
 
 神戸大学は地方出身者も多く、多くの人が親元を離れて生活します。そんな方々のためにここでは、実際に神戸大学に通っている人の意見も踏まえて、住む場所と住み方を紹介しようと思います。ちなみにこれを書いているのはヘッドクオーターズの住人であり、現役神戸大学生です。よろしくお願いします。
 
+## まず、神戸大学のキャンパスは2つ
+
 まず大学のキャンパスを説明すると、大学1年生の間はほとんどの学生が図中の「②」の鶴甲キャンパスで授業を受けます。そして、その後それぞれの学部のキャンパスに移動します。医学部、海洋政策学部を除くと2年生以降、①六甲台キャンパス又は②鶴甲キャンパスで授業を受けることになります。
+
+## 神大生が住む3つのエリア
 
 神大生が住むエリアを考えると、主に上の3つがあります。注意しなければいけないのが、神戸は坂が多いことです（笑）南北（図の下から上に）にかけて坂になっていて、キャンパスは山にあります（笑）なので、キャンパスに一番近い路線である阪急沿線に住む人でさえも、通学に神戸市バスを利用する場合が多いです。
 
-**①大学近辺（大学～阪急六甲、****JR****六甲道、阪神新在家）**
+### ①大学近辺（大学〜阪急六甲・JR六甲道・阪神新在家）
 
 コロナ禍に入るまでは、大学近辺に住むのが神大生にとって一般的でした。平日の授業や、サークル部活動を考えると、大学近辺に住むことは大きなメリットでした。しかし、大学のオンライン授業の割合が増えるにつれて、大学に行く必要がなくなり、同時に大学近辺に住む意義が薄れていきました。ただ、今後コロナの勢いが収まり、対面での授業が増えることを考えると大学近辺は無難な選択なのかもしれません。
 
-**②三宮**
+### ②三宮
 
 三宮は何といっても神戸1の都会です。遊び場、バイト先などに困ることはないでしょう。ただ、都会なので、家賃が高かったり、治安が良くなかったりと、大学生には適していないかもしれません。それでも、通学が当たり前ではなくなった今、刺激がない毎日を送るよりも少し離れた都会で刺激的な毎日を過ごすのも選択肢の一つでしょう。
 
-**③六甲と三宮の間**
+### ③六甲と三宮の間
 
 もう一つの神大生に人気のエリアとして、図の②のエリアがあります。①のエリアに比べて、比較的家賃が安く、商店街などもあるため、生活のしやすさは抜群です。また、通学のしやすさも特徴です。そして、この地域から通学するとなると、バスを1度乗り換える必要があります。しかし、神戸市バスの乗り換え割により、一回のバス利用の運賃で、神大まで通うことができます。通学時間などを考えても、大学近辺エリアと大差はありません。コロナのことも考えると、家賃を抑えつつ、このエリアに住むというのも良い選択でしょう。
 
 ![神大に合格！どこに住む？　　2021年の写真（1）](https://theheadquarters.jp/wp-content/uploads/2021/03/shindaigoukaku-1024x645.jpg)
 
-**大学生の住み方**
+## 大学生の住み方は3つ
 
 神戸に住むと言っても、住み方がいくつかあります。ここでは3つ紹介しようと思います。
 
-**①一人暮らし**
+| | 一人暮らし | 寮 | シェアハウス |
+|---|---|---|---|
+| 家賃の目安 | 高め | 2万円以下 | 3〜7万円 |
+| 初期費用 | 高い | 安い | ハウスによる |
+| 人との出会い | 自分次第 | 薄いという声も | 多い |
+| プライベート | 完全 | 部屋による | 個室あり／共用部は共有 |
+
+
+
+### ①一人暮らし
 
 多くのひとが考える住み方が一人暮らしかと思います。「大学生＝自由」と考える人にとっては、自由に家具を選んだり、友達を呼んだりと楽しい大学生活を送れるでしょうただ、一人暮らしは次に紹介する2つに比べて、初期費用や月々にかかる費用が高いというデメリットもあります。そのほか注意すべき点は、コロナウイルスによる影響です。コロナウイルスによって、神戸大学では多くの授業がオンラインになりました。それに伴って、「実家に帰ることにした」、「学校での友達との出会いがなくなった」という声をよく聞きます。そういった場合に、退去のしやすさや人との出会いという点では一人暮らしは次の2つに劣るかもしれません。
 
-**②寮**
+### ②寮
 
 神戸大学には学生寮もいくつか存在します。住吉寮、住吉国際寮、白鴎寮、国維寮、女子寮などがあり、個室かどうかや部屋の設備に違いはあれど、家賃は2万円以下とかなり安いです。実際に住んでいる人の不満としては、部屋の狭さや想像よりも、寮生間でのつながりが薄いことが挙げられます。
 
-**③シェアハウス**
+### ③シェアハウス
 
 最近大学生にも人気になっている住み方がシェアハウスです。シェアハウスというと「テラスハウス」を考える人も多いでしょう（笑）。現在一般的なシェアハウスは複数人（人数は数人～数十人とハウスによってまちまちです）で、キッチン、お風呂、トイレ、リビングなどを共有し、それぞれにプライベートな部屋があるタイプです。そして、清潔で、シェアハウスようにリノベーションされているハウスも多いです。そして交流を求めて入居する人が多かったり、シェアハウスごとにコンセプトがあったり（国際交流、ダンス、アート、ペットetc）とコロナ禍でも、人とのつながりを楽しみながら生活できるのが特徴です。  
 家賃は一人暮らしに比べると安く、寮と比べると高いことが多いです。相場は月30000円～70000円かと思います。多くの人が心配するプライベートに関しては、それぞれの部屋があることが多いため確保されていますが、完全な自由を生活に求める人には向いていないかもしれません。  
 
-結論：私の選択
+## 結論：私の選択
 
 私がいま住んでいるのはシェアハウスで、これまで２つのハウスを経験しています。  
 一年生の途中から元町のシェアハウスに住み始めました。きっかけは通学に時間をかけるのが億劫になったことでした。一人暮らしや寮も考えましたが、そのシェアハウスに外国人が多く住むことを知って、シェアハウスに住むことを決めました。  
@@ -64,52 +81,75 @@ categories: ["ハウス暮らし"]
   
 さて、「神戸大生がどこに住むべきか？」という私の話は以上です。もし質問があれば送ってくださいね。それでは。
 
-〈追伸〉  
+### 〈追伸〉  
 先日、こちらをご覧頂いたのか、神大に受かった息子さんをお持ちのお母様から空室のお問い合わせを頂きました。頂いたgmailアドレスに折返しお返事したのですが、迷惑メールにまぎれたのかその後お返事なく。。もしまだ住処が未定で見られていたらご連絡ください。
 
+## もっと詳しく
+
+- [神戸大生に聞いた、シェアハウス暮らしのリアル｜元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/)
+- [シェアハウスHQ神戸から神戸大学への通学方法](https://theheadquarters.jp/blog/bulk/kobe-university-commute/)
+- [神戸大学の学生・院生・留学生の方へ](https://theheadquarters.jp/kobe-university/)
+- [お部屋と家賃を見る](https://theheadquarters.jp/rooms/)
+- [入居の流れとQ&A](https://theheadquarters.jp/procedures/)
+
 ---
+
+> **Editor's note:** This post was written in March 2021 by a Kobe University student who was living at The Headquarters at the time. Some parts — the remarks about online classes, for instance — reflect the situation back then. The comparison of neighbourhoods and living arrangements should still be useful. For current terms, see [Rooms and rent](https://theheadquarters.jp/en/rooms/).
 
 Congratulations to everyone who got into Kobe University, that lovely university near The Headquarters (just kidding)!
 This post is aimed at everyone who's just been accepted into Kobe University, and hopefully offers a little help with the next question after passing the exam: where to live and what kind of student life to build.
 
 Kobe University has a lot of students from other parts of Japan, so many people end up living away from their parents for the first time. With that in mind, this post introduces where and how to live, drawing on the opinions of actual current Kobe University students. For what it's worth, the person writing this is a resident of The Headquarters and a current Kobe University student. Thanks for reading.
 
+## The two campuses
+
 First, a bit about the campuses: during first year, almost all students take classes at the Tsurukabuto Campus, marked "②" on the map. After that, everyone moves to their own faculty's campus. Aside from the Faculty of Medicine and the Faculty of Maritime Sciences, from second year onward students take classes at either ① the Rokkodai Campus or ② the Tsurukabuto Campus.
+
+## Three areas where Kobe University students live
 
 When you think about the areas where Kobe University students live, there are mainly the three shown above. One thing to watch out for is that Kobe is very hilly (ha!). The land slopes upward from south to north (from the bottom of the map to the top), and the campuses sit up in the hills. So even people who live along the Hankyu line, the line closest to campus, often end up taking the Kobe City Bus to get to school.
 
-**① Near the university (from the university to Hankyu Rokko, JR Rokkodai, and Hanshin Shinzaike)**
+### ① Near the university (Hankyu Rokko, JR Rokkodai, Hanshin Shinzaike)
 
 Before the pandemic, living near campus was the standard choice for Kobe University students. With in-person classes and club activities during the week, living close to campus was a big advantage. But as more classes moved online, the need to actually go to campus dropped, and along with it, the appeal of living nearby faded somewhat. That said, once the pandemic settles down and in-person classes increase again, living near the university may well be a safe, solid choice.
 
-**② Sannomiya**
+### ② Sannomiya
 
 Sannomiya is, without question, the liveliest part of Kobe. You won't be short of places to hang out or find a part-time job. On the other hand, being such an urban area, rent is higher and safety can be a bit more of a concern, so it might not suit every student. Still, now that commuting to campus every day isn't a given anymore, spending your days in a livelier part of town rather than a quiet routine could be an appealing option too.
 
-**③ Between Rokko and Sannomiya**
+### ③ Between Rokko and Sannomiya
 
 Another area popular with Kobe University students is area ② on the map. Compared to area ①, rent tends to be more affordable, and with shopping streets nearby, everyday life is very convenient. Getting to campus is also easy. From this area, you do need to transfer buses once, but thanks to the Kobe City Bus transfer discount, you can get all the way to campus for the price of a single bus fare. Even factoring in travel time, it's not much different from living right by the university. Considering the pandemic as well, keeping rent low while living in this area is a good option.
 
 ![Photo related to getting into Kobe University: where should you live?](https://theheadquarters.jp/wp-content/uploads/2021/03/shindaigoukaku-1024x645.jpg)
 
-**How students choose to live**
+## Three ways students live
 
 Even once you've settled on living in Kobe, there are still different ways to go about it. Here I'll introduce three.
 
-**① Living alone**
+| | Living alone | Dormitory | Share house |
+|---|---|---|---|
+| Rent | Higher | Under ¥20,000 | ¥30,000–70,000 |
+| Move-in cost | High | Low | Varies by house |
+| Meeting people | Up to you | Thinner than expected | Plenty |
+| Privacy | Complete | Depends on the room | Private room, shared common areas |
+
+
+
+### ① Living alone
 
 Living alone is probably what most people picture. If you think "college student equals freedom," living alone lets you pick out your own furniture, invite friends over, and generally enjoy a fun college life. That said, compared to the next two options, living alone comes with higher upfront costs and higher monthly expenses. Another thing to keep in mind is the impact of COVID-19. With so many Kobe University classes moving online because of the pandemic, I often hear people say things like "I decided to move back to my hometown" or "I never got to meet friends at school." In situations like that, living alone can be a disadvantage compared to the next two options, both in terms of how easy it is to move out and in terms of meeting people.
 
-**② Dormitories**
+### ② Dormitories
 
 Kobe University has a number of student dormitories, including Sumiyoshi Dormitory, Sumiyoshi International Dormitory, Hakuo Dormitory, Kokui Dormitory, and dormitories for women, among others. Whether rooms are private and what facilities are included varies, but rent is quite cheap, generally under 20,000 yen. Common complaints from people actually living there tend to be that the rooms are smaller than expected, and that connections between dorm residents are thinner than they imagined.
 
-**③ Share houses**
+### ③ Share houses
 
 A style of living that's recently gained popularity among college students too is the share house. When people hear "share house," a lot of them probably picture a TV drama like "Terrace House" (ha!). These days, a typical share house has multiple residents (anywhere from a handful to several dozen, depending on the house) sharing a kitchen, bathroom, toilet, and living room, while each person has their own private room. Many share houses are also clean and thoughtfully renovated for shared living. A lot of people move in specifically looking to connect with others, and each share house often has its own concept — international exchange, dance, art, pets, and so on — which means even during the pandemic, you can enjoy staying connected with people while you live.
 Rent is usually lower than living alone, but often higher than a dormitory. I'd estimate the going rate is somewhere between 30,000 and 70,000 yen a month. As for privacy, which a lot of people worry about, most share houses give you your own room, so that's generally covered — though it might not suit anyone looking for complete independence in their daily life.
 
-Conclusion: my choice
+## Conclusion: my choice
 
 I currently live in a share house myself, and I've actually lived in two different ones.
 
@@ -126,6 +166,14 @@ Having actually lived in this area, the biggest advantage I've felt is simply ho
 
 Well, that wraps up my thoughts on "where should Kobe University students live?" If you have any questions, feel free to send them my way. Thanks for reading.
 
-〈P.S.〉
+### 〈P.S.〉
 The other day, we received an inquiry about vacancies from a mother whose son had just been accepted into Kobe University — I assume she'd come across this post. We replied to the Gmail address she gave us, but never heard back, so it may have gotten caught in her spam folder. If you're reading this and still haven't found a place to live, please get in touch with us.
 </content>
+
+## Read more
+
+- [Kobe University students on what share house life is really like](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/)
+- [How to commute from HQ Kobe to Kobe University](https://theheadquarters.jp/blog/bulk/kobe-university-commute/)
+- [For Kobe University students and researchers](https://theheadquarters.jp/kobe-university/)
+- [Rooms and rent](https://theheadquarters.jp/en/rooms/)
+- [Move-in process and FAQ](https://theheadquarters.jp/en/procedures/)

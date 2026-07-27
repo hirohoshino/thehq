@@ -31,7 +31,7 @@
 /archives/648 /blog/bulk/e3838fe382a6e382b9e381aee69aaee38289e38197e381b6e3828ae38292e381bfe38293e381aae381afe381a9e38186e4bc9de38188e3828be381a6e3828be3818b/ 301
 /archives/655 /blog/bulk/e38182e38191e381bee38197e381a6e3818ae38281e381a7e381a8e38186e38194e38196e38184e381bee38199efbc88e383aae3838be383a5e383bce382a2e383ab/ 301
 /archives/659 /blog/bulk/e887aae7828ae68ea8e38197e3838fe382a6e382b9/ 301
-/archives/671 /blog/bulk/e7a59ee688b8e5a4a7e5ada6e381b8e381aee9809ae5ada6e696b9e6b395/ 301
+/archives/671 /blog/bulk/kobe-university-commute/ 301
 /archives/681 /blog/bulk/e382ade38383e38381e3838fe382a4e382af/ 301
 /archives/685 /blog/bulk/e681b5e696b9e5b7bbe38292e4bd9ce381a3e381a6e9a39fe381b9e3819fe38289/ 301
 /archives/693 /blog/bulk/e887aae5aeb6e8a3bde382b1e383bce382ad/ 301
@@ -57,7 +57,7 @@
 /archives/1005 /blog/bulk/e7a59ee688b8e5a4a7e5ada6e5a4a7e5ada6e999a2-e58d92e6a5ad/ 301
 /archives/1020 /blog/bulk/dazne58aa0e585a5/ 301
 /archives/1030 /blog/bulk/e696b0e4babae6ad93e8bf8ee4bc9a/ 301
-/archives/1104 /blog/bulk/e7a59ee688b8e381a7e983a8e5b18be68ea2e38197e38292e38199e3828be9ab98e6a0a1e7949fe5bf85e8a68befbc81e382b7e382a7e382a2e3838fe382a6e382b9/ 301
+/archives/1104 /blog/bulk/kobe-student-room-hunting/ 301
 /archives/1109 /blog/bulk/e4bd8fe6b091e381aee79bb8e4ba92e79086e8a7a3e381abe5bdb9e7ab8be381a4e382b2e383bce383a0efbc81efbc9f/ 301
 /archives/1116 /blog/bulk/e383a9e382b8e382aae4bd93e6938de381a8e8b1aae88fafe6b5b7e9aeaee4b8bc/ 301
 /archives/1120 /blog/bulk/e58db5e784bce3818de38197e38287e381a3e381b1e38184e79498e38184e381aee9a39fe381b9e6af94e381b9/ 301
@@ -92,6 +92,12 @@
 /blog/contact/ /contact/ 301
 /blog/overview/ /blog/hq-kobe/ 301
 /blog/events/ /blog/ 301
+# ---- リライトに伴うスラッグ変更(2026-07) ----
+/blog/bulk/e7a59ee688b8e5a4a7e5ada6e381b8e381aee9809ae5ada6e696b9e6b395/ /blog/bulk/kobe-university-commute/ 301
+/blog/bulk/e7a59ee5a4a7e381abe59088e6a0bcefbc81e381a9e38193e381abe4bd8fe38280efbc9fe38080e3808032303231e5b9b4/ /blog/bulk/kobe-university-where-to-live/ 301
+/blog/bulk/e5a4a7e5ada6e7949fe3818ce382b7e382a7e382a2e3838fe382a6e382b9e381abe4bd8fe38293e381a7e889afe3818be381a3e3819fe38193e381a832e381a4/ /blog/bulk/student-sharehouse-two-benefits/ 301
+/blog/bulk/e7a59ee688b8e381a7e983a8e5b18be68ea2e38197e38292e38199e3828be9ab98e6a0a1e7949fe5bf85e8a68befbc81e382b7e382a7e382a2e3838fe382a6e382b9/ /blog/bulk/kobe-student-room-hunting/ 301
+
 # ==== 動的リダイレクト(静的ルールの後に配置すること) ====
 /blog/en/* /en/:splat 301
 /feed/* /rss.xml 301

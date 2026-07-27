@@ -129,7 +129,7 @@ const jsonLd = {
             <rect x="524" y="292" width="168" height="52" rx="12" class="node" />
             <text x="608" y="314" class="tNode">三宮</text>
             <text x="608" y="332" class="tNodeSub">神戸の中心街</text>
-            <text x="516" y="252" class="tEdge">電車で 約10分</text>
+            <text x="478" y="252" class="tEdge">徒歩＋電車で 約10分</text>
 
             <!-- 水道筋商店街 -->
             <rect x="60" y="292" width="184" height="52" rx="12" class="node" />
@@ -174,60 +174,91 @@ const jsonLd = {
         </p>
 
         <figure class="fig">
-          <svg class="figSvg" viewBox="0 0 760 330" role="img" aria-label="HQから神戸大学への3つの通学ルートと運賃を示した図">
-            <rect x="0" y="0" width="760" height="330" rx="18" fill="#f7f8fc" />
+          <svg class="figSvg" viewBox="0 0 760 350" role="img" aria-label="HQから神戸大学への3つの通学ルート。所要時間・運賃・移動手段を示した図">
+            <defs>
+              <symbol id="icoWalk" viewBox="0 0 24 24">
+                <circle cx="12.5" cy="4.4" r="2.3" fill="currentColor" />
+                <path d="M12.2 8 L11.6 13.2 M12.2 8 L8.7 10.7 M12.2 8 L15.3 11.7 L17.4 11 M11.6 13.2 L8.5 19.8 M11.6 13.2 L14.5 15.6 L15.3 19.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+              </symbol>
+              <symbol id="icoBus" viewBox="0 0 24 24">
+                <rect x="3.5" y="3.5" width="17" height="13.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9" />
+                <line x1="3.5" y1="11.5" x2="20.5" y2="11.5" stroke="currentColor" stroke-width="1.9" />
+                <circle cx="8" cy="19.8" r="1.7" fill="currentColor" />
+                <circle cx="16" cy="19.8" r="1.7" fill="currentColor" />
+              </symbol>
+              <symbol id="icoTrain" viewBox="0 0 24 24">
+                <rect x="5" y="2.8" width="14" height="14.6" rx="3.6" fill="none" stroke="currentColor" stroke-width="1.9" />
+                <rect x="8.1" y="5.8" width="7.8" height="4.6" rx="1" fill="currentColor" />
+                <circle cx="9.3" cy="13.9" r="1.25" fill="currentColor" />
+                <circle cx="14.7" cy="13.9" r="1.25" fill="currentColor" />
+                <path d="M8.2 21 L10.1 17.4 M15.8 21 L13.9 17.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+              </symbol>
+            </defs>
+            <rect x="0" y="0" width="760" height="350" rx="18" fill="#f7f8fc" />
 
-            <!-- ルート1 -->
-            <rect x="24" y="46" width="712" height="76" rx="12" class="lane laneBest" />
-            <rect x="40" y="60" width="74" height="22" rx="11" class="pill" />
-            <text x="77" y="75" class="tPill">おすすめ</text>
-            <text x="40" y="108" class="tFare">片道 210円</text>
-            <line x1="176" y1="84" x2="700" y2="84" class="route routeBest" />
-            <circle cx="176" cy="84" r="7" class="dot dotBest" />
-            <circle cx="350" cy="84" r="6" class="dot dotBest" />
-            <circle cx="524" cy="84" r="6" class="dot dotBest" />
-            <circle cx="700" cy="84" r="7" class="dot dotBest" />
-            <text x="176" y="68" class="tStop">HQ</text>
-            <text x="350" y="68" class="tStop">水道筋3丁目</text>
-            <text x="524" y="68" class="tStop">六甲口</text>
-            <text x="700" y="68" class="tStop" text-anchor="end">神大正門前</text>
-            <text x="263" y="104" class="tSeg">徒歩1分</text>
-            <text x="437" y="104" class="tSeg">市バス 92系統</text>
-            <text x="612" y="104" class="tSeg">36系統に乗換</text>
+            <!-- ルート1: バス乗り継ぎ（おすすめ） -->
+            <rect x="24" y="46" width="712" height="88" rx="12" class="lane laneBest" />
+            <rect x="40" y="56" width="74" height="22" rx="11" class="pill" />
+            <text x="77" y="71" class="tPill">おすすめ</text>
+            <text x="40" y="104" class="tTime">約25分</text>
+            <text x="40" y="124" class="tFareSub">片道 210円</text>
+            <line x1="200" y1="80" x2="700" y2="80" class="route routeBest" />
+            <circle cx="200" cy="80" r="7" class="dot dotBest" />
+            <circle cx="366" cy="80" r="6" class="dot dotBest" />
+            <circle cx="533" cy="80" r="6" class="dot dotBest" />
+            <circle cx="700" cy="80" r="7" class="dot dotBest" />
+            <text x="200" y="64" class="tStop">HQ</text>
+            <text x="366" y="64" class="tStop">水道筋3丁目</text>
+            <text x="533" y="64" class="tStop">六甲口</text>
+            <text x="700" y="64" class="tStop" text-anchor="end">神大正門前</text>
+            <use href="#icoWalk" x="273" y="88" width="19" height="19" class="ico icoBest" />
+            <use href="#icoBus" x="440" y="88" width="19" height="19" class="ico icoBest" />
+            <use href="#icoBus" x="607" y="88" width="19" height="19" class="ico icoBest" />
+            <text x="283" y="124" class="tSeg">徒歩1分</text>
+            <text x="450" y="124" class="tSeg">市バス 92系統</text>
+            <text x="616" y="124" class="tSeg">36系統に乗換</text>
 
-            <!-- ルート2 -->
-            <rect x="24" y="134" width="712" height="76" rx="12" class="lane" />
-            <text x="40" y="178" class="tFare tFareSub">片道 340円</text>
-            <line x1="176" y1="172" x2="700" y2="172" class="route" />
-            <circle cx="176" cy="172" r="7" class="dot" />
-            <circle cx="350" cy="172" r="6" class="dot" />
-            <circle cx="524" cy="172" r="6" class="dot" />
-            <circle cx="700" cy="172" r="7" class="dot" />
-            <text x="176" y="156" class="tStop">HQ</text>
-            <text x="350" y="156" class="tStop">JR摩耶</text>
-            <text x="524" y="156" class="tStop">JR六甲道</text>
-            <text x="700" y="156" class="tStop" text-anchor="end">神大正門前</text>
-            <text x="263" y="192" class="tSeg">徒歩6分</text>
-            <text x="437" y="192" class="tSeg">JR神戸線</text>
-            <text x="612" y="192" class="tSeg">市バス36系統</text>
+            <!-- ルート2: JR -->
+            <rect x="24" y="150" width="712" height="88" rx="12" class="lane" />
+            <text x="40" y="198" class="tTime tTimeSub">約30分</text>
+            <text x="40" y="218" class="tFareSub">片道 340円</text>
+            <line x1="200" y1="184" x2="700" y2="184" class="route" />
+            <circle cx="200" cy="184" r="7" class="dot" />
+            <circle cx="366" cy="184" r="6" class="dot" />
+            <circle cx="533" cy="184" r="6" class="dot" />
+            <circle cx="700" cy="184" r="7" class="dot" />
+            <text x="200" y="168" class="tStop">HQ</text>
+            <text x="366" y="168" class="tStop">JR摩耶</text>
+            <text x="533" y="168" class="tStop">JR六甲道</text>
+            <text x="700" y="168" class="tStop" text-anchor="end">神大正門前</text>
+            <use href="#icoWalk" x="273" y="192" width="19" height="19" class="ico" />
+            <use href="#icoTrain" x="440" y="192" width="19" height="19" class="ico" />
+            <use href="#icoBus" x="607" y="192" width="19" height="19" class="ico" />
+            <text x="283" y="228" class="tSeg">徒歩6分</text>
+            <text x="450" y="228" class="tSeg">JR神戸線</text>
+            <text x="616" y="228" class="tSeg">市バス36系統</text>
 
-            <!-- ルート3 -->
-            <rect x="24" y="222" width="712" height="76" rx="12" class="lane" />
-            <text x="40" y="266" class="tFare tFareSub">片道 370円</text>
-            <line x1="176" y1="260" x2="700" y2="260" class="route" />
-            <circle cx="176" cy="260" r="7" class="dot" />
-            <circle cx="350" cy="260" r="6" class="dot" />
-            <circle cx="524" cy="260" r="6" class="dot" />
-            <circle cx="700" cy="260" r="7" class="dot" />
-            <text x="176" y="244" class="tStop">HQ</text>
-            <text x="350" y="244" class="tStop">阪急王子公園</text>
-            <text x="524" y="244" class="tStop">阪急六甲</text>
-            <text x="700" y="244" class="tStop" text-anchor="end">神大正門前</text>
-            <text x="263" y="280" class="tSeg">徒歩7分</text>
-            <text x="437" y="280" class="tSeg">阪急神戸線</text>
-            <text x="612" y="280" class="tSeg">市バス36系統</text>
+            <!-- ルート3: 阪急 -->
+            <rect x="24" y="254" width="712" height="88" rx="12" class="lane" />
+            <text x="40" y="302" class="tTime tTimeSub">約30分</text>
+            <text x="40" y="322" class="tFareSub">片道 370円</text>
+            <line x1="200" y1="288" x2="700" y2="288" class="route" />
+            <circle cx="200" cy="288" r="7" class="dot" />
+            <circle cx="366" cy="288" r="6" class="dot" />
+            <circle cx="533" cy="288" r="6" class="dot" />
+            <circle cx="700" cy="288" r="7" class="dot" />
+            <text x="200" y="272" class="tStop">HQ</text>
+            <text x="366" y="272" class="tStop">阪急王子公園</text>
+            <text x="533" y="272" class="tStop">阪急六甲</text>
+            <text x="700" y="272" class="tStop" text-anchor="end">神大正門前</text>
+            <use href="#icoWalk" x="273" y="296" width="19" height="19" class="ico" />
+            <use href="#icoTrain" x="440" y="296" width="19" height="19" class="ico" />
+            <use href="#icoBus" x="607" y="296" width="19" height="19" class="ico" />
+            <text x="283" y="332" class="tSeg">徒歩7分</text>
+            <text x="450" y="332" class="tSeg">阪急神戸線</text>
+            <text x="616" y="332" class="tSeg">市バス36系統</text>
           </svg>
-          <figcaption>このほか、自転車・原付でも通えます。帰りは下り坂なので、歩いて30分弱かけて帰る住人も。</figcaption>
+          <figcaption>所要時間は乗り継ぎ・時間帯により前後します。このほか、自転車・原付でも通えます。帰りは下り坂なので、歩いて30分弱かけて帰る住人も。</figcaption>
         </figure>
       </section>
 
@@ -489,7 +520,7 @@ const jsonLd = {
   .sec.secParents { background: #f0fdf4; border: 1px solid #bbf7d0; }
   .secKicker { margin: 0 0 8px; font-size: 11px; font-weight: 700; letter-spacing: .16em; color: var(--accent); }
   .secTitle { margin: 0 0 16px; font-size: clamp(21px, 3.2vw, 30px); line-height: 1.4; }
-  .secLead { margin: 0 0 28px; max-width: 66ch; color: rgb(var(--gray-dark)); line-height: 1.9; font-size: 15px; }
+  .secLead { margin: 0 0 28px; color: rgb(var(--gray-dark)); line-height: 1.9; font-size: 15px; }
   .brSp { display: none; }
 
   /* ---------- 図版 ---------- */
@@ -510,14 +541,17 @@ const jsonLd = {
   .lane.laneBest { stroke: #2337ff; stroke-width: 2; }
   .pill { fill: #2337ff; }
   .tPill { font-size: 11px; font-weight: 700; fill: #fff; text-anchor: middle; }
-  .tFare { font-size: 17px; font-weight: 700; fill: #2337ff; }
-  .tFare.tFareSub { fill: #60739f; }
+  .tTime { font-size: 22px; font-weight: 700; fill: #2337ff; }
+  .tTime.tTimeSub { fill: #3a4562; }
+  .tFareSub { font-size: 11.5px; fill: #78839f; }
   .route { stroke: #d7dcea; stroke-width: 3; }
   .route.routeBest { stroke: #2337ff; }
   .dot { fill: #fff; stroke: #b9c1d8; stroke-width: 3; }
   .dot.dotBest { stroke: #2337ff; }
   .tStop { font-size: 12px; font-weight: 700; fill: #222939; text-anchor: middle; }
   .tSeg { font-size: 11px; fill: #78839f; text-anchor: middle; }
+  .ico { color: #8b96b3; }
+  .ico.icoBest { color: #2337ff; }
 
   .tSecLabel { font-size: 13px; font-weight: 700; fill: #60739f; }
   .tTotal { font-size: 19px; font-weight: 700; fill: #222939; }

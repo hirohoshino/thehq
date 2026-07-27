@@ -16,6 +16,8 @@ categories: ["ハウス暮らし"]
 
 ![自家製ケーキの写真（1）](https://theheadquarters.jp/wp-content/uploads/2020/02/f7c663c0b792e34b24c2ca069b13464f-1024x683.jpg)
 
+![型から外したばかりのシフォンケーキと、隣に置かれたシフォン型とスプーン](https://theheadquarters.jp/wp-content/uploads/2026/07/fb/fb-20200208-1-1400x933.jpg)
+
 ---
 
 One of our residents mentioned she wanted a cake pan, so we went out and bought one — and she had a cake made in no time! Well, actually it wasn't the girl who asked for it who ended up baking, but our Hungarian resident who loves to cook, haha.  
@@ -25,3 +27,5 @@ The whole thing probably cost less than 1,000 yen to make, so it's a great deal 
 Next time, let's load it up with plenty of cream ♪
 
 ![自家製ケーキの写真（2）](https://theheadquarters.jp/wp-content/uploads/2020/02/f7c663c0b792e34b24c2ca069b13464f-1024x683.jpg)
+
+![The freshly unmolded chiffon cake on a plate, next to the chiffon pan and spoons](https://theheadquarters.jp/wp-content/uploads/2026/07/fb/fb-20200208-1-1400x933.jpg)

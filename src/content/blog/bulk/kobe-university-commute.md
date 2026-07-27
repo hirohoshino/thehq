@@ -28,6 +28,9 @@ categories: ["ハウス暮らし"]
 
 ※運賃は2020年1月時点の情報です。最新の運賃は神戸市交通局・各鉄道会社のサイトでご確認ください。
 
+*   ![神戸市バスの路線図。水道筋から六甲口を経て神大正門前までの92系統と36系統がわかる](https://theheadquarters.jp/wp-content/uploads/2026/07/fb/fb-20200117-1-1400x801.jpg)
+    
+
 ## 学生のおすすめは③のバス乗り継ぎ
 
 住んでいる学生に聞いたら、おすすめは③だそうです。
@@ -86,6 +89,9 @@ The Headquarters (HQ) Kobe sits roughly halfway between Kobe University and Sann
 | ⑤ On foot | ¥0 | Just under 30 minutes home as a stroll. Uphill on the way there (ha) |
 
 *Fares are as of January 2020. Please check the Kobe City Transportation Bureau and railway operators for current fares.*
+
+*   ![Kobe city bus route map showing route 92 from Suidosuji and route 36 through Rokko-guchi to Shindai Seimon-mae](https://theheadquarters.jp/wp-content/uploads/2026/07/fb/fb-20200117-1-1400x801.jpg)
+    
 
 ## Students recommend route ③
 

@@ -15,10 +15,11 @@ The building is situated along the main street of the Suidosuji shopping arcade,
 
 ## Neighborhood
 
-Budget-friendly greengrocer — 10 seconds away!
-Convenience store (Lawson) — 1 min walk
-Supermarket (Maruhachi) — 2 min walk
-100-yen shop (Can Do) — 2 min walk
-Bus stop (Suidosuji 3-chome / 6-chome) — 1 min walk
+Budget-friendly greengrocer — 5 seconds away! (right in front of the building)  
+Convenience store (Lawson) — 30 seconds (it moved in right around the corner!)  
+Fast food (McDonald's) — 1 min walk (it finally arrived!)  
+Supermarket (Maruhachi) — 2 min walk  
+100-yen shop (Can Do) — 2 min walk  
+Bus stop (Suidosuji 3-chome / 6-chome) — 1 min walk  
 Park (Ojikoen) — 8 min walk
 

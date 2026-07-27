@@ -58,15 +58,16 @@ categories: ["ハウス暮らし"]
 
 | 行き先 | 徒歩 |
 |---|---|
-| 格安の八百屋さん | 0.1分 |
-| コンビニ（ローソン） | 1分 |
+| 格安の八百屋さん | 5秒（ビル目の前） |
+| コンビニ（ローソン） | 30秒 |
+| ファストフード（マクド） | 1分 |
 | バス停（水道筋3丁目／6丁目） | 1分 |
 | スーパー（マルハチ） | 2分 |
 | 100円ショップ（Can★Do） | 2分 |
 | 阪急王子公園駅 / JR摩耶駅 | 7分 |
 | 公園（王子公園） | 8分 |
 
-学生にとって、家賃と同じくらい効いてくるのが食費です。商店街の八百屋が徒歩0.1分にあるというのは、毎日の自炊のハードルをかなり下げます。近くには温泉が湧く銭湯もあります。
+学生にとって、家賃と同じくらい効いてくるのが食費です。商店街の八百屋が徒歩5秒にあるというのは、毎日の自炊のハードルをかなり下げます。近くには温泉が湧く銭湯もあります。
 
 三宮までは約10分。遊びにもバイトにも困りません。
 
@@ -164,15 +165,16 @@ The building sits inside the covered arcade, so you can do your shopping without
 
 | Destination | On foot |
 |---|---|
-| Cheap greengrocer | 0.1 min |
-| Convenience store (Lawson) | 1 min |
+| Cheap greengrocer | 5 sec (right outside) |
+| Convenience store (Lawson) | 30 sec |
+| Fast food (McDonald's) | 1 min |
 | Bus stop (Suidosuji 3-chome / 6-chome) | 1 min |
 | Supermarket (Maruhachi) | 2 min |
 | 100-yen shop (Can★Do) | 2 min |
 | Hankyu Oji Koen / JR Maya Station | 7 min |
 | Oji Koen park | 8 min |
 
-For a student, food costs matter about as much as rent. Having a cheap greengrocer six seconds from the door lowers the barrier to cooking for yourself considerably. There's also a hot-spring bathhouse nearby.
+For a student, food costs matter about as much as rent. Having a cheap greengrocer five seconds from the door lowers the barrier to cooking for yourself considerably. There's also a hot-spring bathhouse nearby.
 
 Sannomiya is about 10 minutes away, so you're never short of places to go or part-time work.
 

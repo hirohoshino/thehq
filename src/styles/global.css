@@ -111,6 +111,15 @@ img {
 picture {
 	display: contents;
 }
+/* <source> は配信条件を書いたデータであって、描画される要素ではない。
+   ただし既定では display:block 相当のボックスを持つため、上の display:contents で
+   picture がレイアウトから外れると、source までが grid / flex のアイテムとして
+   数えられてしまう（例: 3列グリッドに source×3 + img×3 の6個が流し込まれ、
+   1行目が source・img・source になって画像がずれる）。
+   source は常に非表示にして、レイアウトに参加させない。 */
+source {
+	display: none;
+}
 code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));

@@ -5,6 +5,20 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { minRentYen, maxRentYen, rentRange, commonFeeYen } from '../data/pricing.mjs';
+import thumbs from '../data/thumbs.json';
+import { img } from '../data/site-images.mjs';
+
+// 固定画像（hero / Instagram）は幅違いWebPが用意されていればそれを配信する。
+// 未生成のときは元のJPEGにフォールバックするので表示は変わらない。
+const hero = img('/images/hero.jpg');
+const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
+
+// ブログカードは原寸ではなく一覧用サムネイル（500px）を使う。
+// 原寸のままだと1枚あたり400KB超がトップページに乗り、LCPを直撃する。
+const thumbMap = thumbs;
+function thumbOf(u) {
+  return thumbMap[u] ?? { src: undefined, w: undefined, h: undefined };
+}
 
 // 全記事取得
 const entries = await getCollection('blog');
@@ -74,6 +88,15 @@ const latestPosts = entries
         ],
       })}
     />
+    {hero.webpSrcset && (
+      <link
+        rel="preload"
+        as="image"
+        imagesrcset={hero.webpSrcset}
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )}
   </head>
 
   <body>
@@ -81,7 +104,18 @@ const latestPosts = entries
 
     <!-- Hero（全幅） -->
     <section class="hero heroOverlay">
-      <img src="/images/hero.jpg" alt="The Headquarters Kobe" class="heroImage" />
+      <picture>
+        {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
+        <img
+          src={hero.src}
+          alt="The Headquarters Kobe"
+          class="heroImage"
+          width={hero.width}
+          height={hero.height}
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
       <div class="heroText">
         <p class="kicker">THE HEADQUARTERS KOBE</p>
         <h1>ここで過ごした日々が、一生の宝になる。</h1>
@@ -104,7 +138,17 @@ const latestPosts = entries
         <div class="grid">
           {latestPosts.map((post) => (
             <a class="card linkCard" href={`/blog/${post.id}/`}>
-              {post.firstImage && <img src={post.firstImage} alt={post.data.title} class="cardThumb" />}
+              {post.firstImage && (
+                <img
+                  src={thumbOf(post.firstImage).src ?? post.firstImage}
+                  width={thumbOf(post.firstImage).w}
+                  height={thumbOf(post.firstImage).h}
+                  loading="lazy"
+                  decoding="async"
+                  alt={post.data.title}
+                  class="cardThumb"
+                />
+              )}
               <div class="cardBody">
                 {post.data.categories.length > 0 && (
                   <div class="cardCats">
@@ -146,9 +190,25 @@ const latestPosts = entries
   <p class="muted">暮らしの様子はこちら</p>
 
   <div class="instaGrid">
-    <img src="/images/insta-1.jpg" alt="Instagram photo 1" />
-    <img src="/images/insta-2.jpg" alt="Instagram photo 2" />
-    <img src="/images/insta-3.jpg" alt="Instagram photo 3" />
+    {insta.map((im, i) => (
+      <picture>
+        {im.webpSrcset && (
+          <source
+            type="image/webp"
+            srcset={im.webpSrcset}
+            sizes="(max-width: 600px) 32vw, 336px"
+          />
+        )}
+        <img
+          src={im.src}
+          alt={`Instagram photo ${i + 1}`}
+          width={im.width}
+          height={im.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    ))}
   </div>
 
   <p style="margin-top:16px;">

@@ -2,11 +2,25 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { img } from '../../data/site-images.mjs';
+
+// 日本語トップと同じく、幅違いWebPがあればそれを配信する（無ければ元のJPEG）。
+const hero = img('/images/hero.jpg');
+const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
 ---
 
 <html lang="en">
   <head>
     <BaseHead title="The Headquarters Kobe — Sharehouse in Kobe, Japan" description="A sharehouse in the heart of the Suidosuji shopping arcade, Nada, Kobe. Open-minded residents from Japan and around the world." />
+    {hero.webpSrcset && (
+      <link
+        rel="preload"
+        as="image"
+        imagesrcset={hero.webpSrcset}
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )}
   </head>
 
   <body>
@@ -15,7 +29,18 @@ import Footer from '../../components/Footer.astro';
     <main style="width: auto; max-width: 1080px; margin: 0 auto; padding: 24px;">
 
       <section class="hero heroOverlay">
-        <img src="/images/hero.jpg" alt="The Headquarters Kobe" class="heroImage" />
+        <picture>
+          {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
+          <img
+            src={hero.src}
+            alt="The Headquarters Kobe"
+            class="heroImage"
+            width={hero.width}
+            height={hero.height}
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="heroText">
           <p class="kicker">THE HEADQUARTERS KOBE</p>
           <h1>Where life and people naturally connect.</h1>
@@ -54,9 +79,25 @@ import Footer from '../../components/Footer.astro';
         <h2 class="sectionTitle">Instagram</h2>
         <p class="muted">See life at the house</p>
         <div class="instaGrid">
-          <img src="/images/insta-1.jpg" alt="Instagram photo 1" />
-          <img src="/images/insta-2.jpg" alt="Instagram photo 2" />
-          <img src="/images/insta-3.jpg" alt="Instagram photo 3" />
+          {insta.map((im, i) => (
+            <picture>
+              {im.webpSrcset && (
+                <source
+                  type="image/webp"
+                  srcset={im.webpSrcset}
+                  sizes="(max-width: 600px) 32vw, 336px"
+                />
+              )}
+              <img
+                src={im.src}
+                alt={`Instagram photo ${i + 1}`}
+                width={im.width}
+                height={im.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          ))}
         </div>
         <p style="margin-top:16px;">
           <a class="btnGhost" href="https://www.instagram.com/theheadquarters.kobe/" target="_blank" rel="noopener">

@@ -3,7 +3,10 @@
  *
  * 1. public/ 配下の JPEG/PNG から WebP の兄弟ファイルを生成する。
  *    rehype-img-attrs.mjs が同名の .webp を見つけると <picture> で配信する。
- * 2. ブログ一覧（/blog/）用のサムネイルを public/thumbs/ に生成し、
+ * 2. トップページで使う固定画像（hero / Instagram）から、実際の表示サイズに合わせた
+ *    幅違いの WebP を生成し、対応表を src/data/site-images.json に書き出す。
+ *    1080px の原寸を 161px の枠に流していた無駄をなくすため。
+ * 3. ブログ一覧（/blog/）用のサムネイルを public/thumbs/ に生成し、
  *    元画像URL → サムネイルの対応表を src/data/thumbs.json に書き出す。
  *    一覧が原寸画像を74枚読み込むのを防ぐため（14MB → 2.5MB）。
  *
@@ -24,6 +27,20 @@ const CONTENT = path.join(ROOT, 'src/content/blog');
 const SITE = 'https://theheadquarters.jp/';
 
 const WEBP_QUALITY = 78;
+
+/**
+ * 幅違いWebPを作る固定画像。widths は「実際の表示CSS幅 × 2(Retina)」を上限の目安に決める。
+ *  - hero        : 全幅表示。モバイル〜デスクトップを 640/1024/1536 でカバー
+ *  - insta-*     : 3列グリッド。デスクトップ約336px・モバイル約110px → 240/480 で足りる
+ *  - hoshino     : 記事内の人物写真
+ */
+const SITE_IMAGES = [
+	{ src: '/images/hero.jpg', widths: [640, 1024, 1536] },
+	{ src: '/images/insta-1.jpg', widths: [240, 480] },
+	{ src: '/images/insta-2.jpg', widths: [240, 480] },
+	{ src: '/images/insta-3.jpg', widths: [240, 480] },
+];
+const SITE_IMAGES_MANIFEST = path.join(ROOT, 'src/data/site-images.json');
 const THUMB_WIDTH = 500;
 const THUMB_QUALITY = 74;
 
@@ -60,6 +77,44 @@ async function generateWebp() {
 		} catch { skipped++; }
 	}
 	console.log(`[optimize-images] WebP: 生成${made} / 既存${kept} / 見送り${skipped}`);
+}
+
+/**
+ * 固定画像の幅違いWebPを生成し、src/data/site-images.json に対応表を書く。
+ * 出力名は `<元の名前>-<幅>.webp`（例: /images/insta-1-240.webp）。
+ * 元画像より大きい幅は作らない（withoutEnlargement）。
+ */
+async function generateSiteVariants() {
+	const manifest = {};
+	let made = 0, kept = 0, skipped = 0;
+	for (const { src: url, widths } of SITE_IMAGES) {
+		const abs = path.join(PUBLIC, url.replace(/^\//, ''));
+		if (!existsSync(abs)) { skipped++; continue; }
+		let base;
+		try { base = await sharp(abs).metadata(); } catch { skipped++; continue; }
+		const entry = { w: base.width, h: base.height, webp: [] };
+		for (const w of widths) {
+			if (base.width && w > base.width) continue;
+			const dest = abs.replace(/\.(jpe?g|png)$/i, `-${w}.webp`);
+			const destUrl = url.replace(/\.(jpe?g|png)$/i, `-${w}.webp`);
+			if (await isFresh(abs, dest)) kept++;
+			else {
+				try {
+					await sharp(abs)
+						.resize({ width: w, withoutEnlargement: true })
+						.webp({ quality: WEBP_QUALITY })
+						.toFile(dest);
+					made++;
+				} catch { continue; }
+			}
+			const meta = await sharp(dest).metadata();
+			entry.webp.push({ src: destUrl, w: meta.width, h: meta.height });
+		}
+		if (entry.webp.length) manifest[url] = entry;
+	}
+	await mkdir(path.dirname(SITE_IMAGES_MANIFEST), { recursive: true });
+	await writeFile(SITE_IMAGES_MANIFEST, JSON.stringify(manifest, null, 1) + '\n');
+	console.log(`[optimize-images] 固定画像の幅違いWebP: 生成${made} / 既存${kept} / 対象外${skipped}`);
 }
 
 /** ブログ一覧に出る「各記事の最初の画像」を集める */
@@ -114,3 +169,4 @@ async function generateThumbs() {
 
 await generateThumbs();
 await generateWebp();
+await generateSiteVariants();

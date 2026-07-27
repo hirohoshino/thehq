@@ -30,3 +30,4 @@ pnpm-debug.log*
 public/**/*.webp
 public/thumbs/
 src/data/thumbs.json
+src/data/site-images.json

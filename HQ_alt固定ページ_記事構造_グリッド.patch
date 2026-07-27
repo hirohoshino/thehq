@@ -1,0 +1,2143 @@
+From 627421eee058dadd508910422b1c21e10a794f51 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 27 Jul 2026 10:47:42 +0000
+Subject: [PATCH] =?UTF-8?q?=E5=9B=BA=E5=AE=9A=E3=83=9A=E3=83=BC=E3=82=B8?=
+ =?UTF-8?q?=E3=81=AEalt=E6=9B=B8=E3=81=8D=E6=8F=9B=E3=81=88=E3=83=BB?=
+ =?UTF-8?q?=E8=A8=98=E4=BA=8B20=E6=9C=AC=E3=81=AE=E6=A7=8B=E9=80=A0?=
+ =?UTF-8?q?=E5=8C=96=E3=83=BB=E5=86=99=E7=9C=9F=E3=83=AA=E3=82=B9=E3=83=88?=
+ =?UTF-8?q?=E3=81=AE=E3=82=B0=E3=83=AA=E3=83=83=E3=83=89=E8=A1=A8=E7=A4=BA?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+## 1. 固定ページのalt書き換え（62箇所）
+第7弾で見出しから機械生成した「リビングスペースの様子（1）」「301号室の室内（1）」形式は、
+前回のalt書き換え（対象を「〜の写真（N）」形式に限定していた）から漏れていた。
+`/rooms/` `/facilities/` の日英4ファイル・62箇所を、実画像を確認して内容に即した説明へ。
+
+例:「リビングスペースの様子（1）」→「収納棚とスツール、白いローテーブルが並ぶリビング」
+　　「301号室の室内（1）」→「ハンガーパイプとカーテン付きロフトベッドのある室内」
+
+304号室は本文の注記どおり409号室の写真なので、altには部屋番号を入れず特徴のみ記述し、
+409号室セクションとは別表現にして重複を避けている。
+
+これで **markdown内の全664件のaltから汎用表現が消えた**（残0件）。
+
+## 2. 記事20本に見出し構造と内部リンクを追加
+h2見出しゼロ・内部リンクゼロだった61本のうち、新しい20本を処理。
+段落の順序と文章は変えず、見出しの挿入と末尾のリンク集追加のみ。日英とも対応。
+全記事に updatedDate を追加。
+
+h2は2〜6個（短い記事は2個程度にとどめ、無理に増やしていない）。
+内部リンクは記事の内容に合うものを3〜4本（設備の話なら共用部、といった具合に）。
+
+## 3. 固定ページの写真リストをグリッド表示に（デザイン改善）
+WordPress時代の名残で、`/rooms/` `/facilities/` は写真が「箇条書き1件＝1枚」で縦一列に並び、
+`/facilities/` は1440px幅でページ高が16,549pxあった。
+
+**マークダウンは一切変更せず、CSSだけでグリッドに組み替えた。**
+生HTMLの `<div class="photoGrid">` に置き換える案もあったが、それだと
+WebP配信・遅延読込・サイズ属性の自動付与（rehype-img-attrs.mjs は生HTMLを処理できない）が
+効かなくなるため採用しなかった。
+
+- `BlogPost.astro`: kind === 'page' のとき `.prose--page` を付与
+- `global.css`: `.prose--page ul:has(img)` をグリッド化。トリミングはしない
+  （部屋や設備の写真は全体が見えることが重要なため、縦横比はそのまま）
+- 480px以下は2カラム
+
+適用は kind:page の10ページのみ。ブログ記事には影響しない。
+
+## 検証
+変更前後をそれぞれクリーンビルドして別ポートで配信し、PC 1440px でフルページ比較。
+
+| ページ | 結果 |
+|---|---|
+| /facilities/ | 高さ 16,549px → **7,227px（-56%）** |
+| /rooms/ | 高さ 12,827px → **7,503px（-42%）** |
+| トップ / /blog/（一覧） / /kobe-university/ / ブログ記事 | **完全一致**（意図せぬ影響なし） |
+
+スマホ390pxでも横スクロールの発生なし（/facilities/ 5,646px、/rooms/ 5,739px）。
+ビルド後の実体のない画像参照0件、alt空0件（/bbq/ のプレースホルダ1件を除く）。
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01UMd3R5jFkMws1Nd7V8koZD
+---
+ ...%b3%e3%81%aa%e3%83%8f%e3%82%a6%e3%82%b9.md | 31 ++++++++++++
+ ...diy%e3%81%97%e3%81%9f%e3%82%88%ef%bc%81.md | 27 +++++++++++
+ ...%b9%e4%bb%8b%e3%83%93%e3%83%87%e3%82%aa.md | 23 +++++++++
+ ...%87%ef%bc%92%ef%bc%90%ef%bc%85%ef%bc%81.md | 31 ++++++++++++
+ ...%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81.md | 25 ++++++++++
+ ...%81%e3%81%8a%e6%9c%88%e8%a6%8b%e4%bc%9a.md | 25 ++++++++++
+ ...%ae%e6%9c%ac%e8%b3%aa%e3%82%92%e7%9f%a5.md | 41 +++++++++++++++-
+ ...%aa%e8%8f%af%e6%b5%b7%e9%ae%ae%e4%b8%bc.md | 25 ++++++++++
+ ...%b2%e3%83%bc%e3%83%a0%ef%bc%81%ef%bc%9f.md | 29 +++++++++++
+ ...%ae%e9%a3%9f%e3%81%b9%e6%af%94%e3%81%b9.md | 35 ++++++++++++++
+ ...%95%e3%82%93%e9%80%80%e5%8e%bb%ef%bc%89.md | 31 ++++++++++++
+ ...%b0%e4%ba%ba%e6%ad%93%e8%bf%8e%e4%bc%9a.md | 39 +++++++++++++++
+ ...%ae%e5%8b%95%e7%94%bb%e3%81%a7%ef%bc%81.md | 27 +++++++++++
+ ...%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9diy.md | 39 +++++++++++++++
+ ...a7%e5%ad%a6%e9%99%a2-%e5%8d%92%e6%a5%ad.md | 31 ++++++++++++
+ ...%ad%e3%81%af%e3%83%bb%e3%83%bb%e3%83%bb.md | 27 +++++++++++
+ ...%89%e3%81%88%e3%81%a6%e3%81%bf%e3%81%9f.md | 39 +++++++++++++++
+ .../blog/bulk/dazn%e5%8a%a0%e5%85%a5.md       | 25 ++++++++++
+ src/content/blog/bulk/facilities.md           | 30 ++++++------
+ ...%8f%e3%82%a6%e3%82%b9%ef%bc%81%ef%bc%9f.md | 39 +++++++++++++++
+ src/content/blog/bulk/rooms.md                | 32 ++++++-------
+ ...%bc%e3%83%84%e3%81%8c%e4%b8%8a%e9%81%94.md | 25 ++++++++++
+ src/content/blog/en/facilities.md             | 30 ++++++------
+ src/content/blog/en/rooms.md                  | 32 ++++++-------
+ src/layouts/BlogPost.astro                    |  2 +-
+ src/styles/global.css                         | 48 +++++++++++++++++++
+ 26 files changed, 723 insertions(+), 65 deletions(-)
+
+diff --git a/src/content/blog/bulk/%e3%82%af%e3%83%aa%e3%82%b9%e3%83%9e%e3%82%b9%e3%83%bb%e3%83%87%e3%82%b3%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%81%aa%e3%83%8f%e3%82%a6%e3%82%b9.md b/src/content/blog/bulk/%e3%82%af%e3%83%aa%e3%82%b9%e3%83%9e%e3%82%b9%e3%83%bb%e3%83%87%e3%82%b3%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%81%aa%e3%83%8f%e3%82%a6%e3%82%b9.md
+index a4b8763..30420fa 100644
+--- a/src/content/blog/bulk/%e3%82%af%e3%83%aa%e3%82%b9%e3%83%9e%e3%82%b9%e3%83%bb%e3%83%87%e3%82%b3%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%81%aa%e3%83%8f%e3%82%a6%e3%82%b9.md
++++ b/src/content/blog/bulk/%e3%82%af%e3%83%aa%e3%82%b9%e3%83%9e%e3%82%b9%e3%83%bb%e3%83%87%e3%82%b3%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%81%aa%e3%83%8f%e3%82%a6%e3%82%b9.md
+@@ -2,6 +2,7 @@
+ title: "クリスマス・デコレーションなハウス"
+ description: "クリスマスまで1ヶ月を切りましたね。ハウスに行ったら綺麗な飾り付けがされてて驚きました。住人がこういうの自主的にやってくれるのは本当に嬉しい！ 照明を変えたのも効果があってバエてると思いますｗ 白樺デザインのツリーもオシ&#8230;"
+ pubDate: 2025-11-28
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+@@ -12,10 +13,14 @@ categories: ["ハウス暮らし"]
+ 
+ ![「Merry Christmas」の飾りと赤いリボンが付いた廊下の壁](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6368-1024x768.jpg)
+ 
++## 照明を変えたダイニングと赤いオーナメントのツリー
++
+ 照明を変えたのも効果があってバエてると思いますｗ
+ 
+ ![黒い枝のツリーと赤いオーナメントが飾られたダイニング](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6367-1-768x1024.jpg)
+ 
++## 白樺デザインのツリーと、ダイニングテーブルの小さなツリー
++
+ 白樺デザインのツリーもオシャレにしてもらってます。
+ 
+ ![金と赤の飾りをつけた小さなクリスマスツリー](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6365-768x1024.jpg)
+@@ -24,22 +29,37 @@ categories: ["ハウス暮らし"]
+ 
+ ![壁に貼られた手作りのアドベントカレンダー](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6370-768x1024.jpg)
+ 
++## トイレ前の壁に、イギリス人住人お手製のアドベントカレンダー
++
+ そしてトイレ前の壁にはお手製のアドベントカレンダーが！  
+ すごいね。これ作ってくれたのはイギリス人の男子ですよ！
+ 
+ みんなが良いクリスマス・シーズンを送れますように！  
+ 若者は思い出をつくれよ〜！😂
+ 
++## もっと読む
++
++飾り付けの舞台になった共用部や、ハウスの暮らしについてはこちらから。
++
++*   [共用部の紹介](https://theheadquarters.jp/facilities/) — ダイニングや廊下など飾り付けの舞台
++*   [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に暮らした人の声
++*   [お部屋と家賃](https://theheadquarters.jp/rooms/) — 部屋のタイプと費用
++*   [内見・お問い合わせ](https://theheadquarters.jp/contact/) — 見学のご相談はこちら
++
+ ---
+ 
+ There's less than a month left until Christmas! When I stopped by the house, I was surprised to find it beautifully decorated. It really makes me happy when residents take the initiative to do this kind of thing on their own!
+ 
+ ![Hallway wall with a Merry Christmas sign and a red ribbon](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6368-1024x768.jpg)
+ 
++## New lighting and a tree hung with red ornaments in the dining room
++
+ Changing up the lighting made a difference too — pretty photogenic, if I do say so myself lol
+ 
+ ![Dining room with a bare-branch tree hung with red ornaments](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6367-1-768x1024.jpg)
+ 
++## The birch-style tree, plus a little one on the dining table
++
+ The birch-style tree got a stylish makeover as well.
+ 
+ ![Small Christmas tree decorated with gold and red baubles](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6365-768x1024.jpg)
+@@ -48,8 +68,19 @@ And there's a little tree on the dining table too.
+ 
+ ![Handmade advent calendar hanging on the wall](https://theheadquarters.jp/wp-content/uploads/2025/11/IMG_6370-768x1024.jpg)
+ 
++## A handmade advent calendar, made by a British housemate
++
+ On the wall in front of the bathroom, there's now a handmade advent calendar!  
+ Pretty impressive, right? It was made by one of our British housemates!
+ 
+ Hope everyone has a wonderful Christmas season!  
+ And you young folks out there, go make some memories~! 😂
++
++## Read more
++
++More about the shared spaces that got decorated, and about life in the house.
++
++*   [Shared spaces](https://theheadquarters.jp/facilities/) — the dining room and hallway where the decorations went up
++*   [Resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++*   [Rooms and rent](https://theheadquarters.jp/rooms/) — room types and costs
++*   [Viewings and enquiries](https://theheadquarters.jp/contact/) — get in touch about a visit
+diff --git a/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e5%8b%89%e5%bc%b7%e9%83%a8%e5%b1%8b%e3%82%92diy%e3%81%97%e3%81%9f%e3%82%88%ef%bc%81.md b/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e5%8b%89%e5%bc%b7%e9%83%a8%e5%b1%8b%e3%82%92diy%e3%81%97%e3%81%9f%e3%82%88%ef%bc%81.md
+index 4bfe8df..a4f6120 100644
+--- a/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e5%8b%89%e5%bc%b7%e9%83%a8%e5%b1%8b%e3%82%92diy%e3%81%97%e3%81%9f%e3%82%88%ef%bc%81.md
++++ b/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e5%8b%89%e5%bc%b7%e9%83%a8%e5%b1%8b%e3%82%92diy%e3%81%97%e3%81%9f%e3%82%88%ef%bc%81.md
+@@ -2,6 +2,7 @@
+ title: "シェアハウスの勉強部屋をDIYしたよ！"
+ description: "コロナの影響もあって、在宅仕事や勉強が増えたので、そういう場所が欲しいという声が増えていました。シェアハウスですから共有部の充実は大事ですしね。住民のために思い切って！（もちろん各居室に机とイスを置いてあるんですけど😅）&#8230;"
+ pubDate: 2021-06-19
++updatedDate: 2026-07-27
+ kind: post
+ coverImage: "https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1.jpg"
+ categories: ["改装・設備"]
+@@ -9,9 +10,13 @@ categories: ["改装・設備"]
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 在宅で仕事や勉強ができる場所がほしい、という住民の声から
++
+ コロナの影響もあって、在宅仕事や勉強が増えたので、そういう場所が欲しいという声が増えていました。シェアハウスですから共有部の充実は大事ですしね。住民のために思い切って！  
+ （もちろん各居室に机とイスを置いてあるんですけど😅）
+ 
++## 5Fのキッチン隣の部屋を、ロフトベッド付きの勉強部屋に
++
+ そういうわけで、いままで居室に使っていた５Fのキッチン隣の部屋を、勉強部屋に改装しました。  
+ 机を新たに買って置くだけでもいいんですが、できるだけ部屋を広く使うことと、緊急時のためにやはりベッドを置いておきたいんで、背の高いロフトベッドを作ることに。部屋のサイズにきっちり合わせて作ります。
+ 
+@@ -20,11 +25,24 @@ categories: ["改装・設備"]
+ せっかくなのでタイムラプス動画を撮影したので、見てみてください。  
+ （広角で撮ったので狭く見えるけど、ベッド＝机の幅は2.2mあります）
+ 
++## もっと読む
++
++勉強部屋のような共用部や、お部屋のことはこちらから。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — 勉強部屋やキッチンなど共用スペース
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 机とイス付きの各居室について
++- [神戸大学の学生・院生・留学生の方へ](https://theheadquarters.jp/kobe-university/) — 学業と両立できる住まいをお探しの方に
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Residents asked for a place to work and study at home
++
+ With COVID pushing more people to work and study from home, we'd been hearing more and more requests for a dedicated space for that. In a share house, having great common areas really matters, so we decided to go for it for the residents!  
+ (Of course, every room already has its own desk and chair 😅)
+ 
++## Turning the 5th-floor room next to the kitchen into a study room with a loft bed
++
+ So we renovated the room on the 5th floor next to the kitchen — previously used as a bedroom — into a study room.  
+ We could have just bought a new desk and called it done, but we wanted to keep the room as open as possible while still having a bed on hand for emergencies, so we decided to build a tall loft bed instead. We made it to fit the room's exact dimensions.
+ 
+@@ -32,3 +50,12 @@ We bought a huge haul of 2x4 lumber from our local Kohnan hardware store (there
+ 
+ We shot a time-lapse video of the whole build, so take a look.  
+ (It was filmed with a wide-angle lens so the room looks smaller than it is — the bed/desk is actually 2.2m wide.)
++
++## Read more
++
++More about common areas like the study room, and about the rooms themselves.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the study room, kitchen and other shared spaces
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — each room comes with a desk and chair
++- [For Kobe University students and researchers](https://theheadquarters.jp/kobe-university/) — if you need a home that works with your studies
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9hq%e7%a5%9e%e6%88%b8%e3%81%ae%e7%b4%b9%e4%bb%8b%e3%83%93%e3%83%87%e3%82%aa.md b/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9hq%e7%a5%9e%e6%88%b8%e3%81%ae%e7%b4%b9%e4%bb%8b%e3%83%93%e3%83%87%e3%82%aa.md
+index c41d3f0..e5329e7 100644
+--- a/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9hq%e7%a5%9e%e6%88%b8%e3%81%ae%e7%b4%b9%e4%bb%8b%e3%83%93%e3%83%87%e3%82%aa.md
++++ b/src/content/blog/bulk/%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9hq%e7%a5%9e%e6%88%b8%e3%81%ae%e7%b4%b9%e4%bb%8b%e3%83%93%e3%83%87%e3%82%aa.md
+@@ -2,6 +2,7 @@
+ title: "シェアハウスHQ神戸の紹介ビデオ"
+ description: "住人のK君が作ってくれた、ヘッドクオーターズ神戸の紹介ビデオです。半年前に作ってくれてたみたいだけどなかなか良くできてますね！😊 シェアハウスの雰囲気（物理的なものですが）がよく伝わるんじゃないかと思います。 ありがとう&#8230;"
+ pubDate: 2021-09-07
++updatedDate: 2026-07-27
+ kind: post
+ coverImage: "https://theheadquarters.jp/wp-content/uploads/2021/09/HQyoutube1.png"
+ categories: ["ハウス暮らし"]
+@@ -9,10 +10,32 @@ categories: ["ハウス暮らし"]
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 住人のK君が作ったハウスの紹介ビデオ
++
+ 住人のK君が作ってくれた、ヘッドクオーターズ神戸の紹介ビデオです。  
+ 半年前に作ってくれてたみたいだけどなかなか良くできてますね！😊　シェアハウスの雰囲気（物理的なものですが）がよく伝わるんじゃないかと思います。　ありがとう！！😆
+ 
++## もっと読む
++
++ビデオに映っている空間や、暮らしの条件はこちらのページで紹介しています。
++
++*   [共用部の紹介](https://theheadquarters.jp/facilities/) — キッチンやリビングなど共用スペース
++*   [お部屋と家賃](https://theheadquarters.jp/rooms/) — 部屋のタイプと費用
++*   [アクセスと周辺情報](https://theheadquarters.jp/location/) — ハウスの立地と周辺
++*   [内見・お問い合わせ](https://theheadquarters.jp/contact/) — 実際に見学したい方へ
++
+ ---
+ 
++## An introduction video made by our housemate K
++
+ This is an introduction video for The Headquarters Kobe, made by our housemate K.  
+ Looks like he actually made it six months ago, and it turned out really well! 😊 I think it does a great job capturing the vibe of the share house (well, the physical space anyway). Thank you so much!! 😆
++
++## Read more
++
++More about the spaces you see in the video, and the practical details of living here.
++
++*   [Shared spaces](https://theheadquarters.jp/facilities/) — the kitchen, living room and other shared areas
++*   [Rooms and rent](https://theheadquarters.jp/rooms/) — room types and costs
++*   [Location and the neighbourhood](https://theheadquarters.jp/location/) — where the house is and what's around it
++*   [Viewings and enquiries](https://theheadquarters.jp/contact/) — if you'd like to see it in person
+diff --git a/src/content/blog/bulk/%e3%82%b9%e3%83%af%e3%83%92%e3%83%aa%e8%aa%9e%e7%8e%87%ef%bc%92%ef%bc%90%ef%bc%85%ef%bc%81.md b/src/content/blog/bulk/%e3%82%b9%e3%83%af%e3%83%92%e3%83%aa%e8%aa%9e%e7%8e%87%ef%bc%92%ef%bc%90%ef%bc%85%ef%bc%81.md
+index 46fc570..8441805 100644
+--- a/src/content/blog/bulk/%e3%82%b9%e3%83%af%e3%83%92%e3%83%aa%e8%aa%9e%e7%8e%87%ef%bc%92%ef%bc%90%ef%bc%85%ef%bc%81.md
++++ b/src/content/blog/bulk/%e3%82%b9%e3%83%af%e3%83%92%e3%83%aa%e8%aa%9e%e7%8e%87%ef%bc%92%ef%bc%90%ef%bc%85%ef%bc%81.md
+@@ -2,20 +2,27 @@
+ title: "住人のスワヒリ語利用率２０％！"
+ description: "シェアハウスに住むと一緒に住むメンバーのいろいろな価値感や経験に触れられるというのが、アパートやマンションで”孤住”するのに比べて良いところだと思います。人生の（特に若い頃の）1ページとして、とてもオススメな理由です。 &#8230;"
+ pubDate: 2021-08-08
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## シェアハウスは他人の価値観や経験に触れられる場所
++
+ シェアハウスに住むと一緒に住むメンバーのいろいろな価値感や経験に触れられるというのが、アパートやマンションで”孤住”するのに比べて良いところだと思います。人生の（特に若い頃の）1ページとして、とてもオススメな理由です。
+ 
++## 10人中2人がスワヒリ語を使える
++
+ さていまヘッドクオーターズ神戸には10部屋10人（満室です）が住んでいますが、なんとそのうち2人がアフリカのスワヒリ語を使えるメンバーです。ネイティブ・ジャパニーズ（笑）においてスワヒリ語可用率20％ってちょっと驚きますね笑
+ 
+ 一人は青年海外協力隊でケニアとタンザニアに行った経験があり、もう一人はアフリカビジネスを行うベンチャー企業で働いているため学んだそうです。
+ 
+ ![床に座って食事をしながら話す住人2人](https://theheadquarters.jp/wp-content/uploads/2021/08/S__5177425-1024x682.jpg)
+ 
++## そもそもスワヒリ語はどこで使われている言語か
++
+   
+ ちなみにスワヒリ語とはアフリカ東海岸のタンザニア・ケニアを中心として国語・公用語として使用されている言語だそうで、「基本的にはアフリカの言語の一つであるバントゥー諸語の系統であるが、アラビア語の語彙、さらにポルトガル語、トルコ語、インド系言語、マレー語、ペルシア語、英語などの語彙がまじって形成された」そうですね。交易結果によるちゃんぽんなんでしょうか。  
+ 使われているのは↓このあたりらしい（画像は借り物）。
+@@ -27,16 +34,31 @@ categories: ["ハウス暮らし"]
+ 
+ というわけで、もしスワヒリ語を勉強したいなら、ぜひヘッドクオーターズ神戸へ！おそらく神戸のシェアハウスでは一番スワヒリ語に詳しいのはうちでしょう笑。
+ 
++## もっと読む
++
++どんな人が住んでいるのか、どんな部屋があるのかは、こちらもどうぞ。
++
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 全10部屋の様子と家賃 %RENT_MIN%〜%RENT_MAX%（共益費 %COMMON_FEE%）
++- [神戸大学の学生・院生・留学生の方へ](https://theheadquarters.jp/kobe-university/)
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## A share house exposes you to other people's values and experiences
++
+ One of the great things about living in a share house — compared to living solo in an apartment or condo — is that you get exposed to all kinds of different values and experiences from the people you live with. It's one of the best reasons to spend a chapter of your life (especially when you're young) in a place like this.
+ 
++## 2 out of 10 residents speak Swahili
++
+ So right now The Headquarters Kobe is full, all 10 rooms occupied by 10 people, and get this: 2 of them can speak Swahili, the East African language. For native Japanese speakers (lol), a 20% Swahili proficiency rate is honestly kind of surprising, right?
+ 
+ One of them picked it up while serving in the Japan Overseas Cooperation Volunteers in Kenya and Tanzania, and the other learned it working for a venture company doing business in Africa.
+ 
+ ![Two residents who can speak Swahili](https://theheadquarters.jp/wp-content/uploads/2021/08/S__5177425-1024x682.jpg)
+ 
++## Where Swahili is actually spoken
++
+ By the way, Swahili is apparently the national/official language spoken mainly along Tanzania and Kenya on Africa's east coast. It's said to be "fundamentally part of the Bantu language family, one of Africa's native language groups, but formed with vocabulary mixed in from Arabic, plus Portuguese, Turkish, Indian languages, Malay, Persian, English, and more." Sounds like a real linguistic melting pot shaped by centuries of trade.
+ It's mainly spoken in the area shown below (borrowed images).
+ 
+@@ -46,3 +68,12 @@ It's mainly spoken in the area shown below (borrowed images).
+     
+ 
+ So if you ever want to learn Swahili, come on over to The Headquarters Kobe! We're probably the most Swahili-savvy share house in all of Kobe, lol.
++
++## Read more
++
++More about who lives here and what the rooms are like.
++
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — all 10 rooms, rent %RENT_MIN%–%RENT_MAX% (common fee %COMMON_FEE%)
++- [For Kobe University students and international students](https://theheadquarters.jp/kobe-university/)
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e3%82%bd%e3%83%95%e3%82%a1%e3%82%ab%e3%83%90%e3%83%bc%e3%82%92%e6%96%b0%e8%aa%bf%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81.md b/src/content/blog/bulk/%e3%82%bd%e3%83%95%e3%82%a1%e3%82%ab%e3%83%90%e3%83%bc%e3%82%92%e6%96%b0%e8%aa%bf%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81.md
+index 94621cb..d2f870d 100644
+--- a/src/content/blog/bulk/%e3%82%bd%e3%83%95%e3%82%a1%e3%82%ab%e3%83%90%e3%83%bc%e3%82%92%e6%96%b0%e8%aa%bf%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81.md
++++ b/src/content/blog/bulk/%e3%82%bd%e3%83%95%e3%82%a1%e3%82%ab%e3%83%90%e3%83%bc%e3%82%92%e6%96%b0%e8%aa%bf%e3%81%97%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81.md
+@@ -2,6 +2,7 @@
+ title: "ソファカバーを新調したよ"
+ description: "ヘッドクオーターズ神戸のリビングルームにあるソファとイスは前オーナー時代からずっと使われているもので構造的に洗えてなかったので、ちょっと汚れたりみすぼらしくなってた。なので、新しいソファカバーをかぶせてみました。本当は造&#8230;"
+ pubDate: 2021-09-23
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["改装・設備"]
+ ---
+@@ -10,6 +11,8 @@ categories: ["改装・設備"]
+ 
+ ヘッドクオーターズ神戸のリビングルームにあるソファとイスは前オーナー時代からずっと使われているもので構造的に洗えてなかったので、ちょっと汚れたりみすぼらしくなってた。なので、新しいソファカバーをかぶせてみました。本当は造作で一体的なデザインの環境にしてみたいんだけど。それまでの間に合わせかな😅
+ 
++## カバーをかける前と後を見比べる
++
+ Beforeがこれ👇
+ 
+ ![カバーをかける前の色あせたソファとイス](https://theheadquarters.jp/wp-content/uploads/2021/09/sofa-cover-1-1024x683.jpeg)
+@@ -18,14 +21,26 @@ Beforeがこれ👇
+ 
+ ![柄物のカバーをかけ直したリビングのソファ](https://theheadquarters.jp/wp-content/uploads/2021/09/sofa-cover-3-1024x683.jpeg)
+ 
++## 新しいカバーは住民にも好評
++
+ 住民が喜んでくれて良かった😊　so far sofa so good!!😆
+ 
+ ![新しいカバーのソファに寝転んでくつろぐ住人](https://theheadquarters.jp/wp-content/uploads/2021/10/image-1024x621.png)
+ 
++## もっと読む
++
++ソファのあるリビングなど、共用部についてはこちらもどうぞ。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビングやキッチンなど共用スペース
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 各居室の広さと費用
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
+ The sofa and chairs in The Headquarters Kobe's living room have been there since the previous owner's days, and because of how they're built, we've never been able to wash them properly, so they'd gotten a bit dirty and worn-looking. So we decided to put new covers on the sofa. Ideally I'd love to build something custom that fits the whole space as one cohesive design, but for now this'll do as a stopgap 😅
+ 
++## Before and after the new covers
++
+ Here's the before 👇
+ 
+ ![Sofa before recovering it](https://theheadquarters.jp/wp-content/uploads/2021/09/sofa-cover-1-1024x683.jpeg)
+@@ -34,6 +49,16 @@ And the after 👇
+ 
+ ![Sofa after putting on the new cover](https://theheadquarters.jp/wp-content/uploads/2021/09/sofa-cover-3-1024x683.jpeg)
+ 
++## The new covers went down well with the residents
++
+ Glad to see the residents are happy with it 😊 so far sofa so good!! 😆
+ 
+ ![Residents relaxing on the newly covered sofa](https://theheadquarters.jp/wp-content/uploads/2021/10/image-1024x621.png)
++
++## Read more
++
++More about the living room where the sofa lives, and the other common areas.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, kitchen and other shared spaces
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — room sizes and costs
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e3%83%97%e3%83%81%e3%81%8a%e6%9c%88%e8%a6%8b%e4%bc%9a.md b/src/content/blog/bulk/%e3%83%97%e3%83%81%e3%81%8a%e6%9c%88%e8%a6%8b%e4%bc%9a.md
+index dd6e193..b552761 100644
+--- a/src/content/blog/bulk/%e3%83%97%e3%83%81%e3%81%8a%e6%9c%88%e8%a6%8b%e4%bc%9a.md
++++ b/src/content/blog/bulk/%e3%83%97%e3%83%81%e3%81%8a%e6%9c%88%e8%a6%8b%e4%bc%9a.md
+@@ -2,12 +2,15 @@
+ title: "プチお月見会"
+ description: "日本の中秋の名月は明日ですが、台湾では月餅を食べるイベントが今日みたい。台湾人の住人がお団子を買ってきてそれを教えてくれて、何人かで屋上にあがって食べました。この季節、屋上があまりに気持ち良くて寝たくなります笑。 お月見&#8230;"
+ pubDate: 2021-09-20
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 台湾人の住人が教えてくれた月餅の日に、屋上でお団子
++
+ 日本の中秋の名月は明日ですが、台湾では月餅を食べるイベントが今日みたい。台湾人の住人がお団子を買ってきてそれを教えてくれて、何人かで屋上にあがって食べました。この季節、屋上があまりに気持ち良くて寝たくなります笑。
+ 
+ ![夜の屋上のソファに集まり月を眺める住人たち](https://theheadquarters.jp/wp-content/uploads/2021/09/48721a12b60b05bb929d17cb7b2996c4-1024x683.jpg)
+@@ -19,12 +22,24 @@ categories: ["ハウス暮らし"]
+ *   ![電飾の灯る夜の屋上でお団子を手に笑う住人二人](https://theheadquarters.jp/wp-content/uploads/2021/09/c7e955e73f03d077cad2938cb121e944-1024x683.jpg)
+     
+ 
++## お月見会のあとは、屋上が勉強スペースに
++
+ お月見会が終わった後、屋上に参考書を持ち込んで勉強していた男子高校生（笑）。その指導係のお姉さんも一緒に。お姉さんは一人っ子なので「弟」が欲しかったから嬉しいみたいね😊
+ 
+ ![夜の屋上のテーブルで参考書を広げて勉強する住人](https://theheadquarters.jp/wp-content/uploads/2021/09/IMG_2986-1024x768.jpg)
+ 
++## もっと読む
++
++お月見会をやった屋上や、ハウスの暮らしについてはこちらから。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — 屋上テラスやリビングなど
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Dango on the rooftop for Taiwan's mooncake day
++
+ Tomorrow is Japan's mid-autumn harvest moon, but apparently in Taiwan today is the day for eating mooncakes. One of our Taiwanese housemates picked up some dango (rice dumplings) and told us all about the custom, so a few of us headed up to the rooftop to enjoy them together. This time of year the rooftop feels so good you just want to lie down and nap there, haha.
+ 
+ ![Residents gathered on the rooftop sofas watching the moon at night](https://theheadquarters.jp/wp-content/uploads/2021/09/48721a12b60b05bb929d17cb7b2996c4-1024x683.jpg)
+@@ -36,6 +51,16 @@ Tomorrow is Japan's mid-autumn harvest moon, but apparently in Taiwan today is t
+ *   ![Two residents laughing with dango under the rooftop string lights](https://theheadquarters.jp/wp-content/uploads/2021/09/c7e955e73f03d077cad2938cb121e944-1024x683.jpg)
+     
+ 
++## After the party, the rooftop became a study spot
++
+ After the moon-viewing party wrapped up, a high school boy (lol) brought his textbooks up to the rooftop to study, with his "tutor," one of our female residents, keeping him company. Since she's an only child, it seems she's thrilled to finally have a "little brother" 😊
+ 
+ ![A resident studying with textbooks at the rooftop table at night](https://theheadquarters.jp/wp-content/uploads/2021/09/IMG_2986-1024x768.jpg)
++
++## Read more
++
++More about the rooftop where we held the party and about life at the house.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the rooftop terrace, living room and more
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e3%83%a4%e3%82%b9%e3%83%94%e3%82%bf%e3%81%ae%e5%b8%b0%e5%9b%bd%e5%89%8d%e5%a4%9c%e7%a5%ad%e3%81%a7%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e6%9c%ac%e8%b3%aa%e3%82%92%e7%9f%a5.md b/src/content/blog/bulk/%e3%83%a4%e3%82%b9%e3%83%94%e3%82%bf%e3%81%ae%e5%b8%b0%e5%9b%bd%e5%89%8d%e5%a4%9c%e7%a5%ad%e3%81%a7%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e6%9c%ac%e8%b3%aa%e3%82%92%e7%9f%a5.md
+index 18860e8..4a64ee5 100644
+--- a/src/content/blog/bulk/%e3%83%a4%e3%82%b9%e3%83%94%e3%82%bf%e3%81%ae%e5%b8%b0%e5%9b%bd%e5%89%8d%e5%a4%9c%e7%a5%ad%e3%81%a7%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e6%9c%ac%e8%b3%aa%e3%82%92%e7%9f%a5.md
++++ b/src/content/blog/bulk/%e3%83%a4%e3%82%b9%e3%83%94%e3%82%bf%e3%81%ae%e5%b8%b0%e5%9b%bd%e5%89%8d%e5%a4%9c%e7%a5%ad%e3%81%a7%e3%82%b7%e3%82%a7%e3%82%a2%e3%83%8f%e3%82%a6%e3%82%b9%e3%81%ae%e6%9c%ac%e8%b3%aa%e3%82%92%e7%9f%a5.md
+@@ -2,6 +2,7 @@
+ title: "ヤスピタの帰国前夜祭でシェアハウスの本質を知った夜"
+ description: "昨年秋から約１年間住んでくれた、ヤスミンとピーターのカップル、通称ヤスピタ。ヤスミンはイギリス・マンチェスター大学から神戸大学への１年間の留学期間が終わりとうとう帰国時期です。もちろんついてきた彼氏のピーターも一緒に帰国&#8230;"
+ pubDate: 2020-08-27
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["イベント"]
+ ---
+@@ -10,6 +11,8 @@ categories: ["イベント"]
+ 
+ 昨年秋から約１年間住んでくれた、ヤスミンとピーターのカップル、通称ヤスピタ。ヤスミンはイギリス・マンチェスター大学から神戸大学への１年間の留学期間が終わりとうとう帰国時期です。もちろんついてきた彼氏のピーターも一緒に帰国。彼らの帰国にあわせ、シェアハウスの住民みんなで前夜祭をやりました。
+ 
++## 思い出の写真と寄せ書きでアルバムを手作り
++
+ *   ![リビングのテーブルを囲んでアルバムを手作りする住人たち](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-10-／-12-1024x682.jpeg)
+     
+ *   ![写真と寄せ書きが貼られた手作りのアルバム](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-11-／-12-1024x682.jpeg)
+@@ -19,6 +22,8 @@ categories: ["イベント"]
+ 
+ まずはみんなでヤスピタに渡すプレゼントのアルバム作り。思い出の写真をたくさん貼って、みんなで寄せ書きも。素敵でしょ。作りながら、ほんとに彼らは愛されてたなーと。いや、彼らがこのハウスに運んできてくれたものの大きさを感じました。  
+ 
++## おそろいのハウスTシャツを事前に用意
++
+ *   ![HQ KOBEのロゴ入り黒Tシャツを着て笑う住人](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-13-／-15.jpeg)
+     
+ *   ![紺色のハウスTシャツを着て笑う男性メンバー](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-14-／-15.jpeg)
+@@ -28,6 +33,8 @@ categories: ["イベント"]
+ 
+ 事前におそろいのハウスTシャツを作ったりなんかも。最近はネットで画像をアップするだけですぐ作れるので便利ですね。  
+ 
++## 雨樋を吊り下げて屋上で流しそうめん
++
+ そして本日のメイン、ハウスの屋上で流しそうめん！
+ 
+ ![夜の屋上に組んだ流しそうめんの樋と集まるメンバー](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-1-／-12-1024x683.jpeg)
+@@ -49,7 +56,8 @@ categories: ["イベント"]
+ 
+ みんなの笑顔。
+ 
+-  
++## 近くの都賀川に移動して花火大会
++
+ それから近くの都賀川に移動して花火大会。  
+ みんなにも、ヤスピタにも良い思い出になったはず。
+ 
+@@ -71,6 +79,8 @@ categories: ["イベント"]
+ 
+ ![夜の川沿いの石段に座って過ごすメンバーたち](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-8-／-12-1024x682.jpeg)
+ 
++## シェアハウスはコミュニティだと実感した夜
++
+ 仲の良いシェアハウスってほんとに良い世界だなと思います。  
+ コロナのご時世、一人暮らしで誰とも話さず鬱になってしまう人もいると聞きます。でもこうやって同じ家族として暮らす仲間となら、日々の生活そのものが楽しいですね。
+ 
+@@ -78,10 +88,21 @@ categories: ["イベント"]
+ 
+ ヤスピタのおかで本当に楽しい一年間でした。ありがとうヤスピタ！！
+ 
++## もっと読む
++
++住人同士の暮らしや、屋上・リビングといったイベントの舞台になる場所についてはこちらもどうぞ。
++
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に暮らした人たちの声
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — 屋上やリビングなど、みんなが集まる場所
++- [アクセスと周辺情報](https://theheadquarters.jp/location/) — 都賀川や水道筋のある暮らし
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
+ Yasmin and Peter — known around the house as "Yaspita" — lived with us for about a year starting last autumn. Yasmin came to Kobe University on a one-year exchange from the University of Manchester in the UK, and now that her exchange year is finally over, it's time for her to head home. And of course her boyfriend Peter, who tagged along with her to Japan, is heading home too. To send them off, everyone in the share house threw a going-away festival the night before they left.
+ 
++## Making a handmade album of photos and messages
++
+ *   ![Housemates gathered around the living room table making a photo album](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-10-／-12-1024x682.jpeg)
+     
+ *   ![Handmade photo album filled with photos and written messages](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-11-／-12-1024x682.jpeg)
+@@ -91,6 +112,8 @@ There were so many memories that it was hard to even pick which photos to use.
+ 
+ First, everyone got together to make a photo album as a gift for Yaspita — full of memory-filled photos, with everyone writing little messages throughout. Isn't it lovely? Putting it together, I really felt how much they were loved — or rather, I felt the sheer size of what they'd brought into this house.
+ 
++## Matching house T-shirts made ahead of time
++
+ *   ![A housemate smiling in a black HQ KOBE house T-shirt](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-13-／-15.jpeg)
+     
+ *   ![A member smiling in a navy house T-shirt](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-14-／-15.jpeg)
+@@ -100,6 +123,8 @@ First, everyone got together to make a photo album as a gift for Yaspita — ful
+ 
+ We even made matching house T-shirts ahead of time. These days you can just upload an image online and have them made in no time — so convenient.
+ 
++## Nagashi somen on the rooftop, built from a rain gutter
++
+ And then, the main event of the day: nagashi somen (flowing noodles) on the rooftop of the house!
+ 
+ ![Nagashi somen gutter set up on the rooftop at night with members around it](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-1-／-12-1024x683.jpeg)
+@@ -121,7 +146,8 @@ We bought a brand new rain gutter at the home center and hung it from the laundr
+ 
+ Smiles all around.
+ 
+-  
++## Fireworks down at nearby Toga River
++
+ After that, we moved to nearby Toga River for a fireworks display.  
+ It was surely a great memory for everyone — and for Yaspita too.
+ 
+@@ -143,8 +169,19 @@ Total youthful vibes (lol).
+ 
+ ![Members sitting on the stone steps by the river at night](https://theheadquarters.jp/wp-content/uploads/2021/01/お気に入り-8-／-12-1024x682.jpeg)
+ 
++## What this night taught me: a share house is a community
++
+ A close-knit share house really is a wonderful thing. In these Covid times, I hear of people living alone who go for days without speaking to anyone and end up feeling down. But when you're living day to day with people who feel like family, everyday life itself becomes something to enjoy.
+ 
+ Seeing their smiles, as someone running this place, I felt truly rewarded — like all the effort we've put into building this community was worth it, at least a little. A share house really is, above all, a community.
+ 
+ Thanks to Yaspita, it was truly a wonderful year. Thank you, Yaspita!!
++
++## Read more
++
++More about life among housemates, and about the rooftop and living room where evenings like this happen.
++
++- [Voices of former residents](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — interviews with people who actually lived here
++- [Common areas](https://theheadquarters.jp/facilities/) — the rooftop, living room and other places everyone gathers
++- [Access and the neighbourhood](https://theheadquarters.jp/location/) — living near Toga River and Suidosuji
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e3%83%a9%e3%82%b8%e3%82%aa%e4%bd%93%e6%93%8d%e3%81%a8%e8%b1%aa%e8%8f%af%e6%b5%b7%e9%ae%ae%e4%b8%bc.md b/src/content/blog/bulk/%e3%83%a9%e3%82%b8%e3%82%aa%e4%bd%93%e6%93%8d%e3%81%a8%e8%b1%aa%e8%8f%af%e6%b5%b7%e9%ae%ae%e4%b8%bc.md
+index cd4f1ae..7fafebf 100644
+--- a/src/content/blog/bulk/%e3%83%a9%e3%82%b8%e3%82%aa%e4%bd%93%e6%93%8d%e3%81%a8%e8%b1%aa%e8%8f%af%e6%b5%b7%e9%ae%ae%e4%b8%bc.md
++++ b/src/content/blog/bulk/%e3%83%a9%e3%82%b8%e3%82%aa%e4%bd%93%e6%93%8d%e3%81%a8%e8%b1%aa%e8%8f%af%e6%b5%b7%e9%ae%ae%e4%b8%bc.md
+@@ -2,6 +2,7 @@
+ title: "ラジオ体操と豪華海鮮丼"
+ description: "先日の朝にシェアハウスメンバー2人で、近所のラジオ体操に参戦してきました。朝早く起きれない…という悩みを共有し、一緒にラジオ体操に行ってくれる仲間がいるのがシェアハウスの良いところ。 そのあとは2人で、ワンコインで豪華海&#8230;"
+ pubDate: 2024-02-29
++updatedDate: 2026-07-27
+ kind: post
+ coverImage: "https://theheadquarters.jp/wp-content/uploads/2024/04/S__8495127.jpg"
+ categories: ["ハウス暮らし", "商店街"]
+@@ -9,16 +10,40 @@ categories: ["ハウス暮らし", "商店街"]
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 近所のラジオ体操に一緒に行ってくれる仲間がいる
++
+ 先日の朝にシェアハウスメンバー2人で、近所のラジオ体操に参戦してきました。朝早く起きれない…という悩みを共有し、一緒にラジオ体操に行ってくれる仲間がいるのがシェアハウスの良いところ。
+ 
++## 春日野道の「神東寿司」でワンコインの豪華海鮮丼
++
+ そのあとは2人で、ワンコインで豪華海鮮丼が食べられるという春日野道の「神東寿司」へ。噂通りのコスパの良さにびっくり。セットで出てくるあら汁は体に染み渡る美味しさでした。
+ 
+ 投稿 by Y.
+ 
++## もっと読む
++
++ハウスのまわりの街や、住人たちの暮らしについてはこちらから。
++
++- [アクセスと周辺情報](https://theheadquarters.jp/location/) — 春日野道など、ハウスの周辺エリア
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Housemates who will get up and go to radio calisthenics with you
++
+ The other morning, two of our share house members headed out together to join the neighborhood's radio calisthenics (rajio taiso). "I just can't get up early enough..." is a struggle a lot of us share, and having housemates willing to drag themselves out of bed and go with you is one of the best things about share house life.
+ 
++## A one-coin seafood bowl at Kanto Sushi in Kasuganomichi
++
+ Afterward, the two of them stopped by Kanto Sushi (神東寿司) in Kasuganomichi, famous for serving a gorgeous seafood rice bowl for just one coin. It really did live up to its reputation for great value, and the fish broth that came with the set was so comforting it warmed them right through.
+ 
+ Posted by Y.
++
++## Read more
++
++More about the neighborhood around the house and life among the residents.
++
++- [Access and the neighborhood](https://theheadquarters.jp/location/) — Kasuganomichi and the area around the house
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e4%bd%8f%e6%b0%91%e3%81%ae%e7%9b%b8%e4%ba%92%e7%90%86%e8%a7%a3%e3%81%ab%e5%bd%b9%e7%ab%8b%e3%81%a4%e3%82%b2%e3%83%bc%e3%83%a0%ef%bc%81%ef%bc%9f.md b/src/content/blog/bulk/%e4%bd%8f%e6%b0%91%e3%81%ae%e7%9b%b8%e4%ba%92%e7%90%86%e8%a7%a3%e3%81%ab%e5%bd%b9%e7%ab%8b%e3%81%a4%e3%82%b2%e3%83%bc%e3%83%a0%ef%bc%81%ef%bc%9f.md
+index 23f8121..f420cf3 100644
+--- a/src/content/blog/bulk/%e4%bd%8f%e6%b0%91%e3%81%ae%e7%9b%b8%e4%ba%92%e7%90%86%e8%a7%a3%e3%81%ab%e5%bd%b9%e7%ab%8b%e3%81%a4%e3%82%b2%e3%83%bc%e3%83%a0%ef%bc%81%ef%bc%9f.md
++++ b/src/content/blog/bulk/%e4%bd%8f%e6%b0%91%e3%81%ae%e7%9b%b8%e4%ba%92%e7%90%86%e8%a7%a3%e3%81%ab%e5%bd%b9%e7%ab%8b%e3%81%a4%e3%82%b2%e3%83%bc%e3%83%a0%ef%bc%81%ef%bc%9f.md
+@@ -2,36 +2,65 @@
+ title: "住民の相互理解に役立つゲーム！？"
+ description: "「その人を知りたければ、その人が何に対して怒りを感じるかを知れ」今回は、そんな&#8221;怒り&#8221;を題材にしたボードゲーム『アンガーマネジメント』を、HQ神戸のメンバー7人でやってみました。 『アンガーマネジ&#8230;"
+ pubDate: 2024-03-31
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## ”怒り”を題材にしたボードゲームをメンバー7人でプレイ
++
+ 「その人を知りたければ、その人が何に対して怒りを感じるかを知れ」  
+ 今回は、そんな”怒り”を題材にしたボードゲーム『アンガーマネジメント』を、HQ神戸のメンバー7人でやってみました。  
+ 
+ ![ダイニングテーブルを囲んでボードゲームを楽しむ住人たち](https://theheadquarters.jp/wp-content/uploads/2024/03/IMG_0479-1024x768.jpg)
+ 
++## 醍醐味はお題カードよりもフリートークにある
++
+ 『アンガーマネジメント』は、お題カードに書かれたエピソードが、自分の身に起こったと仮定して、どれくらいの怒りを覚えるかを0~10の11段階で表し、お互いの怒りの度合いを当て合うというゲームです。  
+ でも実は、このゲームの醍醐味は、お題カードよりもむしろ、フリートークにあります。「先日〜なことがあった。」に始まり、「私は、これくらい怒った。なぜなら〜だから。」に終わる、そんなエピソードトークには、”その人らしさ”がギュッと詰まっているからです。  
+ 
+ 「幸せな時なら大抵の事は許せる」とか、「それは怒りというよりも失望」とか、”怒り”にまつわる対話が進み、会話が弾みます。このゲームを夢中でプレイする内に、お互いの、超えてはならない一線を、面白おかしく、伺い知ることが出来るのです。  
+ 
++## 次は共用スペースの使い方をお題にしてみたい
++
+ 今度は、ハウスにまつわるエピソード縛りでやってみようと思います。共用スペースの使い方について、各々思うところを打ち明けて、お互いの”大切”を知るのです。  
+ 生活をシェアする者同士、これに勝るコミュニケーションは、他にないでしょうから。
+ 
++## もっと読む
++
++ハウスでの暮らしや、みんなが集まる共用スペースについてはこちらから。
++
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビングやダイニングなど、みんなが集まる場所
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Seven of us played a board game about anger
++
+ "If you want to know someone, find out what makes them angry."
+ This time, seven members of The Headquarters Kobe played a board game called *Anger Management*, built around exactly that theme of "anger."
+ 
+ ![Residents playing a board game around the dining table](https://theheadquarters.jp/wp-content/uploads/2024/03/IMG_0479-1024x768.jpg)
+ 
++## The real fun is the free-flowing talk, not the topic cards
++
+ In *Anger Management*, you imagine that the episode written on a topic card has happened to you, then rate how angry it would make you on an 11-point scale from 0 to 10 — and try to guess each other's ratings.
+ But honestly, the real fun of this game isn't the topic cards so much as the free-flowing conversation they spark. Each story starts with "So the other day, this happened..." and ends with "...and that's why I got this angry." Packed into those little episodes is a real sense of who each person is.
+ 
+ Comments like "when I'm happy, I can forgive almost anything" or "that's less anger than disappointment" kept the conversation about "anger" flowing, and things got lively fast. Getting absorbed in the game like this let us peek — in a fun, lighthearted way — at each other's lines that shouldn't be crossed.
+ 
++## Next time, shared-space etiquette as the topic
++
+ Next time, we're thinking of playing again but limiting the topics to house-related episodes. Everyone would open up about how they feel regarding shared-space etiquette, and in doing so, learn what matters to each other.
+ For people sharing a life together, there's probably no better form of communication than that.
++
++## Read more
++
++More about life at the house and the shared spaces where everyone gathers.
++
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, dining room and other places we gather
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e5%8d%b5%e7%84%bc%e3%81%8d%e3%81%97%e3%82%87%e3%81%a3%e3%81%b1%e3%81%84%e7%94%98%e3%81%84%e3%81%ae%e9%a3%9f%e3%81%b9%e6%af%94%e3%81%b9.md b/src/content/blog/bulk/%e5%8d%b5%e7%84%bc%e3%81%8d%e3%81%97%e3%82%87%e3%81%a3%e3%81%b1%e3%81%84%e7%94%98%e3%81%84%e3%81%ae%e9%a3%9f%e3%81%b9%e6%af%94%e3%81%b9.md
+index 5cac00c..c812925 100644
+--- a/src/content/blog/bulk/%e5%8d%b5%e7%84%bc%e3%81%8d%e3%81%97%e3%82%87%e3%81%a3%e3%81%b1%e3%81%84%e7%94%98%e3%81%84%e3%81%ae%e9%a3%9f%e3%81%b9%e6%af%94%e3%81%b9.md
++++ b/src/content/blog/bulk/%e5%8d%b5%e7%84%bc%e3%81%8d%e3%81%97%e3%82%87%e3%81%a3%e3%81%b1%e3%81%84%e7%94%98%e3%81%84%e3%81%ae%e9%a3%9f%e3%81%b9%e6%af%94%e3%81%b9.md
+@@ -2,6 +2,7 @@
+ title: "卵焼き&#8221;しょっぱい&#8221;&#8221;甘い&#8221;の食べ比べ"
+ description: "最近、朝活を始めたらしいよ！健康的だねぇ😊 投稿 by K君 卵焼き&#8221;しょっぱい&#8221;&#8221;甘い&#8221;の食べ比べ今回はそんな&#8221;卵焼き&#8221;を シェアハウス HQ神戸&#8230;"
+ pubDate: 2024-04-01
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+@@ -13,14 +14,20 @@ categories: ["ハウス暮らし"]
+ 卵焼き”しょっぱい””甘い”の食べ比べ  
+ 今回はそんな”卵焼き”を シェアハウス HQ神戸のメンバー3人で作ってみました。
+ 
++## 前日の夜までに参加者を募って、7時半のキッチンに集まる「朝活部」
++
+ これは、”朝活部”というイベントで、前日の夜までに参加したい人を募り、決められた時間(7:30ごろ)に共用部のキッチンに集まって、みんなで朝ごはんを作ると言う取り組みです。
+ 
++## 出汁か醤油か、砂糖か。出身地で割れた卵焼きの味付け
++
+ しかし、いざ卵焼きを作ろうと言う段になって、味付けに困ってしまいました。私は兵庫出身なので、卵焼きには出汁か醤油を入れたいのですが、長野と福岡の二人は共に、卵焼きには砂糖が欠かせないと言うのです。
+ 
+ ![卵焼き器で菜箸を使って卵を巻いていく手元](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549711-1024x955.jpg)
+ 
+ 「甘くないのは卵焼きじゃない」とか「しょっぱいのは出汁巻き卵」とか言うご当地発言が飛び交う様は、日本全国から人が集まっているハウスならではの一コマだと思います。
+ 
++## 卵を６つ使って”甘い”と”しょっぱい”を食べ比べる
++
+ 結局は、卵を６つ使って”甘い”と”しょっぱい”を食べ比べてみることになりました。こういう、日常と非日常を同時に味わうようなことを、人は”趣”と呼んだりするのかも知れません。
+ 
+ ![黒い板皿に並べた二本の卵焼きと切り分けた断面](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549712-902x1024.jpg)
+@@ -31,6 +38,8 @@ categories: ["ハウス暮らし"]
+ 
+ ![卵焼きとご飯、味噌汁、小鉢を三人分並べた木のテーブル](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549714-1024x813.jpg)
+ 
++## 次の朝活部では、みんなの故郷の味を聞いてみたい
++
+ 今度の朝活部では、みんなが思う故郷の味について聞いてみようと思います。もちろん、海外の方も居られるので、まだ見ぬ”朝ごはん”が楽しめるかもしれません。生活のシェアとは、食文化の共有でもあるのです。
+ 
+ *   ![テーブルに置かれた急須と湯のみ、茶筒](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549708-1024x1005.jpg)
+@@ -39,6 +48,15 @@ categories: ["ハウス暮らし"]
+     
+ *   ![白い小鉢三つに取り分けたごま和えの副菜](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549706-853x1024.jpg)
+ 
++## もっと読む
++
++朝活部の舞台になったキッチンや、ハウスでの暮らしについては、こちらもどうぞ。
++
++*   [共用部の紹介](https://theheadquarters.jp/facilities/) — 朝活部が集まるキッチンとダイニング
++*   [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に暮らした人の声
++*   [お部屋と家賃](https://theheadquarters.jp/rooms/) — 部屋のタイプと費用
++*   [内見・お問い合わせ](https://theheadquarters.jp/contact/) — 実際に見に来てみたい方へ
++
+ ---
+ 
+ It looks like people have started a morning routine club lately! So healthy 😊 Posted by K-kun
+@@ -46,14 +64,20 @@ It looks like people have started a morning routine club lately! So healthy 😊
+ Salty vs. sweet tamagoyaki taste test  
+ This time, three members of The Headquarters Kobe share house got together to make “tamagoyaki” (Japanese rolled omelette).
+ 
++## “Morning Club”: sign up the night before, meet in the kitchen at 7:30
++
+ This all happened during an event called “Morning Club,” where anyone who wants to join signs up by the night before, and at a set time (around 7:30) everyone gathers in the shared kitchen to cook breakfast together.
+ 
++## Dashi and soy sauce, or sugar? A seasoning split by hometown
++
+ But when it actually came time to make the tamagoyaki, we ran into a seasoning dilemma. I’m from Hyogo, so I wanted to season the eggs with dashi or soy sauce, while the other two, from Nagano and Fukuoka, both insisted that sugar is essential in tamagoyaki.
+ 
+ ![Three housemates preparing tamagoyaki together in the kitchen](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549711-1024x955.jpg)
+ 
+ Comments like “it’s not tamagoyaki if it’s not sweet” or “the salty kind is just dashimaki tamago” flew back and forth, each rooted in someone’s hometown way of doing things — a scene that could only happen in a house where people from all over Japan live together.
+ 
++## Six eggs, two versions: comparing “sweet” and “salty” side by side
++
+ In the end, we used six eggs and made both a “sweet” version and a “salty” version to compare. Moments like this, where you savor the everyday and the extraordinary at the same time, might be exactly what people mean by “flavor.”
+ 
+ ![A plate of tamagoyaki cut into pieces, ready to compare](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549712-902x1024.jpg)
+@@ -64,6 +88,8 @@ This house is full of that same “flavor.” Sometimes unfamiliar dishes show u
+ 
+ ![More tamagoyaki being prepared and plated in the shared kitchen](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549714-1024x813.jpg)
+ 
++## Next time, asking everyone about the taste of home
++
+ At the next Morning Club, I’d like to ask everyone about the taste of home they grew up with. Since there are members from overseas too, we might get to discover some brand-new kinds of “breakfast.” Sharing a life together also means sharing a food culture.
+ 
+ *   ![Housemates cooking together in the shared kitchen](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549708-1024x1005.jpg)
+@@ -71,3 +97,12 @@ At the next Morning Club, I’d like to ask everyone about the taste of home the
+ *   ![The finished tamagoyaki dishes side by side](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549707-1024x976.jpg)
+     
+ *   ![A close-up of the tamagoyaki taste-test spread](https://theheadquarters.jp/wp-content/uploads/2024/04/S__27549706-853x1024.jpg)
++
++## Read more
++
++More about the kitchen where Morning Club happens, and about life in the house.
++
++*   [Shared spaces](https://theheadquarters.jp/facilities/) — the kitchen and dining room where Morning Club gathers
++*   [Resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++*   [Rooms and rent](https://theheadquarters.jp/rooms/) — room types and costs
++*   [Viewings and enquiries](https://theheadquarters.jp/contact/) — if you'd like to come and see it
+diff --git a/src/content/blog/bulk/%e6%96%b0%e3%81%9f%e3%81%aa%e6%97%85%e7%ab%8b%e3%81%a1%ef%bc%88a%e3%81%95%e3%82%93%e9%80%80%e5%8e%bb%ef%bc%89.md b/src/content/blog/bulk/%e6%96%b0%e3%81%9f%e3%81%aa%e6%97%85%e7%ab%8b%e3%81%a1%ef%bc%88a%e3%81%95%e3%82%93%e9%80%80%e5%8e%bb%ef%bc%89.md
+index e72a996..da4ad39 100644
+--- a/src/content/blog/bulk/%e6%96%b0%e3%81%9f%e3%81%aa%e6%97%85%e7%ab%8b%e3%81%a1%ef%bc%88a%e3%81%95%e3%82%93%e9%80%80%e5%8e%bb%ef%bc%89.md
++++ b/src/content/blog/bulk/%e6%96%b0%e3%81%9f%e3%81%aa%e6%97%85%e7%ab%8b%e3%81%a1%ef%bc%88a%e3%81%95%e3%82%93%e9%80%80%e5%8e%bb%ef%bc%89.md
+@@ -2,16 +2,21 @@
+ title: "新たな旅立ち（Aさん退去）"
+ description: "アフリカにエアコンを売るベンチャーで働くAさんが約１年の入居期間を経て、退去になりました。またタンザニアに長期出張になるとのこと。これまでも何回か出張で行っていてその間はHQに部屋を残してくれていましたが、今回は改めて解&#8230;"
+ pubDate: 2021-09-26
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## タンザニア出張へ、Aさんが約１年で退去
++
+ アフリカにエアコンを売るベンチャーで働くAさんが約１年の入居期間を経て、退去になりました。またタンザニアに長期出張になるとのこと。これまでも何回か出張で行っていてその間はHQに部屋を残してくれていましたが、今回は改めて解約となりました。
+ 
+ まあでもまた半年ぐらいで日本に帰ってくるらしいので、みんなと遊ぶことになるでしょう笑。泳いでないと死ぬマグロのような女性なので（笑）、きっと次は新たな環境を見つけることが吉なんでしょう。退去は毎回寂しいですが、シェアハウスって良い意味でそういうもの、つまり新陳代謝のある環境であるべきかなとも思います😊
+ 
++## 屋上で送別会、商店街で買った海鮮を焼いて
++
+ *   ![屋上テラスの照明の下に並ぶ海鮮とグリル](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_4-1024x768.jpg)
+     
+ *   ![屋上のソファで料理を囲む住人たち](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_1-1024x682.jpg)
+@@ -27,6 +32,8 @@ categories: ["ハウス暮らし"]
+ 
+ 少人数でしたが久しぶりに屋上で送別会をやりました。商店街の中にあるお魚屋さんで買ったサザエほか海鮮が美味しかった！😊
+ 
++## 翌日、ハウスから直接関空へ
++
+ そして翌日に出発。ハウスから直接関空に行って、そのままアフリカに飛ぶらしい。  
+ がんばれーー！！
+ 
+@@ -39,12 +46,25 @@ categories: ["ハウス暮らし"]
+ 
+ というわけで満室から１部屋あいたので、次の住人さん募集中です😊
+ 
++## もっと読む
++
++空いたお部屋のことや、送別会をやった屋上のことはこちらから。
++
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 各部屋の様子と家賃 %RENT_MIN%〜%RENT_MAX%（共益費 %COMMON_FEE%）
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — 屋上テラスやリビング、キッチン
++- [アクセスと周辺情報](https://theheadquarters.jp/location/) — 商店街など、ハウスのまわりのこと
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Off to Tanzania: A moves out after about a year
++
+ A works for a venture company that sells air conditioners in Africa, and after about a year living with us, she's moved out. She's heading off on a long-term assignment to Tanzania. She's actually gone there for work trips a few times before, and each time she kept her room here at HQ waiting for her, but this time she officially gave notice and checked out for good.
+ 
+ That said, apparently she'll be back in Japan in about six months, so I'm sure we'll all be hanging out again before long (lol). She's like a tuna that has to keep swimming or she'll die, so I guess finding a new environment is exactly what suits her. It's always a little sad to see someone move out, but I think that's part of what makes a share house great in a good way — it's an environment with a healthy turnover of people 😊
+ 
++## A rooftop farewell party with seafood from the arcade
++
+ *   ![Seafood and a grill set up under string lights on the rooftop](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_4-1024x768.jpg)
+     
+ *   ![Residents around a low table of food on the rooftop sofas](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_1-1024x682.jpg)
+@@ -60,6 +80,8 @@ That said, apparently she'll be back in Japan in about six months, so I'm sure w
+ 
+ It was a small group, but we held a farewell party up on the rooftop for the first time in a while. We picked up turban shells and other seafood from the fish shop in the shopping arcade, and it was delicious! 😊
+ 
++## Straight from the house to Kansai Airport the next day
++
+ She set off the very next day. Apparently she went straight from the house to Kansai Airport and flew directly on to Africa from there.  
+ Go get 'em!!
+ 
+@@ -71,3 +93,12 @@ Go get 'em!!
+     
+ 
+ So with the house now down one room from full, we're looking for our next new resident 😊
++
++## Read more
++
++More about the room that just opened up and the rooftop where we held the party.
++
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — what each room is like, rent %RENT_MIN%–%RENT_MAX% (common fee %COMMON_FEE%)
++- [Common areas](https://theheadquarters.jp/facilities/) — the rooftop terrace, living room and kitchen
++- [Access and the neighborhood](https://theheadquarters.jp/location/) — the shopping arcade and what's around the house
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e6%96%b0%e4%ba%ba%e6%ad%93%e8%bf%8e%e4%bc%9a.md b/src/content/blog/bulk/%e6%96%b0%e4%ba%ba%e6%ad%93%e8%bf%8e%e4%bc%9a.md
+index 49e4436..4eb35ac 100644
+--- a/src/content/blog/bulk/%e6%96%b0%e4%ba%ba%e6%ad%93%e8%bf%8e%e4%bc%9a.md
++++ b/src/content/blog/bulk/%e6%96%b0%e4%ba%ba%e6%ad%93%e8%bf%8e%e4%bc%9a.md
+@@ -2,6 +2,7 @@
+ title: "新人歓迎会"
+ description: "先日Aさんがアフリカに飛び立ち退去になったけど、ヘッドクオーターズ神戸にはすぐにまた新しい入居者を迎えることができました。その際の歓迎会の様子😊 シェアハウスにとって歓迎会って大事だと思う、うん。 なんか今回はやたら男子&#8230;"
+ pubDate: 2021-10-02
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["イベント"]
+ ---
+@@ -10,6 +11,8 @@ categories: ["イベント"]
+ 
+ 先日Aさんがアフリカに飛び立ち退去になったけど、ヘッドクオーターズ神戸にはすぐにまた新しい入居者を迎えることができました。その際の歓迎会の様子😊　シェアハウスにとって歓迎会って大事だと思う、うん。
+ 
++## 男子が厨房に並んだ歓迎会の下ごしらえ
++
+ なんか今回はやたら男子が厨房に立つ、の日ｗ
+ 
+ *   ![キッチンに並んで下ごしらえをする住人たち](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_25-1024x768.jpg)
+@@ -23,6 +26,8 @@ categories: ["イベント"]
+ *   ![キッチンカウンターに一列に並んで料理する住人たち](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_26-768x1024.jpg)
+     
+ 
++## やぶっちゃんの鯛をカルパッチョと刺し身に
++
+ 釣り？の帰りのやぶっちゃんが見事な鯛を持ってきてくれた！！感謝！！　カルパッチョや刺し身でウマウマ。
+ 
+ *   ![大きな魚を両手に持って笑う住人](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_27-768x1024.jpg)
+@@ -32,6 +37,8 @@ categories: ["イベント"]
+ *   ![テーブルに並んだ白身魚のカルパッチョと揚げ物やソーセージ](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_29-1024x768.jpg)
+     
+ 
++## エマとキムタクの二人でたこ焼きを準備
++
+ 紅一点のエマと、手伝い係なのか邪魔係なのかわからないキムタクのｗ二人でたこ焼きを準備
+ 
+ *   ![黒いTシャツの住人がキャベツを刻むところ](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_20-1024x768.jpg)
+@@ -43,6 +50,8 @@ categories: ["イベント"]
+ *   ![たこ焼き器を囲んで具を入れる二人の住人](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_3-1024x768.jpg)
+     
+ 
++## 料理番長のDKが揚げ物を担当
++
+ 料理番長なDK（男子高校生）の表情はなんだかよくわからないｗｗ　けど美味しい揚げ物を用意してくれた。
+ 
+ *   ![濃い緑のシャツの住人がしかめ面でカメラを見る](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_14-1024x768.jpg)
+@@ -59,6 +68,8 @@ categories: ["イベント"]
+ 
+ ![ホットプレートで焼けたたこ焼きと皿に盛られた揚げ物](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_28-1024x1024.jpg)
+ 
++## 食事のあとはなぜか腕相撲大会
++
+ 終わったあとはなぜか腕相撲大会にｗ　最強いや最弱決定戦て感じ😅
+ 
+ *   ![ダイニングテーブルで腕相撲をする二人の住人](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_38-1024x1024.jpg)
+@@ -76,10 +87,21 @@ categories: ["イベント"]
+ 
+ いやあ楽しいシェアハウスで最高😆　ほんとみんなシェアハウスに住めばいいのにねｗ
+ 
++## もっと読む
++
++歓迎会の会場になった共用部や、入居までの流れはこちらから。
++
++*   [共用部の紹介](https://theheadquarters.jp/facilities/) — みんなで料理をするキッチンとダイニング
++*   [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に暮らした人の声
++*   [入居の流れとQ&A](https://theheadquarters.jp/procedures/) — 入居までの手続き
++*   [内見・お問い合わせ](https://theheadquarters.jp/contact/) — 見学のご相談はこちら
++
+ ---
+ 
+ A while back, A left us to fly off to Africa, but The Headquarters Kobe was quickly able to welcome a new resident in! Here's how the welcome party went 😊 I really think welcome parties matter for a share house, yeah.
+ 
++## The guys took over the kitchen for the prep work
++
+ For some reason this time it turned into a "guys crowding the kitchen" kind of day lol
+ 
+ *   ![Residents lined up at the kitchen counter prepping food](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_25-1024x768.jpg)
+@@ -93,6 +115,8 @@ For some reason this time it turned into a "guys crowding the kitchen" kind of d
+ *   ![Four residents in a row along the kitchen counter, all cooking](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_26-768x1024.jpg)
+     
+ 
++## Yabucchan's sea bream, turned into carpaccio and sashimi
++
+ Yabucchan came back from what looked like a fishing trip and brought us a gorgeous sea bream!! Thank you!! We turned it into carpaccio and sashimi and it was so good.
+ 
+ *   ![A resident grinning as he holds up two large fish](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_27-768x1024.jpg)
+@@ -102,6 +126,8 @@ Yabucchan came back from what looked like a fishing trip and brought us a gorgeo
+ *   ![White fish carpaccio, fried food and sausages laid out on the table](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_29-1024x768.jpg)
+     
+ 
++## Emma and Kimutaku on takoyaki duty
++
+ Emma, the only girl in the mix, teamed up with Kimutaku — not sure if he was helping or just getting in the way lol — to get the takoyaki going
+ 
+ *   ![A resident in a black T-shirt chopping cabbage](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_20-1024x768.jpg)
+@@ -113,6 +139,8 @@ Emma, the only girl in the mix, teamed up with Kimutaku — not sure if he was h
+ *   ![Two residents leaning over a takoyaki griddle to fill the moulds](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_3-1024x768.jpg)
+     
+ 
++## DK, the resident head chef, handled the fried food
++
+ DK (our high schooler), our resident head chef, had the most unreadable expression on his face lol, but he whipped up some delicious fried food for us.
+ 
+ *   ![A resident in a dark green shirt pulling a face at the camera](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_14-1024x768.jpg)
+@@ -129,6 +157,8 @@ Dinners like this are honestly one of the best parts of share house life.
+ 
+ ![Takoyaki cooked on the hotplate next to a plate of fried food](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_28-1024x1024.jpg)
+ 
++## After dinner, somehow an arm wrestling tournament
++
+ After it all wrapped up, somehow it turned into an arm wrestling tournament lol, more like a "who's actually the weakest" showdown 😅
+ 
+ *   ![Two residents arm wrestling at the dining table](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_38-1024x1024.jpg)
+@@ -145,3 +175,12 @@ After it all wrapped up, somehow it turned into an arm wrestling tournament lol,
+     
+ 
+ Man, share house life is the best 😆 Honestly, everyone should just live in a share house lol
++
++## Read more
++
++More about the shared spaces where the welcome party happened, and how to move in.
++
++*   [Shared spaces](https://theheadquarters.jp/facilities/) — the kitchen and dining room where everyone cooks together
++*   [Resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++*   [How to move in and FAQ](https://theheadquarters.jp/procedures/) — the steps up to moving in
++*   [Viewings and enquiries](https://theheadquarters.jp/contact/) — get in touch about a visit
+diff --git a/src/content/blog/bulk/%e6%9c%80%e8%bf%91%e3%81%ae%e5%8b%89%e5%bc%b7%e3%81%af%e3%83%8d%e3%83%83%e3%83%88%e3%81%ae%e5%8b%95%e7%94%bb%e3%81%a7%ef%bc%81.md b/src/content/blog/bulk/%e6%9c%80%e8%bf%91%e3%81%ae%e5%8b%89%e5%bc%b7%e3%81%af%e3%83%8d%e3%83%83%e3%83%88%e3%81%ae%e5%8b%95%e7%94%bb%e3%81%a7%ef%bc%81.md
+index 2d5b966..ca29681 100644
+--- a/src/content/blog/bulk/%e6%9c%80%e8%bf%91%e3%81%ae%e5%8b%89%e5%bc%b7%e3%81%af%e3%83%8d%e3%83%83%e3%83%88%e3%81%ae%e5%8b%95%e7%94%bb%e3%81%a7%ef%bc%81.md
++++ b/src/content/blog/bulk/%e6%9c%80%e8%bf%91%e3%81%ae%e5%8b%89%e5%bc%b7%e3%81%af%e3%83%8d%e3%83%83%e3%83%88%e3%81%ae%e5%8b%95%e7%94%bb%e3%81%a7%ef%bc%81.md
+@@ -2,6 +2,7 @@
+ title: "最近の勉強はネットの動画で！"
+ description: "先日DIYで改装した勉強部屋ですが、さっそく住人も使ってくれてるようです。コロナで在宅勤務が増えたり、大学や高校もオンライン授業が増えてるので、今後もリモートワーク/スタディを前提にした住環境が必要になるんじゃないでしょ&#8230;"
+ pubDate: 2021-07-01
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+@@ -10,6 +11,8 @@ categories: ["ハウス暮らし"]
+ 
+ 先日DIYで改装した勉強部屋ですが、さっそく住人も使ってくれてるようです。コロナで在宅勤務が増えたり、大学や高校もオンライン授業が増えてるので、今後もリモートワーク/スタディを前提にした住環境が必要になるんじゃないでしょうか。シェアハウスも共有部の充実さが価値なので、考えていかないといかないですね。
+ 
++## 勉強部屋で受験勉強中のH君
++
+ 写真は勉強中のH君です。入居時はなんと中３でしたが今や高３、受験生です。時間経つのはやっ！！
+ 
+ 何を勉強しているのかと見てみると・・・
+@@ -19,12 +22,25 @@ categories: ["ハウス暮らし"]
+ 英語のようです。しかもユーチューブで（笑）。  
+ 聞くと、「めっちゃわかりやすい」だそうです。まあそうですよね、各学校の普通の先生よりも、鍛え抜かれた予備校講師のほうが授業は面白くてわかりやすいはず。がんばれー！！
+ 
++## 共有部が全体の半分以上を占める３フロア構成
++
+ ところでヘッドクオーターズ神戸は３フロアあってうち２フロアが居室メインで（洗面ランドリールームとトイレあり）、１つのフロアがすべて共有部（スタディ、キッチン、ダイニング、リビング、トイレ、シャワー、バス）になっています。廊下も入れれば共有部が全体の半分以上ってかなり大きな割合なんじゃないかなと思います。
+ 
++## もっと読む
++
++勉強部屋をはじめとする共有部や、机とイスのある各居室についてはこちらもどうぞ。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — スタディ、キッチン、リビングなど
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 各居室の広さと費用
++- [神戸大学の学生・院生・留学生の方へ](https://theheadquarters.jp/kobe-university/) — 学業と両立できる住まいをお探しの方に
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
+ The study room we recently renovated ourselves (DIY-style) is already getting good use from our residents. With more people working from home because of COVID, and more universities and high schools moving classes online, it feels like living spaces built around remote work and remote study are only going to matter more going forward. Since shared spaces are such a big part of what makes a share house valuable, it's definitely something we need to keep thinking about.
+ 
++## H, studying for his exams in the study room
++
+ The photo below shows H, hard at work studying. He moved in when he was in his third year of junior high, and now he's already a third-year high schooler gearing up for exams. Time really flies!
+ 
+ Curious what he was studying, we took a look...
+@@ -34,4 +50,15 @@ Curious what he was studying, we took a look...
+ Looks like English. And on YouTube, of all places (lol).  
+ When we asked him about it, he said it was "super easy to understand." Makes sense, really — a seasoned cram school instructor is bound to teach more engagingly and clearly than the average school teacher. Keep it up!!
+ 
++## Three floors, with shared space making up more than half
++
+ By the way, The Headquarters Kobe has three floors — two are mainly private rooms (each with a washroom/laundry area and toilet), and the entire third floor is shared space (study room, kitchen, dining area, living room, toilet, shower, and bath). If you count the hallways too, shared space makes up more than half of the whole building, which is honestly a pretty huge proportion.
++
++## Read more
++
++More about the study room and the other common areas, and about the private rooms with their own desk and chair.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — study room, kitchen, living room and more
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — room sizes and costs
++- [For Kobe University students and researchers](https://theheadquarters.jp/kobe-university/) — if you need a home that works with your studies
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e6%b4%97%e6%bf%af%e4%b9%be%e7%87%a5%e6%a9%9f%e3%81%ae%e3%83%a1%e3%83%b3%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9diy.md b/src/content/blog/bulk/%e6%b4%97%e6%bf%af%e4%b9%be%e7%87%a5%e6%a9%9f%e3%81%ae%e3%83%a1%e3%83%b3%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9diy.md
+index 63ca43c..b6c2004 100644
+--- a/src/content/blog/bulk/%e6%b4%97%e6%bf%af%e4%b9%be%e7%87%a5%e6%a9%9f%e3%81%ae%e3%83%a1%e3%83%b3%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9diy.md
++++ b/src/content/blog/bulk/%e6%b4%97%e6%bf%af%e4%b9%be%e7%87%a5%e6%a9%9f%e3%81%ae%e3%83%a1%e3%83%b3%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9diy.md
+@@ -2,12 +2,15 @@
+ title: "洗濯乾燥機のメンテナンスDIY"
+ description: "日本各地で大雨が続いていますね。災害級と言われるところもあり心配です。さて雨が続くとやっかいになるのが洗濯ですね。洗濯物を干しても乾かなくなります。しかしヘッドクオーターズ神戸には、洗濯乾燥機が２台あります。放り込んでお&#8230;"
+ pubDate: 2021-08-14
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["改装・設備"]
+ ---
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 雨が続いても乾く、2台の洗濯乾燥機
++
+ 日本各地で大雨が続いていますね。災害級と言われるところもあり心配です。  
+ さて雨が続くとやっかいになるのが洗濯ですね。洗濯物を干しても乾かなくなります。しかしヘッドクオーターズ神戸には、洗濯乾燥機が２台あります。放り込んでおけば洗濯して乾かしてくれる洗濯乾燥機は便利ですね。シェアハウスではとても大事な設備だと思います（一般家庭でもそうだと思いますが）。
+ 
+@@ -16,9 +19,13 @@ categories: ["改装・設備"]
+ *   ![青いタイルの洗面台と奥に置かれたドラム式洗濯機](https://theheadquarters.jp/wp-content/uploads/2021/08/101-1024x682.jpg)
+     
+ 
++## 乾燥機も洗剤も無料、共益費でまかなっています
++
+ シェアハウスの中には、乾燥機がなかったり、有っても有料のコイン制だったりするところもあるようですが、HQ神戸ではもちろん無料です。しかも洗剤も共益費から買ってるので個人で買う必要はないです。洗剤ってみんなが買うと置き場所にも困りますしね。  
+ （ちなみにHQではキッチンの調味料類も共益費支給になってます！）
+ 
++## 乾燥能力が落ちた4Fの洗濯機を分解してみる
++
+ そして今回、みんなに酷使されたせいか（苦笑）4Fの洗濯機の乾燥機能が弱くなったと言われたので、DIYで分解して直してみることにしました。機種はPanasonicのNA-VX7200L。先生はYoutubeです（笑）。
+ 
+ *   ![フロントパネルを外して内部が露わになった洗濯乾燥機](https://theheadquarters.jp/wp-content/uploads/2021/08/234829541_4151492678220707_2743179593655788242_n-768x1024.jpg)
+@@ -33,6 +40,8 @@ categories: ["改装・設備"]
+ 
+ ![ドラムカバーまで外して内部が見えた洗濯乾燥機](https://theheadquarters.jp/wp-content/uploads/2021/08/235551588_4151493401553968_8264944751219580080_n-768x1024.jpg)
+ 
++## ドラムカバーに溜まったホコリを風呂場で水洗い
++
+ 外したドラムカバーはこんなもの。ちょっと汚くて恐縮ですが、長年のホコリ（とカビ）が内側に溜まっています。１枚目の写真で見えているビス類を外すとさらに内側のカバーが取れ、その内側にもビッシリとゴミが（写真２枚目）。それらをお風呂にもっていって水洗いすると、綺麗に取れました（３枚目）。キレイになると気持ちがいいですね✨
+ 
+ *   ![取り外したドラムカバーの内側に溜まったホコリ](https://theheadquarters.jp/wp-content/uploads/2021/08/233706548_4151492961554012_8303777586356905972_n-768x1024.jpg)
+@@ -42,6 +51,8 @@ categories: ["改装・設備"]
+ *   ![浴室で水洗いして汚れを落としたドラムカバー](https://theheadquarters.jp/wp-content/uploads/2021/08/233895324_4151492774887364_1894519019033070433_n-768x1024.jpg)
+     
+ 
++## 下部の接続パイプ類も外して洗う
++
+ そして下部の接続パイプ類も外して洗います。ここはドラムカバーと違い乾燥空気が回ってこないので中には臭いヘドロのようなものが😅。ここの水って循環してるのかな？まあ綺麗にするにこしたことはないのでね。
+ 
+ ![本体下部に並ぶ接続パイプとホース類](https://theheadquarters.jp/wp-content/uploads/2021/08/IMG_2193-2-1024x768.jpg)
+@@ -52,8 +63,19 @@ categories: ["改装・設備"]
+ 
+ というわけで分解清掃のDIYでした。いちおうその後は乾燥能力が戻ったようで住人からは好評です。よかったよかった。
+ 
++## もっと読む
++
++洗濯乾燥機のある水まわりや、共益費でまかなっている設備についてはこちらから。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — 洗濯乾燥機やキッチンなど共用設備
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 家賃と共益費に含まれるもの
++- [入居の流れとQ&A](https://theheadquarters.jp/procedures/) — 設備の使い方についてのご質問も
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Two washer-dryers that keep working through the rainy days
++
+ Heavy rain has been continuing across Japan, and some areas are even seeing what's being called disaster-level rainfall — it's a bit worrying.  
+ And when the rain keeps going, laundry becomes a real hassle, doesn't it? You hang your clothes out and they just won't dry. Luckily, The Headquarters Kobe has two washer-dryer combo machines. It's so convenient to just toss your laundry in and have it washed and dried for you. I think that kind of equipment is essential in a share house (though I imagine it's just as true for regular households too).
+ 
+@@ -62,9 +84,13 @@ And when the rain keeps going, laundry becomes a real hassle, doesn't it? You ha
+ *   ![Laundry room at The Headquarters Kobe](https://theheadquarters.jp/wp-content/uploads/2021/08/101-1024x682.jpg)
+     
+ 
++## Dryer and detergent, both free and covered by the shared fee
++
+ Some share houses don't have dryers at all, or if they do, they're coin-operated and cost extra — but at HQ Kobe, of course, it's free. What's more, the detergent is also covered by the shared utility fee, so there's no need to buy your own. If everyone bought their own detergent, we'd run out of storage space anyway.  
+ (By the way, at HQ even the kitchen seasonings are covered by the shared utility fee!)
+ 
++## Taking apart the 4th-floor machine after its drying power dropped
++
+ This time, maybe because it's been overworked by everyone (ha), someone mentioned that the dryer function on the 4th floor washer-dryer had gotten weaker. So I decided to take it apart myself and see if I could fix it as a DIY project. The model is Panasonic's NA-VX7200L. My teacher, of course, was YouTube (lol).
+ 
+ *   ![Front panel removed from the washer-dryer](https://theheadquarters.jp/wp-content/uploads/2021/08/234829541_4151492678220707_2743179593655788242_n-768x1024.jpg)
+@@ -79,6 +105,8 @@ Once the drum cover is off, it looks like this ↓.
+ 
+ ![Removed drum cover parts](https://theheadquarters.jp/wp-content/uploads/2021/08/235551588_4151493401553968_8264944751219580080_n-768x1024.jpg)
+ 
++## Rinsing years of dust off the drum cover in the bathroom
++
+ Here's what the removed drum cover looked like. A bit embarrassing to show, but years of dust (and mold) had built up on the inside. Removing the screws visible in the first photo let me take off an even deeper inner cover, and that one was also packed with grime (second photo). I took all of it to the bathroom and rinsed it off with water, and it came out looking spotless (third photo). It's such a satisfying feeling when things get clean ✨
+ 
+ *   ![Dust and grime on the inner cover before cleaning](https://theheadquarters.jp/wp-content/uploads/2021/08/233706548_4151492961554012_8303777586356905972_n-768x1024.jpg)
+@@ -88,6 +116,8 @@ Here's what the removed drum cover looked like. A bit embarrassing to show, but
+ *   ![Cover after being washed clean](https://theheadquarters.jp/wp-content/uploads/2021/08/233895324_4151492774887364_1894519019033070433_n-768x1024.jpg)
+     
+ 
++## Washing the connecting pipes at the bottom
++
+ I also removed the connecting pipes at the bottom and washed those too. Unlike the drum cover, dry air doesn't circulate through here, so inside there was some smelly sludge-like buildup 😅. I wonder if the water in this part actually circulates? Well, either way, it's never a bad thing to get it clean.
+ 
+ ![Cleaning the connecting pipes at the bottom of the machine](https://theheadquarters.jp/wp-content/uploads/2021/08/IMG_2193-2-1024x768.jpg)
+@@ -97,3 +127,12 @@ Once everything was clean, I put it all back together. And, true to form, someho
+ ![Reassembling the washer-dryer with a few leftover screws](https://theheadquarters.jp/wp-content/uploads/2021/08/234869532_4151493044887337_3286782561598174365_n-768x1024.jpg)
+ 
+ And that was our disassembly-and-cleaning DIY project. Since then, the drying power seems to have come back, and the residents are happy about it. Glad it worked out!
++
++## Read more
++
++More about the laundry area and the facilities covered by the shared utility fee.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — washer-dryers, kitchen and other shared facilities
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — what the rent and shared utility fee cover
++- [Moving in: steps and Q&A](https://theheadquarters.jp/procedures/) — including questions about using the facilities
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e7%a5%9e%e6%88%b8%e5%a4%a7%e5%ad%a6%e5%a4%a7%e5%ad%a6%e9%99%a2-%e5%8d%92%e6%a5%ad.md b/src/content/blog/bulk/%e7%a5%9e%e6%88%b8%e5%a4%a7%e5%ad%a6%e5%a4%a7%e5%ad%a6%e9%99%a2-%e5%8d%92%e6%a5%ad.md
+index cf3409e..b9373b7 100644
+--- a/src/content/blog/bulk/%e7%a5%9e%e6%88%b8%e5%a4%a7%e5%ad%a6%e5%a4%a7%e5%ad%a6%e9%99%a2-%e5%8d%92%e6%a5%ad.md
++++ b/src/content/blog/bulk/%e7%a5%9e%e6%88%b8%e5%a4%a7%e5%ad%a6%e5%a4%a7%e5%ad%a6%e9%99%a2-%e5%8d%92%e6%a5%ad.md
+@@ -2,6 +2,7 @@
+ title: "祝! 神戸大学大学院 卒業"
+ description: "去年コロナの影響でシェアハウスを退去になっていた住人のS君（去年の夏の流しそうめん設営でも活躍してくれた建設コンサルタント）が大学院の卒業式？（学位授与式？）で証書を受け取るということで、HQに遊びにきてくれました。１泊&#8230;"
+ pubDate: 2021-09-27
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ゲスト"]
+ ---
+@@ -15,6 +16,8 @@ categories: ["ゲスト"]
+ *   ![大学正門の石柱と並木の坂道を背にした自撮り](https://theheadquarters.jp/wp-content/uploads/2021/09/IMG_3093-1-1024x769.jpg)
+     
+ 
++## 学位記を手に神戸大学キャンパスで記念撮影
++
+ 神戸大学キャンパス。私（HQ運営者）はなにげに神大キャンパス初訪問ｗ。
+ 
+ *   ![時計台のある校舎前で学位記を広げて立つ卒業生](https://theheadquarters.jp/wp-content/uploads/2021/09/Moriyama-04-1-1024x683.jpeg)
+@@ -25,6 +28,8 @@ categories: ["ゲスト"]
+ 👆ドヤリングｗ  
+ ちなみにアイキャッチ画像で一緒に写っている子供は同じ卒業生の外人さん（ちょうどタンザニア人さんだそう）の息子さん。撮影してたら「僕もまぜろー！」的な感じで走り寄ってきたｗ
+ 
++## 前の晩はAさんの送別会BBQを屋上で
++
+ 前の晩はAさんの送別会BBQにも参加してくれた。やっぱりうちのハウスの屋上BBQはいいねぇ。
+ 
+ *   ![電球を吊るした夜の屋上テントで料理を囲む住人たち](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_10-1024x682.jpg)
+@@ -42,9 +47,20 @@ categories: ["ゲスト"]
+ *   ![リビングで身ぶりを交えて話す住人とそれを見る仲間](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_13-1024x683.jpg)
+     
+ 
++## 人生の節目に立ち会えるのがシェアハウス経営の嬉しさ
++
+ こんなかんじで住人が成長していく姿を見れたり、人生の節目に立ち会えるのはシェアハウスの経営者にとって嬉しいことです😊　  
+ S君、ぜひ学位を活かして会社で活躍してくれ。
+ 
++## もっと読む
++
++神戸大学の学生・院生の方や、ハウスでの暮らしについてはこちらから。
++
++- [神戸大学の学生・院生・留学生の方へ](https://theheadquarters.jp/kobe-university/) — 神大生向けのご案内
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — BBQをした屋上やリビングなど
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
+ S-kun, one of our residents who had to move out of the share house last year because of COVID (he's the construction consultant who helped so much setting up the flowing somen noodles last summer), came back to visit HQ because he was receiving his diploma at his graduate school ceremony — a graduation ceremony? A degree conferral ceremony? Either way, he stayed one night and headed to the graduate school the next day. We took some photos for him.
+@@ -54,6 +70,8 @@ S-kun, one of our residents who had to move out of the share house last year bec
+ *   ![Graduation ceremony at Kobe University](https://theheadquarters.jp/wp-content/uploads/2021/09/IMG_3093-1-1024x769.jpg)
+     
+ 
++## Photos with the diploma on the Kobe University campus
++
+ The Kobe University campus. Turns out this was actually my (the HQ owner's) very first visit to the Kobe University campus lol.
+ 
+ *   ![Posing on Kobe University campus](https://theheadquarters.jp/wp-content/uploads/2021/09/Moriyama-04-1-1024x683.jpeg)
+@@ -64,6 +82,8 @@ The Kobe University campus. Turns out this was actually my (the HQ owner's) very
+ 👆 Striking a proud pose lol.
+ By the way, the kid in the featured photo with him is the son of another graduate — a foreign student (apparently from Tanzania). While we were taking pictures, he came running over like "let me in the photo too!" lol.
+ 
++## A rooftop farewell BBQ for A-san the night before
++
+ The night before, S-kun also joined A-san's farewell BBQ. Our rooftop BBQ really never gets old.
+ 
+ *   ![Rooftop BBQ farewell party](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_10-1024x682.jpg)
+@@ -81,5 +101,16 @@ It had been a while, and seeing everyone gathered and laughing in the living roo
+ *   ![Living room gathering with S-kun](https://theheadquarters.jp/wp-content/uploads/2021/09/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547083993_210928_13-1024x683.jpg)
+     
+ 
++## Being there for a resident's milestone
++
+ Getting to watch our residents grow like this, and being there for these big milestones in their lives, is one of the things that makes running a share house so rewarding 😊
+ S-kun, go put that degree to good use and make waves at your new company!
++
++## Read more
++
++More for Kobe University students and about life at the house.
++
++- [For Kobe University students and researchers](https://theheadquarters.jp/kobe-university/) — information for Kobe Univ. residents
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Common areas](https://theheadquarters.jp/facilities/) — the rooftop where we BBQ, the living room and more
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%e8%97%a4%e3%81%af%e5%92%b2%e3%81%84%e3%81%9f%e3%81%91%e3%81%a9%e3%80%81%e4%b8%96%e3%81%ae%e4%b8%ad%e3%81%af%e3%83%bb%e3%83%bb%e3%83%bb.md b/src/content/blog/bulk/%e8%97%a4%e3%81%af%e5%92%b2%e3%81%84%e3%81%9f%e3%81%91%e3%81%a9%e3%80%81%e4%b8%96%e3%81%ae%e4%b8%ad%e3%81%af%e3%83%bb%e3%83%bb%e3%83%bb.md
+index 46828aa..eb5da4c 100644
+--- a/src/content/blog/bulk/%e8%97%a4%e3%81%af%e5%92%b2%e3%81%84%e3%81%9f%e3%81%91%e3%81%a9%e3%80%81%e4%b8%96%e3%81%ae%e4%b8%ad%e3%81%af%e3%83%bb%e3%83%bb%e3%83%bb.md
++++ b/src/content/blog/bulk/%e8%97%a4%e3%81%af%e5%92%b2%e3%81%84%e3%81%9f%e3%81%91%e3%81%a9%e3%80%81%e4%b8%96%e3%81%ae%e4%b8%ad%e3%81%af%e3%83%bb%e3%83%bb%e3%83%bb.md
+@@ -2,6 +2,7 @@
+ title: "藤は咲いたけど、世の中は・・・"
+ description: "世の中、新型コロナで大変ですね。。2月の頃は桜が咲けば（春になれば）収束するのではと多くの人が思っていたのではないかと思います。しかし現実はまさかのオリンピック延期になり、感染爆発はこれからということでしょう。。。いろい&#8230;"
+ pubDate: 2020-03-31
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+@@ -10,6 +11,8 @@ categories: ["ハウス暮らし"]
+ 
+ 世の中、新型コロナで大変ですね。。2月の頃は桜が咲けば（春になれば）収束するのではと多くの人が思っていたのではないかと思います。しかし現実はまさかのオリンピック延期になり、感染爆発はこれからということでしょう。。。いろいろ厳しいですね。
+ 
++## リビングでみんなで見た小池都知事の会見
++
+ 写真は本日の小池都知事の会見をリビングで見る風景。  
+ 危機対応時は強烈なリーダーシップが必要ですが、外国のそれと比べて日本は相変わらず曖昧な忖度ベースで進んでいるようです。。。  
+ 兵庫も人口比ではかなり感染が多いので今後が心配です。
+@@ -17,16 +20,29 @@ categories: ["ハウス暮らし"]
+ *   ![リビングのテレビで小池都知事の記者会見を見る住人たち](https://theheadquarters.jp/wp-content/uploads/2026/07/fb/fb-20200330-1-1400x1050.jpg)
+     
+ 
++## ハウスの鉢植えで藤が咲いた
++
+ さて藤が咲きました。つらい時にも、ポジティブなものの見方を忘れずに生きていきたいものです。
+ 
+ *   ![鉢植えの木々の隣で花をつけた藤の鉢](https://theheadquarters.jp/wp-content/uploads/2020/03/IMG_3391-1024x768.jpg)
+     
+ *   ![白い壁を背に咲く紫色の藤の花のクローズアップ](https://theheadquarters.jp/wp-content/uploads/2020/03/IMG_3392-1024x768.jpg)
+ 
++## もっと読む
++
++みんなが集まるリビングや、実際の暮らしぶりについてはこちらもどうぞ。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビングやキッチンなど共用スペース
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に暮らした人たちの声
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 各居室の広さと費用
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
+ The world is having a tough time with the coronavirus these days. Back in February, I think a lot of people assumed things would settle down once the cherry blossoms bloomed (that is, once spring arrived). But reality had other plans — the Olympics got postponed, and it looks like the real spread is still ahead of us... It's a rough situation all around.
+ 
++## Watching Governor Koike's press conference together in the living room
++
+ The photo shows the scene in the living room today, watching Governor Koike's press conference.  
+ In a crisis, strong leadership really matters, and compared to other countries, Japan still seems to be moving forward on that same vague, read-the-room consensus as always...  
+ Hyogo's case numbers are pretty high relative to its population too, so I'm a bit worried about what's coming.
+@@ -34,8 +50,19 @@ Hyogo's case numbers are pretty high relative to its population too, so I'm a bi
+ *   ![Housemates in the living room watching Governor Koike's press conference on TV](https://theheadquarters.jp/wp-content/uploads/2026/07/fb/fb-20200330-1-1400x1050.jpg)
+     
+ 
++## The wisteria in the house planters has bloomed
++
+ Anyway, the wisteria has bloomed. Even in hard times, I want to keep holding onto a positive way of looking at things.
+ 
+ *   ![Wisteria blooming at the house](https://theheadquarters.jp/wp-content/uploads/2020/03/IMG_3391-1024x768.jpg)
+     
+ *   ![Close-up of the wisteria flowers](https://theheadquarters.jp/wp-content/uploads/2020/03/IMG_3392-1024x768.jpg)
++
++## Read more
++
++More about the living room where everyone gathers, and about what daily life here is like.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, kitchen and other shared spaces
++- [Voices of former residents](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — interviews with people who actually lived here
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — room sizes and costs
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/%ef%bc%95f%e3%81%ae%e7%85%a7%e6%98%8e%e3%82%92%e5%a4%89%e3%81%88%e3%81%a6%e3%81%bf%e3%81%9f.md b/src/content/blog/bulk/%ef%bc%95f%e3%81%ae%e7%85%a7%e6%98%8e%e3%82%92%e5%a4%89%e3%81%88%e3%81%a6%e3%81%bf%e3%81%9f.md
+index a1f0d5b..3e9a9c9 100644
+--- a/src/content/blog/bulk/%ef%bc%95f%e3%81%ae%e7%85%a7%e6%98%8e%e3%82%92%e5%a4%89%e3%81%88%e3%81%a6%e3%81%bf%e3%81%9f.md
++++ b/src/content/blog/bulk/%ef%bc%95f%e3%81%ae%e7%85%a7%e6%98%8e%e3%82%92%e5%a4%89%e3%81%88%e3%81%a6%e3%81%bf%e3%81%9f.md
+@@ -2,6 +2,7 @@
+ title: "おしゃれハウスへの道は遠く、、、"
+ description: "５Fの照明を変えてみたハウスに手を入れるのはどうしても何かが壊れたとか問題があった時の修繕が多くて、雰囲気が変わるようなものはなかなか出来て無かったんだけど、久しぶりにやってみたよ これはみんなが一番集まる５Fのリビング&#8230;"
+ pubDate: 2025-10-19
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["改装・設備"]
+ ---
+@@ -11,6 +12,8 @@ categories: ["改装・設備"]
+ ５Fの照明を変えてみた  
+ ハウスに手を入れるのはどうしても何かが壊れたとか問題があった時の修繕が多くて、雰囲気が変わるようなものはなかなか出来て無かったんだけど、久しぶりにやってみたよ
+ 
++## みんなが一番集まる５Fリビングの蛍光灯を外した
++
+ これはみんなが一番集まる５Fのリビング。リビングはシェアハウスのコミュニティとしてのコアだから居心地が大事。前にソファのレイアウトやカバーを変えたけど、照明はずっと以前からあったオフィス型の蛍光灯ベース（富士形といわれるタイプ）で殺風景だったんだよね
+ 
+ それをオシャレな感じにしてみました。👇️これが。。。
+@@ -24,6 +27,8 @@ categories: ["改装・設備"]
+ 蛍光灯とそのベースを外して、ダクトレールを設置して電球色の照明をたくさん吊ってみました。  
+ 使って写真の撮り方がちがうんだけど雰囲気は伝わるかな（撮るならカバーを整えればよかったｗ）。
+ 
++## エジソン電球型LEDと壁を照らすスポットライトを選んだ
++
+ 照明はLEDのエジソン電球型の照明と、壁を間接照明的に照らすスポットライトを使ってみました。次のようなやつです。
+ 
+ ![コード吊りのエジソン電球型LED照明3灯](https://theheadquarters.jp/wp-content/uploads/2025/10/619ql3HhAJL._AC_SL1500_-760x1024.jpg)
+@@ -33,6 +38,8 @@ categories: ["改装・設備"]
+ 個人的には色温度の高い白色よりも電球色のほうが落ち着いてパーティなんかも楽しくなると思うんだけね。リビングの方はリモコンで調光・調色ができます（なのでちょっとお高いｗ）  
+ 以前にクリパや住人のアイデアでキャンドルトーク会とかやってたから、そういう時に照度落としてムード作ったりもできるようにね
+ 
++## キッチンの照明も同じように付け替えた
++
+ キッチンのほうも同じく、、、👇️これが
+ 
+ ![蛍光灯が天井に並ぶ改装前のキッチン](https://theheadquarters.jp/wp-content/uploads/2025/10/IMG_5839-1024x768.jpg)
+@@ -43,18 +50,33 @@ categories: ["改装・設備"]
+ 
+ みんな料理するのが楽しくなるといいな
+ 
++## ハンガーという部品でもとの吊りボルトを活かせた
++
+ 実はこれ、ずっとやりたかったんだけど、なんか難しく感じて後回しにしてたんだよね。。蛍光灯ベースもすぐ外れたし、レール設置もどうしようか考えてたんだけど、ハンガーという小さな部品があってそれを使えばもとあった吊りボルトを活かせるとわかって意外とすんなりできました。系統接続だけ資格ある人に頼んでやる必要あったけどね。  
+ もっと早くやればよかった笑
+ 
+ ![椅子に乗ってキッチンの天井照明を取り付ける住人](https://theheadquarters.jp/wp-content/uploads/2025/10/IMG_5966-768x1024.jpg)
+ 
++## 取り付けを手伝ってくれた身長194cmのF君
++
+ ちなみに照明を取り付ける時は、身長194cmあるイギリス人のF君が手伝ってくれました。日本人男子平均の僕だと椅子に乗ってもせいいっぱい手を上に伸ばさないといけないんだけど、彼は楽にやってましたね笑。そして頭にぶつかるからとコードを短く調整してました😂　彼は生で見るとほんとにデカい笑。オオタニサンと1cm違い。
+ 
++## もっと読む
++
++リビングやキッチンなど、みんなが集まる場所についてはこちらから。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビング・キッチン・屋上など
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 部屋のタイプと費用
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
+ We changed the lighting on the 5th floor  
+ When we work on the house, it's usually because something broke or there was a problem to fix, so we rarely got around to doing anything that actually changes the vibe. But this time we finally gave it a shot after a long while.
+ 
++## Taking down the fluorescents in the 5th floor living room
++
+ This is the 5th floor living room, where everyone gathers the most. Since the living room is the core of the share house community, how comfortable it feels really matters. We'd already changed the sofa layout and covers before, but the lighting had always been this old office-style fluorescent fixture (the kind called a "Fuji shape") that made the place feel pretty bare and uninviting.
+ 
+ So we gave it a stylish makeover. 👇 Here's the before...
+@@ -68,6 +90,8 @@ So we gave it a stylish makeover. 👇 Here's the before...
+ We removed the fluorescent light and its base, installed a duct rail, and hung a bunch of warm-colored bulbs from it.  
+ The photos were taken a bit differently so it's hard to compare directly, but hopefully you can still feel the change in mood (if I'd known, I would've tidied up the lamp covers before shooting, lol).
+ 
++## Choosing LED Edison bulbs and wall-washing spotlights
++
+ For the lighting itself, we used LED Edison-bulb-style lights along with spotlights that indirectly light up the walls. Something like these.
+ 
+ ![LED Edison-style bulb used for the new lighting](https://theheadquarters.jp/wp-content/uploads/2025/10/619ql3HhAJL._AC_SL1500_-760x1024.jpg)
+@@ -77,6 +101,8 @@ For the lighting itself, we used LED Edison-bulb-style lights along with spotlig
+ Personally, I think warm-toned light feels more relaxing than cool white light and makes parties more fun too. The living room lights can be dimmed and color-adjusted with a remote (which is why they were a bit pricey, lol).  
+ We've had Christmas parties and candle-talk nights that residents came up with before, so now we can lower the brightness and set the mood for that kind of thing too.
+ 
++## The kitchen lighting got the same treatment
++
+ The kitchen got the same treatment... 👇 Here's the before
+ 
+ ![Before: the old fluorescent lighting in the kitchen](https://theheadquarters.jp/wp-content/uploads/2025/10/IMG_5839-1024x768.jpg)
+@@ -87,9 +113,22 @@ And the after!
+ 
+ Hopefully this makes cooking more enjoyable for everyone.
+ 
++## A part called a "hanger" let us reuse the existing suspension bolts
++
+ Honestly, this is something I'd wanted to do for ages, but it always felt like a hassle so I kept putting it off... Turned out the fluorescent base came off easily, and while I was wondering how to go about installing the rail, I found out there's a small part called a "hanger" that lets you reuse the existing suspension bolts — so it actually went pretty smoothly. Though we did need to have someone with the proper qualifications handle the electrical wiring.  
+ Should've done this way sooner, lol.
+ 
+ ![Installing the duct rail and lighting](https://theheadquarters.jp/wp-content/uploads/2025/10/IMG_5966-768x1024.jpg)
+ 
++## Our 194cm British resident helped with the install
++
+ By the way, when it came time to install the lights, F, our British resident who's 194cm tall, helped out. For an average-height Japanese guy like me, even standing on a chair I had to stretch my arm all the way up, but he handled it with ease, lol. He even had to shorten the cords so he wouldn't bump his head 😂. Seeing him in person, he really is huge, lol — only about 1cm different from Shohei Ohtani.
++
++## Read more
++
++More about the living room, kitchen and other spaces where everyone gathers.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, kitchen and rooftop
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — room types and costs
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/dazn%e5%8a%a0%e5%85%a5.md b/src/content/blog/bulk/dazn%e5%8a%a0%e5%85%a5.md
+index c6ec18c..dba6bd8 100644
+--- a/src/content/blog/bulk/dazn%e5%8a%a0%e5%85%a5.md
++++ b/src/content/blog/bulk/dazn%e5%8a%a0%e5%85%a5.md
+@@ -2,6 +2,7 @@
+ title: "DAZN加入"
+ description: "住人にせがまれてダズン？ダゾーン？はじめましたｗ 国外のサッカー日本代表戦は確かダゾーンでしか見れないんですよね。皆ですぐスポーツ観戦して盛り上がれるのも、シェアハウスならではの楽しみのひとつですね😊"
+ pubDate: 2021-09-08
++updatedDate: 2026-07-27
+ kind: post
+ coverImage: "https://theheadquarters.jp/wp-content/uploads/2021/09/rakuhouse1.jpg"
+ categories: ["改装・設備"]
+@@ -9,14 +10,38 @@ categories: ["改装・設備"]
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 住人にせがまれてDAZNに加入した
++
+ 住人にせがまれてダズン？ダゾーン？はじめましたｗ
+ 
++## みんなですぐスポーツ観戦できるのがシェアハウスの楽しみ
++
+ 国外のサッカー日本代表戦は確かダゾーンでしか見れないんですよね。  
+ 皆ですぐスポーツ観戦して盛り上がれるのも、シェアハウスならではの楽しみのひとつですね😊
+ 
++## もっと読む
++
++みんなで観戦するリビングなど、共用スペースについてはこちらから。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビングやキッチンなど、みんなが集まる場所
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## Our housemates asked for DAZN, so we signed up
++
+ Our housemates begged us for it, so we got DAZN? DAZOON? whatever you call it, set up! lol
+ 
++## Spontaneous watch parties are a share house perk
++
+ Apparently international matches for the Japan national football team can only be watched on DAZN.  
+ Being able to gather everyone for spontaneous sports watch parties is one of the fun perks that's unique to share house life 😊
++
++## Read more
++
++More about the living room and the other shared spaces where we watch together.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, kitchen and other places we gather
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/bulk/facilities.md b/src/content/blog/bulk/facilities.md
+index 70bd09e..126a7f4 100644
+--- a/src/content/blog/bulk/facilities.md
++++ b/src/content/blog/bulk/facilities.md
+@@ -12,13 +12,13 @@ kind: page
+ ５Fは主に共有部になっており、特に広いリビングでくつろいだりみんなでご飯を食べたりできます。  
+ テレビやゲーム機も置いてあります。
+ 
+-*   ![リビングスペースの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg)
++*   ![収納棚とスツール、白いローテーブルが並ぶリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg)
+     
+-*   ![リビングスペースの様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg)
++*   ![大きな観葉植物越しに見るソファとテレビのリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg)
+     
+-*   ![リビングスペースの様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg)
++*   ![白いローテーブルとテレビ、ダーツボードのあるリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg)
+     
+-*   ![リビングスペースの様子（4）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg)
++*   ![赤いソファとグレーのソファが囲む青いラグのリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg)
+     
+ 
+ ## キッチン
+@@ -28,13 +28,13 @@ kind: page
+ ガスコンロは２口、別にIHも１台あります。  
+ 冷蔵庫は5階キッチンに２台＋冷凍ストッカー1台、居住フロアの４Fと３Fにも冷蔵庫が１台ずつあります。
+ 
+-*   ![キッチンの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg)
++*   ![オーブンレンジや炊飯器、コーヒーメーカーが並ぶ棚](https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg)
+     
+-*   ![キッチンの様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg)
++*   ![吊るした鍋の手前に並ぶガラス製のピッチャー](https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg)
+     
+-*   ![キッチンの様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg)
++*   ![白い吊り戸棚と冷蔵庫が並ぶ細長いキッチン](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg)
+     
+-*   ![キッチンの様子（4）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg)
++*   ![銅鍋を吊るしたガスコンロと調味料棚のキッチン](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg)
+     
+ 
+ ## スタディ/ワークルーム
+@@ -42,11 +42,11 @@ kind: page
+ 集中して勉強したり、在宅で仕事をしたりしたいひとのための、勉強部屋兼仕事部屋です。  
+ 各居室にもデスクと机はありますが、やはり気分を変えたり別のスペースがあるといいですね。
+ 
+-![スタディ/ワークルームの様子（1）](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg)
++![木製ロフト下の長机とモニターアームのある勉強スペース](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg)
+ 
+-*   ![スタディ/ワークルームの様子（2）](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg)
++*   ![木のロフト下に長机と椅子2脚が並ぶ勉強コーナー](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg)
+     
+-*   ![スタディ/ワークルームの様子（3）](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg)
++*   ![窓辺の物干しラックと青い椅子つき壁付けデスク](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg)
+     
+ 
+ ## 屋上
+@@ -54,7 +54,7 @@ kind: page
+ ヘッドクオーターズ神戸の目玉である眺めの良い屋上です♪  
+ 暖かい季節はBBQをしたり、夕涼みに吹き抜ける風を感じながら飲むビールは格別です。
+ 
+-*   ![屋上の様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
++*   ![ウッドデッキと人工芝、ラタンのソファが並ぶ屋上](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
+     
+ *   ![開放感抜群、住民が自由に使えます](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
+     
+@@ -96,11 +96,11 @@ kind: page
+ 
+ トイレは３F、４F、５Fの各フロアに１つずつ、計３箇所。すべてウォシュレット付きです。
+ 
+-*   ![トイレの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg)
++*   ![「toilet」と手書きされた木目のドア](https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg)
+     
+-*   ![トイレの様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg)
++*   ![窓から光が差し込む洋式トイレと開いたドア](https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg)
+     
+-*   ![トイレの様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg)
++*   ![ウォシュレット付き便器と窓辺に置かれた鉢植え](https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg)
+     
+ 
+ ## エントランス
+diff --git a/src/content/blog/bulk/hq%e3%81%af%e5%b9%b8%e3%81%9b%e3%81%ab%e3%81%aa%e3%82%8c%e3%82%8b%e3%83%8f%e3%82%a6%e3%82%b9%ef%bc%81%ef%bc%9f.md b/src/content/blog/bulk/hq%e3%81%af%e5%b9%b8%e3%81%9b%e3%81%ab%e3%81%aa%e3%82%8c%e3%82%8b%e3%83%8f%e3%82%a6%e3%82%b9%ef%bc%81%ef%bc%9f.md
+index d4cb4ba..d0bc232 100644
+--- a/src/content/blog/bulk/hq%e3%81%af%e5%b9%b8%e3%81%9b%e3%81%ab%e3%81%aa%e3%82%8c%e3%82%8b%e3%83%8f%e3%82%a6%e3%82%b9%ef%bc%81%ef%bc%9f.md
++++ b/src/content/blog/bulk/hq%e3%81%af%e5%b9%b8%e3%81%9b%e3%81%ab%e3%81%aa%e3%82%8c%e3%82%8b%e3%83%8f%e3%82%a6%e3%82%b9%ef%bc%81%ef%bc%9f.md
+@@ -2,6 +2,7 @@
+ title: "HQは幸せになれるハウス！？"
+ description: "ハウスにゲストがやってきました。といっても６月末にHQを退去したT君とRさんの元住人カップル（しかもこれ仲良しペアルックやなｗ）。彼らは学生なので節約のため２人でHQの１部屋に住んでいましたが、この度めでたく外に部屋を借&#8230;"
+ pubDate: 2021-07-25
++updatedDate: 2026-07-27
+ kind: post
+ coverImage: "https://theheadquarters.jp/wp-content/uploads/2021/08/IMG_2026-scaled.jpg"
+ categories: ["ゲスト"]
+@@ -9,34 +10,72 @@ categories: ["ゲスト"]
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## 退去した元住人カップルがゲストとして遊びに来た
++
+ ハウスにゲストがやってきました。といっても６月末にHQを退去したT君とRさんの元住人カップル（しかもこれ仲良しペアルックやなｗ）。  
+ 彼らは学生なので節約のため２人でHQの１部屋に住んでいましたが、この度めでたく外に部屋を借りて同棲開始。ハウスに貢献してくれた２人なので退去になるのは残念でしたが、若い二人の門出は祝わないといけないですからね笑。
+ 
++## HQをきっかけに幸せになっていく住人たち
++
+ 彼ら以外にも、過去に同棲開始を理由に退去した女性が複数いるし（うちひとりは結婚してたまに遊びに来てくれます😊）、住人だった男女が退去後にカップルになった例もあるみたい。あとは最近うちに来て資格試験に合格して転職に成功したひとも。なんだかHQをひとつのきっかけとして幸せになってくれるのは嬉しいですね。運営者としての幸せです。
+ 
++## コミュニティが薄いシェアハウスに共通する２つのこと
++
+ ところでシェアハウスの運営って簡単なようで難しい面もあると思っています。ヘッドクオーターズの入居希望者の中には、たまに近隣のシェアハウスに居住中ながら「今住んでるところはコミュニティがほとんど無くて・・」と言ってくるひとがいます（このT君も実はそうだった）。中には盗難や喧嘩などのトラブルが多いハウスも聞きます（もちろん全体としては少数です、良いハウスもいっぱいありますからね）。シェアハウスって住人同士の交流が魅力なので、それが不十分だったりすると残念ですよね。
+ 
+ そういうハウスに住んでいる人に話を聞くと共通するのが、①入居に特に条件も審査もなく誰でも受け入れる、②入居後に運営側のサポートや介入がほとんど無い、という２点です。安い家賃や初期費用を理由に希望してくるひとを誰でも入れてるとやはり中にはトラブルを起こすひともいるので、そういうひとにはご遠慮頂くか、ちゃんと共同生活の覚悟をしてもらって入って頂くことが大事です。また歓迎会や送別会などコミュニティ的な仕掛けをしないと仲良くもなりにくいでしょう。
+ 
++## リビングやキッチンにひとが集まるための工夫
++
+ リビングなど共有部にひとが居たくなるハードウエアとしての工夫も大事ですね（シェアハウスの中にはリビングが無いところもあります）。ヘッドクオーターズの場合は、自炊推しにしてキッチンの道具類を充実させたり、リビングで楽しめるゲームなどを充実させています。また、住人の意見を吸い上げたり設備やルールに伴ういろんな問題を適切に処理しないと、不満も溜まってしまいます。そういうことをしない運営者って、意外と多いんですよね。。
+ 
++## 利回り重視の運営と、コミュニティ重視の運営
++
+ シェアハウスって大きな分類では不動産業の一部なので、オーナー/経営者にとっては一般的には「利回り」が一番大事です。利回りを上げるには入居者をだれでも入れることになります。アパート/マンションなど他の業態から、なんとなく流行っていると聞いたという理由でシェアハウス運営を始めたところは、比較的コミュニティを軽視しがちなので、あまり運営がうまくいかないんじゃと思います。
+ 
+ 長くなりましたが、ヘッドクオーターズ神戸はハードウエアよりもソフトとしてのコミュニティを重視しているよ、というお話でした。住人が楽しそうに住んでくれて幸せになってくれれば最高ですね😊
+ 
++## もっと読む
++
++ハウスのコミュニティや共用部のことは、こちらのページでも紹介しています。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビングやキッチンなど、住人が集まる場所
++- [お部屋と家賃](https://theheadquarters.jp/rooms/) — 各部屋の様子と家賃 %RENT_MIN%〜%RENT_MAX%（共益費 %COMMON_FEE%）
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [入居の流れとQ&A](https://theheadquarters.jp/procedures/) — 入居までの手順とよくある質問
++
+ ---
+ 
++## A former resident couple came back to visit
++
+ We had a guest at the house recently. It was actually a former resident couple, T and R, who moved out of HQ at the end of June (and yes, they still match outfits like the lovey-dovey pair they are lol).  
+ They're both students, so to save money they had been sharing a single room at HQ, but this time they've happily moved out to rent their own place together and start living as a couple. They contributed a lot to the house, so it was sad to see them go, but of course you have to celebrate a young couple starting their new life together, right? Haha.
+ 
++## Residents who found happiness with HQ as a stepping stone
++
+ They're not the only ones — several other women have moved out in the past to move in with a partner (one of them actually got married and still stops by to visit sometimes 😊), and there have been cases where male and female residents who lived here at the same time ended up becoming a couple after moving out. And just recently, someone who moved in passed a qualification exam and successfully changed careers. It makes me really happy to see HQ become a stepping stone toward people's happiness. As the person running this place, that's its own kind of happiness for me.
+ 
++## Two things share houses with weak community have in common
++
+ By the way, running a share house looks simple on the surface, but I think it's actually a fairly tricky business. Among the people who apply to live at The Headquarters, I sometimes hear from applicants currently living at other nearby share houses who say things like, "Where I live now barely has any community at all..." (T, actually, was one of those people too). I've also heard of houses with frequent trouble like theft or fighting among residents (of course, that's a minority overall — there are plenty of great houses out there). Since the whole appeal of a share house is the interaction between residents, it's a real shame when that part falls short.
+ 
+ When I talk to people living in houses like that, two things tend to come up again and again: (1) there's little to no screening or conditions for moving in — basically anyone can join, and (2) there's almost no support or involvement from management after move-in. If you let in anyone who applies just because the rent or move-in costs are cheap, inevitably some of them cause problems. So it's important to either turn those people away, or make sure everyone moving in genuinely understands and accepts what shared living involves. On top of that, without community-building touches like welcome parties or farewell parties, it's hard for people to really get close to one another.
+ 
++## Making the living room and kitchen places people want to be
++
+ The physical setup matters too — making common spaces like the living room somewhere people actually want to hang out (some share houses don't even have a living room). At The Headquarters, for example, we lean into home cooking and keep the kitchen well stocked with tools, and we also keep the living room stocked with games and things people can enjoy together. And if you don't make an effort to listen to residents' opinions and properly handle the various issues that come up with facilities or house rules, dissatisfaction just builds up over time. Surprisingly, there are quite a few operators out there who don't do any of this.
+ 
++## Running for yield vs. running for community
++
+ Broadly speaking, running a share house falls under the real estate business, so for most owners and operators, "yield" tends to be the top priority. And to boost yield, the easiest path is to let anyone move in. Places that started running a share house just because it seemed like a trend, coming from other property types like apartments or condos, tend to underestimate the importance of community — and I think that's usually why things don't go so well for them.
+ 
+ This got long, but the point was simply this: at The Headquarters Kobe, we care more about the software — the community — than the hardware. Nothing would make us happier than seeing our residents live here happily and find their own happiness along the way 😊
++
++## Read more
++
++Here are a few pages with more about our community and shared spaces.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, kitchen and other places residents gather
++- [Rooms and rent](https://theheadquarters.jp/rooms/) — what each room is like, rent %RENT_MIN%–%RENT_MAX% (common fee %COMMON_FEE%)
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [How to move in / Q&A](https://theheadquarters.jp/procedures/) — the steps to moving in and common questions
+diff --git a/src/content/blog/bulk/rooms.md b/src/content/blog/bulk/rooms.md
+index 3d2adea..ad14d13 100644
+--- a/src/content/blog/bulk/rooms.md
++++ b/src/content/blog/bulk/rooms.md
+@@ -12,7 +12,7 @@ kind: page
+ 
+ ## 301号室
+ 
+-![301号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
++![ストライプの寝具のベッドとハンガーラックのある室内](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
+ 
+ **広さ**　8.0 ㎡ 4.9 畳  
+ **賃料**　￥%RENT_301%　  
+@@ -20,7 +20,7 @@ kind: page
+ 
+ ## 302号室
+ 
+-*   ![302号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
++*   ![縦長の窓際にロフトベッドと2脚の椅子を置いた室内](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
+     
+ 
+ **広さ**　8.0 ㎡ 4.9 畳  
+@@ -29,9 +29,9 @@ kind: page
+ 
+ ## 303号室
+ 
+-*   ![303号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
++*   ![ロフトベッドの下に黒いワークチェアを置いた室内](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
+     
+-*   ![303号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
++*   ![ブラインドの窓辺に黒いオフィスチェアを置いた室内](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
+     
+ 
+ **広さ**　9.2 ㎡ 5.7 畳  
+@@ -40,9 +40,9 @@ kind: page
+ 
+ ## 304号室
+ 
+-*   ![304号室と同じ構造の409号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
++*   ![ハンガーパイプとカーテン付きロフトベッドのある室内](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
+     
+-*   ![304号室と同じ構造の409号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
++*   ![木目の玄関ドアとエアコン、壁付けデスクのある室内](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
+     
+ 
+ ※写真は409号室のものです。409と全く同じ構造です。日当たりだけ若干悪いです。
+@@ -53,9 +53,9 @@ kind: page
+ 
+ ## 305号室
+ 
+-*   ![305号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
++*   ![木枠のベッドと収納チェスト、壁の額絵がある室内](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
+     
+-*   ![305号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
++*   ![青い椅子つきデスクと木枠のベッドが並ぶ室内](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
+     
+ 
+ **広さ**　9.8 ㎡ 6 畳  
+@@ -64,7 +64,7 @@ kind: page
+ 
+ ## 406号室
+ 
+-*   ![406号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
++*   ![緑のマットレスを敷いたスチール製ロフトベッド](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
+     
+ 
+ **広さ**　8.0 ㎡ 4.9 畳  
+@@ -73,7 +73,7 @@ kind: page
+ 
+ ## 407号室
+ 
+-*   ![407号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
++*   ![花柄の寝具とピンクのラグがあるロフトベッドの室内](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
+     
+ 
+ **広さ**　8.0 ㎡ 4.9 畳  
+@@ -82,9 +82,9 @@ kind: page
+ 
+ ## 408号室
+ 
+-*   ![408号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
++*   ![ボーダー柄の寝具のロフトベッドとブラインドの窓](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
+     
+-*   ![408号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
++*   ![濃茶のドア横に白いデスクと4段ラックを置いた室内](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
+     
+ 
+ **広さ**　9.2 ㎡ 5.7 畳  
+@@ -93,9 +93,9 @@ kind: page
+ 
+ ## 409号室
+ 
+-*   ![409号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
++*   ![水玉柄の寝具のロフトベッドと窓辺のカーテン](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
+     
+-*   ![409号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
++*   ![白い壁に木製ドアとデスク、椅子を配した室内](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
+     
+ 
+ **広さ**　9.7 ㎡ 6 畳  
+@@ -104,9 +104,9 @@ kind: page
+ 
+ ## 410号室
+ 
+-*   ![410号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
++*   ![掃き出し窓とハンガーパイプのある広めの室内](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
+     
+-*   ![410号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
++*   ![木製ドア側から見たベッドと壁付けデスク](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
+     
+ 
+ **広さ**　9.8 ㎡ 6 畳  
+diff --git a/src/content/blog/bulk/with%e3%82%b3%e3%83%ad%e3%83%8a%e3%81%a7%e3%83%80%e3%83%bc%e3%83%84%e3%81%8c%e4%b8%8a%e9%81%94.md b/src/content/blog/bulk/with%e3%82%b3%e3%83%ad%e3%83%8a%e3%81%a7%e3%83%80%e3%83%bc%e3%83%84%e3%81%8c%e4%b8%8a%e9%81%94.md
+index 304465a..3428842 100644
+--- a/src/content/blog/bulk/with%e3%82%b3%e3%83%ad%e3%83%8a%e3%81%a7%e3%83%80%e3%83%bc%e3%83%84%e3%81%8c%e4%b8%8a%e9%81%94.md
++++ b/src/content/blog/bulk/with%e3%82%b3%e3%83%ad%e3%83%8a%e3%81%a7%e3%83%80%e3%83%bc%e3%83%84%e3%81%8c%e4%b8%8a%e9%81%94.md
+@@ -2,12 +2,15 @@
+ title: "Withコロナでダーツが上達"
+ description: "ステイホームの間に少しでもシェアハウスが楽しくなるよう、ダーツ盤を新しく設置しました。これは点数を自動計算できる電子式のやつです。みんなで楽しくダーツ・パーティができる！ そしてタコパ（笑）。うちのハウスにあるたこ焼き器&#8230;"
+ pubDate: 2020-07-15
++updatedDate: 2026-07-27
+ kind: post
+ categories: ["ハウス暮らし"]
+ ---
+ 
+ *🇬🇧 English translation follows the Japanese text below.*
+ 
++## ステイホーム中に電子ダーツ盤を設置した
++
+ ステイホームの間に少しでもシェアハウスが楽しくなるよう、ダーツ盤を新しく設置しました。これは点数を自動計算できる電子式のやつです。  
+ みんなで楽しくダーツ・パーティができる！  
+ 
+@@ -20,14 +23,26 @@ categories: ["ハウス暮らし"]
+ *   ![ガーランドを飾ったリビングでダーツを投げる住人](https://theheadquarters.jp/wp-content/uploads/2020/12/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218537406805_210105_5-1024x768.jpg)
+     
+ 
++## たこ焼き器はカセットガス式に買い替えた
++
+ そしてタコパ（笑）。うちのハウスにあるたこ焼き器はカセットガス式なので、カリッと焼けて美味しいです。電気式のやつもあったんですが焼くのに時間がかかるしベチョっとしてしまってあまり美味しくない。それでガスに買い替え。ガスでやったらもう戻れないですね、ほんとガスがオススメ。ヘッドクオーターズはたこ焼きも美味しいシェアハウスです（笑）。
+ 
+ *   ![赤いテーブルのたこ焼き器で焼かれていくたこ焼き](https://theheadquarters.jp/wp-content/uploads/2020/12/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218537406805_210105_2-1024x576.jpg)
+     
+ *   ![白い皿に山盛りになった焼きたてのたこ焼き](https://theheadquarters.jp/wp-content/uploads/2020/12/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218537406805_210105_3-1024x576.jpg)
+ 
++## もっと読む
++
++ダーツやタコパをしているリビングなど、共用スペースについてはこちらから。
++
++- [共用部の紹介](https://theheadquarters.jp/facilities/) — リビングやキッチンなど、みんなが集まる場所
++- [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に住んでいた人たちの声
++- [内見・お問い合わせ](https://theheadquarters.jp/contact/)
++
+ ---
+ 
++## An electronic dartboard for the stay-home days
++
+ To make staying home a little more fun for everyone during the pandemic, we set up a new dartboard. It's the electronic kind that automatically calculates your score.  
+ Now we can all enjoy dart parties together!  
+ 
+@@ -40,8 +55,18 @@ Now we can all enjoy dart parties together!
+ *   ![A housemate throwing darts in the living room hung with party garlands](https://theheadquarters.jp/wp-content/uploads/2020/12/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218537406805_210105_5-1024x768.jpg)
+     
+ 
++## We switched the takoyaki maker to a gas one
++
+ And then, a takoyaki party (lol). The takoyaki maker we have at the house runs on a portable gas canister, so it cooks the takoyaki up nice and crispy on the outside. We used to have an electric one, but it took forever to cook and left the takoyaki kind of soggy, not so tasty. So we switched to gas — and once you go gas, there's no going back. Seriously, gas is the way to go. The Headquarters is a share house with great takoyaki too (lol).
+ 
+ *   ![Takoyaki cooking on the gas griddle on the red table](https://theheadquarters.jp/wp-content/uploads/2020/12/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218537406805_210105_2-1024x576.jpg)
+     
+ *   ![A white plate piled with freshly made takoyaki](https://theheadquarters.jp/wp-content/uploads/2020/12/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218537406805_210105_3-1024x576.jpg)
++
++## Read more
++
++More about the living room and the other shared spaces where we play darts and cook together.
++
++- [Common areas](https://theheadquarters.jp/facilities/) — the living room, kitchen and other places we gather
++- [Former resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
++- [Viewings and inquiries](https://theheadquarters.jp/contact/)
+diff --git a/src/content/blog/en/facilities.md b/src/content/blog/en/facilities.md
+index 5eeb531..647f131 100644
+--- a/src/content/blog/en/facilities.md
++++ b/src/content/blog/en/facilities.md
+@@ -13,10 +13,10 @@ The building itself is older, but the common areas are cleaned by a housekeeper
+ The 5th floor is primarily shared space, featuring a spacious living room where residents relax and share meals together.
+ There's also a TV and gaming consoles available.
+ 
+-*   ![Living Space (1)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg)
+-*   ![Living Space (2)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg)
+-*   ![Living Space (3)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg)
+-*   ![Living Space (4)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg)
++*   ![Storage shelves, ottomans and white low tables in the living room](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg)
++*   ![Living room seen past a large leafy houseplant, with sofa and TV](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg)
++*   ![White low tables, a TV and a dartboard in the living room](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg)
++*   ![Red and grey sofas around a deep blue rug in the living room](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg)
+ 
+ ## Kitchen
+ 
+@@ -24,27 +24,27 @@ Good living starts with good food. The kitchen is fully stocked with quality app
+ A 30L convection oven reaching up to 300°C, a BALMUDA toaster for perfect toast, a sous vide cooker for tender meat, a pressure cooker, a slow juicer, a blender, a bread maker, a stylish automatic coffee roaster, and a gas takoyaki griddle for group fun.
+ 2 gas burners and a separate IH cooktop. 5 refrigerators/freezers total: 2 on the 5th floor kitchen + 1 chest freezer, plus 1 fridge each on the 4th and 3rd floors.
+ 
+-*   ![Kitchen (1)](https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg)
+-*   ![Kitchen (2)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg)
+-*   ![Kitchen (3)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg)
+-*   ![Kitchen (4)](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg)
++*   ![Wooden shelf holding a convection oven, rice cooker and coffee maker](https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg)
++*   ![Glass pitchers of tea in front of hanging pots](https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg)
++*   ![Long galley kitchen lined with white wall cabinets and fridges](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg)
++*   ![Gas cooktop with copper pots hanging above and open spice shelves](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg)
+ 
+ ## Study / Work Room
+ 
+ A dedicated room for focused study or remote work.
+ Each bedroom has a desk too, but it's nice to have a separate space when you want a change of scenery.
+ 
+-![Study / Work Room (1)](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg)
++![Long wooden desk with a monitor arm beneath a wooden loft platform](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg)
+ 
+-*   ![Study / Work Room (2)](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg)
+-*   ![Study / Work Room (3)](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg)
++*   ![Two chairs at a long desk under the timber loft frame](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg)
++*   ![Wall-mounted desk with a blue chair beside a window drying rack](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg)
+ 
+ ## Rooftop
+ 
+ The rooftop is one of the highlights of The Headquarters Kobe — with a great view and open sky ♪
+ In the warmer months, it's the perfect spot for a BBQ, or to enjoy a cold beer while catching the evening breeze.
+ 
+-*   ![Rooftop (1)](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
++*   ![Rooftop wood deck with artificial turf and rattan sofas](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
+ *   ![Open and free — residents can use it anytime](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg) Open and free — residents can use it anytime
+ *   ![Welcome parties on the rooftop — pretty special](https://theheadquarters.jp/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg) Welcome parties on the rooftop — pretty special
+ *   ![Mt. Rokko and a glimpse of the night view](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg) Mt. Rokko and a glimpse of the night view
+@@ -70,9 +70,9 @@ Making daily life easier: 2 drum-type washer-dryers (heat pump type) — one on
+ 
+ One toilet on each floor (3F, 4F, 5F) — 3 in total. All equipped with washlets.
+ 
+-*   ![Toilets (1)](https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg)
+-*   ![Toilets (2)](https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg)
+-*   ![Toilets (3)](https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg)
++*   ![Wood-grain door hand-lettered with the word toilet](https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg)
++*   ![Western-style toilet lit by a window, door standing open](https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg)
++*   ![Washlet-equipped toilet with a potted plant on the window ledge](https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg)
+ 
+ ## Entrance
+ 
+diff --git a/src/content/blog/en/rooms.md b/src/content/blog/en/rooms.md
+index e0e981e..bc8b2a9 100644
+--- a/src/content/blog/en/rooms.md
++++ b/src/content/blog/en/rooms.md
+@@ -13,7 +13,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 301
+ 
+-![Interior of Room 301 (1)](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
++![Bed with striped bedding, a hanging rail and a wooden desk](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
+ 
+ **Size** 8.0 m² (4.9 tatami)
+ **Rent** ¥%RENT_301%/month
+@@ -21,7 +21,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 302
+ 
+-*   ![Interior of Room 302 (1)](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
++*   ![Loft bed by a tall window with two chairs at the desk](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
+ 
+ **Size** 8.0 m² (4.9 tatami)
+ **Rent** ¥%RENT_302%/month
+@@ -29,8 +29,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 303
+ 
+-*   ![Interior of Room 303 (1)](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
+-*   ![Interior of Room 303 (2)](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
++*   ![Black task chair and desk under a steel loft bed](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
++*   ![Black office chair by a blind-covered window and brown door](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
+ 
+ **Size** 9.2 m² (5.7 tatami)
+ **Rent** ¥%RENT_303%/month
+@@ -38,8 +38,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 304
+ 
+-*   ![Interior of Room 409, identical in layout to Room 304 (1)](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
+-*   ![Interior of Room 409, identical in layout to Room 304 (2)](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
++*   ![Curtained loft bed with a hanging rail and a slim desk](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
++*   ![Wood-grain entrance door, air conditioner and a wall-side desk](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
+ 
+ *Photos show Room 409. Room 304 has exactly the same layout — it just gets slightly less sunlight.*
+ 
+@@ -49,8 +49,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 305
+ 
+-*   ![Interior of Room 305 (1)](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
+-*   ![Interior of Room 305 (2)](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
++*   ![Wooden-framed bed with a storage chest and a framed picture](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
++*   ![Desk with a blue chair alongside a wooden-framed bed](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
+ 
+ **Size** 9.8 m² (6 tatami)
+ **Rent** ¥%RENT_305%/month
+@@ -58,7 +58,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 406
+ 
+-*   ![Interior of Room 406 (1)](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
++*   ![Steel loft bed with a green mattress and a navy chair](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
+ 
+ **Size** 8.0 m² (4.9 tatami)
+ **Rent** ¥%RENT_406%/month
+@@ -66,7 +66,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 407
+ 
+-*   ![Interior of Room 407 (1)](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
++*   ![Loft bed with floral bedding above a pink rug](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
+ 
+ **Size** 8.0 m² (4.9 tatami)
+ **Rent** ¥%RENT_407%/month
+@@ -74,8 +74,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 408
+ 
+-*   ![Interior of Room 408 (1)](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
+-*   ![Interior of Room 408 (2)](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
++*   ![Loft bed with striped bedding next to a blind-covered window](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
++*   ![White desk and a four-tier rack next to a dark brown door](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
+ 
+ **Size** 9.2 m² (5.7 tatami)
+ **Rent** ¥%RENT_408%/month
+@@ -83,8 +83,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 409
+ 
+-*   ![Interior of Room 409 (1)](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
+-*   ![Interior of Room 409 (2)](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
++*   ![Loft bed with polka-dot bedding and a curtained window](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
++*   ![White walls with a wooden door, desk and chair](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
+ 
+ **Size** 9.7 m² (6 tatami)
+ **Rent** ¥%RENT_409%/month
+@@ -92,8 +92,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
+ 
+ ## Room 410
+ 
+-*   ![Interior of Room 410 (1)](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
+-*   ![Interior of Room 410 (2)](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
++*   ![Sliding glass window and a hanging rail in a spacious room](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
++*   ![Bed and wall-side desk seen from the wooden entrance door](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
+ 
+ **Size** 9.8 m² (6 tatami)
+ **Rent** ¥%RENT_410%/month
+diff --git a/src/layouts/BlogPost.astro b/src/layouts/BlogPost.astro
+index a0f6c3e..829a52e 100644
+--- a/src/layouts/BlogPost.astro
++++ b/src/layouts/BlogPost.astro
+@@ -166,7 +166,7 @@ const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCo
+ 				<div class="hero-image">
+ 					{heroImage && <Image width={1020} height={510} src={heroImage} alt={title} loading="eager" />}
+ 				</div>
+-				<div class="prose">
++				<div class:list={["prose", kind === "page" && "prose--page"]}>
+ 					<div class="title">
+ 						{kind === 'post' && (
+ 							<div class="date">
+diff --git a/src/styles/global.css b/src/styles/global.css
+index 9bb1c17..9eba6ab 100644
+--- a/src/styles/global.css
++++ b/src/styles/global.css
+@@ -179,3 +179,51 @@ hr {
+ .photoGrid--portrait img {
+ 	aspect-ratio: 3 / 4;
+ }
++
++/* ------------------------------------------------------------------
++   固定ページ（/rooms/ /facilities/ /location/ など kind: page）の
++   写真リストをグリッド表示にする。
++
++   これらのページは WordPress 時代の名残で、写真が「箇条書き1件＝1枚」で
++   縦一列に並び、/facilities/ は1440px幅でもページ高が14,000pxを超えていた。
++   マークダウン側は一切変更せず、CSSだけでグリッドに組み替える
++   （マークダウンを生HTMLに置き換えると WebP配信・遅延読込・サイズ属性の
++   自動付与が効かなくなるため）。
++
++   トリミングはしない。部屋や設備の写真は全体が見えることが重要なので、
++   縦横比はそのままにして高さの揃わないグリッドにしている。
++   ------------------------------------------------------------------ */
++.prose--page ul:has(img) {
++	list-style: none;
++	padding: 0;
++	margin: 1.2em 0 1.8em;
++	display: grid;
++	grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
++	gap: 14px;
++	align-items: start;
++}
++.prose--page ul:has(img) > li {
++	margin: 0;
++	display: flex;
++	flex-direction: column;
++	gap: 6px;
++}
++.prose--page ul:has(img) > li > p {
++	margin: 0;
++}
++.prose--page ul:has(img) img {
++	width: 100%;
++	display: block;
++}
++/* 画像の下に続くキャプション行 */
++.prose--page ul:has(img) > li > p:not(:first-child) {
++	font-size: 0.82em;
++	line-height: 1.6;
++	color: rgb(var(--gray));
++}
++@media (max-width: 480px) {
++	.prose--page ul:has(img) {
++		grid-template-columns: repeat(2, 1fr);
++		gap: 10px;
++	}
++}
+-- 
+2.43.0
+

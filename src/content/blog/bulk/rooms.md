@@ -12,7 +12,7 @@ kind: page
 
 ## 301号室
 
-![301号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
+![ストライプの寝具のベッドとハンガーラックのある室内](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
 
 **広さ**　8.0 ㎡ 4.9 畳  
 **賃料**　￥%RENT_301%　  
@@ -20,7 +20,7 @@ kind: page
 
 ## 302号室
 
-*   ![302号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
+*   ![縦長の窓際にロフトベッドと2脚の椅子を置いた室内](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
     
 
 **広さ**　8.0 ㎡ 4.9 畳  
@@ -29,9 +29,9 @@ kind: page
 
 ## 303号室
 
-*   ![303号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
+*   ![ロフトベッドの下に黒いワークチェアを置いた室内](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
     
-*   ![303号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
+*   ![ブラインドの窓辺に黒いオフィスチェアを置いた室内](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
     
 
 **広さ**　9.2 ㎡ 5.7 畳  
@@ -40,9 +40,9 @@ kind: page
 
 ## 304号室
 
-*   ![304号室と同じ構造の409号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
+*   ![ハンガーパイプとカーテン付きロフトベッドのある室内](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
     
-*   ![304号室と同じ構造の409号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
+*   ![木目の玄関ドアとエアコン、壁付けデスクのある室内](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
     
 
 ※写真は409号室のものです。409と全く同じ構造です。日当たりだけ若干悪いです。
@@ -53,9 +53,9 @@ kind: page
 
 ## 305号室
 
-*   ![305号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
+*   ![木枠のベッドと収納チェスト、壁の額絵がある室内](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
     
-*   ![305号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
+*   ![青い椅子つきデスクと木枠のベッドが並ぶ室内](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
     
 
 **広さ**　9.8 ㎡ 6 畳  
@@ -64,7 +64,7 @@ kind: page
 
 ## 406号室
 
-*   ![406号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
+*   ![緑のマットレスを敷いたスチール製ロフトベッド](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
     
 
 **広さ**　8.0 ㎡ 4.9 畳  
@@ -73,7 +73,7 @@ kind: page
 
 ## 407号室
 
-*   ![407号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
+*   ![花柄の寝具とピンクのラグがあるロフトベッドの室内](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
     
 
 **広さ**　8.0 ㎡ 4.9 畳  
@@ -82,9 +82,9 @@ kind: page
 
 ## 408号室
 
-*   ![408号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
+*   ![ボーダー柄の寝具のロフトベッドとブラインドの窓](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
     
-*   ![408号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
+*   ![濃茶のドア横に白いデスクと4段ラックを置いた室内](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
     
 
 **広さ**　9.2 ㎡ 5.7 畳  
@@ -93,9 +93,9 @@ kind: page
 
 ## 409号室
 
-*   ![409号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
+*   ![水玉柄の寝具のロフトベッドと窓辺のカーテン](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
     
-*   ![409号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
+*   ![白い壁に木製ドアとデスク、椅子を配した室内](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
     
 
 **広さ**　9.7 ㎡ 6 畳  
@@ -104,9 +104,9 @@ kind: page
 
 ## 410号室
 
-*   ![410号室の室内（1）](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
+*   ![掃き出し窓とハンガーパイプのある広めの室内](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
     
-*   ![410号室の室内（2）](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
+*   ![木製ドア側から見たベッドと壁付けデスク](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
     
 
 **広さ**　9.8 ㎡ 6 畳  

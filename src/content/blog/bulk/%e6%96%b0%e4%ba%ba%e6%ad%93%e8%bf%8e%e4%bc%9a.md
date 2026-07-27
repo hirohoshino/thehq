@@ -2,6 +2,7 @@
 title: "新人歓迎会"
 description: "先日Aさんがアフリカに飛び立ち退去になったけど、ヘッドクオーターズ神戸にはすぐにまた新しい入居者を迎えることができました。その際の歓迎会の様子😊 シェアハウスにとって歓迎会って大事だと思う、うん。 なんか今回はやたら男子&#8230;"
 pubDate: 2021-10-02
+updatedDate: 2026-07-27
 kind: post
 categories: ["イベント"]
 ---
@@ -9,6 +10,8 @@ categories: ["イベント"]
 *🇬🇧 English translation follows the Japanese text below.*
 
 先日Aさんがアフリカに飛び立ち退去になったけど、ヘッドクオーターズ神戸にはすぐにまた新しい入居者を迎えることができました。その際の歓迎会の様子😊　シェアハウスにとって歓迎会って大事だと思う、うん。
+
+## 男子が厨房に並んだ歓迎会の下ごしらえ
 
 なんか今回はやたら男子が厨房に立つ、の日ｗ
 
@@ -23,6 +26,8 @@ categories: ["イベント"]
 *   ![キッチンカウンターに一列に並んで料理する住人たち](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_26-768x1024.jpg)
     
 
+## やぶっちゃんの鯛をカルパッチョと刺し身に
+
 釣り？の帰りのやぶっちゃんが見事な鯛を持ってきてくれた！！感謝！！　カルパッチョや刺し身でウマウマ。
 
 *   ![大きな魚を両手に持って笑う住人](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_27-768x1024.jpg)
@@ -31,6 +36,8 @@ categories: ["イベント"]
     
 *   ![テーブルに並んだ白身魚のカルパッチョと揚げ物やソーセージ](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_29-1024x768.jpg)
     
+
+## エマとキムタクの二人でたこ焼きを準備
 
 紅一点のエマと、手伝い係なのか邪魔係なのかわからないキムタクのｗ二人でたこ焼きを準備
 
@@ -42,6 +49,8 @@ categories: ["イベント"]
     
 *   ![たこ焼き器を囲んで具を入れる二人の住人](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_3-1024x768.jpg)
     
+
+## 料理番長のDKが揚げ物を担当
 
 料理番長なDK（男子高校生）の表情はなんだかよくわからないｗｗ　けど美味しい揚げ物を用意してくれた。
 
@@ -58,6 +67,8 @@ categories: ["イベント"]
 食事会はほんとシェアハウスの楽しみですね。
 
 ![ホットプレートで焼けたたこ焼きと皿に盛られた揚げ物](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_28-1024x1024.jpg)
+
+## 食事のあとはなぜか腕相撲大会
 
 終わったあとはなぜか腕相撲大会にｗ　最強いや最弱決定戦て感じ😅
 
@@ -76,9 +87,20 @@ categories: ["イベント"]
 
 いやあ楽しいシェアハウスで最高😆　ほんとみんなシェアハウスに住めばいいのにねｗ
 
+## もっと読む
+
+歓迎会の会場になった共用部や、入居までの流れはこちらから。
+
+*   [共用部の紹介](https://theheadquarters.jp/facilities/) — みんなで料理をするキッチンとダイニング
+*   [元住人インタビュー](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — 実際に暮らした人の声
+*   [入居の流れとQ&A](https://theheadquarters.jp/procedures/) — 入居までの手続き
+*   [内見・お問い合わせ](https://theheadquarters.jp/contact/) — 見学のご相談はこちら
+
 ---
 
 A while back, A left us to fly off to Africa, but The Headquarters Kobe was quickly able to welcome a new resident in! Here's how the welcome party went 😊 I really think welcome parties matter for a share house, yeah.
+
+## The guys took over the kitchen for the prep work
 
 For some reason this time it turned into a "guys crowding the kitchen" kind of day lol
 
@@ -93,6 +115,8 @@ For some reason this time it turned into a "guys crowding the kitchen" kind of d
 *   ![Four residents in a row along the kitchen counter, all cooking](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_26-768x1024.jpg)
     
 
+## Yabucchan's sea bream, turned into carpaccio and sashimi
+
 Yabucchan came back from what looked like a fishing trip and brought us a gorgeous sea bream!! Thank you!! We turned it into carpaccio and sashimi and it was so good.
 
 *   ![A resident grinning as he holds up two large fish](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_27-768x1024.jpg)
@@ -101,6 +125,8 @@ Yabucchan came back from what looked like a fishing trip and brought us a gorgeo
     
 *   ![White fish carpaccio, fried food and sausages laid out on the table](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_29-1024x768.jpg)
     
+
+## Emma and Kimutaku on takoyaki duty
 
 Emma, the only girl in the mix, teamed up with Kimutaku — not sure if he was helping or just getting in the way lol — to get the takoyaki going
 
@@ -112,6 +138,8 @@ Emma, the only girl in the mix, teamed up with Kimutaku — not sure if he was h
     
 *   ![Two residents leaning over a takoyaki griddle to fill the moulds](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_3-1024x768.jpg)
     
+
+## DK, the resident head chef, handled the fried food
 
 DK (our high schooler), our resident head chef, had the most unreadable expression on his face lol, but he whipped up some delicious fried food for us.
 
@@ -129,6 +157,8 @@ Dinners like this are honestly one of the best parts of share house life.
 
 ![Takoyaki cooked on the hotplate next to a plate of fried food](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_28-1024x1024.jpg)
 
+## After dinner, somehow an arm wrestling tournament
+
 After it all wrapped up, somehow it turned into an arm wrestling tournament lol, more like a "who's actually the weakest" showdown 😅
 
 *   ![Two residents arm wrestling at the dining table](https://theheadquarters.jp/wp-content/uploads/2021/10/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218547297073_211014_38-1024x1024.jpg)
@@ -145,3 +175,12 @@ After it all wrapped up, somehow it turned into an arm wrestling tournament lol,
     
 
 Man, share house life is the best 😆 Honestly, everyone should just live in a share house lol
+
+## Read more
+
+More about the shared spaces where the welcome party happened, and how to move in.
+
+*   [Shared spaces](https://theheadquarters.jp/facilities/) — the kitchen and dining room where everyone cooks together
+*   [Resident interviews](https://theheadquarters.jp/blog/bulk/kobe-university-share-house-voices/) — voices of people who actually lived here
+*   [How to move in and FAQ](https://theheadquarters.jp/procedures/) — the steps up to moving in
+*   [Viewings and enquiries](https://theheadquarters.jp/contact/) — get in touch about a visit

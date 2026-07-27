@@ -166,7 +166,7 @@ const decode = (s: string) => s.replace(/&#(\d+);/g, (_, c) => String.fromCharCo
 				<div class="hero-image">
 					{heroImage && <Image width={1020} height={510} src={heroImage} alt={title} loading="eager" />}
 				</div>
-				<div class="prose">
+				<div class:list={["prose", kind === "page" && "prose--page"]}>
 					<div class="title">
 						{kind === 'post' && (
 							<div class="date">

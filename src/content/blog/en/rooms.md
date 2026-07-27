@@ -13,7 +13,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 301
 
-![Interior of Room 301 (1)](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
+![Bed with striped bedding, a hanging rail and a wooden desk](https://theheadquarters.jp/wp-content/uploads/2021/09/301-1024x683.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
 **Rent** ¥%RENT_301%/month
@@ -21,7 +21,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 302
 
-*   ![Interior of Room 302 (1)](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
+*   ![Loft bed by a tall window with two chairs at the desk](https://theheadquarters.jp/wp-content/uploads/2021/01/名称未設定アルバム-1-／-1-769x1024.jpeg)
 
 **Size** 8.0 m² (4.9 tatami)
 **Rent** ¥%RENT_302%/month
@@ -29,8 +29,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 303
 
-*   ![Interior of Room 303 (1)](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
-*   ![Interior of Room 303 (2)](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
+*   ![Black task chair and desk under a steel loft bed](https://theheadquarters.jp/wp-content/uploads/2019/07/303sa-1024x683.jpg)
+*   ![Black office chair by a blind-covered window and brown door](https://theheadquarters.jp/wp-content/uploads/2019/07/303sb-1024x683.jpg)
 
 **Size** 9.2 m² (5.7 tatami)
 **Rent** ¥%RENT_303%/month
@@ -38,8 +38,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 304
 
-*   ![Interior of Room 409, identical in layout to Room 304 (1)](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
-*   ![Interior of Room 409, identical in layout to Room 304 (2)](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
+*   ![Curtained loft bed with a hanging rail and a slim desk](https://theheadquarters.jp/wp-content/uploads/2026/07/409a-1024x683.jpg)
+*   ![Wood-grain entrance door, air conditioner and a wall-side desk](https://theheadquarters.jp/wp-content/uploads/2026/07/409b-1024x683.jpg)
 
 *Photos show Room 409. Room 304 has exactly the same layout — it just gets slightly less sunlight.*
 
@@ -49,8 +49,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 305
 
-*   ![Interior of Room 305 (1)](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
-*   ![Interior of Room 305 (2)](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
+*   ![Wooden-framed bed with a storage chest and a framed picture](https://theheadquarters.jp/wp-content/uploads/2021/07/新305a-1024x683.jpg)
+*   ![Desk with a blue chair alongside a wooden-framed bed](https://theheadquarters.jp/wp-content/uploads/2021/07/新305b-1024x683.jpg)
 
 **Size** 9.8 m² (6 tatami)
 **Rent** ¥%RENT_305%/month
@@ -58,7 +58,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 406
 
-*   ![Interior of Room 406 (1)](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
+*   ![Steel loft bed with a green mattress and a navy chair](https://theheadquarters.jp/wp-content/uploads/2019/09/406-1024x683.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
 **Rent** ¥%RENT_406%/month
@@ -66,7 +66,7 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 407
 
-*   ![Interior of Room 407 (1)](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
+*   ![Loft bed with floral bedding above a pink rug](https://theheadquarters.jp/wp-content/uploads/2019/09/Room407-1024x768.jpg)
 
 **Size** 8.0 m² (4.9 tatami)
 **Rent** ¥%RENT_407%/month
@@ -74,8 +74,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 408
 
-*   ![Interior of Room 408 (1)](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
-*   ![Interior of Room 408 (2)](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
+*   ![Loft bed with striped bedding next to a blind-covered window](https://theheadquarters.jp/wp-content/uploads/2020/02/408a-1024x768.jpg)
+*   ![White desk and a four-tier rack next to a dark brown door](https://theheadquarters.jp/wp-content/uploads/2020/02/408b-1024x768.jpg)
 
 **Size** 9.2 m² (5.7 tatami)
 **Rent** ¥%RENT_408%/month
@@ -83,8 +83,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 409
 
-*   ![Interior of Room 409 (1)](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
-*   ![Interior of Room 409 (2)](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
+*   ![Loft bed with polka-dot bedding and a curtained window](https://theheadquarters.jp/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg)
+*   ![White walls with a wooden door, desk and chair](https://theheadquarters.jp/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg)
 
 **Size** 9.7 m² (6 tatami)
 **Rent** ¥%RENT_409%/month
@@ -92,8 +92,8 @@ Most rooms have been fitted with loft beds and study desks to maximize storage a
 
 ## Room 410
 
-*   ![Interior of Room 410 (1)](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
-*   ![Interior of Room 410 (2)](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
+*   ![Sliding glass window and a hanging rail in a spacious room](https://theheadquarters.jp/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg)
+*   ![Bed and wall-side desk seen from the wooden entrance door](https://theheadquarters.jp/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg)
 
 **Size** 9.8 m² (6 tatami)
 **Rent** ¥%RENT_410%/month

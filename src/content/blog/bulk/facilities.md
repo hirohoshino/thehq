@@ -12,13 +12,13 @@ kind: page
 ５Fは主に共有部になっており、特に広いリビングでくつろいだりみんなでご飯を食べたりできます。  
 テレビやゲーム機も置いてあります。
 
-*   ![リビングスペースの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg)
+*   ![収納棚とスツール、白いローテーブルが並ぶリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg)
     
-*   ![リビングスペースの様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg)
+*   ![大きな観葉植物越しに見るソファとテレビのリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg)
     
-*   ![リビングスペースの様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg)
+*   ![白いローテーブルとテレビ、ダーツボードのあるリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-5-1024x682.jpg)
     
-*   ![リビングスペースの様子（4）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg)
+*   ![赤いソファとグレーのソファが囲む青いラグのリビング](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg)
     
 
 ## キッチン
@@ -28,13 +28,13 @@ kind: page
 ガスコンロは２口、別にIHも１台あります。  
 冷蔵庫は5階キッチンに２台＋冷凍ストッカー1台、居住フロアの４Fと３Fにも冷蔵庫が１台ずつあります。
 
-*   ![キッチンの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg)
+*   ![オーブンレンジや炊飯器、コーヒーメーカーが並ぶ棚](https://theheadquarters.jp/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg)
     
-*   ![キッチンの様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg)
+*   ![吊るした鍋の手前に並ぶガラス製のピッチャー](https://theheadquarters.jp/wp-content/uploads/2019/07/HQposts-3-1024x682.jpg)
     
-*   ![キッチンの様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg)
+*   ![白い吊り戸棚と冷蔵庫が並ぶ細長いキッチン](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg)
     
-*   ![キッチンの様子（4）](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg)
+*   ![銅鍋を吊るしたガスコンロと調味料棚のキッチン](https://theheadquarters.jp/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg)
     
 
 ## スタディ/ワークルーム
@@ -42,11 +42,11 @@ kind: page
 集中して勉強したり、在宅で仕事をしたりしたいひとのための、勉強部屋兼仕事部屋です。  
 各居室にもデスクと机はありますが、やはり気分を変えたり別のスペースがあるといいですね。
 
-![スタディ/ワークルームの様子（1）](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg)
+![木製ロフト下の長机とモニターアームのある勉強スペース](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg)
 
-*   ![スタディ/ワークルームの様子（2）](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg)
+*   ![木のロフト下に長机と椅子2脚が並ぶ勉強コーナー](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_1-2-1024x682.jpg)
     
-*   ![スタディ/ワークルームの様子（3）](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg)
+*   ![窓辺の物干しラックと青い椅子つき壁付けデスク](https://theheadquarters.jp/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_0-1024x682.jpg)
     
 
 ## 屋上
@@ -54,7 +54,7 @@ kind: page
 ヘッドクオーターズ神戸の目玉である眺めの良い屋上です♪  
 暖かい季節はBBQをしたり、夕涼みに吹き抜ける風を感じながら飲むビールは格別です。
 
-*   ![屋上の様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
+*   ![ウッドデッキと人工芝、ラタンのソファが並ぶ屋上](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg)
     
 *   ![開放感抜群、住民が自由に使えます](https://theheadquarters.jp/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg)
     
@@ -96,11 +96,11 @@ kind: page
 
 トイレは３F、４F、５Fの各フロアに１つずつ、計３箇所。すべてウォシュレット付きです。
 
-*   ![トイレの様子（1）](https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg)
+*   ![「toilet」と手書きされた木目のドア](https://theheadquarters.jp/wp-content/uploads/2019/03/041-1-1024x684.jpg)
     
-*   ![トイレの様子（2）](https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg)
+*   ![窓から光が差し込む洋式トイレと開いたドア](https://theheadquarters.jp/wp-content/uploads/2019/03/042-1-1024x678.jpg)
     
-*   ![トイレの様子（3）](https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg)
+*   ![ウォシュレット付き便器と窓辺に置かれた鉢植え](https://theheadquarters.jp/wp-content/uploads/2019/08/4CF2AA84-C7EC-4B0C-AB64-82362E519820-768x1024.jpg)
     
 
 ## エントランス

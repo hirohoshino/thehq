@@ -179,3 +179,51 @@ hr {
 .photoGrid--portrait img {
 	aspect-ratio: 3 / 4;
 }
+
+/* ------------------------------------------------------------------
+   固定ページ（/rooms/ /facilities/ /location/ など kind: page）の
+   写真リストをグリッド表示にする。
+
+   これらのページは WordPress 時代の名残で、写真が「箇条書き1件＝1枚」で
+   縦一列に並び、/facilities/ は1440px幅でもページ高が14,000pxを超えていた。
+   マークダウン側は一切変更せず、CSSだけでグリッドに組み替える
+   （マークダウンを生HTMLに置き換えると WebP配信・遅延読込・サイズ属性の
+   自動付与が効かなくなるため）。
+
+   トリミングはしない。部屋や設備の写真は全体が見えることが重要なので、
+   縦横比はそのままにして高さの揃わないグリッドにしている。
+   ------------------------------------------------------------------ */
+.prose--page ul:has(img) {
+	list-style: none;
+	padding: 0;
+	margin: 1.2em 0 1.8em;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+	gap: 14px;
+	align-items: start;
+}
+.prose--page ul:has(img) > li {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.prose--page ul:has(img) > li > p {
+	margin: 0;
+}
+.prose--page ul:has(img) img {
+	width: 100%;
+	display: block;
+}
+/* 画像の下に続くキャプション行 */
+.prose--page ul:has(img) > li > p:not(:first-child) {
+	font-size: 0.82em;
+	line-height: 1.6;
+	color: rgb(var(--gray));
+}
+@media (max-width: 480px) {
+	.prose--page ul:has(img) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
+}

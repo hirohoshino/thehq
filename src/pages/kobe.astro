@@ -39,10 +39,27 @@ const ogDescription =
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* Google Fontsは日本語4ファミリー分の@font-face定義だけでCSS約770KBあり、
+        rel="stylesheet" のままだと低速回線でFCP15秒/LCP17.6秒(2026-07-29実測)。
+        media="print"→onloadで昇格させて非ブロッキングにする。display=swapなので
+        本文はフォールバックで即描画され、到着後に差し替わる。 */}
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kurenaido&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kurenaido&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kurenaido&display=swap"
+      />
+    </noscript>
     <link rel="preload" as="image" href="/wp-content/uploads/2019/11/%E3%81%AA%E3%81%B9-1-1024x768.webp" fetchpriority="high" />
 
     <!-- GA4 / Clarity / 流入元(gclid・utm)の捕捉 -->

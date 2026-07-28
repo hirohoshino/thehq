@@ -4,7 +4,7 @@
 // canonical はトップ(/)に向ける ＝ 内容が重複するトップとインデックスを食い合わせない。
 // 価格は src/data/rooms.json が単一ソース。ベタ書きは置かない。
 import LpHead from '../components/LpHead.astro';
-import { rents, minRentYen, maxRentYen, commonFeeYen } from '../data/pricing.mjs';
+import { rents, minRentYen, maxRentYen, commonFeeYen, rentRange } from '../data/pricing.mjs';
 
 const yen = (n) => '¥' + Number(n).toLocaleString('en-US');
 
@@ -39,7 +39,7 @@ const ogDescription =
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    {/* Google Fontsは日本語4ファミリー分の@font-face定義だけでCSS約770KBあり、
+    {/* Google Fontsは日本語4ファミリー分の@font-face定義だけでCSS約200KiBあり、
         rel="stylesheet" のままだと低速回線でFCP15秒/LCP17.6秒(2026-07-29実測)。
         media="print"→onloadで昇格させて非ブロッキングにする。display=swapなので
         本文はフォールバックで即描画され、到着後に差し替わる。 */}
@@ -633,12 +633,113 @@ img { max-width: 100%; display: block; }
     .s01-header .btn--mini { display: none; }
   }
 
-  /* ==== ヒーロー本体 ==== */
+  /* ==== ヒーロー本体(全面写真コラージュ+帯見出し) ==== */
   .s01-hero {
     position: relative;
-    background: var(--color-cream);
-    padding-top: var(--sp-6);
-    padding-bottom: 0;
+    background: var(--color-ink);
+    padding: 0;
+  }
+  .s01-collage {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+  }
+  .s01-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .s01-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(27,27,58,.30) 0%, rgba(27,27,58,.10) 35%, rgba(27,27,58,.10) 65%, rgba(27,27,58,.38) 100%);
+    pointer-events: none;
+  }
+  .s01-watermark {
+    position: absolute;
+    top: clamp(18px, 4vh, 48px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    margin: 0;
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: clamp(34px, 8.5vw, 110px);
+    letter-spacing: .06em;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255,253,248,.4);
+    pointer-events: none;
+  }
+  .s01-overlay {
+    position: relative;
+    z-index: 3;
+    min-height: min(92svh, 860px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(90px, 14vh, 150px) 14px clamp(60px, 9vh, 110px);
+  }
+  .s01-ribbon {
+    margin: 0 0 14px;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(15px, 2.4vw, 24px);
+    color: #FFFDF8;
+    text-shadow: 0 2px 10px rgba(27,27,58,.75);
+    letter-spacing: .04em;
+  }
+  .s01-title-bands {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .s01-band {
+    display: inline-block;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(24px, 5.6vw, 58px);
+    line-height: 1.3;
+    letter-spacing: .04em;
+    padding: .14em .55em .2em;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(27,27,58,.35);
+  }
+  .s01-band--sub { font-size: clamp(14.5px, 4vw, 40px); white-space: nowrap; }
+  .s01-band em {
+    font-style: normal;
+    color: var(--color-yellow);
+  }
+  .s01-hero .s01-cta-row { justify-content: center; margin-top: 26px; }
+  .s01-hero .btn--cta { box-shadow: 0 8px 28px rgba(27,27,58,.45); font-size: clamp(16px, 2.4vw, 20px); }
+  .s01-micro--light {
+    color: #FFFDF8;
+    background: rgba(27,27,58,.6);
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .s01-fig-badge {
+    position: absolute;
+    z-index: 3;
+    filter: drop-shadow(0 4px 10px rgba(27,27,58,.35));
+  }
+  .s01-fig-badge--price { top: clamp(84px, 13vh, 140px); left: clamp(8px, 4vw, 64px); }
+  .s01-fig-badge--rooms { bottom: clamp(90px, 14vh, 170px); right: clamp(8px, 3.5vw, 56px); }
+  @media (max-width: 640px) {
+    .s01-fig-badge svg { width: 72px; }
+    .s01-watermark { -webkit-text-stroke-width: 1.5px; }
+    .s01-collage { gap: 3px; }
   }
   .s01-hero__confetti {
     position: absolute;
@@ -1756,16 +1857,43 @@ img { max-width: 100%; display: block; }
     padding: 0;
     position: relative;
   }
-  .s10-route__list::before {
-    /* 点線ルート */
-    content: "";
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 27px;
-    border-left: 3px dashed var(--color-ink);
-    opacity: .35;
+  /* ハブ&スポーク: 左のHQから各行き先へ個別に線が伸びる(1本道ではない) */
+  .s10-spoke {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: clamp(20px, 4vw, 44px);
+    align-items: center;
   }
+  .s10-spoke-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .s10-hub {
+    position: relative;
+    z-index: 2;
+    width: clamp(72px, 10vw, 96px);
+    height: clamp(72px, 10vw, 96px);
+    border-radius: 50%;
+    background: var(--color-orange);
+    color: #FFFDF8;
+    border: 4px solid #FFFDF8;
+    box-shadow: var(--shadow-card, 0 4px 14px rgba(27,27,58,.18));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    line-height: 1.2;
+  }
+  .s10-hub b { font-size: clamp(18px, 2.6vw, 24px); }
+  .s10-hub span { font-size: 11px; }
+  .s10-spoke .s10-route__list { position: relative; z-index: 1; }
   .s10-route__item {
     position: relative;
     display: flex;
@@ -2458,10 +2586,11 @@ body.sp-menu-open { overflow: hidden; }
   html { scroll-behavior: auto; }
   .sp-cta-bar { transition: none; }
 }
+
 /* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。
-   このLPのCSSは高さを指定せず intrinsic 比率に任せる作りなので、
+   このLPのCSSは高さを指定せず intrinsic 比率に任せる箇所が多く、
    height:auto を入れないと height属性の値(768px等)がそのまま効いて崩れる。
-   詳細度0,0,1なのでクラス指定で高さを持つ画像には影響しない。 */
+   詳細度0,0,1なので .s09-showcase__collage img 等のクラス指定には影響しない。 */
 img { height: auto; }
 </style>
   </head>
@@ -2472,7 +2601,7 @@ img { height: auto; }
 <header class="s01-header">
   <div class="container s01-header__inner">
     <a class="s01-brand" href="#hero">
-      <img width="96" height="96" src="/images/logo.png" alt="The Headquarters Kobe ロゴ" loading="lazy">
+      <img decoding="async" width="96" height="96" src="/images/logo.png" alt="The Headquarters Kobe ロゴ" loading="lazy">
       <span>THE HEADQUARTERS KOBE</span>
     </a>
     <nav class="s01-nav">
@@ -2488,63 +2617,44 @@ img { height: auto; }
   </div>
 </header>
 
-<section class="section s01-hero bg-dots" id="hero">
-  <!-- 紙吹雪(あしらい12: ドットパターンの応用+個別図形) -->
-  <svg class="s01-hero__confetti" aria-hidden="true">
-    <g opacity=".15">
-      <circle cx="6%" cy="14%" r="10" fill="#FF6B35"></circle>
-      <polygon points="0,0 18,0 9,16" fill="#2EC4B6" transform="translate(88%,60px)"></polygon>
-      <circle cx="92%" cy="20%" r="7" fill="#FFD23F"></circle>
-      <polygon points="0,0 16,4 4,18" fill="#FF6B35" transform="translate(20%,80%)"></polygon>
-      <circle cx="80%" cy="82%" r="9" fill="#2EC4B6"></circle>
-      <polygon points="0,10 10,0 20,10 10,20" fill="#FFD23F" transform="translate(45%,6%)"></polygon>
-    </g>
-  </svg>
+<section class="section s01-hero" id="hero">
+  <!-- 全面写真コラージュ(2x2) -->
+  <div class="s01-collage" aria-hidden="true">
+    <img fetchpriority="high" decoding="async" width="1024" height="768" src="/wp-content/uploads/2019/11/%E3%81%AA%E3%81%B9-1-1024x768.webp" alt="">
+    <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="">
+    <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="">
+    <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="">
+  </div>
+  <div class="s01-shade"></div>
+  <p class="s01-watermark" aria-hidden="true">SHARE HOUSE "HQ"</p>
 
-  <div class="container s01-hero__grid">
-    <div class="s01-copy-head reveal">
-      <p class="s01-eyebrow">SUIDOSUJI, KOBE — SHARE HOUSE "HQ"</p>
-      <h1 class="s01-title">
-        集まって、<span class="s01-marker-wrap">笑って<svg viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4,18 C60,26 150,26 196,15 L196,23 C150,30 60,30 4,22 Z" fill="rgba(255,210,63,.65)"/></svg></span>、<span class="s01-circle-wrap">みんなで育つ<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path d="M20,45 C15,15 60,5 110,6 C165,7 205,20 200,45 C205,72 155,84 108,83 C55,82 12,73 22,50" fill="none" stroke="#2EC4B6" stroke-width="4" stroke-linecap="round"/></svg></span><span style="display:inline-block">シェアハウス</span>
-      </h1>
+  <div class="s01-fig-badge s01-fig-badge--price stamp-in is-visible" style="--stamp-rot:-8deg">
+    <svg class="s01-sticker-svg" viewBox="0 0 120 120" width="104" aria-hidden="true">
+      <polygon points="60,4 81,23.6 108.5,32 102,60 108.5,88 81,96.4 60,116 39,96.4 11.5,88 18,60 11.5,32 39,23.6" fill="#FFD23F" stroke="#FFFDF8" stroke-width="4"/>
+      <text x="60" y="58" text-anchor="middle" font-size="13" fill="#1B1B3A">家賃</text>
+      <text x="60" y="76" text-anchor="middle" font-size="13" fill="#1B1B3A">{minRentYen}〜</text>
+    </svg>
+  </div>
+  <div class="s01-fig-badge s01-fig-badge--rooms stamp-in is-visible reveal-delay-1" style="--stamp-rot:6deg">
+    <svg class="s01-sticker-svg" viewBox="0 0 120 120" width="96" aria-hidden="true">
+      <circle cx="60" cy="60" r="54" fill="#2EC4B6" stroke="#FFFDF8" stroke-width="6"/>
+      <circle cx="60" cy="60" r="42" fill="none" stroke="#1B1B3A" stroke-width="2" stroke-dasharray="4 6"/>
+      <text x="60" y="55" text-anchor="middle" font-size="13" fill="#FFFDF8">全10室</text>
+      <text x="60" y="72" text-anchor="middle" font-size="13" fill="#FFFDF8">個室</text>
+    </svg>
+  </div>
+
+  <div class="s01-overlay">
+    <p class="s01-ribbon reveal">＼ 神戸・水道筋商店街のまんなか! ／</p>
+    <h1 class="s01-title-bands reveal">
+      <span class="s01-band">集まって、笑って、</span>
+      <span class="s01-band"><em>みんなで育つ</em>シェアハウス</span>
+      <span class="s01-band s01-band--sub">朝の「おはよう」から夜の「おかえり」まで</span>
+    </h1>
+    <div class="s01-cta-row">
+      <a class="btn btn--cta stamp-in is-visible" href="/contact/">内見よやくする→</a>
     </div>
-    <div class="s01-copy-rest reveal">
-      <p class="s01-sub">
-        朝の「おはよう」から、夜の「ただいま」「おかえり」まで。神戸・水道筋商店街のシェアハウス、The Headquarters(通称HQ)へようこそ。
-      </p>
-      <div class="s01-cta-row">
-        <a class="btn btn--cta stamp-in is-visible" href="/contact/">内見よやくする→</a>
-      </div>
-      <p class="s01-micro">内見は交番前で待ち合わせ。手ぶらで来てね。</p>
-    </div>
-
-    <div class="s01-photo-stage reveal reveal-delay-1">
-      <div class="photo-frame photo-frame--lg">
-        <img width="1024" height="768" src="/wp-content/uploads/2019/11/%E3%81%AA%E3%81%B9-1-1024x768.webp" alt="HQのリビングで住人みんなで鍋パーティー" fetchpriority="high" decoding="async">
-        <p class="photo-frame__caption">これがHQ!</p>
-      </div>
-
-      <div class="s01-badge-pos s01-badge-pos--1 stamp-in is-visible" style="--stamp-rot:-8deg">
-        <svg class="s01-sticker-svg" viewBox="0 0 120 120" width="96" aria-hidden="true">
-          <polygon points="60,4 81,23.6 108.5,32 102,60 108.5,88 81,96.4 60,116 39,96.4 11.5,88 18,60 11.5,32 39,23.6" fill="#FFD23F" stroke="#FFFDF8" stroke-width="4"/>
-          <text x="60" y="58" text-anchor="middle" font-size="13" fill="#1B1B3A">家賃</text>
-          <text x="60" y="76" text-anchor="middle" font-size="13" fill="#1B1B3A">{minRentYen}〜</text>
-        </svg>
-      </div>
-
-      <div class="s01-badge-pos s01-badge-pos--2 stamp-in is-visible reveal-delay-1" style="--stamp-rot:6deg">
-        <svg class="s01-sticker-svg" viewBox="0 0 120 120" width="92" aria-hidden="true">
-          <circle cx="60" cy="60" r="54" fill="#2EC4B6" stroke="#FFFDF8" stroke-width="6"/>
-          <circle cx="60" cy="60" r="42" fill="none" stroke="#1B1B3A" stroke-width="2" stroke-dasharray="4 6"/>
-          <text x="60" y="55" text-anchor="middle" font-size="13" fill="#FFFDF8">全10室</text>
-          <text x="60" y="72" text-anchor="middle" font-size="13" fill="#FFFDF8">個室</text>
-        </svg>
-      </div>
-
-      <div class="s01-badge-pos s01-badge-pos--3 stamp-in is-visible reveal-delay-2" style="--stamp-rot:-4deg">
-        <span class="badge badge--orange" style="transform: rotate(-4deg);">神大まで好アクセス</span>
-      </div>
-    </div>
+    <p class="s01-micro s01-micro--light">内見は交番前で待ち合わせ。手ぶらで来てね。</p>
   </div>
 
   <div class="s01-marquee-zone">
@@ -2635,7 +2745,7 @@ img { height: auto; }
     </div>
 
     <aside class="s03-aside reveal reveal-delay-1">
-      <img width="96" height="96" src="/images/logo.png" alt="HQロゴ" loading="lazy">
+      <img decoding="async" width="96" height="96" src="/images/logo.png" alt="HQロゴ" loading="lazy">
       <div class="s03-annot">
         <svg viewBox="0 0 120 100" width="40" aria-hidden="true">
           <path d="M10,10 C40,20 60,50 85,75" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round"/>
@@ -2750,19 +2860,19 @@ img { height: auto; }
 
   <div class="s05-photos" aria-hidden="true">
     <div class="photo-frame s05-photo--1">
-      <img width="1024" height="683" src="/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg" alt="" loading="lazy">
+      <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg" alt="" loading="lazy">
       <p class="photo-frame__caption">屋上、六甲山ビュー</p>
     </div>
     <div class="photo-frame s05-photo--2">
-      <img width="1024" height="683" src="/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg" alt="" loading="lazy">
+      <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg" alt="" loading="lazy">
       <p class="photo-frame__caption">とある日のHQ</p>
     </div>
     <div class="photo-frame s05-photo--3">
-      <img width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg" alt="" loading="lazy">
+      <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg" alt="" loading="lazy">
       <p class="photo-frame__caption">屋上BBQの日</p>
     </div>
     <div class="photo-frame s05-photo--4">
-      <img width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg" alt="" loading="lazy">
+      <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg" alt="" loading="lazy">
       <p class="photo-frame__caption">夜はだいたいリビング</p>
     </div>
   </div>
@@ -2877,11 +2987,11 @@ img { height: auto; }
     <div class="s06-row reveal">
       <div class="s06-photos s06-photos--a">
         <div class="photo-frame photo-frame--primary stamp-in is-visible">
-          <img width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg" alt="5階の広いリビング" loading="lazy">
+          <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-3-1024x682.jpg" alt="5階の広いリビング" loading="lazy">
           <p class="photo-frame__caption">5Fリビング!</p>
         </div>
         <div class="photo-frame photo-frame--secondary stamp-in is-visible reveal-delay-1">
-          <img width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="リビングのくつろぎスペース" loading="lazy">
+          <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="リビングのくつろぎスペース" loading="lazy">
           <p class="photo-frame__caption">だいたい誰かいる</p>
         </div>
       </div>
@@ -2901,11 +3011,11 @@ img { height: auto; }
     <div class="s06-row s06-row--reverse reveal reveal-delay-1">
       <div class="s06-photos s06-photos--b">
         <div class="photo-frame photo-frame--primary stamp-in is-visible">
-          <img width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="HQの共用キッチン" loading="lazy">
+          <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="HQの共用キッチン" loading="lazy">
           <p class="photo-frame__caption">うちの台所、広め</p>
         </div>
         <div class="photo-frame photo-frame--secondary stamp-in is-visible reveal-delay-1">
-          <img width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg" alt="キッチンの調理スペース" loading="lazy">
+          <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-7-1-1024x682.jpg" alt="キッチンの調理スペース" loading="lazy">
           <p class="photo-frame__caption">冷蔵庫4台ある</p>
         </div>
       </div>
@@ -2925,7 +3035,7 @@ img { height: auto; }
     <div class="s06-row reveal reveal-delay-2">
       <div class="s06-photos s06-photos--single">
         <div class="photo-frame stamp-in is-visible">
-          <img width="1024" height="682" src="/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg" alt="スタディ・ワークルーム(長机とデスクライト)" loading="lazy">
+          <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2021/07/c9c4cfe7c98010a1e57c6e1e89a40110b_4620693218544774088_210609_2-1024x682.jpg" alt="スタディ・ワークルーム(長机とデスクライト)" loading="lazy">
           <p class="photo-frame__caption">課題も集中モード</p>
         </div>
       </div>
@@ -2952,11 +3062,11 @@ img { height: auto; }
     <div class="s06-row s06-row--reverse reveal reveal-delay-3">
       <div class="s06-photos s06-photos--c">
         <div class="photo-frame photo-frame--primary stamp-in is-visible">
-          <img width="1024" height="678" src="/wp-content/uploads/2019/03/038-1024x678.jpg" alt="浴室" loading="lazy">
+          <img decoding="async" width="1024" height="678" src="/wp-content/uploads/2019/03/038-1024x678.jpg" alt="浴室" loading="lazy">
           <p class="photo-frame__caption">湯船もあるよ</p>
         </div>
         <div class="photo-frame photo-frame--secondary stamp-in is-visible reveal-delay-1">
-          <img width="1024" height="768" src="/wp-content/uploads/2026/07/laundry-washer-1024x768.jpg" alt="乾燥機付きドラム式洗濯機" loading="lazy">
+          <img decoding="async" width="1024" height="768" src="/wp-content/uploads/2026/07/laundry-washer-1024x768.jpg" alt="乾燥機付きドラム式洗濯機" loading="lazy">
           <p class="photo-frame__caption">洗濯→乾燥まで全自動</p>
         </div>
       </div>
@@ -3036,7 +3146,7 @@ img { height: auto; }
 
       <aside class="s07-aside reveal reveal-delay-2">
         <div class="photo-frame stamp-in is-visible">
-          <img width="1024" height="683" src="/wp-content/uploads/2019/07/DSCF0932-1024x683.webp" alt="共用キッチンの調理家電の棚" loading="lazy">
+          <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/07/DSCF0932-1024x683.webp" alt="共用キッチンの調理家電の棚" loading="lazy">
           <p class="photo-frame__caption">この棚、ぜんぶ使い放題</p>
         </div>
 
@@ -3055,6 +3165,315 @@ img { height: auto; }
     </div>
 
     <p class="s07-closing reveal">「今日なに作る?」が、毎日のたのしみになる台所です。</p>
+  </div>
+</section>
+
+<!-- ===== section 09 ===== -->
+<!-- お部屋ショーケース: トップビューと同じ全面コラージュ+帯見出し -->
+<style is:inline>
+  .s09-showcase { position: relative; background: var(--color-ink); }
+  .s09-showcase__collage {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: calc(50% - 2px) calc(50% - 2px);
+    gap: 4px;
+    overflow: hidden;
+  }
+  .s09-showcase__collage img { width: 100%; height: 100%; min-height: 0; object-fit: cover; display: block; }
+  .s09-showcase__shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(27,27,58,.32) 0%, rgba(27,27,58,.08) 40%, rgba(27,27,58,.08) 60%, rgba(27,27,58,.36) 100%);
+    pointer-events: none;
+  }
+  .s09-showcase__watermark {
+    position: absolute;
+    top: clamp(14px, 3.5vh, 40px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    margin: 0;
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: clamp(40px, 9vw, 120px);
+    letter-spacing: .08em;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255,253,248,.4);
+    pointer-events: none;
+  }
+  .s09-showcase__overlay {
+    position: relative;
+    z-index: 3;
+    min-height: min(74svh, 680px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(70px, 11vh, 120px) 14px clamp(50px, 8vh, 90px);
+  }
+  @media (max-width: 640px) {
+    .s09-showcase__collage { gap: 3px; }
+    .s09-showcase__watermark { -webkit-text-stroke-width: 1.5px; }
+  }
+</style>
+<section class="s09-showcase" aria-label="お部屋ギャラリー">
+  <div class="s09-showcase__collage" aria-hidden="true">
+    <img loading="lazy" decoding="async" width="1024" height="683" src="/wp-content/uploads/2021/09/301-1024x683.jpg" alt="">
+    <img loading="lazy" decoding="async" width="1024" height="683" src="/wp-content/uploads/2021/07/%E6%96%B0305a-1024x683.jpg" alt="">
+    <img loading="lazy" decoding="async" width="1024" height="768" src="/wp-content/uploads/2020/02/408a-1024x768.jpg" alt="">
+    <img loading="lazy" decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg" alt="" style="object-position:center 100%">
+  </div>
+  <div class="s09-showcase__shade"></div>
+  <p class="s09-showcase__watermark" aria-hidden="true">ROOMS</p>
+  <div class="s09-showcase__overlay">
+    <p class="s01-ribbon reveal">＼ ここからは、あなたの城 ／</p>
+    <div class="s01-title-bands reveal">
+      <span class="s01-band">全10室、ぜんぶ<em>個室</em>。</span>
+      <span class="s01-band s01-band--sub">家賃{rentRange}・布団つきで即入居OK</span>
+    </div>
+  </div>
+</section>
+<section class="section s09-section bg-dots" id="rooms">
+  <div class="s09-head-badge stamp-in is-visible" style="--stamp-rot:-6deg">
+    <svg viewBox="0 0 120 120" width="92" aria-hidden="true">
+      <polygon points="60,4 81,23.6 108.5,32 102,60 108.5,88 81,96.4 60,116 39,96.4 11.5,88 18,60 11.5,32 39,23.6"
+               fill="#FFD23F" stroke="#FFFDF8" stroke-width="4"/>
+      <text x="60" y="65" text-anchor="middle" font-family="Mochiy Pop One, sans-serif" font-size="15" fill="#1B1B3A">礼金ゼロ!</text>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2 class="section-heading__title">お部屋えらび — 全10室、ぜんぶ個室。</h2>
+      <p class="section-heading__lead">3Fと4Fに5室ずつ。広さと窓の向きで選べます。チケットを選ぶみたいに、お気に入りを見つけて。</p>
+    </div>
+
+    <!-- ジグザグ区切り(deco 01の波形パスをinkで再配色) -->
+    <svg class="s09-divider reveal" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,30 C150,60 350,0 600,30 C850,60 1050,0 1200,30 L1200,60 L0,60 Z" fill="#1B1B3A"></path>
+    </svg>
+
+    <p class="s09-micro reveal">家賃は月額。ぜんぶに共益費{commonFeeYen}(水道光熱費・ネット・消耗品込み)をプラスした金額が毎月のお支払いです。</p>
+
+    <div class="s09-grid">
+
+      <!-- 301 -->
+      <article class="s09-ticket reveal">
+        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-4deg">301</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">3F</p>
+          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
+          <p class="s09-ticket__dir">窓向き: 北西</p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['301'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2021/09/301-1024x683.jpg" alt="301号室" loading="lazy">
+            <p class="photo-frame__caption">最安のお部屋!</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 302 -->
+      <article class="s09-ticket reveal reveal-delay-1">
+        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:4deg">302</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">3F</p>
+          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
+          <p class="s09-ticket__dir">
+            窓向き: 南
+            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
+          </p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['302'])}</span></div>
+        <div class="s09-pending stamp-in is-visible">
+          <p>写真準備中。実物は内見で見せます!</p>
+        </div>
+      </article>
+
+      <!-- 303 -->
+      <article class="s09-ticket reveal reveal-delay-2">
+        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-3deg">303</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">3F</p>
+          <p class="s09-ticket__size">9.2㎡<small>(5.7畳)</small></p>
+          <p class="s09-ticket__dir">
+            窓向き: 南
+            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
+          </p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['303'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-n4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/07/303sa-1024x683.jpg" alt="303号室・南向き" loading="lazy">
+            <p class="photo-frame__caption">303のお部屋</p>
+          </div>
+        </div>
+        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/07/303sb-1024x683.jpg" alt="303号室・南向き" loading="lazy">
+          </div>
+        </div>
+      </article>
+
+      <!-- 304 -->
+      <article class="s09-ticket reveal reveal-delay-3">
+        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:5deg">304</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">3F</p>
+          <p class="s09-ticket__size">9.7㎡<small>(6畳)</small></p>
+          <p class="s09-ticket__dir">窓向き: 東</p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['304'])}</span></div>
+        <div class="s09-pending stamp-in is-visible" style="transform: rotate(-4deg);">
+          <p>写真準備中。実物は内見で見せます!</p>
+        </div>
+      </article>
+
+      <!-- 305 -->
+      <article class="s09-ticket reveal reveal-delay-4">
+        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-5deg">305</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">3F</p>
+          <p class="s09-ticket__size">9.8㎡<small>(6畳)</small></p>
+          <p class="s09-ticket__dir">窓向き: 東</p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['305'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2021/07/%E6%96%B0305a-1024x683.jpg" alt="305号室・6畳" loading="lazy">
+            <p class="photo-frame__caption">305のお部屋</p>
+          </div>
+        </div>
+        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-n4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2021/07/%E6%96%B0305b-1024x683.jpg" alt="305号室・6畳" loading="lazy">
+          </div>
+        </div>
+      </article>
+
+      <!-- 406 -->
+      <article class="s09-ticket reveal">
+        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:4deg">406</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">4F</p>
+          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
+          <p class="s09-ticket__dir">
+            窓向き: 南
+            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
+          </p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['406'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-n3">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/09/406-1024x683.jpg" alt="406号室・南向き" loading="lazy">
+            <p class="photo-frame__caption">406のお部屋</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 407 -->
+      <article class="s09-ticket reveal reveal-delay-1">
+        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-4deg">407</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">4F</p>
+          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
+          <p class="s09-ticket__dir">
+            窓向き: 南
+            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
+          </p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['407'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="768" src="/wp-content/uploads/2019/09/Room407-1024x768.jpg" alt="407号室・南向き" loading="lazy">
+            <p class="photo-frame__caption">407のお部屋</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 408 -->
+      <article class="s09-ticket reveal reveal-delay-2">
+        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:6deg">408</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">4F</p>
+          <p class="s09-ticket__size">9.2㎡<small>(5.7畳)</small></p>
+          <p class="s09-ticket__dir">
+            窓向き: 南
+            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
+          </p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['408'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-n4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="768" src="/wp-content/uploads/2020/02/408a-1024x768.jpg" alt="408号室・南向き" loading="lazy">
+            <p class="photo-frame__caption">408のお部屋</p>
+          </div>
+        </div>
+        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="768" src="/wp-content/uploads/2020/02/408b-1024x768.jpg" alt="408号室・南向き" loading="lazy">
+          </div>
+        </div>
+      </article>
+
+      <!-- 409 -->
+      <article class="s09-ticket reveal reveal-delay-3">
+        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-6deg">409</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">4F</p>
+          <p class="s09-ticket__size">9.7㎡<small>(6畳)</small></p>
+          <p class="s09-ticket__dir">窓向き: 東</p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['409'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg" alt="409号室・東向き" loading="lazy">
+            <p class="photo-frame__caption">409のお部屋</p>
+          </div>
+        </div>
+        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-n4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg" alt="409号室・東向き" loading="lazy">
+          </div>
+        </div>
+      </article>
+
+      <!-- 410 -->
+      <article class="s09-ticket reveal reveal-delay-4">
+        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:5deg">410</span>
+        <div class="s09-ticket__body">
+          <p class="s09-ticket__floor">4F</p>
+          <p class="s09-ticket__size">9.8㎡<small>(6畳)</small></p>
+          <p class="s09-ticket__dir">窓向き: 東</p>
+        </div>
+        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['410'])}</span></div>
+        <div class="s09-photo-pin stamp-in is-visible rotate-n3">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg" alt="410号室・東向き" loading="lazy">
+            <p class="photo-frame__caption">410のお部屋</p>
+          </div>
+        </div>
+        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-4">
+          <div class="photo-frame">
+            <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg" alt="410号室・東向き" loading="lazy">
+          </div>
+        </div>
+        <div class="s09-badge--fudan stamp-in is-visible" style="--stamp-rot:-4deg">
+          <span class="badge" style="transform: rotate(-4deg);">布団完備</span>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="s09-cta-row reveal">
+      <a class="btn btn--cta" href="/contact/">空室状況をきいてみる→</a>
+    </div>
   </div>
 </section>
 
@@ -3112,261 +3531,21 @@ img { height: auto; }
 
     <div class="s08-wall reveal reveal-delay-1">
       <div class="photo-frame stamp-in is-visible">
-        <img width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg" alt="屋上BBQのようす" loading="lazy">
-        <p class="photo-frame__caption">屋上BBQ!</p>
+        <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg" alt="昼の屋上テラス。青空と六甲山ビュー" loading="lazy">
+        <p class="photo-frame__caption">昼は六甲山と青空</p>
       </div>
       <div class="photo-frame stamp-in is-visible reveal-delay-1">
-        <img width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="みんなで囲むBBQ" loading="lazy">
-        <p class="photo-frame__caption">肉、無限</p>
+        <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="電球ライトが灯る夜の屋上ラウンジ" loading="lazy">
+        <p class="photo-frame__caption">夜はライトアップ</p>
       </div>
       <div class="photo-frame stamp-in is-visible reveal-delay-2">
-        <img width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg" alt="BBQで盛り上がる住人たち" loading="lazy">
-        <p class="photo-frame__caption">初対面でもすぐ仲間</p>
+        <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg" alt="人工芝の屋上から見下ろす神戸の夜景" loading="lazy">
+        <p class="photo-frame__caption">神戸の夜景、ひとりじめ</p>
       </div>
       <div class="photo-frame stamp-in is-visible reveal-delay-3">
-        <img width="1024" height="683" src="/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg" alt="屋上でのひととき" loading="lazy">
-        <p class="photo-frame__caption">夕方が優勝</p>
+        <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg" alt="グリルで肉を焼きながらのBBQの夜" loading="lazy">
+        <p class="photo-frame__caption">肉、焼けてます</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== section 09 ===== -->
-<section class="section s09-section bg-dots" id="rooms">
-  <div class="s09-head-badge stamp-in is-visible" style="--stamp-rot:-6deg">
-    <svg viewBox="0 0 120 120" width="92" aria-hidden="true">
-      <polygon points="60,4 81,23.6 108.5,32 102,60 108.5,88 81,96.4 60,116 39,96.4 11.5,88 18,60 11.5,32 39,23.6"
-               fill="#FFD23F" stroke="#FFFDF8" stroke-width="4"/>
-      <text x="60" y="65" text-anchor="middle" font-family="Mochiy Pop One, sans-serif" font-size="15" fill="#1B1B3A">礼金ゼロ!</text>
-    </svg>
-  </div>
-
-  <div class="container">
-    <div class="section-heading reveal">
-      <h2 class="section-heading__title">お部屋えらび — 全10室、ぜんぶ個室。</h2>
-      <p class="section-heading__lead">3Fと4Fに5室ずつ。広さと窓の向きで選べます。チケットを選ぶみたいに、お気に入りを見つけて。</p>
-    </div>
-
-    <!-- ジグザグ区切り(deco 01の波形パスをinkで再配色) -->
-    <svg class="s09-divider reveal" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,30 C150,60 350,0 600,30 C850,60 1050,0 1200,30 L1200,60 L0,60 Z" fill="#1B1B3A"></path>
-    </svg>
-
-    <p class="s09-micro reveal">家賃は月額。ぜんぶに共益費{commonFeeYen}(水道光熱費・ネット・消耗品込み)をプラスした金額が毎月のお支払いです。</p>
-
-    <div class="s09-grid">
-
-      <!-- 301 -->
-      <article class="s09-ticket reveal">
-        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-4deg">301</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">3F</p>
-          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
-          <p class="s09-ticket__dir">窓向き: 北西</p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['301'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2021/09/301-1024x683.jpg" alt="301号室" loading="lazy">
-            <p class="photo-frame__caption">最安のお部屋!</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- 302 -->
-      <article class="s09-ticket reveal reveal-delay-1">
-        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:4deg">302</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">3F</p>
-          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
-          <p class="s09-ticket__dir">
-            窓向き: 南
-            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
-          </p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['302'])}</span></div>
-        <div class="s09-pending stamp-in is-visible">
-          <p>写真準備中。実物は内見で見せます!</p>
-        </div>
-      </article>
-
-      <!-- 303 -->
-      <article class="s09-ticket reveal reveal-delay-2">
-        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-3deg">303</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">3F</p>
-          <p class="s09-ticket__size">9.2㎡<small>(5.7畳)</small></p>
-          <p class="s09-ticket__dir">
-            窓向き: 南
-            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
-          </p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['303'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-n4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2019/07/303sa-1024x683.jpg" alt="303号室・南向き" loading="lazy">
-            <p class="photo-frame__caption">303のお部屋</p>
-          </div>
-        </div>
-        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2019/07/303sb-1024x683.jpg" alt="303号室・南向き" loading="lazy">
-          </div>
-        </div>
-      </article>
-
-      <!-- 304 -->
-      <article class="s09-ticket reveal reveal-delay-3">
-        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:5deg">304</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">3F</p>
-          <p class="s09-ticket__size">9.7㎡<small>(6畳)</small></p>
-          <p class="s09-ticket__dir">窓向き: 東</p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['304'])}</span></div>
-        <div class="s09-pending stamp-in is-visible" style="transform: rotate(-4deg);">
-          <p>写真準備中。実物は内見で見せます!</p>
-        </div>
-      </article>
-
-      <!-- 305 -->
-      <article class="s09-ticket reveal reveal-delay-4">
-        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-5deg">305</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">3F</p>
-          <p class="s09-ticket__size">9.8㎡<small>(6畳)</small></p>
-          <p class="s09-ticket__dir">窓向き: 東</p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['305'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2021/07/%E6%96%B0305a-1024x683.jpg" alt="305号室・6畳" loading="lazy">
-            <p class="photo-frame__caption">305のお部屋</p>
-          </div>
-        </div>
-        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-n4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2021/07/%E6%96%B0305b-1024x683.jpg" alt="305号室・6畳" loading="lazy">
-          </div>
-        </div>
-      </article>
-
-      <!-- 406 -->
-      <article class="s09-ticket reveal">
-        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:4deg">406</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">4F</p>
-          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
-          <p class="s09-ticket__dir">
-            窓向き: 南
-            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
-          </p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['406'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-n3">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2019/09/406-1024x683.jpg" alt="406号室・南向き" loading="lazy">
-            <p class="photo-frame__caption">406のお部屋</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- 407 -->
-      <article class="s09-ticket reveal reveal-delay-1">
-        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-4deg">407</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">4F</p>
-          <p class="s09-ticket__size">8.0㎡<small>(4.9畳)</small></p>
-          <p class="s09-ticket__dir">
-            窓向き: 南
-            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
-          </p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['407'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="768" src="/wp-content/uploads/2019/09/Room407-1024x768.jpg" alt="407号室・南向き" loading="lazy">
-            <p class="photo-frame__caption">407のお部屋</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- 408 -->
-      <article class="s09-ticket reveal reveal-delay-2">
-        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:6deg">408</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">4F</p>
-          <p class="s09-ticket__size">9.2㎡<small>(5.7畳)</small></p>
-          <p class="s09-ticket__dir">
-            窓向き: 南
-            <svg class="s09-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#FFD23F"/><g stroke="#FFD23F" stroke-width="2"><path d="M12,1 V4M12,20 V23M1,12 H4M20,12 H23M4,4 L6,6M18,18 L20,20M20,4 L18,6M4,20 L6,18"/></g></svg>
-          </p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['408'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-n4">
-          <div class="photo-frame">
-            <img width="1024" height="768" src="/wp-content/uploads/2020/02/408a-1024x768.jpg" alt="408号室・南向き" loading="lazy">
-            <p class="photo-frame__caption">408のお部屋</p>
-          </div>
-        </div>
-        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="768" src="/wp-content/uploads/2020/02/408b-1024x768.jpg" alt="408号室・南向き" loading="lazy">
-          </div>
-        </div>
-      </article>
-
-      <!-- 409 -->
-      <article class="s09-ticket reveal reveal-delay-3">
-        <span class="badge badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:-6deg">409</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">4F</p>
-          <p class="s09-ticket__size">9.7㎡<small>(6畳)</small></p>
-          <p class="s09-ticket__dir">窓向き: 東</p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['409'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2022/03/d5622158779da808105ef7488dd73ac7-1024x683.jpg" alt="409号室・東向き" loading="lazy">
-            <p class="photo-frame__caption">409のお部屋</p>
-          </div>
-        </div>
-        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-n4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2022/03/253353e4999db63bdb3b295a8e9ce3ec-1024x683.jpg" alt="409号室・東向き" loading="lazy">
-          </div>
-        </div>
-      </article>
-
-      <!-- 410 -->
-      <article class="s09-ticket reveal reveal-delay-4">
-        <span class="badge badge--teal badge--stamp s09-ticket__stamp stamp-in is-visible" style="--stamp-rot:5deg">410</span>
-        <div class="s09-ticket__body">
-          <p class="s09-ticket__floor">4F</p>
-          <p class="s09-ticket__size">9.8㎡<small>(6畳)</small></p>
-          <p class="s09-ticket__dir">窓向き: 東</p>
-        </div>
-        <div class="s09-ticket__price"><span class="price-pop">{yen(rents['410'])}</span></div>
-        <div class="s09-photo-pin stamp-in is-visible rotate-n3">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2022/11/0e54fb48d4fe8542ec02d3655a041808-1024x683.jpg" alt="410号室・東向き" loading="lazy">
-            <p class="photo-frame__caption">410のお部屋</p>
-          </div>
-        </div>
-        <div class="s09-photo-pin--sub stamp-in is-visible reveal-delay-1 rotate-4">
-          <div class="photo-frame">
-            <img width="1024" height="683" src="/wp-content/uploads/2022/11/a49008df88078820f4f81bb17a8fa12a-1024x683.jpg" alt="410号室・東向き" loading="lazy">
-          </div>
-        </div>
-        <div class="s09-badge--fudan stamp-in is-visible" style="--stamp-rot:-4deg">
-          <span class="badge" style="transform: rotate(-4deg);">布団完備</span>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="s09-cta-row reveal">
-      <a class="btn btn--cta" href="/contact/">空室状況をきいてみる→</a>
     </div>
   </div>
 </section>
@@ -3393,7 +3572,7 @@ img { height: auto; }
     <div class="s10-layout">
       <div class="s10-photo-col reveal">
         <div class="photo-frame rotate-n3">
-          <img width="1024" height="678" src="/wp-content/uploads/2019/03/001-1024x678.jpg" alt="HQの外観・水道筋商店街" loading="lazy">
+          <img decoding="async" width="1024" height="678" src="/wp-content/uploads/2019/03/001-1024x678.jpg" alt="HQの外観・水道筋商店街" loading="lazy">
           <p class="photo-frame__caption">1Fは靴下屋さん</p>
         </div>
         <div class="s10-here-stamp stamp-in is-visible" style="--stamp-rot:-8deg">
@@ -3406,20 +3585,17 @@ img { height: auto; }
         <p class="s10-here-copy">アーケードの中に住むという発想。</p>
       </div>
 
-      <div class="reveal reveal-delay-1" style="position:relative;">
-        <!-- 手書き矢印(deco 09) -->
-        <svg class="s10-arrow" viewBox="0 0 120 100" aria-hidden="true">
-          <path d="M10,10 C40,20 60,50 85,75" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round"/>
-          <path d="M65,68 L86,78 L78,54" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <div class="reveal reveal-delay-1 s10-spoke">
+        <svg class="s10-spoke-lines" aria-hidden="true"></svg>
+        <div class="s10-hub"><b>HQ</b><span>ここ!</span></div>
         <ul class="s10-route__list">
           <li class="s10-route__item">
             <span class="badge badge--stamp s10-route__dot stamp-in is-visible">0.1分</span>
             <span class="s10-route__label">八百屋 徒歩0.1分 <span class="s10-route__hand">ほぼ隣!</span></span>
           </li>
           <li class="s10-route__item">
-            <span class="badge badge--teal badge--stamp s10-route__dot stamp-in is-visible reveal-delay-1">1分</span>
-            <span class="s10-route__label">ローソン 徒歩1分</span>
+            <span class="badge badge--teal badge--stamp s10-route__dot stamp-in is-visible reveal-delay-1">0.5分</span>
+            <span class="s10-route__label">ローソン 徒歩0.5分</span>
           </li>
           <li class="s10-route__item">
             <span class="badge badge--stamp s10-route__dot stamp-in is-visible reveal-delay-2">1分</span>
@@ -3427,19 +3603,27 @@ img { height: auto; }
           </li>
           <li class="s10-route__item">
             <span class="badge badge--teal badge--stamp s10-route__dot stamp-in is-visible reveal-delay-3">2分</span>
-            <span class="s10-route__label">スーパー マルハチ 徒歩2分</span>
+            <span class="s10-route__label">マクドナルド 徒歩2分</span>
           </li>
           <li class="s10-route__item">
-            <span class="badge badge--stamp s10-route__dot stamp-in is-visible reveal-delay-4">2分</span>
-            <span class="s10-route__label">Can★Do 徒歩2分</span>
+            <span class="badge badge--stamp s10-route__dot stamp-in is-visible reveal-delay-4">3分</span>
+            <span class="s10-route__label">スーパー マルハチ 徒歩3分</span>
           </li>
           <li class="s10-route__item">
-            <span class="badge badge--teal badge--stamp s10-route__dot stamp-in is-visible reveal-delay-5">8分</span>
-            <span class="s10-route__label">王子公園 徒歩8分</span>
+            <span class="badge badge--teal badge--stamp s10-route__dot stamp-in is-visible reveal-delay-5">3分</span>
+            <span class="s10-route__label">Can★Do 徒歩3分</span>
           </li>
           <li class="s10-route__item">
-            <span class="badge badge--stamp s10-route__dot stamp-in is-visible">あり</span>
-            <span class="s10-route__label">銭湯 あり <span class="s10-route__hand">大きいお風呂の日、つくれます</span></span>
+            <span class="badge badge--stamp s10-route__dot stamp-in is-visible">5分</span>
+            <span class="s10-route__label">銭湯 徒歩5分 <span class="s10-route__hand">大きいお風呂の日、つくれます</span></span>
+          </li>
+          <li class="s10-route__item">
+            <span class="badge badge--teal badge--stamp s10-route__dot stamp-in is-visible reveal-delay-1">7分</span>
+            <span class="s10-route__label">阪急 王子公園駅 徒歩7分</span>
+          </li>
+          <li class="s10-route__item">
+            <span class="badge badge--stamp s10-route__dot stamp-in is-visible reveal-delay-2">7分</span>
+            <span class="s10-route__label">JR 摩耶駅 徒歩7分</span>
           </li>
         </ul>
       </div>
@@ -3742,7 +3926,7 @@ img { height: auto; }
   <div class="container">
     <div class="s14-footer__grid">
       <div class="s14-logo-card reveal">
-        <img width="1024" height="659" src="/wp-content/uploads/2020/08/Black_A-2-1024x659.png" alt="The Headquarters 黒ロゴ" loading="lazy">
+        <img decoding="async" width="1024" height="659" src="/wp-content/uploads/2020/08/Black_A-2-1024x659.png" alt="The Headquarters 黒ロゴ" loading="lazy">
       </div>
 
       <div class="s14-footer__info reveal reveal-delay-1">
@@ -3793,9 +3977,7 @@ img { height: auto; }
   <a class="btn btn--cta" href="/contact/" style="--notch-bg: #FFF6E9">内見・お問い合わせ→</a>
 </div>
 
-
-
-    <script is:inline>
+<script is:inline>
 (function () {
   'use strict';
 
@@ -3915,7 +4097,7 @@ img { height: auto; }
     bar.classList.add('is-shown');
   }
 
-  /* ---- 6. CTAクリックをGA4に送る(event_label でLPを識別) ---- */
+  /* ---- CTAクリックをGA4に送る(event_label でLPを識別) ---- */
   document.querySelectorAll('a[href^="/contact"]').forEach(function (a) {
     a.addEventListener('click', function () {
       if (typeof window.gtag === 'function') {
@@ -3928,5 +4110,36 @@ img { height: auto; }
   });
 })();
 </script>
+<script is:inline>
+/* ハブ&スポークの線を描画: HQハブから各行き先バッジへベジェ曲線 */
+(function () {
+  function drawSpokes() {
+    var wrap = document.querySelector('.s10-spoke');
+    var svg = document.querySelector('.s10-spoke-lines');
+    var hub = document.querySelector('.s10-hub');
+    if (!wrap || !svg || !hub) return;
+    var w = wrap.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 ' + w.width + ' ' + w.height);
+    var h = hub.getBoundingClientRect();
+    var hx = h.left - w.left + h.width / 2;
+    var hy = h.top - w.top + h.height / 2;
+    var paths = '';
+    wrap.querySelectorAll('.s10-route__dot').forEach(function (dot) {
+      var d = dot.getBoundingClientRect();
+      var dx = d.left - w.left + 4;
+      var dy = d.top - w.top + d.height / 2;
+      var mx = (hx + dx) / 2;
+      paths += '<path d="M' + hx + ',' + hy + ' C' + mx + ',' + hy + ' ' + mx + ',' + dy + ' ' + dx + ',' + dy +
+        '" fill="none" stroke="#1B1B3A" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round" opacity=".4"/>';
+    });
+    svg.innerHTML = paths;
+  }
+  window.addEventListener('load', drawSpokes);
+  window.addEventListener('resize', drawSpokes);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawSpokes);
+  drawSpokes();
+})();
+</script>
+
   </body>
 </html>

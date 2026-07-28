@@ -1,0 +1,46 @@
+---
+// LP専用の計測ヘッド。BaseHead と違い global.css を読み込まない
+// （LPは自前のCSSで完結しているため、サイト共通CSSを混ぜると崩れる）。
+// 中身は BaseHead と同じ GA4 / Clarity / 流入元(hq_attr)捕捉の3点。
+---
+
+<!-- Google Analytics 4 -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-VSH7Z981XF"></script>
+<script is:inline>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	window.gtag = gtag;
+	gtag('js', new Date());
+	gtag('config', 'G-VSH7Z981XF');
+</script>
+
+<!-- Microsoft Clarity（ヒートマップ・セッション録画） -->
+<script is:inline type="text/javascript">
+	(function(c,l,a,r,i,t,y){
+		c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+		t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+		y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+	})(window, document, "clarity", "script", "xqy9wgrfmx");
+</script>
+
+<!-- 流入元の捕捉（gclid / utm / referrer）: /contact/ の送信時に付与される -->
+<script is:inline>
+	(function () {
+		try {
+			var KEY = 'hq_attr';
+			var a;
+			try { a = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { a = {}; }
+			var p = new URLSearchParams(location.search);
+			['gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (k) {
+				var v = p.get(k);
+				if (v) a[k] = v;
+			});
+			if (!a.first_referrer) {
+				a.first_referrer = document.referrer || '(direct)';
+				a.first_landing = location.pathname + location.search;
+				a.first_ts = new Date().toISOString();
+			}
+			localStorage.setItem(KEY, JSON.stringify(a));
+		} catch (e) {}
+	})();
+</script>

@@ -10,7 +10,8 @@ import rehypeImgAttrs from './plugins/rehype-img-attrs.mjs';
 export default defineConfig({
 	    site: 'https://theheadquarters.jp',
 	integrations: [mdx(), sitemap({
-		filter: (page) => !page.includes('/admin'),
+		// /kobe/ は広告着地用LP（canonicalはトップ）なのでサイトマップから除外する
+		filter: (page) => !page.includes('/admin') && !page.endsWith('/kobe/'),
 	})],
 	markdown: {
 		remarkPlugins: [remarkPricing],

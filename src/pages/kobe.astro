@@ -2441,6 +2441,11 @@ body.sp-menu-open { overflow: hidden; }
   html { scroll-behavior: auto; }
   .sp-cta-bar { transition: none; }
 }
+/* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。
+   このLPのCSSは高さを指定せず intrinsic 比率に任せる作りなので、
+   height:auto を入れないと height属性の値(768px等)がそのまま効いて崩れる。
+   詳細度0,0,1なのでクラス指定で高さを持つ画像には影響しない。 */
+img { height: auto; }
 </style>
   </head>
 

@@ -2588,6 +2588,29 @@ body.sp-menu-open { overflow: hidden; }
   .sp-cta-bar { transition: none; }
 }
 
+/* ヒーロー全面コラージュのレスポンシブ調整(2026-07-29)。
+   2列x2行に固定するとタイルの縦横比が写真(3:2)から離れ、object-fit:coverで大きく切れる。
+   実測: モバイル390x844で比率0.50(横67%カット) / 超ワイド2600x1366で比率3.03(縦51%カット)。
+   - 縦長画面: 1列x4行の横帯にする → 比率2.0・切り取り26%。4枚とも被写体が分かる
+   - 超ワイド: コラージュ幅を1600pxで止めて中央寄せ → 比率1.86・切り取り19%。左右はヒーローの地色 */
+@media (max-width: 640px) {
+  .s01-collage { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
+}
+@media (min-width: 1601px) {
+  .s01-collage { max-width: 1600px; margin-inline: auto; }
+}
+
+/* ROOMSの全面コラージュ(.s09-showcase)も同じ理由で切れすぎる。
+   実測: モバイル390x844で1タイル195x310(比率0.63)=横58%カット。天井しか見えない状態だった。
+   縦長画面では1列x4行にして横長タイルにし、部屋の見せ場が中央に来るよう少し下寄りに切る。 */
+@media (max-width: 640px) {
+  .s09-showcase__collage { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
+  .s09-showcase__collage img { object-position: center 58%; }
+}
+@media (min-width: 1601px) {
+  .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }
+}
+
 /* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。
    このLPのCSSは高さを指定せず intrinsic 比率に任せる箇所が多く、
    height:auto を入れないと height属性の値(768px等)がそのまま効いて崩れる。
@@ -2848,123 +2871,7 @@ img { height: auto; }
   </div>
 </div>
 
-<section class="section s05-section" id="life">
-  <!-- 紙吹雪(あしらい12: ドット+三角の応用) -->
-  <svg class="s05-confetti" aria-hidden="true">
-    <g opacity=".16">
-      <circle cx="8%" cy="18%" r="8" fill="#FFD23F"></circle>
-      <polygon points="0,0 16,4 4,18" fill="#FFFDF8" transform="translate(90%,10%)"></polygon>
-      <circle cx="94%" cy="70%" r="9" fill="#2EC4B6"></circle>
-      <polygon points="0,10 10,0 20,10 10,20" fill="#FFFDF8" transform="translate(4%,78%)"></polygon>
-    </g>
-  </svg>
 
-  <div class="s05-photos" aria-hidden="true">
-    <div class="photo-frame s05-photo--1">
-      <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg" alt="" loading="lazy">
-      <p class="photo-frame__caption">屋上、六甲山ビュー</p>
-    </div>
-    <div class="photo-frame s05-photo--2">
-      <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg" alt="" loading="lazy">
-      <p class="photo-frame__caption">とある日のHQ</p>
-    </div>
-    <div class="photo-frame s05-photo--3">
-      <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg" alt="" loading="lazy">
-      <p class="photo-frame__caption">屋上BBQの日</p>
-    </div>
-    <div class="photo-frame s05-photo--4">
-      <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg" alt="" loading="lazy">
-      <p class="photo-frame__caption">夜はだいたいリビング</p>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="section-heading section-heading--on-dark s05-heading reveal">
-      <h2 class="section-heading__title">HQ TIME TABLE — とある住人の1日</h2>
-      <p class="section-heading__lead">フェスのタイムテーブルみたいに、毎日にちゃんと"見どころ"がある。</p>
-    </div>
-
-    <ol class="s05-timeline">
-      <li class="s05-item reveal">
-        <div class="s05-item__inner">
-          <span class="badge badge--stamp s05-stamp stamp-in is-visible">07:30</span>
-          <h3 class="s05-item__title">おはよう</h3>
-          <p class="s05-item__text">キッチンでBALMUDAトースターがチン。誰かの「おはよう」で1日がはじまる。</p>
-          <div class="s05-bubble stamp-in is-visible">
-            <svg viewBox="0 0 240 120" aria-hidden="true">
-              <path d="M20,10 h180 a16,16 0 0 1 16,16 v54 a16,16 0 0 1 -16,16 h-118 l-22,24 v-24 h-40 a16,16 0 0 1 -16,-16 v-54 a16,16 0 0 1 16,-16 z"
-                    fill="#FFFDF8" stroke="#2EC4B6" stroke-width="3"/>
-            </svg>
-            <p class="s05-bubble__text">「おはよ〜。パン焼く?」</p>
-          </div>
-        </div>
-      </li>
-
-      <li class="s05-item reveal reveal-delay-1">
-        <div class="s05-item__inner">
-          <span class="badge badge--stamp s05-stamp stamp-in is-visible">10:00</span>
-          <h3 class="s05-item__title">商店街へ買い出し</h3>
-          <p class="s05-item__text">ドアを開けたらそこはアーケード。八百屋さんまで徒歩0.1分、マルハチまで2分。雨の日も傘いらず。</p>
-          <div class="s05-annot">
-            <svg viewBox="0 0 120 100" width="46" aria-hidden="true">
-              <path d="M10,10 C40,20 60,50 85,75" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round"/>
-              <path d="M65,68 L86,78 L78,54" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>※0.1分=ほぼ隣</span>
-          </div>
-        </div>
-      </li>
-
-      <li class="s05-item reveal reveal-delay-2">
-        <div class="s05-item__inner">
-          <span class="badge badge--stamp s05-stamp stamp-in is-visible">15:00</span>
-          <h3 class="s05-item__title">スタディルームで集中タイム</h3>
-          <p class="s05-item__text">長机+モニターアームで、課題もリモートワークもはかどる。</p>
-          <div class="s05-bubble stamp-in is-visible">
-            <svg viewBox="0 0 240 120" aria-hidden="true">
-              <path d="M20,10 h180 a16,16 0 0 1 16,16 v54 a16,16 0 0 1 -16,16 h-40 v24 l-22,-24 h-134 a16,16 0 0 1 -16,-16 v-54 a16,16 0 0 1 16,-16 z"
-                    fill="#FFFDF8" stroke="#2EC4B6" stroke-width="3"/>
-            </svg>
-            <p class="s05-bubble__text">「しずかに集中したい日はここ」</p>
-          </div>
-        </div>
-      </li>
-
-      <li class="s05-item reveal reveal-delay-3">
-        <div class="s05-item__inner">
-          <span class="badge badge--stamp s05-stamp stamp-in is-visible">17:30</span>
-          <h3 class="s05-item__title">屋上でひとやすみ</h3>
-          <p class="s05-item__text">ウッドデッキと人工芝、ラタンソファ。六甲山脈を眺めてぼーっとする、最高の時間。</p>
-        </div>
-      </li>
-
-      <li class="s05-item reveal reveal-delay-4">
-        <div class="s05-item__inner">
-          <span class="badge badge--stamp s05-stamp stamp-in is-visible">19:30</span>
-          <h3 class="s05-item__title">夜はみんなでごはん</h3>
-          <p class="s05-item__text">冷蔵庫4台のキッチンで誰かが何か作ってる。「食べる?」の一言から、今夜も宴がはじまる。</p>
-          <div class="s05-bubble stamp-in is-visible">
-            <svg viewBox="0 0 240 120" aria-hidden="true">
-              <path d="M20,10 h180 a16,16 0 0 1 16,16 v54 a16,16 0 0 1 -16,16 h-118 l-22,24 v-24 h-40 a16,16 0 0 1 -16,-16 v-54 a16,16 0 0 1 16,-16 z"
-                    fill="#FFFDF8" stroke="#2EC4B6" stroke-width="3"/>
-            </svg>
-            <p class="s05-bubble__text">「ただいま!」「おかえり〜!」</p>
-          </div>
-        </div>
-      </li>
-
-      <li class="s05-item reveal reveal-delay-5">
-        <div class="s05-item__inner">
-          <span class="badge badge--stamp s05-stamp stamp-in is-visible">23:00</span>
-          <h3 class="s05-item__title">おやすみ</h3>
-          <p class="s05-item__text">個室に戻って自分の時間。ひとりとみんな、どっちも選べるのがHQ。</p>
-        </div>
-      </li>
-    </ol>
-
-    <p class="s05-closing reveal">特別なイベントがなくても、毎日がちょっとフェス。</p>
-  </div>
-</section>
 
 <!-- ===== section 06 ===== -->
 <section class="section s06-section bg-dots" id="tour">
@@ -3716,6 +3623,125 @@ img { height: auto; }
     <div class="s11-cta-row reveal">
       <a class="btn btn--cta" href="/contact/">費用のこまかい質問もどうぞ→</a>
     </div>
+  </div>
+</section>
+
+<!-- TIME TABLE: 上部のスクロールを短くするため pricing の後ろへ移動 -->
+<section class="section s05-section" id="life">
+  <!-- 紙吹雪(あしらい12: ドット+三角の応用) -->
+  <svg class="s05-confetti" aria-hidden="true">
+    <g opacity=".16">
+      <circle cx="8%" cy="18%" r="8" fill="#FFD23F"></circle>
+      <polygon points="0,0 16,4 4,18" fill="#FFFDF8" transform="translate(90%,10%)"></polygon>
+      <circle cx="94%" cy="70%" r="9" fill="#2EC4B6"></circle>
+      <polygon points="0,10 10,0 20,10 10,20" fill="#FFFDF8" transform="translate(4%,78%)"></polygon>
+    </g>
+  </svg>
+
+  <div class="s05-photos" aria-hidden="true">
+    <div class="photo-frame s05-photo--1">
+      <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/10/69f1de8be6f750b5997011dc209e6356-1024x683.jpg" alt="" loading="lazy">
+      <p class="photo-frame__caption">屋上、六甲山ビュー</p>
+    </div>
+    <div class="photo-frame s05-photo--2">
+      <img decoding="async" width="1024" height="683" src="/wp-content/uploads/2019/07/DSCF0932-1024x683.jpg" alt="" loading="lazy">
+      <p class="photo-frame__caption">とある日のHQ</p>
+    </div>
+    <div class="photo-frame s05-photo--3">
+      <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq2-2-1024x682.jpg" alt="" loading="lazy">
+      <p class="photo-frame__caption">屋上BBQの日</p>
+    </div>
+    <div class="photo-frame s05-photo--4">
+      <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-1-10mm-1-1024x682.jpg" alt="" loading="lazy">
+      <p class="photo-frame__caption">夜はだいたいリビング</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-heading section-heading--on-dark s05-heading reveal">
+      <h2 class="section-heading__title">HQ TIME TABLE — とある住人の1日</h2>
+      <p class="section-heading__lead">フェスのタイムテーブルみたいに、毎日にちゃんと"見どころ"がある。</p>
+    </div>
+
+    <ol class="s05-timeline">
+      <li class="s05-item reveal">
+        <div class="s05-item__inner">
+          <span class="badge badge--stamp s05-stamp stamp-in is-visible">07:30</span>
+          <h3 class="s05-item__title">おはよう</h3>
+          <p class="s05-item__text">キッチンでBALMUDAトースターがチン。誰かの「おはよう」で1日がはじまる。</p>
+          <div class="s05-bubble stamp-in is-visible">
+            <svg viewBox="0 0 240 120" aria-hidden="true">
+              <path d="M20,10 h180 a16,16 0 0 1 16,16 v54 a16,16 0 0 1 -16,16 h-118 l-22,24 v-24 h-40 a16,16 0 0 1 -16,-16 v-54 a16,16 0 0 1 16,-16 z"
+                    fill="#FFFDF8" stroke="#2EC4B6" stroke-width="3"/>
+            </svg>
+            <p class="s05-bubble__text">「おはよ〜。パン焼く?」</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="s05-item reveal reveal-delay-1">
+        <div class="s05-item__inner">
+          <span class="badge badge--stamp s05-stamp stamp-in is-visible">10:00</span>
+          <h3 class="s05-item__title">商店街へ買い出し</h3>
+          <p class="s05-item__text">ドアを開けたらそこはアーケード。八百屋さんまで徒歩0.1分、マルハチまで2分。雨の日も傘いらず。</p>
+          <div class="s05-annot">
+            <svg viewBox="0 0 120 100" width="46" aria-hidden="true">
+              <path d="M10,10 C40,20 60,50 85,75" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round"/>
+              <path d="M65,68 L86,78 L78,54" fill="none" stroke="#1B1B3A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>※0.1分=ほぼ隣</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="s05-item reveal reveal-delay-2">
+        <div class="s05-item__inner">
+          <span class="badge badge--stamp s05-stamp stamp-in is-visible">15:00</span>
+          <h3 class="s05-item__title">スタディルームで集中タイム</h3>
+          <p class="s05-item__text">長机+モニターアームで、課題もリモートワークもはかどる。</p>
+          <div class="s05-bubble stamp-in is-visible">
+            <svg viewBox="0 0 240 120" aria-hidden="true">
+              <path d="M20,10 h180 a16,16 0 0 1 16,16 v54 a16,16 0 0 1 -16,16 h-40 v24 l-22,-24 h-134 a16,16 0 0 1 -16,-16 v-54 a16,16 0 0 1 16,-16 z"
+                    fill="#FFFDF8" stroke="#2EC4B6" stroke-width="3"/>
+            </svg>
+            <p class="s05-bubble__text">「しずかに集中したい日はここ」</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="s05-item reveal reveal-delay-3">
+        <div class="s05-item__inner">
+          <span class="badge badge--stamp s05-stamp stamp-in is-visible">17:30</span>
+          <h3 class="s05-item__title">屋上でひとやすみ</h3>
+          <p class="s05-item__text">ウッドデッキと人工芝、ラタンソファ。六甲山脈を眺めてぼーっとする、最高の時間。</p>
+        </div>
+      </li>
+
+      <li class="s05-item reveal reveal-delay-4">
+        <div class="s05-item__inner">
+          <span class="badge badge--stamp s05-stamp stamp-in is-visible">19:30</span>
+          <h3 class="s05-item__title">夜はみんなでごはん</h3>
+          <p class="s05-item__text">冷蔵庫4台のキッチンで誰かが何か作ってる。「食べる?」の一言から、今夜も宴がはじまる。</p>
+          <div class="s05-bubble stamp-in is-visible">
+            <svg viewBox="0 0 240 120" aria-hidden="true">
+              <path d="M20,10 h180 a16,16 0 0 1 16,16 v54 a16,16 0 0 1 -16,16 h-118 l-22,24 v-24 h-40 a16,16 0 0 1 -16,-16 v-54 a16,16 0 0 1 16,-16 z"
+                    fill="#FFFDF8" stroke="#2EC4B6" stroke-width="3"/>
+            </svg>
+            <p class="s05-bubble__text">「ただいま!」「おかえり〜!」</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="s05-item reveal reveal-delay-5">
+        <div class="s05-item__inner">
+          <span class="badge badge--stamp s05-stamp stamp-in is-visible">23:00</span>
+          <h3 class="s05-item__title">おやすみ</h3>
+          <p class="s05-item__text">個室に戻って自分の時間。ひとりとみんな、どっちも選べるのがHQ。</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="s05-closing reveal">特別なイベントがなくても、毎日がちょっとフェス。</p>
   </div>
 </section>
 

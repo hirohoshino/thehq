@@ -2588,30 +2588,31 @@ body.sp-menu-open { overflow: hidden; }
   .sp-cta-bar { transition: none; }
 }
 
-/* ヒーロー全面コラージュのレスポンシブ調整(2026-07-29)。
-   2列x2行に固定するとタイルの縦横比が写真(3:2)から離れ、object-fit:coverで大きく切れる。
-   実測: モバイル390x844で比率0.50(横67%カット) / 超ワイド2600x1366で比率3.03(縦51%カット)。
-   - 縦長画面: 1列x4行の横帯にする → 比率2.0・切り取り26%。4枚とも被写体が分かる
-   - 超ワイド: コラージュ幅を1600pxで止めて中央寄せ → 比率1.86・切り取り19%。左右はヒーローの地色 */
+/* 全面コラージュのレスポンシブ調整(2026-07-29)。
+   2列x2行に固定するとタイルの縦横比が写真(4:3〜3:2)から離れ、object-fit:coverで大きく切れる。
+   実測: モバイル390x844で1タイル195x310(比率0.63)=横58%カット / 超ワイド2600x1366で比率3.03=縦51%カット。
+
+   縦長画面では「4枚を小さく」より「2枚を大きく」の方が写真が伝わる。
+   1列4行(1枚200px高・比率1.9)だと集合写真が2人分しか見えなかったため、
+   縦長では上下2枚だけ表示し、ヒーローの高さも詰めてタイル比率を1.2前後にする。
+   (min-heightなので中身が入りきらなければ自動で伸びる = はみ出しは起きない) */
 @media (max-width: 640px) {
-  .s01-collage { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
+  .s01-collage { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .s01-collage img:nth-child(n+3) { display: none; }
+  .s01-overlay { min-height: min(74svh, 620px); padding-top: 76px; padding-bottom: 44px; }
+
+  .s09-showcase__collage { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .s09-showcase__collage img:nth-child(n+3) { display: none; }
+  .s09-showcase__overlay { min-height: min(58svh, 480px); padding-top: 56px; padding-bottom: 40px; }
 }
 @media (min-width: 1601px) {
-  .s01-collage { max-width: 1600px; margin-inline: auto; }
+  .s01-collage,
+  .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }
 }
 
-/* ROOMSの全面コラージュ(.s09-showcase)も同じ理由で切れすぎる。
-   実測: モバイル390x844で1タイル195x310(比率0.63)=横58%カット。天井しか見えない状態だった。
-   縦長画面では1列x4行にして横長タイルにし、部屋の見せ場が中央に来るよう少し下寄りに切る。 */
 /* 部屋写真は天井が上に写り込むので、縦に切るときは少し下寄りで切る。
    デスクトップでもタイル比率2.47(縦39%カット)なので全画面幅に効かせる。 */
 .s09-showcase__collage img { object-position: center 58%; }
-@media (max-width: 640px) {
-  .s09-showcase__collage { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
-}
-@media (min-width: 1601px) {
-  .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }
-}
 
 /* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。
    このLPのCSSは高さを指定せず intrinsic 比率に任せる箇所が多く、
@@ -2647,9 +2648,9 @@ img { height: auto; }
   <!-- 全面写真コラージュ(2x2) -->
   <div class="s01-collage" aria-hidden="true">
     <img fetchpriority="high" decoding="async" width="1024" height="768" src="/wp-content/uploads/2019/11/%E3%81%AA%E3%81%B9-1-1024x768.webp" alt="">
-    <img srcset={img('/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg').webpSrcset} sizes="50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="">
-    <img srcset={img('/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg').webpSrcset} sizes="50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="">
-    <img srcset={img('/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg').webpSrcset} sizes="50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="">
+    <img srcset={img('/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg').webpSrcset} sizes="(max-width: 640px) 100vw, 50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="">
+    <img srcset={img('/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg').webpSrcset} sizes="(max-width: 640px) 100vw, 50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="">
+    <img srcset={img('/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg').webpSrcset} sizes="(max-width: 640px) 100vw, 50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="">
   </div>
   <div class="s01-shade"></div>
   <p class="s01-watermark" aria-hidden="true">SHARE HOUSE "HQ"</p>

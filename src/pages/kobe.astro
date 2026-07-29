@@ -2589,29 +2589,53 @@ body.sp-menu-open { overflow: hidden; }
 }
 
 /* 全面コラージュのレスポンシブ調整(2026-07-29)。
-   2列x2行に固定するとタイルの縦横比が写真(4:3〜3:2)から離れ、object-fit:coverで大きく切れる。
-   実測: モバイル390x844で1タイル195x310(比率0.63)=横58%カット / 超ワイド2600x1366で比率3.03=縦51%カット。
 
-   縦長画面では「4枚を小さく」より「2枚を大きく」の方が写真が伝わる。
-   1列4行(1枚200px高・比率1.9)だと集合写真が2人分しか見えなかったため、
-   縦長では上下2枚だけ表示し、ヒーローの高さも詰めてタイル比率を1.2前後にする。
-   (min-heightなので中身が入りきらなければ自動で伸びる = はみ出しは起きない) */
+   このLPのコラージュは position:absolute; inset:0 でヒーローを埋める要素で、
+   ヒーローの高さは上に載る文字ブロックが決めている。つまり「タイルの高さが先に決まり、
+   そこに object-fit:cover で写真を流し込む」構造なので、写真の比率は無視されて切られる。
+
+   縦長画面では発想を逆にして、写真の比率からヒーローの高さを決める:
+     - 表示は上下2枚（なべ 1024x768 = 4:3 / 屋上 1024x682 = 3:2）
+     - 2枚を縦に積んだ自然な高さ = 100vw*(768/1024) + 100vw*(682/1024) = 141.6vw
+     - グリッドの行比も写真の高さ比(768fr 682fr)に合わせる
+   これで各タイルの縦横比が写真そのものと一致し、切り取りがゼロになる。
+   min-height 指定なので、文字が入りきらない端末では自動で伸びる(その分だけ少し切れる)。
+
+   ROOMS側は2枚とも 1024x683 = 3:2 なので 2枚積みで 133.4vw、行比は等分。
+
+   超ワイドは逆に横長すぎて縦が切れるので、幅を1600pxで止めて中央寄せにする。 */
 @media (max-width: 640px) {
-  .s01-collage { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .s01-collage {
+    grid-template-columns: 1fr;
+    grid-template-rows: 768fr 682fr;
+  }
   .s01-collage img:nth-child(n+3) { display: none; }
-  .s01-overlay { min-height: min(74svh, 620px); padding-top: 76px; padding-bottom: 44px; }
+  .s01-overlay {
+    min-height: calc(141.6vw + 3px);
+    padding-top: 64px;
+    padding-bottom: 36px;
+  }
 
-  .s09-showcase__collage { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .s09-showcase__collage {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
   .s09-showcase__collage img:nth-child(n+3) { display: none; }
-  .s09-showcase__overlay { min-height: min(58svh, 480px); padding-top: 56px; padding-bottom: 40px; }
+  .s09-showcase__overlay {
+    min-height: calc(133.4vw + 3px);
+    padding-top: 52px;
+    padding-bottom: 36px;
+  }
+  /* 比率が一致するので下寄せの補正は不要 */
+  .s09-showcase__collage img { object-position: center; }
 }
 @media (min-width: 1601px) {
   .s01-collage,
   .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }
 }
 
-/* 部屋写真は天井が上に写り込むので、縦に切るときは少し下寄りで切る。
-   デスクトップでもタイル比率2.47(縦39%カット)なので全画面幅に効かせる。 */
+/* 部屋写真は天井が上に写り込むので、縦に切るときは少し下寄りで切る(PC向け)。
+   デスクトップでもタイル比率2.47(縦39%カット)になるため。 */
 .s09-showcase__collage img { object-position: center 58%; }
 
 /* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。

@@ -2603,9 +2603,11 @@ body.sp-menu-open { overflow: hidden; }
 /* ROOMSの全面コラージュ(.s09-showcase)も同じ理由で切れすぎる。
    実測: モバイル390x844で1タイル195x310(比率0.63)=横58%カット。天井しか見えない状態だった。
    縦長画面では1列x4行にして横長タイルにし、部屋の見せ場が中央に来るよう少し下寄りに切る。 */
+/* 部屋写真は天井が上に写り込むので、縦に切るときは少し下寄りで切る。
+   デスクトップでもタイル比率2.47(縦39%カット)なので全画面幅に効かせる。 */
+.s09-showcase__collage img { object-position: center 58%; }
 @media (max-width: 640px) {
   .s09-showcase__collage { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
-  .s09-showcase__collage img { object-position: center 58%; }
 }
 @media (min-width: 1601px) {
   .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }

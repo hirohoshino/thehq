@@ -39,6 +39,11 @@ const SITE_IMAGES = [
 	{ src: '/images/insta-1.jpg', widths: [240, 480] },
 	{ src: '/images/insta-2.jpg', widths: [240, 480] },
 	{ src: '/images/insta-3.jpg', widths: [240, 480] },
+	// 広告着地LP /kobe/ のヒーロー全面コラージュ(2x2)。1タイル = 画面幅の半分なので
+	// 1024px原寸は過剰。480/768 を用意して sizes="50vw" で選ばせる（LCP対策）。
+	{ src: '/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg', widths: [480, 768] },
+	{ src: '/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg', widths: [480, 768] },
+	{ src: '/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg', widths: [480, 768] },
 ];
 const SITE_IMAGES_MANIFEST = path.join(ROOT, 'src/data/site-images.json');
 const THUMB_WIDTH = 500;

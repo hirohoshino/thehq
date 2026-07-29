@@ -5,6 +5,7 @@
 // 価格は src/data/rooms.json が単一ソース。ベタ書きは置かない。
 import LpHead from '../components/LpHead.astro';
 import { rents, minRentYen, maxRentYen, commonFeeYen, rentRange } from '../data/pricing.mjs';
+import { img } from '../data/site-images.mjs';
 
 const yen = (n) => '¥' + Number(n).toLocaleString('en-US');
 
@@ -2621,9 +2622,9 @@ img { height: auto; }
   <!-- 全面写真コラージュ(2x2) -->
   <div class="s01-collage" aria-hidden="true">
     <img fetchpriority="high" decoding="async" width="1024" height="768" src="/wp-content/uploads/2019/11/%E3%81%AA%E3%81%B9-1-1024x768.webp" alt="">
-    <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="">
-    <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="">
-    <img decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="">
+    <img srcset={img('/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg').webpSrcset} sizes="50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg" alt="">
+    <img srcset={img('/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg').webpSrcset} sizes="50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg" alt="">
+    <img srcset={img('/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg').webpSrcset} sizes="50vw" decoding="async" width="1024" height="682" src="/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg" alt="">
   </div>
   <div class="s01-shade"></div>
   <p class="s01-watermark" aria-hidden="true">SHARE HOUSE "HQ"</p>

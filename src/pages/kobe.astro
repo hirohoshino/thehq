@@ -2587,62 +2587,6 @@ body.sp-menu-open { overflow: hidden; }
   html { scroll-behavior: auto; }
   .sp-cta-bar { transition: none; }
 }
-
-/* 全面コラージュのレスポンシブ調整(2026-07-29)。
-
-   このLPのコラージュは position:absolute; inset:0 でヒーローを埋める要素で、
-   ヒーローの高さは上に載る文字ブロックが決めている。つまり「タイルの高さが先に決まり、
-   そこに object-fit:cover で写真を流し込む」構造なので、写真の比率は無視されて切られる。
-
-   縦長画面では発想を逆にして、写真の比率からヒーローの高さを決める:
-     - 表示は上下2枚（なべ 1024x768 = 4:3 / 屋上 1024x682 = 3:2）
-     - 2枚を縦に積んだ自然な高さ = 100vw*(768/1024) + 100vw*(682/1024) = 141.6vw
-     - グリッドの行比も写真の高さ比(768fr 682fr)に合わせる
-   これで各タイルの縦横比が写真そのものと一致し、切り取りがゼロになる。
-   min-height 指定なので、文字が入りきらない端末では自動で伸びる(その分だけ少し切れる)。
-
-   ROOMS側は2枚とも 1024x683 = 3:2 なので 2枚積みで 133.4vw、行比は等分。
-
-   超ワイドは逆に横長すぎて縦が切れるので、幅を1600pxで止めて中央寄せにする。 */
-@media (max-width: 640px) {
-  .s01-collage {
-    grid-template-columns: 1fr;
-    grid-template-rows: 768fr 682fr;
-  }
-  .s01-collage img:nth-child(n+3) { display: none; }
-  .s01-overlay {
-    min-height: calc(141.6vw + 3px);
-    padding-top: 64px;
-    padding-bottom: 36px;
-  }
-
-  .s09-showcase__collage {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-  .s09-showcase__collage img:nth-child(n+3) { display: none; }
-  .s09-showcase__overlay {
-    min-height: calc(133.4vw + 3px);
-    padding-top: 52px;
-    padding-bottom: 36px;
-  }
-  /* 比率が一致するので下寄せの補正は不要 */
-  .s09-showcase__collage img { object-position: center; }
-}
-@media (min-width: 1601px) {
-  .s01-collage,
-  .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }
-}
-
-/* 部屋写真は天井が上に写り込むので、縦に切るときは少し下寄りで切る(PC向け)。
-   デスクトップでもタイル比率2.47(縦39%カット)になるため。 */
-.s09-showcase__collage img { object-position: center 58%; }
-
-/* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。
-   このLPのCSSは高さを指定せず intrinsic 比率に任せる箇所が多く、
-   height:auto を入れないと height属性の値(768px等)がそのまま効いて崩れる。
-   詳細度0,0,1なので .s09-showcase__collage img 等のクラス指定には影響しない。 */
-img { height: auto; }
 </style>
   </head>
 
@@ -4195,5 +4139,58 @@ img { height: auto; }
 })();
 </script>
 
+
+    <!-- 元LPは .s09-showcase 等のCSSを body内の<style>に持っている。
+         同じ詳細度なら後勝ちなので、上書きは必ず body の最後に置く。 -->
+    <style is:inline>
+/* ============ /kobe/ 用の上書き（2026-07-29） ============ */
+
+/* CLS対策で全imgにwidth/height属性を付けたことによる副作用の打ち消し。
+   高さをCSSで持たない画像はHTMLのheight属性がそのまま効いて崩れるため。
+   詳細度0,0,1なのでクラス指定で高さを持つ画像には影響しない。 */
+img { height: auto; }
+
+/* --- 縦長画面（スマホ） ---
+   このLPのコラージュは position:absolute; inset:0 でセクションを埋める作りで、
+   セクションの高さは上に載る文字ブロックが決めている。つまりタイルの高さが先に決まり、
+   そこに object-fit:cover で流し込むので写真の比率は無視されて切られる。
+   実測(390x844): 文字ブロックは684px必要だが、写真2枚の自然な高さは555px。
+   → 写真は自然な高さのまま固定し、余った縦スペースは地色にする。切り取りゼロになる。 */
+@media (max-width: 640px) {
+  .s01-collage,
+  .s09-showcase__collage {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-content: center;
+  }
+  .s01-collage img,
+  .s09-showcase__collage img {
+    width: 100%;
+    height: auto;          /* 比率そのまま。coverによる切り取りが起きない */
+    min-height: 0;
+    object-fit: fill;
+    object-position: center;
+  }
+  /* 3枚目以降は隠す（1枚を大きく見せる） */
+  .s01-collage img:nth-child(n+3),
+  .s09-showcase__collage img:nth-child(n+3) { display: none; }
+
+  /* セクションが写真より低いと下が切れるので、最低でも写真2枚分は確保する */
+  .s01-overlay { min-height: calc(141.6vw + 3px); padding-top: 56px; padding-bottom: 32px; }
+  .s09-showcase__overlay { min-height: calc(133.4vw + 3px); padding-top: 48px; padding-bottom: 32px; }
+}
+
+/* --- 超ワイド ---
+   横長すぎて縦が切れるので、コラージュ幅を1600pxで止めて中央寄せ。左右は地色。 */
+@media (min-width: 1601px) {
+  .s01-collage,
+  .s09-showcase__collage { max-width: 1600px; margin-inline: auto; }
+}
+
+/* 部屋写真は天井が上に写り込むので、縦に切るときは少し下寄りで切る（PC向け） */
+@media (min-width: 641px) {
+  .s09-showcase__collage img { object-position: center 58%; }
+}
+    </style>
   </body>
 </html>

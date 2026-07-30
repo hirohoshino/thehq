@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
+<title>Google広告 出稿開始からの11日間 成果報告書｜The Headquarters Kobe</title>
+<style>
+:root{
+  --ink:#16181d; --ink2:#3c424e; --mute:#6b7280; --line:#e3e6ec; --bg:#fff; --bg2:#f7f8fa;
+  --good:#0f7b3f; --bad:#b3261e; --warn:#a16207; --blue:#1a56b8; --blue-bg:#f1f6fb;
+  --maxw:940px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;
+  font-size:15.5px; line-height:1.85; font-feature-settings:"palt";
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px 90px}
+.num{font-variant-numeric:tabular-nums; font-feature-settings:"tnum"}
+
+/* ---- report header ---- */
+.rpt-head{border-bottom:3px solid var(--ink); padding:38px 0 20px; margin-bottom:8px}
+.rpt-head .kicker{font-size:12.5px; letter-spacing:.14em; color:var(--mute); margin:0 0 10px}
+.rpt-head h1{font-size:27px; line-height:1.4; margin:0 0 14px; letter-spacing:.01em}
+.rpt-meta{display:flex; flex-wrap:wrap; gap:6px 26px; font-size:13px; color:var(--ink2); margin:0}
+.rpt-meta b{color:var(--ink); font-weight:600}
+
+/* ---- TOC ---- */
+.toc{background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin:26px 0 40px}
+.toc h2{font-size:15px; margin:0 0 12px; padding:0; border:0}
+.toc ol{margin:0; padding-left:1.4em; columns:2; column-gap:34px}
+.toc li{margin:0 0 5px; font-size:13.5px; break-inside:avoid}
+.toc a{color:var(--ink); text-decoration:none; border-bottom:1px solid transparent}
+.toc a:hover{border-bottom-color:var(--blue); color:var(--blue)}
+.toc .qb{font-size:10.5px; color:#fff; background:var(--blue); border-radius:3px; padding:1px 5px; margin-left:5px; vertical-align:1px}
+
+/* ---- sections ---- */
+section{padding-top:14px; margin-bottom:52px}
+h2{
+  font-size:21px; line-height:1.45; margin:44px 0 16px; padding:0 0 10px;
+  border-bottom:2px solid var(--ink);
+}
+h3{font-size:16.5px; margin:32px 0 10px; color:var(--ink); border-left:4px solid var(--ink); padding-left:11px}
+p{margin:0 0 14px}
+p.lead{
+  font-size:16.5px; line-height:1.8; font-weight:600; background:var(--bg2);
+  border-left:5px solid var(--ink); padding:14px 16px; margin:0 0 22px; border-radius:0 6px 6px 0;
+}
+code{background:#eef0f4; padding:1px 5px; border-radius:4px; font-size:.9em; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+small{color:var(--mute); font-size:12px}
+a{color:var(--blue)}
+.q-badge{
+  display:inline-block; font-size:11px; font-weight:700; color:#fff; background:var(--blue);
+  border-radius:4px; padding:2px 7px; margin-left:7px; vertical-align:3px; letter-spacing:.04em;
+}
+
+/* ---- tables ---- */
+table{border-collapse:collapse; width:100%; margin:16px 0 20px; font-size:13.5px}
+table.data th,table.data td,table.read th,table.read td{border:1px solid var(--line); padding:8px 10px; vertical-align:top}
+table.data thead th,table.read thead th{background:#eceff4; font-weight:700; text-align:left; font-size:12.5px; line-height:1.5}
+table.data tbody th{background:var(--bg2); font-weight:600; text-align:left; white-space:nowrap}
+table.data td{font-variant-numeric:tabular-nums}
+table.data td.good{color:var(--good); font-weight:700}
+table.data td.bad{color:var(--bad); font-weight:700}
+table.data td.warn{color:var(--warn); font-weight:700}
+table.data td.unk{color:var(--mute)}
+table.read td:last-child{font-weight:600}
+table.read th:last-child{width:34%}
+tbody tr:nth-child(even) td{background:#fcfcfd}
+
+.badge-n{
+  display:inline-block; font-size:10.5px; font-weight:700; color:var(--mute);
+  border:1px solid #c8ccd4; border-radius:3px; padding:0 5px; margin-left:5px; white-space:nowrap; vertical-align:1px;
+}
+
+/* ---- boxes ---- */
+.callout{border:1px solid #e0c98a; background:#fdf8ec; border-left:5px solid #d9a441; border-radius:0 7px 7px 0; padding:14px 17px; margin:18px 0}
+.callout.info{border-color:#bcd4ee; background:#f2f7fc; border-left-color:#5b8fd0}
+.callout b{display:block; margin-bottom:5px}
+.callout p:last-child,.cannot p:last-child,.howto p:last-child{margin-bottom:0}
+.cannot{border:1px dashed #c6cad2; background:#fafbfc; border-radius:7px; padding:14px 17px; margin:18px 0; color:var(--ink2)}
+.cannot b{display:block; margin-bottom:5px; color:var(--ink)}
+
+/* ---- howto card ---- */
+.howto{
+  border:1px solid #cfe0f2; border-left:5px solid var(--blue); background:var(--blue-bg);
+  border-radius:0 9px 9px 0; padding:16px 18px 18px; margin:26px 0 8px;
+}
+.howto-head{
+  font-weight:700; font-size:14.5px; color:var(--blue); margin-bottom:10px;
+  display:flex; align-items:center; gap:9px;
+}
+.howto-head::before{content:"HOW TO"; font-size:10px; letter-spacing:.1em; background:var(--blue); color:#fff; padding:2px 7px; border-radius:3px}
+ol.path{list-style:none; display:flex; flex-wrap:wrap; gap:6px; margin:0 0 13px; padding:0; counter-reset:none}
+ol.path li{
+  background:#fff; border:1px solid #c2d6ea; border-radius:5px; padding:4px 10px;
+  font-size:12.5px; color:var(--ink2); position:relative;
+}
+ol.path li+li::before{content:"›"; color:#9db4cc; position:absolute; left:-8px; top:50%; transform:translateY(-50%)}
+.howto figure{margin:12px 0}
+.howto table{background:#fff}
+
+/* ---- figures ---- */
+figure{margin:20px 0; text-align:center}
+figure img{max-width:100%; height:auto; border:1px solid var(--line); border-radius:7px; display:block; margin:0 auto; box-shadow:0 1px 4px rgba(0,0,0,.06)}
+img.shot-mobile{max-width:270px}
+img.shot-ui{max-width:100%}
+figcaption{font-size:12.5px; color:var(--mute); margin-top:8px; text-align:left; line-height:1.65}
+
+/* ---- funnel ---- */
+.funnel{margin:24px 0 20px}
+.funnel-step{
+  --w:100%;
+  width:var(--w); min-width:210px; margin:0 auto 7px; background:#eef2f8; border:1px solid #cfdaea;
+  border-radius:7px; padding:10px 15px; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 14px;
+}
+.funnel-step .fs-label{font-weight:700; font-size:13.5px; min-width:150px}
+.funnel-step .fs-num{font-size:17px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--blue)}
+.funnel-step .fs-rate{font-size:12px; color:var(--ink2); margin-left:auto}
+.funnel-step b{font-size:13px}
+
+/* ---- gauge ---- */
+.gauge{margin:22px 0 30px}
+.gauge-bar{display:flex; height:26px; border-radius:5px; overflow:hidden; border:1px solid var(--line)}
+.gauge-bar span{display:block; height:100%}
+.g-green{background:#bfe3cd} .g-amber{background:#f5e1b0} .g-red{background:#f2c3bf}
+.gauge-marks{position:relative; height:44px; margin-top:6px}
+.gauge-marks span{
+  position:absolute; transform:translateX(-50%); font-size:11.5px; color:var(--ink2);
+  white-space:nowrap; text-align:center; padding-top:11px;
+}
+.gauge-marks span::before{content:""; position:absolute; top:0; left:50%; width:1px; height:8px; background:var(--ink2)}
+.gauge div{font-size:13.5px}
+
+/* ---- actions ---- */
+ul.actions{list-style:none; padding:0; margin:14px 0}
+ul.actions li{
+  border:1px solid var(--line); border-radius:7px; padding:12px 15px; margin-bottom:9px;
+  background:#fcfcfd; font-size:14px;
+}
+ul.actions li b{color:var(--ink)}
+.cost{
+  display:inline-block; font-size:11.5px; font-weight:700; color:var(--good);
+  background:#e8f4ec; border:1px solid #bfe0cc; border-radius:4px; padding:1px 8px; margin-left:8px; white-space:nowrap;
+}
+
+/* ---- footer ---- */
+.rpt-foot{border-top:2px solid var(--ink); margin-top:60px; padding-top:18px; font-size:12.5px; color:var(--mute)}
+.totop{font-size:12px; margin-left:10px; font-weight:400}
+
+@media (max-width:760px){
+  body{font-size:15px}
+  .toc ol{columns:1}
+  h2{font-size:19px}
+  table{font-size:12.5px; display:block; overflow-x:auto; white-space:nowrap}
+  table.read{white-space:normal}
+  .funnel-step{width:100% !important}
+  .funnel-step .fs-rate{margin-left:0; flex-basis:100%}
+}
+
+@media print{
+  @page{size:A4; margin:14mm}
+  body{font-size:10.5pt; line-height:1.65}
+  .wrap{max-width:none; padding:0}
+  .toc,.totop{display:none}
+  h2{break-before:page; font-size:15pt}
+  #ch00 h2{break-before:avoid}
+  figure,table,.howto,.callout,.cannot,.funnel,.gauge,ul.actions li{break-inside:avoid}
+  figure img{max-height:110mm}
+  img.shot-mobile{max-width:52mm}
+  a{color:var(--ink); text-decoration:none}
+  .howto,.callout,.cannot,p.lead{print-color-adjust:exact; -webkit-print-color-adjust:exact}
+  table.data td.good,table.data td.bad,table.data td.warn{print-color-adjust:exact; -webkit-print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="rpt-head">
+  <p class="kicker">GOOGLE ADS PERFORMANCE REPORT</p>
+  <h1>Google広告 出稿開始からの11日間 成果報告書<br><small style="font-size:15px;font-weight:400;color:var(--ink2)">The Headquarters Kobe（神戸・水道筋のシェアハウス）</small></h1>
+  <p class="rpt-meta">
+    <span><b>対象期間</b> 2026-07-19 〜 2026-07-29（11日間）</span>
+    <span><b>作成日</b> 2026-07-30</span>
+    <span><b>キャンペーン</b> HQ-Search-01</span>
+  </p>
+  <p class="rpt-meta" style="margin-top:8px">
+    <span><b>この報告書の性格</b> 成果報告 ＋ GMPツール（Ads / GA4 / Clarity / キーワードプランナー）の見方の教育</span>
+  </p>
+</header>
+
+<nav class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#ch00">この報告書の読み方</a></li>
+    <li><a href="#ch01">エグゼクティブサマリー</a><span class="qb">A1-A5</span></li>
+    <li><a href="#ch02">この11日間に何が起きたか（施策タイムライン）</a></li>
+    <li><a href="#ch03">ファネル全体像</a><span class="qb">A1</span></li>
+    <li><a href="#ch04">【上流】検索需要 — 市場に何語あるのか</a><span class="qb">A4/A5</span></li>
+    <li><a href="#ch05">【上流】実際に検索された言葉</a><span class="qb">A3</span></li>
+    <li><a href="#ch06">【表示】なぜ表示が伸びないのか</a><span class="qb">A4/A5</span></li>
+    <li><a href="#ch07">【表示】競合は誰か</a><span class="qb">A5</span></li>
+    <li><a href="#ch08">【クリック】CTR・CPC・費用の推移</a><span class="qb">A1/A5</span></li>
+    <li><a href="#ch09">【LP】着地後に何が起きているか</a><span class="qb">A1/A2</span></li>
+    <li><a href="#ch10">【LP】どこまで読まれているか（Clarity）</a><span class="qb">A2</span></li>
+    <li><a href="#ch11">【CTA】ボタンは押されているか</a><span class="qb">A2</span></li>
+    <li><a href="#ch12">【フォーム】最大の疑い箇所 /contact/</a><span class="qb">A2</span></li>
+    <li><a href="#ch13">【送信＝CV】CV件数とCPA</a><span class="qb">A1/A5</span></li>
+    <li><a href="#ch14">【CVの先】問い合わせ→内見→契約の歩留まり</a><span class="qb">A1</span></li>
+    <li><a href="#ch15">広告費以外にかかっているコスト</a></li>
+    <li><a href="#ch16">この11日間では判定できないこと</a></li>
+    <li><a href="#ch17">次アクション</a></li>
+    <li><a href="#ch18">付録A：週10分の確認ルーティン</a></li>
+    <li><a href="#ch19">付録B：用語・基準値・計測仕様</a></li>
+  </ol>
+  <p style="margin:14px 0 0;font-size:12.5px;color:var(--mute)">
+    <b style="color:var(--ink)">判断バッジ</b>　A1＝継続/停止　A2＝フォーム改修　A3＝除外KW「40代」　A4＝神大LPへの投資　A5＝日予算
+  </p>
+</nav>
+
+<section id="ch00">
+  <h2>0. この報告書の読み方</h2>
+  <p class="lead">この報告書は、7/19〜7/29の広告成果の報告と、Google Ads・GA4・Microsoft Clarity・キーワードプランナーを星野さんご自身で読めるようにするための練習帳を兼ねています。</p>
+
+  <p>先に前提を1つ置きます。対象の11日間のうち、広告の着地先である新LP <code>/kobe/</code> が存在したのは <span class="num">7/28</span>〜<span class="num">7/29</span> の最後の2日だけです。したがって本書は新LPの「判定」ではありません。<b>8/18の継続/停止判断に使う基準値をつくるための書類</b>として読んでください。2日分の数字で新旧LPの優劣を決めることはできず、本書もその判断はしていません。</p>
+
+  <p>もう1つ、色と記号の使い分けです。この報告書には「断定できる数字」と「傾向としか言えない数字」が混在しています。読み手が両者を取り違えないよう、表のセルを4つに塗り分けています。色が見えない環境でも区別できるよう、記号を必ず併記しています。</p>
+
+  <div class="callout">
+    <b>凡例（表のセルの色と記号）</b>
+    <table class="data">
+      <thead><tr><th>表示</th><th>意味</th><th>読み方</th></tr></thead>
+      <tbody>
+        <tr><td class="good">✓ 緑</td><td>基準クリア</td><td>設定した判断ラインを満たしている数字</td></tr>
+        <tr><td class="bad">▼ 赤</td><td>基準未達</td><td>判断ラインを下回っている、または上限を超えている数字</td></tr>
+        <tr><td class="warn">▲ 琥珀</td><td>中間（黄色ゾーン）</td><td>上限内だが目標には届いていない。継続の可否を保留する水準</td></tr>
+        <tr><td class="unk">— グレー <span class="badge-n">n不足</span></td><td>判定不能</td><td>母数が足りず、率としての比較ができない数字。件数の事実としてだけ読む</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>母数の目安として、<b>n&lt;30の数値には必ず <span class="badge-n">n不足</span> を付けています</b>。このバッジが付いた数字は「◯件だった」という事実としては使えますが、「◯%だから良い/悪い」という比較には使えません。バッジが付いた数字を根拠に施策を決めないでください。</p>
+
+  <p>本文中には次の2種類のボックスが繰り返し出てきます。</p>
+
+  <div class="cannot"><b>この数字から言えないこと</b><p>各章の数字が「どこまでを支えていて、どこから先は支えていないか」を明示するボックスです。数字を渡すだけだと過剰に読まれるため、言えない範囲を毎回セットで書いています。</p></div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <p>各章の末尾に付いているこのカードが、その章の数字を星野さんご自身で再現するための手順です。画面の階層を <code>ol.path</code> の並びで示し、見る列とその判断ラインを表にしています。4つのツールの入口は次のとおりです。</p>
+    <ol class="path"><li>Google Ads（表示・クリック・費用・CV・競合指標）</li><li>GA4（LP到達・滞在時間・イベント）</li><li>Microsoft Clarity（ヒートマップ・スクロール・デッドクリック）</li><li>キーワードプランナー（Ads内「ツール」→ プランニング）</li></ol>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>母数（表示回数・クリック・ユーザー数）</td><td>その数字がどれだけの試行から出ているか</td><td>n&lt;30なら率で比較しない</td></tr>
+        <tr><td>期間セレクタ</td><td>どの日付範囲を見ているか</td><td>画面を開くたびに必ず確認する</td></tr>
+        <tr><td>比較（期間比較のON/OFF）</td><td>前の期間と並べているか</td><td>新LPは7/28以降しか存在しないため、それ以前と並べても優劣の比較にはならない</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch01">
+  <h2>1. エグゼクティブサマリー <span class="q-badge">A1〜A5</span></h2>
+  <p class="lead">11日間でクリック<span class="num">59</span>・費用<span class="num">¥5,558</span>・CV<span class="num">1</span>件、CPAは通算<span class="num">¥5,558</span>で上限<span class="num">¥6,000</span>の内側ですが目標<span class="num">¥2,000</span>には届いておらず、継続/停止の判断は8/18まで保留する水準です。</p>
+
+  <figure><img class="shot-ui" src="img/06_ads_summary_11days.webp" alt="Google Ads キャンペーン画面。期間2026年7月19日〜29日の指標カード（クリック数59・表示回数436・平均クリック単価¥94・費用¥5,558）"><figcaption>図1 Google Ads キャンペーン画面の指標カード（7/19〜7/29の通算。カードはクリックすると別の指標に切り替えられる）</figcaption></figure>
+
+  <h3>1-1. 期間を3つに割った実績</h3>
+  <p>新LP <code>/kobe/</code> が存在したのは7/28以降なので、9日間と2日間を分けて並べます。日数が違うため、比較のために1日あたり換算も添えます。</p>
+
+  <table class="data">
+    <thead>
+      <tr><th>指標</th><th>7/19〜27 旧LP・9日</th><th>7/28〜29 新LP・2日</th><th>1日あたり換算</th><th>通算11日</th></tr>
+    </thead>
+    <tbody>
+      <tr><th>表示回数</th><td><span class="num">341</span></td><td><span class="num">95</span></td><td>旧 <span class="num">37.9</span> → 新 <span class="num">47.5</span></td><td><span class="num">436</span></td></tr>
+      <tr><th>クリック</th><td><span class="num">44</span></td><td class="unk"><span class="num">15</span> <span class="badge-n">n不足</span></td><td>旧 <span class="num">4.9</span> → 新 <span class="num">7.5</span></td><td><span class="num">59</span></td></tr>
+      <tr><th>CTR</th><td><span class="num">12.90%</span></td><td><span class="num">15.79%</span></td><td class="unk">—</td><td><span class="num">13.53%</span></td></tr>
+      <tr><th>平均CPC</th><td><span class="num">¥94</span></td><td><span class="num">¥95</span></td><td class="unk">—</td><td><span class="num">¥94</span></td></tr>
+      <tr><th>費用</th><td><span class="num">¥4,134</span></td><td><span class="num">¥1,424</span></td><td>旧 <span class="num">¥459</span> → 新 <span class="num">¥712</span></td><td><span class="num">¥5,558</span></td></tr>
+      <tr><th>CV（送信）</th><td class="unk"><span class="num">1</span> <span class="badge-n">n不足</span></td><td class="unk"><span class="num">0</span> <span class="badge-n">n不足</span></td><td class="unk">—</td><td class="unk"><span class="num">1</span> <span class="badge-n">n不足</span></td></tr>
+      <tr><th>CPA</th><td class="warn">▲ <span class="num">¥4,134</span></td><td class="unk">— CV0のため算出不能 <span class="badge-n">n不足</span></td><td class="unk">—</td><td class="warn">▲ <span class="num">¥5,558</span></td></tr>
+      <tr><th>インプレッションシェア（IS）</th><td><span class="num">32.28%</span></td><td><span class="num">32.87%</span></td><td class="unk">—</td><td><span class="num">32.41%</span></td></tr>
+      <tr><th>IS損失（ランク）</th><td class="bad">▼ <span class="num">61.42%</span></td><td class="bad">▼ <span class="num">67.13%</span></td><td class="unk">—</td><td class="bad">▼ <span class="num">62.68%</span></td></tr>
+      <tr><th>IS損失（予算）</th><td><span class="num">6.30%</span></td><td class="good">✓ <span class="num">0.00%</span></td><td class="unk">—</td><td class="good">✓ <span class="num">4.91%</span></td></tr>
+    </tbody>
+  </table>
+  <p>通算の1日あたりは表示 <span class="num">39.6</span>・クリック <span class="num">5.4</span>・費用 <span class="num">¥505</span> です。CTR・CPC・CPA・ISは率と平均なので1日あたりに割ることに意味がなく、「—」にしています。</p>
+
+  <div class="callout"><b>CTRの差の読み方</b><p>2日間のCTR <span class="num">15.79%</span> は9日間の <span class="num">12.90%</span> より高い数字ですが、これを新LPの成果として読まないでください。広告文はこの期間中に変更していません。7/27にシニア系の除外キーワード6本を追加しており、時期が重なっています。詳細は<a href="#ch02">章2</a>と<a href="#ch08">章8</a>を参照してください。</p></div>
+
+  <h3>1-2. 5つの判断は、いま何が言えるか</h3>
+  <p>この報告書は5つの判断（A1〜A5）に答えるために構成されています。各章のバッジはその章がどの判断を支えるかを示します。現時点での仕分けは次のとおりです。</p>
+
+  <table class="data">
+    <thead><tr><th>判断</th><th>今の材料で言えること</th><th>結論</th><th>該当章</th></tr></thead>
+    <tbody>
+      <tr>
+        <th>A1 継続 / 停止</th>
+        <td>CPAは <span class="num">¥4,134</span>（7/19〜27）、通算 <span class="num">¥5,558</span>。上限 <span class="num">¥6,000</span> の内側だが目標 <span class="num">¥2,000</span> は超えている。CVは通算1件で母数が足りない <span class="badge-n">n不足</span></td>
+        <td class="warn">▲ 8/18まで判断保留</td>
+        <td><a href="#ch13">章13</a></td>
+      </tr>
+      <tr>
+        <th>A2 フォーム改修</th>
+        <td><code>/contact/</code> の滞在は <span class="num">2</span>秒、CTAクリック率は <span class="num">23.1%</span> で押されている一方、送信は <span class="num">0</span>件。計測（preventDefault＋fetch内で <code>contact_submit</code> 発火）は健全と確認済み</td>
+        <td class="bad">▼ ヘッダー統一と送信ボタン位置は今すぐ。<br>フォーム項目の変更とLINE導線は計測に触れるため8/18判定後</td>
+        <td><a href="#ch12">章12</a></td>
+      </tr>
+      <tr>
+        <th>A3 除外KW「40代」</th>
+        <td>「シェア ハウス 神戸 40 代」が7/28に新規出現。クリックは <span class="num">0</span>（表示のみ）。既存の除外 <span class="num">18</span>本に40代は入っていない</td>
+        <td class="warn">▲ 1分で実施可。方針次第</td>
+        <td><a href="#ch05">章5</a></td>
+      </tr>
+      <tr>
+        <th>A4 神大LPへの追加投資</th>
+        <td>神大系4語句のクリック合計は <span class="num">1</span> <span class="badge-n">n不足</span>。「神戸 大学 一人暮らし 家賃」の品質スコアは <span class="num">3</span>/10でアカウント内最弱</td>
+        <td class="unk">— 追加投資は保留。ただし<b>8/18時点でも母数は揃わない見込み</b>（章16）。母数なしで判断するか、神大系に予算を寄せて母数を作るかの二択</td>
+        <td><a href="#ch06">章6</a></td>
+      </tr>
+      <tr>
+        <th>A5 日予算 ¥500 の引き上げ</th>
+        <td>IS損失（予算）は通算 <span class="num">4.91%</span>、7/28〜29は <span class="num">0.00%</span>。表示が出ていない理由は予算ではない</td>
+        <td class="warn">▲ 表示を増やす目的では不要。ただし判定母数の確保という別の理由がある</td>
+        <td><a href="#ch06">章6</a>・<a href="#ch13">章13</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>1-3. CPAは基準線のどこにいるか</h3>
+  <p>CPAの判断ラインは2本あります。目標 <span class="num">¥2,000</span>（ひつじ不動産の問い合わせ課金と同額）と、上限 <span class="num">¥6,000</span>（空室1ヶ月の機会損失にCV→契約率をかけた保守側の値）です。現状 <span class="num">¥4,134</span>（7/19〜27）はこの2本の間、琥珀の帯にあります。</p>
+
+  <div class="gauge">
+    <div class="gauge-bar"><span class="g-green" style="width:28.6%"></span><span class="g-amber" style="width:57.1%"></span><span class="g-red" style="width:14.3%"></span></div>
+    <div class="gauge-marks"><span style="left:28.6%">目標 ¥2,000</span><span style="left:59.1%">7/19〜27 ¥4,134</span><span style="left:79.4%">通算 ¥5,558</span><span style="left:85.7%">上限 ¥6,000</span></div>
+  </div>
+  <p>帯は0〜<span class="num">¥7,000</span>を全幅としています。緑（0〜<span class="num">¥2,000</span>）は目標クリア、琥珀（<span class="num">¥2,000</span>〜<span class="num">¥6,000</span>）は上限内だが目標未達、赤（<span class="num">¥6,000</span>超）は撤退ラインです。通算の <span class="num">¥5,558</span> も琥珀の中で、赤の手前にあります。どちらもCV <span class="num">1</span>件から出た数字なので、位置そのものが1件の増減で大きく動きます。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>2日間と9日間の並びから、新LPが旧LPより良いか悪いかは言えません。新LPが存在した期間のCVは0件ですが、これは判定に足りる母数ではなく、新LPの評価材料にはなりません（<a href="#ch13">章13</a>）。CPAの位置も、CV1件を分母にした値なので「¥4,134が実力値」とは言えません。CTRの差についても、広告文が未変更で7/27の除外追加と時期が重なるため、LP変更の効果として切り出すことはできません。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path"><li>Google Ads</li><li>キャンペーン</li><li>右上の期間セレクタ →「カスタム」</li><li>2026/7/19 〜 2026/7/29 を指定</li><li>上部の指標カード（クリック・表示・平均CPC・費用）</li></ol>
+    <div class="callout"><b>毎回確認すること</b><p>期間セレクタは前回のカスタム設定を保持します。画面を開いた瞬間の数字が、意図した期間のものとは限りません。数字を読む前に必ず期間表示を確認してください。同じ画面・同じ指標でも、期間が違えば別の数字です。</p></div>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>クリック数</td><td>広告がクリックされた回数</td><td>判定の母数。CV5件相当には約<span class="num">220</span>クリックが必要</td></tr>
+        <tr><td>表示回数</td><td>広告が表示された回数</td><td>n&lt;30の期間は率で比較しない</td></tr>
+        <tr><td>費用</td><td>期間内の広告費</td><td>月予算 <span class="num">¥15,000</span> に対する消化ペース</td></tr>
+        <tr><td>コンバージョン / コンバージョン単価</td><td>送信件数とCPA</td><td>目標 <span class="num">¥2,000</span> / 上限 <span class="num">¥6,000</span></td></tr>
+        <tr><td>指標カード</td><td>4枚のカードは他の指標に差し替え可能</td><td>カードをクリックして表示指標を変更する</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch02">
+  <h2>2. この11日間に何が起きたか（施策タイムライン）</h2>
+  <p class="lead">この章は、数字が動いた原因を施策に紐づけるための章です。とくにCTRの変化を新LPの成果と誤読しないための予防装置として置いています。</p>
+
+  <p>11日間は「同じ条件で回した11日」ではありません。除外キーワードの追加、着地先の変更、表示速度の対応が期間中に入っています。数字の変化を見るときは、まずこの並びと日付を突き合わせてください。以下は日付と変更内容だけを並べたものです。数値の評価は各章で行います。</p>
+
+  <ul class="actions">
+    <li><b>7/19</b> — 配信開始。日予算 ¥500・上限CPC ¥100・検索キャンペーンのみ・フレーズ一致と完全一致のみで開始。<span class="cost">起点</span></li>
+    <li><b>7/25</b> — 除外キーワードを4本追加（高齢者 / 食事付き / 食事 付き / 長田）。あわせて実際の検索語句からキーワードを8本昇格。<span class="cost">配信対象の変更</span></li>
+    <li><b>7/27</b> — シニア系の除外キーワードを6本追加（50代 / 60代 / 70代 / 80代 / シニア / 高齢）。トップページの表示速度（LCP）に対応。<span class="cost">CTRに影響しうる変更</span></li>
+    <li><b>7/28</b> — 広告の着地先をトップ <code>/</code> から新LP <code>/kobe/</code> へ変更（対象は「広告グループ 1 個」と「02-エリア名」）。継続/停止の判定日を8/1から8/18へ延期。<span class="cost">着地先の変更</span></li>
+    <li><b>7/29</b> — <code>/kobe/</code> の日本語フォント読み込みを非ブロッキング化し、モバイルの表示速度に対応。<span class="cost">LP側の変更</span></li>
+  </ul>
+
+  <p>この並びから読み取ってほしいのは2点です。1つ目は、新LPが稼働していたのは7/28と7/29の2日だけであること。2つ目は、CTRに影響しうる除外キーワードの追加（7/25・7/27）が、LP切り替え（7/28）の直前に入っていることです。除外を足せば無関係な検索での表示が減り、残った表示のCTRは上がりやすくなります。したがって7/28以降のCTRを新LPの成果として読むことはできません。広告文はこの11日間で変更していません。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>変更が複数重なった期間では、どの変更がどれだけ効いたかを分離できません。除外追加とLP切り替えが1日違いで入っているため、7/28以降の数字の動きをどちらか一方に帰属させることはできません。分離するには、次の変更を入れずに一定期間回す必要があります（判定日を8/18に置いている理由です）。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path"><li>Google Ads</li><li>右上「ツールと設定」</li><li>一括操作</li><li>変更履歴</li><li>期間を指定して、変更の種類・日時・変更者を確認</li></ol>
+    <div class="callout"><b>原則</b><p>数字が動いたと思ったら、最初に変更履歴を見てください。市場や季節の変動を疑う前に、自分が何を変えたかを確認する順番です。変更履歴に該当する操作があれば、それが第一候補の原因です。</p></div>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>日時</td><td>変更が適用された時点</td><td>数字が動いた日と一致するか</td></tr>
+        <tr><td>変更の種類</td><td>キーワード / 広告 / 入札 / 予算 / URL など</td><td>「キーワード」と「URL」は指標に直接効く</td></tr>
+        <tr><td>変更前 → 変更後</td><td>具体的な差分</td><td>除外追加はCTRを、URL変更はLP側の指標を動かす</td></tr>
+        <tr><td>変更の重なり</td><td>同時期に複数の変更があるか</td><td>2つ以上重なっていたら、効果の分離はできないと判断する</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch03">
+  <h2>3. ファネル全体像 <span class="q-badge">A1</span></h2>
+  <p class="lead">以降の章は、すべてこの図のどこか1段を詳しく見たものです。</p>
+
+  <p>下の図は、新LPが稼働していた7/28〜7/29の実測をつないだものです。検索需要の段だけはキーワードプランナーの月間値なので、他の段とは期間の単位が違います。</p>
+
+  <div class="funnel">
+    <div class="funnel-step" style="--w:100%"><span class="fs-label">検索需要（月間）</span><span class="fs-num">590</span><span class="fs-rate">主要KW「シェア ハウス 神戸」の市場規模。月間・全事業者ぶん</span></div>
+    <div class="funnel-step" style="--w:72%"><span class="fs-label">表示回数</span><span class="fs-num">95</span><span class="fs-rate">2日間。IS <span class="num">32.87%</span>（取りこぼしの主因はランク）</span></div>
+    <div class="funnel-step" style="--w:56%"><span class="fs-label">クリック</span><span class="fs-num">15 <span class="badge-n">n不足</span></span><span class="fs-rate">表示→クリック <span class="num">15.79%</span>（CTR）</span></div>
+    <div class="funnel-step" style="--w:48%"><span class="fs-label">/kobe/ 到達</span><span class="fs-num">13ユーザー <span class="badge-n">n不足</span></span><span class="fs-rate">クリック<span class="num">15</span>に対して<span class="num">13</span>ユーザー。単位が違うため率にはしない</span></div>
+    <div class="funnel-step" style="--w:32%"><span class="fs-label">cta_click</span><span class="fs-num">3ユーザー <span class="badge-n">n不足</span></span><span class="fs-rate">到達→CTA <span class="num">23.1%</span></span></div>
+    <div class="funnel-step" style="--w:24%"><span class="fs-label">/contact/ 到達</span><span class="fs-num">2ユーザー <span class="badge-n">n不足</span></span><span class="fs-rate">CTA→到達 <span class="num">67.0%</span></span></div>
+    <div class="funnel-step" style="--w:14%"><span class="fs-label">送信（contact_submit）</span><span class="fs-num">0 <span class="badge-n">n不足</span></span><span class="fs-rate">到達→送信 <span class="num">0%</span></span></div>
+    <div class="funnel-step" style="--w:10%"><span class="fs-label">内見</span><span class="fs-num">0 <span class="badge-n">n不足</span></span><span class="fs-rate">—（ツールでは取得できない段）</span></div>
+    <div class="funnel-step" style="--w:8%"><span class="fs-label">契約</span><span class="fs-num">0 <span class="badge-n">n不足</span></span><span class="fs-rate">—（ツールでは取得できない段）</span></div>
+  </div>
+
+  <p>一番細いのは <code>/contact/</code> 以降ですが、n=2なので確定ではありません。</p>
+
+  <h3>3-1. どの段がどのツールで取れるか</h3>
+  <p>段ごとに見る場所が違います。数字を自分で追うときの対応表です。</p>
+
+  <table class="read">
+    <thead><tr><th>ファネルの段</th><th>取得ツール / 画面</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td>検索需要</td><td>キーワードプランナー（Ads → ツール → プランニング）</td><td>月間平均検索ボリューム。自社ぶんではなく市場全体</td></tr>
+      <tr><td>表示回数</td><td>Google Ads（キャンペーン / キーワード）</td><td>IS・IS損失の列も同じ画面で足せる</td></tr>
+      <tr><td>クリック</td><td>Google Ads（キャンペーン / キーワード / 検索語句）</td><td>CTR・平均CPCも同じ行</td></tr>
+      <tr><td>LP到達・滞在時間</td><td>GA4「ページとスクリーン」</td><td>ユーザー数と平均エンゲージメント時間を見る</td></tr>
+      <tr><td>CTAクリック</td><td>GA4「イベント」→ <code>cta_click</code></td><td>件数とユーザー数の両方を見る（1人が複数回押す）</td></tr>
+      <tr><td>送信（CV）</td><td>GA4「イベント」→ <code>contact_submit</code> ＋ Adsのコンバージョン列</td><td>イベント一覧に行が無ければ期間中0回</td></tr>
+      <tr><td>LP内の読まれ方</td><td>Microsoft Clarity（ヒートマップ / スクロール）</td><td>どこまで読まれ、どこが押されたか</td></tr>
+      <tr><td><b>内見・契約</b></td><td><b>ツールに存在しない</b></td><td><b>自分で記録しないと永久に埋まらない段です。</b>問い合わせ受信日・内見実施日・契約日を手元の表に残す運用が必要（<a href="#ch14">章14</a>）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>この図は7/28〜7/29の2日間だけを縦につないだものです。各段の歩留まり％は、母数が最大でも13ユーザーなので、率としての比較には足りません。「どの段が本当のボトルネックか」はこの図では確定できず、以降の章でそれぞれの段の中身を見て、確度の高い順に並べ直します。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path"><li>GA4</li><li>レポート</li><li>エンゲージメント</li><li>ページとスクリーン</li><li>期間を 7/28〜7/29 に指定（比較はOFFのまま）</li></ol>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>表示回数</td><td>そのページが開かれた回数</td><td>同じ人の再訪も加算される</td></tr>
+        <tr><td>アクティブユーザー</td><td>実人数</td><td>ファネルの段を数えるときはこちらを使う</td></tr>
+        <tr><td>平均エンゲージメント時間</td><td>実際に見られていた時間</td><td>数秒台なら「読まれる前に離れている」候補</td></tr>
+        <tr><td>ページパス</td><td><code>/kobe/</code> と <code>/contact/</code> の行</td><td>この2行が広告のファネルの中心</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+<section id="ch04">
+  <h2>4. 【上流】検索需要 — 市場に何語あるのか <span class="q-badge">A5</span> <span class="q-badge">A4</span></h2>
+  <p class="lead">神戸×シェアハウスの検索需要は月<span class="num">590</span>回で、IS100%という到達不可能な仮定を置いても期待CVは月<span class="num">1.81</span>件です。広告単体で月5件のCVを作る設計は、入札や予算の調整では届きません。</p>
+
+  <p>ここまでの章で見てきた表示回数・クリック数は「11日間で実際に起きたこと」でした。この章は一段上流に戻って、そもそも神戸でシェアハウスを探している人が月に何回検索しているのかを見ます。キーワードプランナーは実績ではなく市場規模のデータなので、n不足の問題がありません。この報告書の中で、もっとも断定的に読める数字です。</p>
+
+  <figure><img class="shot-ui" src="img/12_kwplanner_volume.webp" alt="キーワードプランナーの結果表。月間平均検索ボリューム・3か月の推移・前年比・競合性・上部掲載入札単価"><figcaption>図7 キーワードプランナー 検索ボリュームと予測（現在出稿中のKWと、参考として大阪・東京の市場規模）</figcaption></figure>
+
+  <table class="data">
+    <thead>
+      <tr><th>キーワード</th><th>月間平均<br>検索ボリューム</th><th>3か月<br>推移</th><th>前年比</th><th>競合性</th><th>上部掲載入札<br>低〜高</th><th>アカウント<br>登録</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>シェア ハウス 神戸 / 神戸 シェア ハウス</td><td class="warn"><span class="num">590</span></td><td>0%</td><td>-18%</td><td>低</td><td class="bad">¥54〜¥153</td><td class="good">登録済み</td></tr>
+      <tr><td>神戸 賃貸 一人暮らし</td><td><span class="num">480</span></td><td class="bad">-46%</td><td class="bad">-33%</td><td>中</td><td>¥6〜¥52</td><td class="unk">なし</td></tr>
+      <tr><td>神戸 大学 一人暮らし</td><td><span class="num">390</span></td><td class="bad">-56%</td><td class="bad">-46%</td><td>低</td><td>¥6〜¥64</td><td class="unk">なし</td></tr>
+      <tr><td>三宮 シェア ハウス</td><td><span class="num">90</span></td><td class="good">+57%</td><td class="good">+22%</td><td>低</td><td class="warn">¥28〜¥119</td><td class="good">登録済み</td></tr>
+      <tr><td>神戸 ルーム シェア</td><td><span class="num">40</span></td><td class="good">+25%</td><td class="good">+25%</td><td>低</td><td class="warn">¥6〜¥146</td><td class="unk">なし</td></tr>
+      <tr><td>（参考）シェア ハウス 大阪</td><td class="unk"><span class="num">3,600</span></td><td>+24%</td><td>-18%</td><td>中</td><td>¥52〜¥230</td><td class="unk">なし</td></tr>
+      <tr><td>（参考）シェア ハウス 東京</td><td class="unk"><span class="num">8,100</span></td><td>0%</td><td>-19%</td><td>中</td><td>¥45〜¥248</td><td class="unk">なし</td></tr>
+    </tbody>
+  </table>
+  <p>期間は2025年7月〜2026年6月、地域は日本です。</p>
+
+  <h3>神戸市場の大きさを数字で置く</h3>
+  <p>主力KW「シェアハウス 神戸／神戸 シェアハウス」は月<span class="num">590</span>回です。参考に並べた大阪<span class="num">3,600</span>回は約6倍、東京<span class="num">8,100</span>回は約14倍です。神戸は同じ商売を同じやり方でやっても、上流の水量が一桁違います。これは運用の巧拙ではなく市場の条件です。</p>
+
+  <p>この590回を上限まで取り切れたと仮定して、期待CVを置きます。</p>
+  <table class="data">
+    <thead><tr><th>仮定</th><th>値</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td>月間検索ボリューム</td><td><span class="num">590</span>回</td><td>キーワードプランナー実測</td></tr>
+      <tr><td>インプレッションシェア</td><td class="bad">100%（非現実的な上限）</td><td>実績は32.41%</td></tr>
+      <tr><td>CTR</td><td><span class="num">13.53%</span></td><td>11日間の実績CTR</td></tr>
+      <tr><td>月間クリック（理論上限）</td><td><span class="num">79.8</span>クリック</td><td>590 × 13.53%</td></tr>
+      <tr><td>CVR</td><td><span class="num">2.27%</span></td><td>旧LP期間（7/19〜27）の実績</td></tr>
+      <tr><td><b>月間期待CV（理論上限）</b></td><td class="bad"><b><span class="num">1.81</span>件</b></td><td>79.8 × 2.27%</td></tr>
+    </tbody>
+  </table>
+  <p>表示機会を1回も取りこぼさないという、実務上ありえない仮定を置いても月<span class="num">1.81</span>件です。実績のIS 32.41%を当てればこれの3分の1になります。つまり<b>「広告だけで月5件のCVを作る」という目標は、入札を上げても予算を増やしても構造的に届きません</b>。留保なしで言えるのは<b>月<span class="num">79.8</span>クリックという上限まで</b>です。CV換算はn=1由来のCVR2.27%を係数として経由するため、ここから先は試算です（章13で同じ留保を置いています）。月5件を狙うなら、広告以外の流入（SEO・ポータル・LINE・紹介）を足すか、目標件数そのものを市場に合わせて置き直すかのどちらかになります。</p>
+
+  <div class="callout">
+    <b>上限CPC¥100 &lt; 上部掲載入札の高額帯¥153</b>
+    <p>主力KW「シェアハウス 神戸」の上部掲載入札単価は<span class="num">¥54</span>〜<span class="num">¥153</span>で、現在の上限CPCは<span class="num">¥100</span>です。つまり高額帯で競っている枠には、そもそも入札額が届いていません。競合性の表示は「低」ですが、これは競合の数の話であって、上位枠の値段の話ではありません。<b>この¥100 vs ¥153 のギャップが、章6で見る「ランクによる損失62.68%」の原因側にあたります</b>。章6ではその損失の内訳を、章7では損失の相手が誰なのかを見ます。</p>
+  </div>
+
+  <h3>神大系KWの市場は縮んでいる</h3>
+  <p>「神戸 大学 一人暮らし」は月<span class="num">390</span>回あり、単体では小さくない数字です。ただし3か月推移<span class="num">-56%</span>・前年比<span class="num">-46%</span>で、市場そのものが縮小方向の数字を出しています。季節性（入学期を外れた7月時点のデータ）と構造的な減少のどちらなのかは、このデータだけでは分けられません。神大向けの投資判断（A4）では、章6の品質スコア（神大系KWがQS3〜6）とこの縮小トレンドを重ねて見る必要があります。</p>
+
+  <h3>次に足せるKW候補（市場規模順）</h3>
+  <p>現在アカウントに入っていないKWを、市場規模の大きい順に並べます。<b>ここで言えるのは「市場がどれだけあるか」までです。入れれば取れるとは言えません</b>。表示されるかどうかは章6のランク（品質スコア×入札）に依存し、CVするかどうかは検索意図が賃貸単身向けかシェアハウス向けかによります。</p>
+  <table class="data">
+    <thead><tr><th>候補KW</th><th>月間ボリューム</th><th>上部掲載入札 高額帯</th><th>市場側の注意</th></tr></thead>
+    <tbody>
+      <tr><td>神戸 賃貸 一人暮らし</td><td><span class="num">480</span></td><td>¥52</td><td>3か月-46%。意図が通常賃貸寄りの可能性</td></tr>
+      <tr><td>神戸 大学 一人暮らし</td><td><span class="num">390</span></td><td>¥64</td><td>3か月-56%・前年比-46%と縮小</td></tr>
+      <tr><td>神戸 ルーム シェア</td><td><span class="num">40</span></td><td>¥146</td><td>伸びているが規模が小さい。高額帯が上限CPCを超える</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>キーワードプランナーのボリュームは推定値のレンジを丸めたもので、実際に自社の広告が何回表示されるかとは別物です。「競合性 低」は入札している広告主の数の指標であり、上位枠が安く取れることを意味しません（実際に高額帯は¥153です）。また、候補KWを追加したときのCVRは未知です。上流の水量は測れましたが、そこから下流に何件落ちるかは出してみるまで判定できません。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads</li>
+      <li>ツール</li>
+      <li>プランニング</li>
+      <li>キーワード プランナー</li>
+      <li>検索のボリュームと予測のデータを確認する</li>
+      <li>地域を絞る</li>
+    </ol>
+    <figure><img class="shot-ui" src="img/13_kwplanner_entry.webp" alt="キーワードプランナーの入口。「新しいキーワードを見つける」と「検索のボリュームと予測のデータを確認する」の2カード"><figcaption>図6 キーワードプランナーの入口（既に使っているKWの市場規模を見るなら右のカード）</figcaption></figure>
+    <p>入口のカードは2つあります。左の「新しいキーワードを見つける」は候補探し、右の「検索のボリュームと予測のデータを確認する」は<b>すでに使っているKWの市場規模を確かめる</b>ためのものです。この章の数字は右側です。KWを貼り付けたあと、地域を絞らないと全国の数字が出るので必ず絞ります。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>月間平均検索ボリューム</td><td>そのKWが月に何回検索されているか（市場の水量）</td><td>ここにCTRとCVRを掛けた値が理論上限。目標CV件数がこれを超えていたら、広告だけでは届かない設計になっている</td></tr>
+        <tr><td>競合性</td><td>そのKWに入札している広告主の相対的な多さ</td><td>「低」でも安く取れるとは限らない。数の指標であって値段の指標ではない</td></tr>
+        <tr><td>上部に掲載された広告の入札単価（高額帯）</td><td>ページ上部に出た広告が実際に払っていた額の高い側</td><td><b>高額帯が自分の上限CPCを大きく超えるKWは、現在の入札では表示機会が構造的に取れない</b>。上げるか、そのKWを主戦場から外すかの二択になる</td></tr>
+        <tr><td>3か月の推移 / 前年比</td><td>市場が伸びているか縮んでいるか</td><td>両方がマイナス2桁なら、投資判断は縮小前提で置く。季節性との切り分けは1年分見ないとできない</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch05">
+  <h2>5. 【上流】実際に検索された言葉 <span class="q-badge">A3</span></h2>
+  <p class="lead">7/25・7/27に追加した除外18本は効いていて、直近2日のシニア系検索語句はゼロです。一方で「40代」が除外リストから漏れており、実際に表示されています。</p>
+
+  <p>章4は「市場に何語あるか」でした。この章は「その市場のうち、実際にどの言葉でこの広告が出たか」です。前章のボリュームは推定値でしたが、ここは実際に起きたことの記録です。期間は新LP着地後の7/28〜7/29のみ、<span class="num">17</span>語句です。</p>
+
+  <figure><img class="shot-ui" src="img/02_ads_searchterms.webp" alt="Google Ads 検索語句レポート。期間 7/28〜7/29"><figcaption>図8 検索語句レポート 7/28〜7/29（実際に検索された言葉と、どのKWで拾ったか）</figcaption></figure>
+
+  <table class="data">
+    <thead><tr><th>分類</th><th>検索語句</th><th>一致タイプ</th><th>登録状況</th><th>広告グループ</th><th>クリック</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="5">地域主力</td><td>シェア ハウス 神戸</td><td>完全一致</td><td class="good">追加済み</td><td>広告グループ 1 個</td><td class="good"><span class="num">5</span></td></tr>
+      <tr><td>シェア ハウス 神戸 女性</td><td>フレーズ一致</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">1</span></td></tr>
+      <tr><td>神戸 シェア ハウス</td><td>完全一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">1</span></td></tr>
+      <tr><td>神戸 シェア ハウス 個室</td><td>完全一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">1</span></td></tr>
+      <tr><td>神戸 市 ルーム シェア</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td rowspan="4">神大系</td><td>神戸 大学 一人暮らし マンション</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>03-神戸大学</td><td><span class="num">1</span></td></tr>
+      <tr><td>神戸 大学 一人暮らし 家賃</td><td>完全一致</td><td class="good">追加済み</td><td>03-神戸大学</td><td class="warn"><span class="num">0</span></td></tr>
+      <tr><td>神戸 大学 一人暮らし</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>03-神戸大学</td><td class="warn"><span class="num">0</span></td></tr>
+      <tr><td>神戸 大学 一人暮らし 女子</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>03-神戸大学</td><td class="warn"><span class="num">0</span></td></tr>
+      <tr><td>英語</td><td>share house kobe</td><td>完全一致</td><td class="good">追加済み</td><td>04-英語</td><td><span class="num">1</span></td></tr>
+      <tr><td>自社指名</td><td>シェア ハウス the headquarters kobe</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td>競合指名</td><td>ひつじ 不動産 神戸</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td rowspan="4">地域拡張</td><td>兵庫 区 シェア ハウス</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td>北野 シェア ハウス</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td>垂水 シェア ハウス</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td>垂水 区 シェア ハウス</td><td>フレーズ一致（類似パターン）</td><td class="unk">なし</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+      <tr><td>要除外候補</td><td>シェア ハウス 神戸 40 代</td><td>フレーズ一致</td><td class="bad">なし（除外リストにも無い）</td><td>広告グループ 1 個</td><td><span class="num">0</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>この表から読める5点</h3>
+
+  <p><b>1. シニア系の検索語句はゼロです。</b>7/25に4本（高齢者/食事付き/食事 付き/長田）、7/27に6本（50代/60代/70代/80代/シニア/高齢）を追加し、除外は合計18本になっています。追加の翌日以降の検索語句にシニア系が1語句も出ていません。除外の追加という操作と、該当語句の消滅という結果が時系列でつながっています。ただし本書が持っている検索語句データは7/28〜29分のみで、<b>除外前にシニア系語句が何回表示されていたかの実数は本書のデータ範囲外</b>です。したがってここで言えるのは「除外が効いていない証拠は出ていない」までです。</p>
+
+  <p><b>2. 「シェア ハウス 神戸 40 代」が新規に出現しました。</b>除外18本のリストは50代・60代・70代・80代・シニア・高齢を押さえていますが、<b>40代が入っていません</b>。7/28に実際にこの語句で表示が発生しています。クリックは<span class="num">0</span>なので費用は出ておらず、緊急度は高くありません。ただし塞ぐ作業は1分で終わります（A3の判断材料）。年代で刻む除外は「50代以上」のような範囲指定ができないため、40代を入れても30代・20代が抜けたままです。年代ごとに追加するか、そもそも年代語句を拾わない構成にするかは別途の設計になります。</p>
+
+  <p><b>3. 自社指名が発生しています。</b>「シェア ハウス the headquarters kobe」＝屋号を知った上での検索です。この語句は本来もっとも成約に近い層ですが、現状は専用の広告グループも広告文もなく、フレーズ一致の類似パターンで偶然拾っている状態です。受け皿が未整備で、クリックも<span class="num">0</span>です。指名検索が出始めたという事実だけを、8/18判定の基準値として記録します。</p>
+
+  <p><b>4. 競合ポータルの指名を拾っています。</b>「ひつじ 不動産 神戸」はシェアハウス系ポータル「ひつじ不動産」の指名検索です。クリック<span class="num">0</span>で費用は出ていません。この語句は比較検討フェーズの層である一方、ポータル掲載物件を探している意図でもあるため、拾い続けるべきかどうかはこの2日のデータでは判定できません。なおCPA基準の¥2,000は、このひつじ不動産の問い合わせ課金（平均家賃の5%相当）を根拠に置いています（章19参照）。</p>
+
+  <p><b>5. 神大系4語句のクリック合計は<span class="num">1</span>です。</b><span class="badge-n">n不足</span> 「神戸 大学 一人暮らし マンション」で1クリック、他の3語句（家賃・一人暮らし・女子）は0クリックです。この段の母数は4語句・クリック1件です。件数の事実としては読めますが、率としての比較には足りません。<b>ここで記録するのは「クリックされていない」という事実だけで、原因は判定しません</b>。広告文が合っていないのか、表示位置が低いのか、そもそも7月末という時期に神大生が部屋を探していないのか、この表では切り分けられません。原因側の材料は章6の品質スコア（神大系はQS3〜6）と章4の市場トレンド（3か月-56%）にあり、A4の判断はそこと合わせて8/18に置きます。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>期間が7/28〜7/29の2日間だけなので、この17語句は「この広告が拾える語句の全体像」ではありません。11日間通算では別の語句が出ている可能性があります。また、クリック0の語句について「見られたが選ばれなかった」とは言えません。表示位置が下部だった場合、そもそも視界に入っていません。地域拡張系（兵庫区・北野・垂水）が0クリックなのも、需要がないのか順位が低いのかはこの表では分かれません。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads</li>
+      <li>分析情報とレポート</li>
+      <li>検索語句</li>
+      <li>期間指定</li>
+    </ol>
+    <figure><img class="shot-ui" src="img/20_ads_negative_kw.webp" alt="Google Ads 除外キーワード一覧（18本）"><figcaption>図9 除外キーワード一覧 18本（50代〜80代・シニア・高齢は入っているが「40代」が無い）</figcaption></figure>
+    <p><b>除外を追加する手順:</b> 検索語句の表で対象行のチェックボックスをONにすると、上部に「キーワードとして追加／除外キーワードとして追加」のツールバーが出ます。「除外キーワードとして追加」を押すと追加先のラジオボタン（広告グループ／キャンペーン／除外キーワード リスト）が出ますが、<b>初期選択は「広告グループ」です。必ず「キャンペーン」に変えてください</b>。広告グループを選ぶとその1グループにしか効かず、他のグループから同じ語句が漏れます。今回の18本はキャンペーン単位・インテントマッチで登録済みです。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>検索語句</td><td>ユーザーが実際に入力した言葉</td><td>自社と関係ない意図（求人・宿泊・別エリア・対象外の属性）が混じっていたら除外候補</td></tr>
+        <tr><td>一致タイプ</td><td>どのKWのどの一致で拾ったか。「類似パターン」は登録KWそのものではなく近い語句で拾ったという意味</td><td>「類似パターン」が多いほど意図と違う語句が混ざりやすい。完全一致でも類似パターンは発生する</td></tr>
+        <tr><td>登録状況（追加済み／なし）</td><td>その語句をKWとして登録しているか</td><td>クリックが出ている「なし」の語句は、完全一致でKWに昇格させる候補</td></tr>
+        <tr><td>クリック</td><td>実際にクリックされ課金された回数</td><td><b>クリック0で表示だけの語句は費用が出ていないので、除外の緊急度は低い</b>。まず塞ぐべきはクリックが出ている無関係語句</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch06">
+  <h2>6. 【表示】なぜ表示が伸びないのか <span class="q-badge">A5</span> <span class="q-badge">A4</span></h2>
+  <p class="lead">表示が伸びない主因は広告ランクで、予算ではありません。通算のインプレッションシェア損失は<b>ランク<span class="num">62.68%</span>・予算<span class="num">4.91%</span></b>で、直近2日の予算損失は<span class="num">0.00%</span>です。日予算¥500を上げても表示回数は増えません。</p>
+
+  <p>章4で見たとおり神戸の市場は月590回しかありません。その小さな市場のうち、実際に自社の広告が出られたのは<span class="num">32.41%</span>です。残りの3分の2をなぜ取れていないのか、その内訳がインプレッションシェア（IS）の損失列に出ます。損失の理由は「ランク」と「予算」の2つに分解され、これは<b>予算を上げるべきか（A5）を判断する唯一の直接的な指標</b>です。</p>
+
+  <figure><img class="shot-ui" src="img/07_ads_is_loss.webp" alt="Google Ads キャンペーン表の競合指標列。IS 32.41% / 損失(ランク) 62.68% / 損失(予算) 4.91%"><figcaption>図3 インプレッションシェアの損失内訳（ランクによる損失62.68% ← ボトルネックはこちら／予算による損失4.91%）</figcaption></figure>
+
+  <table class="data">
+    <thead><tr><th>期間</th><th>表示回数</th><th>IS</th><th>損失（ランク）</th><th>損失（予算）</th></tr></thead>
+    <tbody>
+      <tr><td>7/19〜7/29（通算11日）</td><td><span class="num">436</span></td><td class="warn"><span class="num">32.41%</span></td><td class="bad"><span class="num">62.68%</span></td><td class="good"><span class="num">4.91%</span></td></tr>
+      <tr><td>7/19〜7/27（旧LP・9日）</td><td><span class="num">341</span></td><td class="warn"><span class="num">32.28%</span></td><td class="bad"><span class="num">61.42%</span></td><td class="good"><span class="num">6.30%</span></td></tr>
+      <tr><td>7/28〜7/29（新LP・2日）</td><td><span class="num">95</span></td><td class="warn"><span class="num">32.87%</span></td><td class="bad"><span class="num">67.13%</span></td><td class="good"><span class="num">0.00%</span></td></tr>
+    </tbody>
+  </table>
+
+  <p>3期間すべてでランク損失が予算損失を大きく上回っています。<b>結論として、日予算¥500を引き上げても表示は増えません</b>。直近2日は予算による損失が<span class="num">0.00%</span>で、予算が理由で取りこぼした表示機会は1回もありません。これは構造的な数値なので断定できます。A5（予算引き上げの是非）に対する答えは、この表単体で出ます。予算を増やす前に、ランクを構成する要素（入札額と品質スコア）を動かす必要があります。</p>
+
+  <p>ランクは大きく「入札額 × 品質スコア」で決まります。入札側は章4で見たとおり上限CPC<span class="num">¥100</span>に対して上部掲載入札の高額帯が<span class="num">¥153</span>で、届いていません。品質側が次の表です。</p>
+
+  <figure><img class="shot-ui" src="img/01_ads_qs.webp" alt="Google Ads 検索キーワード画面。品質スコア列・推定クリック率・ランディングページの利便性・広告の関連性"><figcaption>図4 キーワード別の品質スコア内訳（主力KWは7/10、LPの利便性は「平均より下」／最弱は3/10）</figcaption></figure>
+
+  <table class="data">
+    <thead><tr><th>キーワード</th><th>広告グループ</th><th>表示</th><th>クリック</th><th>CTR</th><th>費用</th><th>QS</th><th>推定CTR</th><th>LPの利便性</th><th>広告の関連性</th></tr></thead>
+    <tbody>
+      <tr><td>"シェアハウス 神戸"</td><td>広告グループ 1 個</td><td><span class="num">322</span></td><td><span class="num">39</span></td><td><span class="num">12.11%</span></td><td class="warn">¥<span class="num">3,589</span></td><td class="good"><span class="num">7</span></td><td class="good">平均より上</td><td class="bad">平均より下</td><td class="good">平均より上</td></tr>
+      <tr><td>"share house kobe"</td><td>04-英語</td><td><span class="num">36</span></td><td><span class="num">5</span></td><td><span class="num">13.89%</span></td><td>¥<span class="num">489</span></td><td class="good"><span class="num">8</span></td><td class="good">平均より上</td><td>平均的</td><td class="good">平均より上</td></tr>
+      <tr><td>"神戸大学 シェアハウス"</td><td>03-神戸大学</td><td><span class="num">10</span></td><td><span class="num">2</span></td><td><span class="num">20.00%</span> <span class="badge-n">n不足</span></td><td>¥<span class="num">200</span></td><td class="warn"><span class="num">6</span></td><td class="good">平均より上</td><td>平均的</td><td class="bad">平均より下</td></tr>
+      <tr><td>"三ノ宮 シェアハウス"</td><td>02-エリア名</td><td><span class="num">7</span></td><td><span class="num">3</span></td><td><span class="num">42.86%</span> <span class="badge-n">n不足</span></td><td>¥<span class="num">297</span></td><td class="warn"><span class="num">5</span></td><td class="good">平均より上</td><td class="bad">平均より下</td><td class="bad">平均より下</td></tr>
+      <tr><td>"kobe share house"</td><td>04-英語</td><td><span class="num">5</span></td><td><span class="num">3</span></td><td><span class="num">60.00%</span> <span class="badge-n">n不足</span></td><td>¥<span class="num">289</span></td><td class="bad"><span class="num">4</span></td><td>平均的</td><td class="bad">平均より下</td><td>平均的</td></tr>
+      <tr><td>"神戸大学 一人暮らし 家賃"</td><td>03-神戸大学</td><td><span class="num">40</span></td><td><span class="num">5</span></td><td><span class="num">12.50%</span></td><td>¥<span class="num">495</span></td><td class="bad"><span class="num">3</span></td><td>平均的</td><td class="bad">平均より下</td><td class="bad">平均より下</td></tr>
+    </tbody>
+  </table>
+
+  <h3>最大出稿KWの状態</h3>
+  <p>「シェアハウス 神戸」は表示<span class="num">322</span>回・クリック<span class="num">39</span>回・費用<span class="num">¥3,589</span>で、<b>KW別費用の<span class="num">67.0%</span></b>を占めています。このKWがこのキャンペーンの主戦場です。品質スコアは<span class="num">7</span>で、推定CTRと広告の関連性はいずれも「平均より上」。<b>3項目のうち唯一「平均より下」なのがLPの利便性です</b>。ここが主力KWのランクを押し下げている箇所であり、7/28の新LP <code>/kobe/</code> 差し替えはこの項目に対する打ち手です。</p>
+
+  <div class="callout">
+    <b>8/18時点でも「平均より下」のままである可能性が高い。それを失敗と読まないこと</b>
+    <p>品質スコアの3項目（推定CTR・LPの利便性・広告の関連性）は、直近数ヶ月の履歴データをもとに算出される相対評価です。<b>7/28に差し替えたLPが、2日でこの評価に反映されることはありません</b>。したがって次の判定日である8/18に確認しても、「LPの利便性＝平均より下」の表示が残っている可能性は高いです。これは新LPが機能していないことの証拠ではなく、指標の更新が遅いという性質です。8/18時点でLP側を評価するときは、品質スコアではなく章9のPageSpeed実測値・滞在時間と、章10のスクロール到達率を見てください。品質スコアのLP利便性が動くかどうかは、9月以降の確認事項です。</p>
+  </div>
+
+  <h3>最弱KWと神大グループ</h3>
+  <p>もっとも低いのは「神戸大学 一人暮らし 家賃」で<b>QS<span class="num">3</span></b>、LPの利便性と広告の関連性がともに「平均より下」です。表示<span class="num">40</span>回・クリック<span class="num">5</span>回・費用<span class="num">¥495</span>。同じ神大グループの「神戸大学 シェアハウス」もQS6で広告の関連性が「平均より下」です。神大系は着地先が <code>/kobe-university/</code> のまま据え置きで、7/28のLP差し替え対象に入っていません。章4で見た市場トレンド（「神戸 大学 一人暮らし」は3か月-56%・前年比-46%）と、章5のクリック合計1という事実を重ねると、A4（神大LPに追加投資するか撤退するか）の材料は揃いつつあります。ただし現時点の判断は保留です。QS3という数字は改善余地の存在を示すだけで、改善したときにCVが出るかどうかは示しません。</p>
+
+  <p>QSが4以下の2本（"kobe share house" QS4・"神戸大学 一人暮らし 家賃" QS3）は、いずれも着地先が <code>/kobe/</code> ではないグループに属しています。着地先とKWの一致度を上げる、という打ち手の候補としては挙げられますが、英語グループについては <code>/kobe/</code> が日本語のみのため単純な差し替えができません。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>品質スコアは同じKWに入札している他の広告主との<b>相対評価</b>です。「平均より下」が「平均的」に変わったとき、自社が良くなったのか他社が下がったのかは区別できません。したがって絶対的な改善量は測れず、点数の推移だけを目標に置くことはできません。</p>
+    <p>ランク損失62.68%の内訳（入札不足によるものか、品質スコアによるものか）は、Adsの画面上で分離して表示されません。上限CPC¥100 &lt; 高額帯¥153 という事実と、主力KWのQS7という事実の両方があるだけで、どちらが何%寄与しているかは出せません。また、ランク損失は「オークションに参加できなかった」場合と「参加して負けた」場合の両方を含みます。その内訳は章7のオークション分析で近似します。</p>
+    <p>QS3のKWに投資すればCVが出るとは言えません。品質スコアはランクの構成要素であって、成約可能性の指標ではありません。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads</li>
+      <li>キャンペーン</li>
+      <li>表示項目</li>
+      <li>表示項目を変更</li>
+      <li>競合指標（IS・損失ランク・損失予算）</li>
+    </ol>
+    <figure><img class="shot-ui" src="img/08_ads_columns_howto.webp" alt="Google Ads の「表示項目」メニューを開いた状態。「表示項目を変更」が見えている"><figcaption>図2 表示項目の変更（①表の右上「表示項目」→②表示項目を変更→競合指標にチェック）</figcaption></figure>
+    <p>IS関連の列は初期状態では表示されていません。表の右上の「表示項目」から「表示項目を変更」を開き、<b>競合指標</b>のグループで「検索広告のインプレッションシェア」「インプレッションシェア損失率（ランク）」「インプレッションシェア損失率（予算）」にチェックを入れます。品質スコアはキャンペーン画面ではなく<b>キーワード画面</b>で、同じ手順の<b>品質スコア</b>グループから「品質スコア」「ランディングページの利便性」「推定クリック率」「広告の関連性」を追加します。一度設定すれば保存されます。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>検索広告のIS</td><td>出られる場面のうち、実際に出られた割合</td><td>低いこと自体は問題ではない。次の2列で理由を見る</td></tr>
+        <tr><td>損失率（ランク）</td><td>広告ランク（入札額×品質）が足りず出られなかった割合</td><td rowspan="2"><b>ランク損失 &gt; 予算損失なら、予算を上げても表示は増えない</b>。この場合の打ち手は入札額か品質スコア。逆に予算損失が大きいなら日予算が先</td></tr>
+        <tr><td>損失率（予算）</td><td>日予算を使い切って出られなかった割合</td></tr>
+        <tr><td>品質スコア（10点）</td><td>KWごとの品質の総合評価。相対値</td><td><b>7以上で健全、4以下は要対処</b>。ただし絶対値の改善量は測れない</td></tr>
+        <tr><td>ランディングページの利便性</td><td>着地ページがそのKWの検索意図に応えているかの相対評価</td><td>数ヶ月の履歴で算出されるため、LP変更の反映には数週間以上かかる。直近の変更を評価する指標には使えない</td></tr>
+        <tr><td>推定クリック率 / 広告の関連性</td><td>広告文側の評価</td><td>広告文を変えていない期間にこれが動いたら、原因は自社の変更ではなく競合や検索母集団の変化</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch07">
+  <h2>7. 【表示】競合は誰か <span class="q-badge">A5</span></h2>
+  <p class="lead">章6のランク損失<span class="num">62.68%</span>の大半は、競合に負けた結果ではありません。重複率が<span class="num">13</span>〜<span class="num">20%</span>しかない＝<b>そもそも同じオークションに参加できていない</b>ことによる損失です。</p>
+
+  <p>ランク損失には2つの中身があります。(a) オークションに参加して競合に負けた、(b) ランクのしきい値に届かずオークションそのものに参加できなかった。Adsの画面はこれを分離してくれませんが、オークション分析の「重複率」から近似できます。重複率は「自社が出たオークションのうち、その競合も同時に出ていた割合」です。</p>
+
+  <figure><img class="shot-ui" src="img/09_ads_auction.webp" alt="Google Ads オークション分析。自分のIS 32.45%、sharehouse-warai.com と sharehouse180.net の重複率・上位掲載率"><figcaption>図5 オークション分析 7/19〜7/29（重複率20.19% ＝ 同じオークションに両方出た回数は5回に1回だけ／上位掲載率84.38% ＝ 同席時は8割こちらが下）</figcaption></figure>
+
+  <table class="data">
+    <thead><tr><th>ドメイン</th><th>IS</th><th>重複率</th><th>上位掲載率</th><th>ページ上部<br>表示率</th><th>ページ最上部<br>表示率</th><th>上位掲載<br>シェア</th></tr></thead>
+    <tbody>
+      <tr><td><b>自分</b>（theheadquarters.jp）</td><td class="warn"><span class="num">32.45%</span></td><td class="unk">—</td><td class="unk">—</td><td><span class="num">64.98%</span></td><td><span class="num">25.24%</span></td><td class="unk">—</td></tr>
+      <tr><td>sharehouse-warai.com<br><small>和楽居（神戸ローカルの直接競合）</small></td><td class="unk">10% 未満</td><td class="good"><span class="num">20.19%</span></td><td class="bad"><span class="num">84.38%</span></td><td><span class="num">87.36%</span></td><td><span class="num">68.97%</span></td><td><span class="num">26.92%</span></td></tr>
+      <tr><td>sharehouse180.net<br><small>シェア180</small></td><td class="unk">10% 未満</td><td class="good"><span class="num">13.56%</span></td><td class="bad"><span class="num">86.05%</span></td><td><span class="num">80.25%</span></td><td><span class="num">60.49%</span></td><td><span class="num">28.66%</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>重複率が低いことの意味</h3>
+  <p>和楽居の重複率は<span class="num">20.19%</span>、シェア180は<span class="num">13.56%</span>です。<b>同じオークションに両方が出た回数は、5回に1回から7回に1回しかありません</b>。残りの8割前後は、自社が出たときに相手が出ていない（＝相手が競合として存在していない）オークションです。</p>
+  <p>ここから逆算します。章6のランク損失は<span class="num">62.68%</span>ですが、その大部分の場面で主要競合はそもそも同席していません。<b>したがって、取れていない表示機会の大半は「競合に入札で負けた」のではなく「自社のランクがしきい値に届かず、オークションに参加できなかった」ものです</b>。この解釈は重複率という実測値から近似できます。</p>
+  <p>この区別は打ち手を変えます。競合に負けているなら「相手より高く入札する」が答えになりますが、参加できていないなら<b>競合の入札額とは無関係に、自社の広告ランクの絶対水準（上限CPC¥100と品質スコア）を上げないと1回も増えません</b>。予算はここでも関係しません（A5）。</p>
+
+  <h3>同席したときは負けている</h3>
+  <p>一方、同席した場合の上位掲載率は和楽居<span class="num">84.38%</span>・シェア180<span class="num">86.05%</span>です。相手が出てくる場面では、8割以上こちらが下に置かれています。ページ最上部表示率も自社<span class="num">25.24%</span>に対し和楽居<span class="num">68.97%</span>・シェア180<span class="num">60.49%</span>で、差は明確です。つまり<b>「相手が出るときは負けるが、そもそも同席が少ない」</b>という状態です。</p>
+  <p>ただし相手のISはいずれも「10%未満」で、この市場での露出量自体は自社（32.45%）より小さい可能性があります。ISが10%未満の相手に上位掲載率84%で負けているのは、相手が「出るときだけ強い入札で出ている」形とも読めますが、これは推測です。</p>
+
+  <p><b>和楽居（sharehouse-warai.com）は神戸ローカルのシェアハウス事業者で、直接競合です</b>。エリア・業態・想定入居者が重なるため、8/18以降も継続して重複率と上位掲載率の推移を追う対象になります。シェア180は運営規模が異なるため、同一の見方はできません。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>オークション分析は「同じオークションに出た広告主」だけを表示し、しきい値割れで自社が参加できなかったオークションに誰が出ていたかは分かりません。したがって「参加できていない場面の競合は誰か」は、この画面では特定できません。</p>
+    <p>重複率から算出したランク損失の内訳（しきい値割れ vs 入札負け）は近似です。Googleは正確な分離値を出していないため、比率としての数字は書けません。</p>
+    <p>上位掲載率84%は「相手のほうが上に出た割合」であって、クリックやCVを取られた割合ではありません。順位が上でもクリックされているとは限らず、相手の成果はこの画面からは一切見えません。表示回数436の期間なので、重複率も1〜2回の増減で数ポイント動きます。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads</li>
+      <li>分析情報とレポート</li>
+      <li>オークション分析</li>
+      <li>期間指定</li>
+    </ol>
+    <p>キャンペーン単位・広告グループ単位・KW単位で切り替えられます。KW単位にすると、どのKWで誰と競っているかが分かります。相手のドメイン名は表示されますが、相手の費用・クリック・CVは表示されません。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>インプレッションシェア</td><td>その広告主が出られる場面のうち出られた割合</td><td>相手が「10%未満」なら、その市場での露出量は自社より小さい可能性がある</td></tr>
+        <tr><td>重複率</td><td>自社が出たオークションのうち、その相手も出ていた割合</td><td rowspan="2"><b>重複率が低いのに上位掲載率が高い＝「相手が出るときは負けるが、そもそも同席が少ない」</b>。この形なら損失の主因はしきい値割れなので、相手より高く入札する発想ではなく自社ランクの絶対水準を上げる</td></tr>
+        <tr><td>上位掲載率</td><td>同席したとき、相手が自社より上に出た割合</td></tr>
+        <tr><td>ページ上部表示率 / 最上部表示率</td><td>広告が検索結果の上部・最上部に出た割合</td><td>自社と相手の差が大きいほど、同席時の順位差が大きい。自社25.24% vs 相手60〜69% は明確な差</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch08">
+  <h2>8. 【クリック】CTR・CPC・費用の推移 <span class="q-badge">A1</span> <span class="q-badge">A5</span></h2>
+  <p class="lead">CTRは<span class="num">12.90%</span>から<span class="num">15.79%</span>という数字になりました。ただし広告文は7/19以降変更しておらず、この動きの原因はLP側にありません。</p>
+
+  <div class="callout">
+    <b>CTR上昇を新LPの成果として読んではいけない</b>
+    <p>CTRは「広告が表示されてクリックされた割合」で、クリックされる<b>前</b>の指標です。着地先のLPをどう作り替えても、クリック前のユーザーには見えていません。構造上、LPの変更がCTRを動かすことはありません。</p>
+    <p>加えて、<b>広告文は7/19の配信開始以降、一度も変更していません</b>。分子（クリック）側を動かす操作はしていないということです。動いたのは分母（表示回数）側です。7/25に4本、7/27にシニア系6本の除外キーワードを追加し、章5で確認したとおり直近2日のシニア系検索語句はゼロになりました。<b>クリックされる見込みのない表示が分母から抜けた結果として、率が上がっています</b>。7/28のLP差し替えとCTRの動きは、日付が近いだけで因果関係がありません。</p>
+  </div>
+
+  <table class="data">
+    <thead><tr><th>指標</th><th>7/19〜7/27<br>（旧LP・9日）</th><th>7/28〜7/29<br>（新LP・2日）</th><th>7/19〜7/29<br>（通算11日）</th></tr></thead>
+    <tbody>
+      <tr><td>表示回数</td><td><span class="num">341</span></td><td><span class="num">95</span></td><td><span class="num">436</span></td></tr>
+      <tr><td>クリック数</td><td><span class="num">44</span></td><td><span class="num">15</span></td><td><span class="num">59</span></td></tr>
+      <tr><td>CTR</td><td><span class="num">12.90%</span></td><td><span class="num">15.79%</span></td><td><span class="num">13.53%</span></td></tr>
+      <tr><td>平均CPC</td><td>¥<span class="num">94</span></td><td>¥<span class="num">95</span></td><td>¥<span class="num">94</span></td></tr>
+      <tr><td>費用</td><td>¥<span class="num">4,134</span></td><td>¥<span class="num">1,424</span></td><td>¥<span class="num">5,558</span></td></tr>
+      <tr><td colspan="4" style="text-align:left"><b>1日あたりに割った値（日数が9日と2日で揃っていないため必須）</b></td></tr>
+      <tr><td>表示回数 / 日</td><td><span class="num">37.9</span></td><td><span class="num">47.5</span></td><td><span class="num">39.6</span></td></tr>
+      <tr><td>クリック / 日</td><td><span class="num">4.89</span></td><td><span class="num">7.50</span></td><td><span class="num">5.36</span></td></tr>
+      <tr><td>費用 / 日</td><td>¥<span class="num">459</span></td><td class="warn">¥<span class="num">712</span></td><td>¥<span class="num">505</span></td></tr>
+    </tbody>
+  </table>
+
+  <p>累計の「95表示・15クリック」と「341表示・44クリック」を並べても、期間の長さが違うので比較になりません。1日あたりに割ると、表示<span class="num">37.9</span>→<span class="num">47.5</span>、クリック<span class="num">4.89</span>→<span class="num">7.50</span>、費用<span class="num">¥459</span>→<span class="num">¥712</span>です。表示・クリック・費用のいずれも1日あたりで増えています。除外で分母が減ったのにもかかわらず1日あたりの表示が増えているので、除外以外の要因（曜日構成、競合の入札変動、Google側の配信の揺れ）も混ざっていると考えられます。<span class="badge-n">n不足</span> 後半は2日・95表示です。件数の事実としては読めますが、率としての比較には足りません。</p>
+
+  <div class="callout info">
+    <b>1日あたり費用¥712が日予算¥500を超えているのは異常ではない</b>
+    <p>日予算は<span class="num">¥500</span>ですが、直近2日の1日あたり費用は<span class="num">¥712</span>です。Googleの検索キャンペーンには、需要が多い日に日予算の最大2倍（この場合は<span class="num">¥1,000</span>）まで消化してよいというルールがあり、月間ではおおむね平準化されます。¥712はこの範囲内です。</p>
+    <p>加えて章6のとおり、直近2日のIS損失（予算）は<span class="num">0.00%</span>です。予算が理由で取りこぼした表示は1回もありません。予算の設定ミスや暴走ではなく、想定どおりの挙動です。ただし月次の総額を見るときは、¥500×日数ではなく実績の1日あたり費用で見積もる必要があります。</p>
+  </div>
+
+  <h3>CTRの水準とCPCの安定</h3>
+  <p>検索広告のCTRは業種によりますが一般に3〜6%が目安とされます。それに対して<span class="num">12.90%</span>〜<span class="num">15.79%</span>は高い水準です。フレーズ一致・完全一致のみで運用し、除外を積んでいる構成上、無関係な表示が少ないためと考えられます。ただし通算の母数は表示<span class="num">436</span>回なので、水準としての傾向を示す数字として受け取ってください。8/18判定でも同水準が続いていれば、広告文と検索意図の一致は問題箇所ではないと判断できます。</p>
+  <p>平均CPCは<span class="num">¥94</span>→<span class="num">¥95</span>で、ほぼ動いていません。上限CPC¥100に対してほぼ張り付いており、<b>入札は上限で頭打ちになっています</b>。章4の上部掲載入札の高額帯<span class="num">¥153</span>、章6のランク損失<span class="num">62.68%</span>、章7の重複率の低さは、いずれもこの「上限に張り付いている」状態から出てきます。A5に対する打ち手が予算ではなく上限CPCである根拠は、この¥95という数字にあります。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p>CTRが12.90%→15.79%と動いた分のうち、除外キーワードの寄与が何ポイントかは分離できません。除外6本の追加日（7/27）と、LP差し替え日（7/28）が隣接しており、曜日構成も違います。「除外が原因である」という方向性は構造から言えますが、寄与度は出せません。</p>
+    <p>2日間・95表示のCTRを、9日間・341表示のCTRと同じ確度で扱うことはできません。この期間のCTRが恒常的な水準に変わったのかは、8/18時点でもう一度見る必要があります。</p>
+    <p>CPCが¥94→¥95と横ばいであることから「競合の入札が変わっていない」とは言えません。KWごとの構成比が変われば、競合状況が変わっても平均CPCは動かないことがあります。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads</li>
+      <li>キャンペーン</li>
+      <li>期間セレクタ（右上）</li>
+      <li>「比較」をON</li>
+      <li>カスタムで比較期間を指定</li>
+    </ol>
+    <p>期間セレクタの中に「比較」のスイッチがあります。ONにして比較期間をカスタムで指定すると、表の各指標に前期間比の変化率が併記されます。前期間・前年同期間などのプリセットもあります。</p>
+    <p><b>この章がそのまま実例になっています。</b>比較する2期間は<b>日数を揃えるか、揃えられないなら1日あたりに割る</b>必要があります。今回はLP差し替えが7/28だったため、旧LP期間9日 vs 新LP期間2日という不揃いな比較しかできません。累計値のまま並べると「表示341 vs 95で減っている」ように見えますが、1日あたりでは37.9 vs 47.5で逆向きです。比較ONにして出てくる変化率は日数を揃えたときだけ意味を持つので、揃わない場合は自分で割り算してから読んでください。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>表示回数</td><td>広告が表示された回数（CTRの分母）</td><td>除外キーワードを追加した直後は、ここが減ることで率が上がる。率だけ見て良くなったと判断しない</td></tr>
+        <tr><td>クリック率（CTR）</td><td>クリック ÷ 表示回数</td><td>検索広告の一般的な目安は3〜6%。ただし<b>広告文を変えていない期間にCTRが動いたら、原因は分母側（除外・KW構成・競合）</b></td></tr>
+        <tr><td>平均クリック単価（CPC）</td><td>1クリックあたりの実支払額</td><td>上限CPCに張り付いている（¥100設定で¥94〜95）なら、入札が制約になっている。上限を上げるかどうかの判断材料</td></tr>
+        <tr><td>費用</td><td>期間合計の広告費</td><td>日予算との比較は<b>1日あたりに割ってから</b>。日予算の最大2倍までの消化は正常な挙動</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch09">
+  <h2>9. 【LP】着地後に何が起きているか <span class="q-badge">A1</span> <span class="q-badge">A2</span></h2>
+  <p class="lead">新LP <code>/kobe/</code> は2日間で<span class="num">13</span>ユーザー・平均滞在<span class="num">29</span>秒、PageSpeedモバイル<span class="num">90</span>・LCP<span class="num">3.1</span>秒です。速度は不良域ではなく、着地後の離脱を速度で説明することはできません。</p>
+
+  <p>章8までで、クリックが1日<span class="num">7.50</span>件発生していることを確認しました。この章はその先、クリックしたユーザーがLPに着いてから何が起きているかをGA4で見ます。</p>
+
+  <h3>比較の取り方</h3>
+  <p>新LP <code>/kobe/</code> は7/28公開なので、使えるデータは2日分しかありません。曜日によって検索行動が変わるため、<b>同じ曜日の同じ日数で比べます</b>。前期間は<b>7/28〜7/29（火・水）</b>、比較期間は<b>7/21〜7/22（火・水）</b>です。前後で日数と曜日が揃っているので、章8のような1日あたりへの割り戻しは不要です。ただし母数は小さいままです。</p>
+
+  <figure><img class="shot-ui" src="img/11_ga4_pages_compare.webp" alt="GA4「ページとスクリーン」期間比較ON（7/28〜29 vs 7/21〜22）。/kobe/ と / の行"><figcaption>図10 GA4 ページとスクリーン 期間比較（/kobe/ は13ユーザー・滞在29秒／トップは滞在12秒）</figcaption></figure>
+
+  <table class="data">
+    <thead><tr><th>指標（サイト全体）</th><th>7/28〜7/29（火水）</th><th>7/21〜7/22（火水）</th></tr></thead>
+    <tbody>
+      <tr><td>表示回数</td><td><span class="num">107</span></td><td><span class="num">57</span></td></tr>
+      <tr><td>アクティブユーザー</td><td><span class="num">31</span></td><td><span class="num">16</span></td></tr>
+      <tr><td>ユーザーあたりの平均エンゲージメント時間</td><td class="warn"><span class="num">46</span>秒</td><td><span class="num">74</span>秒</td></tr>
+      <tr><td>イベント数</td><td><span class="num">260</span></td><td><span class="num">144</span></td></tr>
+    </tbody>
+  </table>
+  <p><small>※ 章11のイベント表では page_view のユーザー数が32人と出ます。GA4は指標ごとに集計単位（アクティブユーザー／総ユーザー）が異なるため1人ずれます。同じ数を指しているとみなして構いません。</small></p>
+  <p>表示回数とアクティブユーザーはいずれも約1.9倍です。広告の着地先を専用LPに変えたことで、サイトに入ってくる人数自体が増えています。<span class="badge-n">n不足</span> この段の母数は31人と16人です。件数の事実としては読めますが、率としての比較には足りません。</p>
+
+  <div class="cannot">
+    <b>この数字から言えないこと ― エンゲージメント時間74秒→46秒</b>
+    <p>ユーザーあたりの平均エンゲージメント時間は74秒から46秒という数字になりました。<b>これを悪化と読むことはできません</b>。この指標は「合計エンゲージメント時間 ÷ アクティブユーザー数」で、分母のユーザー数が増えると1人あたりの値は下がります。実際、アクティブユーザーは16人から31人へ約2倍、first_visit（初回訪問）は14件から29件へ増えています。<b>新規流入が増えた期間の1人あたり平均は、構造的に下がります</b>。母集団が入れ替わっているため、前後の平均値を同じユーザー層の行動変化として比較できません。</p>
+    <p>また、n=31とn=16の平均です。1人が長く滞在するかどうかで大きく動く水準なので、傾向としても強くは読めません。</p>
+  </div>
+
+  <h3>ページ別</h3>
+  <table class="data">
+    <thead><tr><th>ページ</th><th>表示回数<br>（前 / 比較）</th><th>アクティブ<br>ユーザー</th><th>ユーザーあたり<br>表示回数</th><th>平均エンゲージメント時間<br>（前 / 比較）</th></tr></thead>
+    <tbody>
+      <tr><td><b>/kobe/</b>（広告の着地先）</td><td><span class="num">36</span> / <span class="num">0</span></td><td><span class="num">13</span> <span class="badge-n">n不足</span></td><td><span class="num">2.77</span></td><td><span class="num">29</span>秒 / —</td></tr>
+      <tr><td>/（トップ）</td><td><span class="num">26</span> / <span class="num">20</span></td><td><span class="num">13</span> <span class="badge-n">n不足</span></td><td><span class="num">2.00</span></td><td><span class="num">12</span>秒 / <span class="num">15</span>秒</td></tr>
+      <tr><td>/blog/hq-kobe/</td><td><span class="num">9</span> / <span class="num">5</span></td><td><span class="num">6</span> <span class="badge-n">n不足</span></td><td><span class="num">1.50</span></td><td><span class="num">52</span>秒 / <span class="num">23</span>秒</td></tr>
+      <tr><td>/rooms/</td><td><span class="num">6</span> / <span class="num">4</span></td><td><span class="num">5</span> <span class="badge-n">n不足</span></td><td><span class="num">1.20</span></td><td><span class="num">19</span>秒 / <span class="num">77</span>秒</td></tr>
+      <tr><td>/contact/</td><td><span class="num">2</span> / <span class="num">0</span></td><td><span class="num">2</span> <span class="badge-n">n不足</span></td><td><span class="num">1.00</span></td><td class="bad"><span class="num">2</span>秒 / —</td></tr>
+    </tbody>
+  </table>
+  <p><code>/kobe/</code> は7/28公開なので比較期間の値は0です。前後比較ではなく、<b>今後の基準値としてこの数字を置きます</b>。トップページ <code>/</code> は着地先ではなくなったのに表示26回・13ユーザーあり、<code>/kobe/</code> からの回遊または別経路の流入が入っています。<code>/contact/</code> の2表示・滞在<span class="num">2</span>秒は章12で扱います。</p>
+
+  <figure><img class="shot-mobile" src="img/18a_kobe_header_mobile.webp" alt="実機iPhoneで見た /kobe/ のファーストビュー。ハンバーガーヘッダー、ヒーロー、CTA「内見よやくする→」"><figcaption>図16 <code>/kobe/</code> のファーストビュー（実機iPhone。上部70pxのstickyヘッダー＋ハンバーガー、ヒーロー、CTA「内見よやくする→」）</figcaption></figure>
+
+  <h3>速度 ― 実測なので断定できる</h3>
+  <p>滞在時間の解釈は母数に縛られますが、速度は1回の計測で確定する実測値です。7/29時点のPageSpeed Insights（モバイル）は次のとおりです。</p>
+  <table class="data">
+    <thead><tr><th>指標</th><th>/kobe/（7/29計測）</th><th>基準</th></tr></thead>
+    <tbody>
+      <tr><td>パフォーマンススコア</td><td class="good"><span class="num">90</span></td><td>90以上で良好</td></tr>
+      <tr><td>FCP（初回コンテンツ描画）</td><td class="good"><span class="num">2.8</span>秒</td><td>—</td></tr>
+      <tr><td>LCP（最大コンテンツ描画）</td><td class="warn">▲ <span class="num">3.1</span>秒</td><td>2.5秒以下で良好 / 4秒超で不良</td></tr>
+      <tr><td>TBT（総ブロッキング時間）</td><td class="good"><span class="num">50</span>ms</td><td>—</td></tr>
+      <tr><td>CLS（レイアウトのずれ）</td><td class="good"><span class="num">0</span></td><td>0.1以下で良好</td></tr>
+    </tbody>
+  </table>
+  <p>LCP<span class="num">3.1</span>秒は「良好」（2.5秒以下）ではありませんが「不良」（4秒超）でもない中間帯です。CLSは<span class="num">0</span>で、読んでいる途中に表示がずれる問題はありません。<b>着地後の離脱を速度で説明することはできません</b>。原因を探すなら長さと構成の側（章10）です。</p>
+  <p>この水準になったのは7/29の作業によるものです。7/28の公開直後はパフォーマンス<span class="num">55</span>・LCP<span class="num">17.6</span>秒で、日本語フォントの読み込みが描画をブロックしていました。7/29にフォントを非ブロッキング化し、<span class="num">55</span>→<span class="num">90</span>、LCP <span class="num">17.6</span>秒→<span class="num">3.1</span>秒という数字になりました。<b>つまり7/28の1日分のデータは、LCP17.6秒という状態で取られたものです</b>。この章の <code>/kobe/</code> の滞在29秒には、その1日が含まれています。速度が正常な状態でのLP評価は、実質7/29の1日分しかありません。</p>
+
+  <figure><img class="shot-mobile" src="img/09c_kobe_scroll.webp" alt="実機iPhoneで見た /kobe/ の中盤。オレンジの帯（共益費¥14,000）と「はじめての一人暮らし。」セクション"><figcaption>図18 <code>/kobe/</code> の中盤（実機iPhone。共益費¥14,000のオレンジ帯と「はじめての一人暮らし。」セクション）</figcaption></figure>
+
+  <h3>滞在29秒をどう読むか</h3>
+  <p><span class="badge-n">n不足</span> <code>/kobe/</code> の平均エンゲージメント時間<span class="num">29</span>秒は n=<span class="num">13</span> の平均です。1人の増減で大きく動く水準なので、傾向として受け取ってください。目安に照らすと、10秒未満は「ほぼ読まれていない」、30秒前後は「ざっと見た」、60秒以上は「読んだ」です。29秒は「ざっと見た」に相当します。トップページの12秒より長く、ユーザーあたり表示回数も<span class="num">2.77</span>ページで、着地して即座に閉じられている形ではありません。<b>読まずに離脱したのではなく、短時間で判断した可能性があります</b>。ここまでが29秒という数字から言える範囲です。</p>
+
+  <div class="callout info">
+    <b>LPの全長は17,645px</b>
+    <p><code>/kobe/</code> のドキュメント高さは<span class="num">17,645</span>pxです。iPhoneの実効表示領域（約<span class="num">744</span>px。章12と同じ前提）で換算すると、上から下まで約<span class="num">24</span>画面分に相当します。滞在<span class="num">29</span>秒でこの長さを読み切ることは物理的にできません。つまり「29秒で判断した」というのは、<b>ページのごく一部だけを見て判断したという意味</b>です。どこまで読まれ、どのCTAまで到達しているかは章10のスクロールデータで見ます。この17,645pxという数字が、章10の到達率とCTA配置の議論の前提になります。</p>
+  </div>
+
+  <div class="cannot">
+    <b>この数字から言えないこと</b>
+    <p><code>/kobe/</code> の29秒には、LCP17.6秒だった7/28の1日が含まれています。速度が正常だった7/29のみの滞在時間は分離していません。</p>
+    <p>比較期間に <code>/kobe/</code> は存在しないため、旧LP（トップ着地）との滞在時間の比較はできません。トップページの12秒は、7/28以降は着地先ではなく回遊先の数字なので、7/21〜22の15秒と同じ役割の数字ではありません。</p>
+    <p><code>/rooms/</code> が77秒→19秒、<code>/blog/hq-kobe/</code> が23秒→52秒と大きく動いていますが、いずれもn=2〜6です。数字は記録しますが、変化として解釈できる水準ではありません。</p>
+    <p>PageSpeed Insightsのスコアはラボ環境の1回の計測値です。実ユーザーの回線・端末での体感はこれと一致しないことがあります。実ユーザーデータ（Core Web Vitals）は蓄積に数週間かかるため、8/18時点でも参照できない可能性があります。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>GA4</li>
+      <li>レポート</li>
+      <li>エンゲージメント</li>
+      <li>ページとスクリーン</li>
+      <li>右上の期間で比較をON</li>
+      <li>検索ボックスに <code>/kobe/</code></li>
+    </ol>
+    <p>期間比較は右上の日付範囲をクリックして「比較」をONにします。<b>曜日を揃えて同じ日数で指定してください</b>（今回は火水2日 vs 火水2日）。前週同期間のプリセットを使うと自動で曜日が揃います。表の下の検索ボックスにパスを入れると、そのページの行だけに絞れます。</p>
+    <p><b>速度は別ツールです。</b>PageSpeed Insights（pagespeed.web.dev）にURLを入れ、結果画面で<b>モバイルタブ</b>を選びます。デスクトップのスコアは実態と乖離するので、広告の着地先はモバイルで見ます。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>表示回数</td><td>そのページが表示された回数（同一人物の再表示も加算）</td><td>アクティブユーザーで割ると1人が何回見たかが出る。2回以上なら回遊または再訪がある</td></tr>
+        <tr><td>アクティブユーザー</td><td>そのページを見た実人数</td><td><b>30人未満なら率の比較には使えない</b>。件数の事実としてだけ読む</td></tr>
+        <tr><td>ユーザーあたりの平均<br>エンゲージメント時間</td><td>合計滞在時間 ÷ アクティブユーザー数。タブが非アクティブな時間は含まない</td><td><b>10秒未満＝ほぼ読まれていない / 30秒前後＝ざっと見た / 60秒以上＝読んだ</b>。ただし分母が増えると値は下がるので、新規流入が増えた期間の低下は悪化ではない</td></tr>
+        <tr><td>PageSpeed：パフォーマンス</td><td>ラボ計測の総合スコア（100点）</td><td>90以上で良好</td></tr>
+        <tr><td>PageSpeed：LCP</td><td>主要コンテンツが描画されるまでの時間</td><td><b>2.5秒以下で良好 / 4秒超で不良</b>。4秒超なら離脱の原因候補として扱う。3秒前後なら速度以外を疑う</td></tr>
+        <tr><td>PageSpeed：CLS</td><td>読み込み中に表示がずれる量</td><td>0.1以下で良好。0なら誤タップの原因にはならない</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+<section id="ch10">
+  <h2>10. 【LP】どこまで読まれているか（Clarityヒートマップ） <span class="q-badge">A2</span></h2>
+  <p class="lead"><code>/kobe/</code> は5%地点で到達率50%、50%地点で20%まで落ちます。全長17,645pxに対しCTAは7本ありますが、うち5本は到達率20%以下の位置にあり、実質ファーストビューのCTA1本で勝負している状態です。</p>
+  <p><small>※ Clarityダッシュボードの「スクロールの奥行き 65.46%」はサイト全体（全ページ・38セッション）の平均であり、<code>/kobe/</code> の値ではありません。混同しないでください。</small></p>
+
+  <div class="callout"><b>この章の母数を先に確認してください。</b> Clarityで見られる <code>/kobe/</code> のデータは <span class="num">10</span>ページビュー・<span class="num">21</span>タップです <span class="badge-n">n不足</span>。個々の行動の観察には使えますが、「何%が離脱した」という割合の議論には使えません。以下は割合ではなく「位置と到達の対応」という構造の話として読んでください。</div>
+
+  <figure><img class="shot-ui" src="img/14_clarity_scroll.webp" alt="Clarity スクロールヒートマップ /kobe/ のスクロールデータ表"><figcaption>図15 Clarity スクロールヒートマップ（<code>/kobe/</code>・過去3日。5%地点の到達50%、50%地点の到達20%）</figcaption></figure>
+
+  <h3>スクロール深度</h3>
+  <table class="data">
+    <thead><tr><th>ページ内位置</th><th>到達人数</th><th>到達率</th><th>ドロップオフ率</th></tr></thead>
+    <tbody>
+      <tr><td>5%</td><td><span class="num">5</span>人 <span class="badge-n">n不足</span></td><td class="warn">50%</td><td>50%</td></tr>
+      <tr><td>25%</td><td><span class="num">5</span>人 <span class="badge-n">n不足</span></td><td class="warn">50%</td><td>50%</td></tr>
+      <tr><td>35%</td><td><span class="num">4</span>人 <span class="badge-n">n不足</span></td><td class="warn">40%</td><td>60%</td></tr>
+      <tr><td>50%</td><td><span class="num">2</span>人 <span class="badge-n">n不足</span></td><td class="bad">20%</td><td>80%</td></tr>
+      <tr><td>75%</td><td><span class="num">1</span>人 <span class="badge-n">n不足</span></td><td class="bad">10%</td><td>90%</td></tr>
+      <tr><td>100%</td><td><span class="num">1</span>人 <span class="badge-n">n不足</span></td><td class="bad">10%</td><td>90%</td></tr>
+    </tbody>
+  </table>
+  <p>5%地点で既に半分の人が残っていません。ここから30%地点までは減らず、35%で4人、50%で2人に落ちます。10ページビューの内訳なので1人の増減で10ポイント動く水準です <span class="badge-n">n不足</span>。</p>
+
+  <h3>CTAの位置と到達率</h3>
+  <p>LPは全長 <span class="num">17,645</span>px です。CTAは7本あり、それぞれの設置位置に上のスクロール到達率を当てると次のようになります。</p>
+  <table class="data">
+    <thead><tr><th>#</th><th>CTA文言</th><th>ページ内位置</th><th>その位置の到達率</th><th>到達人数</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>内見予約</td><td>0.1%</td><td class="warn">50%</td><td><span class="num">5</span>人</td></tr>
+      <tr><td>2</td><td>内見よやくする→</td><td>3.1%</td><td class="warn">50%</td><td><span class="num">5</span>人</td></tr>
+      <tr><td>3</td><td>空室状況をきいてみる→</td><td>45.5%</td><td class="bad">20%</td><td><span class="num">2</span>人</td></tr>
+      <tr><td>4</td><td>費用のこまかい質問もどうぞ→</td><td>67.7%</td><td class="bad">20%</td><td><span class="num">2</span>人</td></tr>
+      <tr><td>5</td><td>まずは内見からはじめる→</td><td>88.2%</td><td class="bad">10%</td><td><span class="num">1</span>人</td></tr>
+      <tr><td>6</td><td>内見・お問い合わせ→</td><td>96.7%</td><td class="bad">10%</td><td><span class="num">1</span>人</td></tr>
+      <tr><td>7</td><td>内見・お問い合わせ</td><td>99.0%</td><td class="bad">10%</td><td><span class="num">1</span>人</td></tr>
+    </tbody>
+  </table>
+  <p>到達率50%のCTAは、ファーストビューにある1・2の2本だけです。残りの <span class="num">5</span>本は到達率20%以下の位置にあります。つまりCTAを7本置いていても、実際に多くの人の目に入っているのはファーストビューの1本だけで、そこで勝負している構造になっています。これは母数10でも「設置位置と到達率の対応」という構造の話なので、傾向表現ながら十分に言える内容です。</p>
+
+  <figure><img class="shot-mobile" src="img/09b_kobe_sticky_cta.webp" alt="実機iPhoneで見た /kobe/ の中盤。ポラロイド写真と下部固定CTA"><figcaption>図17 実機iPhoneの <code>/kobe/</code> 中盤（下部固定CTA「内見・お問い合わせ→」。ポラロイド2枚目が1枚目の裏に隠れている）</figcaption></figure>
+
+  <h3>クリックヒートマップの1位はCTAではない</h3>
+  <figure><img class="shot-ui" src="img/15_clarity_click_heatmap.webp" alt="Clarity クリックヒートマップ /kobe/ のクリック数ランキング"><figcaption>図14 Clarity クリックヒートマップ（<code>/kobe/</code>・過去3日。10ページビュー・21タップ）</figcaption></figure>
+  <p>タップの1位はCTAではなく、ヘッダーのハンバーガーメニューです（ハンバーガー本体6クリック＋内側1クリックで合計 <span class="num">7</span>クリック / <span class="num">21</span>タップ） <span class="badge-n">n不足</span>。2位以下はアコーディオンの開閉で、こちらも合計 <span class="num">7</span>クリックです。</p>
+  <table class="data">
+    <thead><tr><th>クリック対象</th><th>クリック数</th><th>21タップ中の位置づけ</th></tr></thead>
+    <tbody>
+      <tr><td>ヘッダーのハンバーガーメニュー（本体＋内側）</td><td><span class="num">7</span></td><td>最多</td></tr>
+      <tr><td>アコーディオンの開閉（DETAILS.reveal 4〜6・内側含む）</td><td><span class="num">7</span></td><td>2位以下の合計</td></tr>
+      <tr><td>CTA</td><td class="unk">ランキング上位に出てこない</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p>読み方としては「ユーザーはこのLPで完結させずに、他のページを見に回遊しようとしている」という観察になります。n=21なので断定はできません。ただし、その回遊先のヘッダーが <code>/kobe/</code> と他ページで別実装になっている点（章12）と符合することは記しておきます。回遊しようとした人が、LPと見た目の違うヘッダーに着地しています。</p>
+
+  <h3>サイト全体の定性指標（過去3日）</h3>
+  <table class="data">
+    <thead><tr><th>指標</th><th>値</th><th>読み方</th></tr></thead>
+    <tbody>
+      <tr><td>セッション</td><td><span class="num">38</span> <span class="badge-n">n不足</span></td><td>ボット <span class="num">20</span> セッションを除外した値</td></tr>
+      <tr><td>ユニークユーザー</td><td><span class="num">29</span> <span class="badge-n">n不足</span></td><td>新規セッション 92.11%</td></tr>
+      <tr><td>ページ / セッション</td><td>2.24</td><td>1人が2ページ強を見ている＝回遊は起きている</td></tr>
+      <tr><td>スクロール奥行き</td><td class="good">65.46%</td><td>平均で6割超まで読まれている</td></tr>
+      <tr><td>アクティブ時間</td><td><span class="num">49</span>秒</td><td>操作していた時間</td></tr>
+      <tr><td>デッドクリック</td><td class="warn">7.89%（<span class="num">3</span>セッション） <span class="badge-n">n不足</span></td><td>押しても何も起きなかったクリックが3セッションで発生</td></tr>
+      <tr><td>イライラしたクリック（Rage click）</td><td class="good">0%</td><td>同じ場所を連打された形跡はない</td></tr>
+      <tr><td>過度なスクロール</td><td class="good">0%</td><td>探し回った形跡はない</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cannot"><b>この数字から言えないこと</b>
+    <p>この章のClarityデータは過去3日（7/28〜7/30）で、<b>LCPが17.6秒だった7/28を含みます</b>（7/29のフォント対応で3.1秒になりました。章9参照）。5%地点で半分が離脱している数字には、その1日分が混ざっています。章11の cta_click 4件も同様です。</p>
+    <p><span class="num">10</span>ページビューでは「何%が離脱した」という割合の話はできません。到達率50%は「5人中2〜3人」という件数の言い換えにすぎず、1人の行動で数字が10ポイント動きます。CTA位置と到達率の対応（構造）は読めますが、「この位置のCTAは押されない」という率の結論は出せません。デッドクリック7.89%も3セッションの話で、どの要素が反応しなかったかは個別のレコーディングを見ないと特定できません。8/18に再取得して、100ページビュー以上を積んでから率の議論に入ります。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Microsoft Clarity</li>
+      <li>プロジェクト <code>xqy9wgrfmx</code></li>
+      <li>上部メニュー「ヒートマップ」</li>
+      <li>人気のあるページから対象を選ぶ（またはURLを直接入力）</li>
+      <li>「タップ」タブ＝クリック位置 / 「スクロール」タブ＝スクロール深度</li>
+      <li>期間は左上で変更（既定は過去3日）</li>
+    </ol>
+    <figure><img class="shot-ui" src="img/16_clarity_dashboard.webp" alt="Clarity ダッシュボード（過去3日）"><figcaption>図13 Clarity ダッシュボード（期間の変更は左上。既定は過去3日）</figcaption></figure>
+    <p>実際の操作を動画で見たいときは、同じメニューの「レコーディング」からセッションを再生します。ページで絞り込めます。</p>
+    <table class="read">
+      <thead><tr><th>見る指標</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>スクロール深度（スクロールタブ）</td><td>各%地点に何人到達したか</td><td>「50%到達率」を目安にする。CTAが到達率の低い位置にあれば、訴求内容ではなく配置の問題</td></tr>
+        <tr><td>タップ（クリック）ランキング</td><td>どの要素が押されたか</td><td>上位にCTAが入っていなければ、ユーザーの関心はCTA以外に向いている</td></tr>
+        <tr><td>ページビュー / タップ数</td><td>ヒートマップの母数</td><td>100ページビュー未満なら割合を語らない。件数として読む</td></tr>
+        <tr><td>デッドクリック</td><td>押しても反応しなかったクリック</td><td>0%が正常。数%出たらレコーディングで該当要素を特定する</td></tr>
+        <tr><td>イライラしたクリック</td><td>短時間の連打</td><td>0%が正常。出たらUI故障の疑い</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch11">
+  <h2>11. 【CTA】ボタンは押されているか <span class="q-badge">A2</span></h2>
+  <p class="lead">cta_click は <span class="num">4</span>件・<span class="num">3</span>ユーザーで、<code>/kobe/</code> 到達13ユーザーに対し <span class="num">23.1</span>%。一方 contact_submit はイベント一覧に存在せず、期間中0回です。</p>
+
+  <figure><img class="shot-ui" src="img/03_ga4_events.webp" alt="GA4 イベント一覧。cta_click の行"><figcaption>図11 GA4「イベント」一覧（cta_click 4件／3ユーザー。contact_submit は一覧に無い）</figcaption></figure>
+
+  <table class="data">
+    <thead><tr><th>イベント名</th><th>件数</th><th>ユーザー数</th><th>前期間の件数</th><th>前期間のユーザー数</th></tr></thead>
+    <tbody>
+      <tr><td>page_view</td><td><span class="num">107</span></td><td><span class="num">32</span></td><td><span class="num">57</span></td><td><span class="num">16</span></td></tr>
+      <tr><td>user_engagement</td><td><span class="num">75</span></td><td><span class="num">18</span></td><td><span class="num">50</span></td><td><span class="num">12</span></td></tr>
+      <tr><td>session_start</td><td><span class="num">45</span></td><td><span class="num">32</span></td><td><span class="num">23</span></td><td><span class="num">16</span></td></tr>
+      <tr><td>first_visit</td><td><span class="num">29</span></td><td><span class="num">29</span></td><td><span class="num">14</span></td><td><span class="num">14</span></td></tr>
+      <tr><td>cta_click</td><td class="good"><span class="num">4</span> <span class="badge-n">n不足</span></td><td><span class="num">3</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td></tr>
+      <tr><td>contact_submit</td><td class="bad"><span class="num">0</span>（一覧に存在しない）</td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td></tr>
+      <tr><td>waitlist_submit</td><td class="bad"><span class="num">0</span>（一覧に存在しない）</td><td><span class="num">0</span></td><td><span class="num">0</span></td><td><span class="num">0</span></td></tr>
+    </tbody>
+  </table>
+  <p>GA4のイベント一覧は、その期間に1回以上発生したイベントだけを行として表示します。<b>contact_submit と waitlist_submit は一覧に名前が出てきません。これは「期間中0回」という意味です</b>。cta_click は前期間0件から4件になっていますが、これは <code>/kobe/</code> が7/28に公開されて初めて計測対象が存在したためで、比較になる前期間がありません。</p>
+
+  <h3>CTAクリック率</h3>
+  <p><code>/kobe/</code> に到達したのは13ユーザー、そのうちCTAを押したのが3ユーザーで <span class="num">23.1</span>% です <span class="badge-n">n不足</span>。3人／13人なので、1人の増減で約8ポイント動く水準です。傾向として受け取ってください。</p>
+  <p>ここから言えるのは「LPは合格」ではありません。言えるのは、<b>LP内訴求が主要因である可能性は相対的に低い</b>ということです。到達した人のうち一定割合はCTAまで進んでおり、CTA以前（広告文とLPの訴求の食い違い、ファーストビューでの離脱）に致命的な断絶があるとは考えにくい、という消去法の読み方です。ボトルネックの候補はCTAより下流に残ります。</p>
+
+  <h3>CTAの先へ進んだ人</h3>
+  <div class="funnel">
+    <div class="funnel-step"><b><code>/kobe/</code> 到達</b><br><span class="num">13</span>ユーザー <span class="badge-n">n不足</span></div>
+    <div class="funnel-step"><b>cta_click</b><br><span class="num">3</span>ユーザー（<span class="num">23.1</span>%）</div>
+    <div class="funnel-step"><b><code>/contact/</code> 到達</b><br><span class="num">2</span>ユーザー（<span class="num">67</span>%）</div>
+    <div class="funnel-step"><b>contact_submit</b><br><span class="num">0</span>件</div>
+  </div>
+  <p>CTAを押した3人のうち <code>/contact/</code> に着いたのは2人で <span class="num">67</span>% です <span class="badge-n">n不足</span>。CTA7本すべてが <code>/contact/</code> への素のリンクなので、この1人の差はリンク不良ではなく、遷移前に離れたか計測のタイミング差と考えられます。そして <code>/contact/</code> に着いた2人から送信は0件でした。落ちているのはここから先です。詳細は次章で扱います。</p>
+
+  <div class="cannot"><b>この数字から言えないこと</b>
+    <p>3ユーザー／13ユーザーという母数では、CTAクリック率23.1%を業界水準や過去実績と比較できません。またこの4件がどのCTA（7本のうちどれ）から発生したかは、イベント一覧の件数だけでは分かりません。<code>event_label</code> は標準レポートの下部カードで確認できますが、<code>link_text</code> は「探索」でカスタムディメンションを追加しないと見られません。「CTA文言Aの方が押される」という比較は、8/18時点でもクリック数が足りない可能性があります。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Analytics 4</li>
+      <li>レポート</li>
+      <li>エンゲージメント</li>
+      <li>イベント</li>
+      <li>一覧からイベント名（cta_click）をクリック</li>
+      <li>件数とユーザー数を確認</li>
+      <li>下部の「Event Label」カードで <code>event_label</code>（=kobe-lp）を見る</li>
+    </ol>
+    <table class="read">
+      <thead><tr><th>見る指標</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>イベント名が一覧にあるか</td><td>その期間の発生有無</td><td><b>一覧に名前が出てこない＝その期間0回</b>。0件の行は表示されない仕様</td></tr>
+        <tr><td>件数 / ユーザー数</td><td>発生回数と実人数</td><td>件数＞ユーザー数なら同じ人が複数回押している。今回は4件/3人</td></tr>
+        <tr><td><code>event_label</code></td><td>どのページのCTAか（kobe-lp）</td><td>ラベルが空なら計測実装側の抜け</td></tr>
+        <tr><td><code>link_text</code></td><td>押されたCTAの文言</td><td><b>標準のイベントレポートには出ません。</b>「探索」でカスタムディメンションに追加して初めて見られます。件数が二桁になるまでは参考値</td></tr>
+        <tr><td>contact_submit</td><td>フォーム送信＝CV</td><td>一覧に無ければ送信0。cta_click あり×contact_submit なし＝フォーム側の問題</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch12">
+  <h2>12. 【フォーム】最大の疑い箇所 /contact/ <span class="q-badge">A2</span></h2>
+  <p class="lead">CTAは押され、<code>/contact/</code> にも到達しているのに送信は0件で、滞在は2秒です。計測は健全で速度も速いため、原因はフォームそのものの構造にあると考えられます。</p>
+
+  <figure><img class="shot-mobile" src="img/17_contact_mobile.webp" alt="実機iPhoneで見た /contact/ のファーストビュー。上部に8リンクの横スクロールナビが2段"><figcaption>図19 実機iPhoneの <code>/contact/</code> ファーストビュー（上部に8リンクのナビが2段。メッセージ本文欄と送信ボタンは画面外）</figcaption></figure>
+  <figure><img class="shot-ui" src="img/04_ga4_pages_contact.webp" alt="GA4 ページとスクリーンの /contact/ 行"><figcaption>図12 GA4「ページとスクリーン」の <code>/contact/</code> 行（表示2・2ユーザー・滞在2秒）</figcaption></figure>
+
+  <h3>① まず、計測は健全である</h3>
+  <p>「送信されているのに記録されていないだけ」という可能性を先に潰します。コードとネットワークの実測結果は次のとおりです。</p>
+  <table class="data">
+    <thead><tr><th>確認項目</th><th>実測</th><th>意味</th></tr></thead>
+    <tbody>
+      <tr><td><code>/kobe/</code> のCTAリンク</td><td class="good">7本すべて素の <code>&lt;a href="/contact/"&gt;</code></td><td>JSに依存せず遷移する。クリックが飲まれる余地がない</td></tr>
+      <tr><td>TTFB</td><td class="good"><span class="num">76</span>ms</td><td>サーバー応答は速い</td></tr>
+      <tr><td>DOMContentLoaded</td><td class="good"><span class="num">100</span>ms</td><td>0.1秒でHTMLの解析完了</td></tr>
+      <tr><td>自前アセットの最遅</td><td class="good"><span class="num">120</span>ms</td><td>自サイト側の読み込みは終わっている</td></tr>
+      <tr><td>load イベント</td><td class="warn"><span class="num">6,272</span>ms</td><td>ClarityとGA4の3rd partyスクリプト。DCL後に走るため描画は阻害しない</td></tr>
+      <tr><td>送信の仕組み</td><td>preventDefault + fetch で Formspree へ非同期POST</td><td>ページ遷移しない。だから遷移計測では追えない</td></tr>
+      <tr><td>CV計測</td><td class="good"><code>contact_submit</code> をハンドラ内で発火</td><td>送信処理が走れば必ずイベントが出る実装</td></tr>
+    </tbody>
+  </table>
+  <p>送信ハンドラの内側で <code>contact_submit</code> を発火させているため、送信が実行されていればイベントは記録されます。イベント一覧に <code>contact_submit</code> が存在しないということは、<b>CV0は計測漏れではなく、実際に送信されていない</b>ということです。ここはコードとネットワークの実測に基づくので断定してよい部分です。</p>
+
+  <h3>② フォーム構造の監査</h3>
+  <figure><img class="shot-ui" src="img/05_contact_form.webp" alt="/contact/ フォームの実物（デスクトップ幅）"><figcaption>図20 <code>/contact/</code> フォームの実物（お名前・メールアドレス・メッセージ本文が必須。件名のみ任意）</figcaption></figure>
+  <table class="data">
+    <thead><tr><th>項目</th><th>種類</th><th>必須</th><th>プレースホルダ</th></tr></thead>
+    <tbody>
+      <tr><td>お名前</td><td>テキスト</td><td class="warn">必須</td><td>山田 太郎</td></tr>
+      <tr><td>メールアドレス</td><td>メール</td><td class="warn">必須</td><td>example@email.com</td></tr>
+      <tr><td>件名</td><td>テキスト</td><td class="good">任意</td><td>内見希望・質問など</td></tr>
+      <tr><td>メッセージ本文</td><td>テキストエリア（白紙のフリーテキスト）</td><td class="bad">必須</td><td>ご希望の日程や、ご質問をご記入ください。</td></tr>
+    </tbody>
+  </table>
+  <p>必須は3項目で、そのうち1つが<b>白紙のフリーテキスト</b>です。任意なのは件名だけです。加えて次が存在しません。</p>
+  <table class="data">
+    <thead><tr><th>あってよいもの</th><th>現状</th></tr></thead>
+    <tbody>
+      <tr><td>用件の選択肢（内見希望 / 空室確認 / 費用の質問 など）</td><td class="bad">なし</td></tr>
+      <tr><td>希望日時の選択肢</td><td class="bad">なし</td></tr>
+      <tr><td>電話番号の導線</td><td class="bad">なし</td></tr>
+      <tr><td>LINEの導線</td><td class="bad">なし</td></tr>
+      <tr><td>メールリンク（mailto）の導線</td><td class="bad">なし</td></tr>
+    </tbody>
+  </table>
+  <p>つまり、このフォームがCVへの唯一の経路です。さらに位置の問題があります。ページ全長は <span class="num">1,098</span>px、フォームの開始が上端から <span class="num">259</span>px、送信ボタン（180×60px）は上端から <span class="num">860</span>px にあります。iPhoneの実効表示領域は約 <span class="num">744</span>px なので、<b>送信ボタンは1画面目に入りません</b>。図19のとおり、実機では入力欄が「お名前・メール・件名」まで見えて、必須のメッセージ本文欄と送信ボタンが画面外です。「あと1項目で終わる」ことが画面から見えない状態です。</p>
+
+  <h3>③ ヘッダーの不整合</h3>
+  <table class="data">
+    <thead><tr><th></th><th><code>/kobe/</code>（LP）</th><th><code>/contact/</code>（共通ヘッダー）</th></tr></thead>
+    <tbody>
+      <tr><td>実装</td><td><code>.s01-header</code>（LP専用）</td><td><code>src/components/Header.astro</code>（サイト共通）</td></tr>
+      <tr><td>position</td><td>sticky</td><td>sticky</td></tr>
+      <tr><td>高さ</td><td class="good"><span class="num">70</span>px</td><td class="bad">900px以下で <code>flex-wrap:wrap</code> により2段化。デスクトップ時の高さが62pxなので、2段化でおおむねその倍（約124px）を占有する</td></tr>
+      <tr><td>ハンバーガー</td><td class="good">あり（aria-label「メニューを開く」）</td><td class="bad">なし</td></tr>
+      <tr><td>ナビの挙動</td><td>折りたたみ</td><td class="bad">nav が <code>overflow-x:auto</code>、<code>.internal-links</code> が <code>width:max-content</code> で8リンク・幅 <span class="num">749</span>px の横スクロールストリップ</td></tr>
+    </tbody>
+  </table>
+  <p>LPで「内見よやくする」を押した人は、ハンバーガー70pxのヘッダーから、2段化した横スクロールナビのページに移動します。章10でタップ最多だったのがLPのハンバーガーだったこととあわせると、ユーザーがヘッダーを操作の起点にしているのに、遷移先ではその起点が別物になっている構図です。見た目の連続性が切れる点と、上部の占有が100pxを超えてフォームがさらに下がる点の両方で不利になります。</p>
+
+  <h3>④ 約束の不一致（最有力仮説）</h3>
+  <p>広告とLPが約束しているのは「内見予約」です。CTAの文言も「内見よやくする→」「まずは内見からはじめる→」「内見・お問い合わせ→」です。しかし着地するのは汎用のお問い合わせフォームで、そこで求められるのは自分で文章を書くことです。日程を選ぶ画面ではありません。</p>
+  <p>これを<b>最有力仮説</b>として明示します。断定はしません。母数は <code>/contact/</code> 到達2ユーザー・送信0件で、仮説を検証できる水準にありません <span class="badge-n">n不足</span>。検証方法は、フォームを改修したうえで cta_click → contact_submit の歩留まり（現在は3人→0人）を再測定することです。改修前後で同程度のCTAクリック数を集めて比較します。改修しないまま8/18を迎えると、この仮説は検証されないまま残ります。</p>
+
+  <h3>滞在2秒について</h3>
+  <p><code>/contact/</code> の平均エンゲージメント時間は <span class="num">2</span>秒です。TTFB76ms・DCL100msで技術的には高速なので、原因は速度ではありません。2秒は「ページを見て、何もせず戻った」という解釈から離れにくい数字です。</p>
+  <div class="cannot"><b>この数字から言えないこと</b>
+    <p>n=2の平均です <span class="badge-n">n不足</span>。1人の増減で大きく動く水準なので確定ではありません。またGA4のエンゲージメント時間は、そのページがセッションの最終ページ（離脱ページ）だった場合、次のイベントが発生しないぶん短く出る性質があります。2秒という値には、この計測上の性質が混ざっている可能性があります。「フォームを見て諦めた」と「離脱ページなので短く出た」を切り分けるには、Clarityのレコーディングで実際の操作を見る必要があります。</p>
+  </div>
+
+  <h3>改修案</h3>
+  <table class="data">
+    <thead><tr><th>案</th><th>内容</th><th>工数</th><th>期待効果</th></tr></thead>
+    <tbody>
+      <tr><td>(a)</td><td>ヘッダーを <code>/kobe/</code> と同じハンバーガー型に統一</td><td class="good">小</td><td>上部占有が100px超→70px。8リンクの横スクロール解消。LPからの見た目の連続性が保たれる</td></tr>
+      <tr><td>(b)</td><td>用件を選択式（内見希望 / 空室確認 / 費用の質問 など）＋希望日時を選択式にし、メッセージ本文を任意化</td><td class="warn">中</td><td>必須の白紙フリーテキストが消える。「内見予約」の約束と着地が一致する</td></tr>
+      <tr><td>(c)</td><td>LINE導線の追加</td><td class="warn">中</td><td>フォームが唯一の経路という状態の解消。文章を書きたくない人の受け皿ができる</td></tr>
+      <tr><td>(d)</td><td>送信ボタンを1画面目に入れる（フォーム開始位置と余白の調整）</td><td class="good">小</td><td>860px→744px以内。「あと少しで終わる」が画面から見える</td></tr>
+      <tr><td>(e)</td><td><code>/kobe/</code> のポラロイド2枚目の重なりを解消（<code>.photo-frame--secondary</code> が <code>position:absolute</code>＋transformで、狭い幅だと1枚目の裏に隠れる）</td><td class="good">小</td><td>見た目の品質。Clarityのデッドクリック7.89%（3セッション）の候補要素でもある</td></tr>
+    </tbody>
+  </table>
+  <p>優先順位は <b>(a) と (d) を8/18の前に実施</b>、<b>(b)〜(c) は計測に触るため8/18の判定後</b>です。(a)(d)はCSSとマークアップの調整でイベント実装に触りません。(b)(c)はフォーム項目とCV経路が変わるため、8/18の判定に使う数字の連続性が崩れます。</p>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>GA4 → レポート → エンゲージメント → ページとスクリーン</li>
+      <li><code>/contact/</code> の行 → 平均エンゲージメント時間</li>
+      <li>GA4 → エンゲージメント → イベント → <code>contact_submit</code> が一覧に存在するかを確認</li>
+      <li>Clarity → レコーディング → ページで <code>/contact/</code> に絞る</li>
+      <li>実際のセッションを再生して、どこで止まったかを見る</li>
+    </ol>
+    <table class="read">
+      <thead><tr><th>見る指標</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td><code>/contact/</code> の平均エンゲージメント時間</td><td>ページに関与していた時間</td><td><b>2秒は「見て何もせず戻った」以外に解釈の幅が狭い</b>。入力を始めれば数十秒になる</td></tr>
+        <tr><td><code>contact_submit</code> の有無</td><td>送信されたか</td><td>一覧に無ければ0件。cta_click があるのに0件なら、疑うのはフォーム側</td></tr>
+        <tr><td>Clarity レコーディング</td><td>実際の操作の再生</td><td>本文欄で止まる／ナビを横スクロールする／すぐ戻る、のどれが起きているかを目で確認する</td></tr>
+        <tr><td>TTFB / DCL（DevTools のネットワーク）</td><td>表示の速さ</td><td>DCL 100msなら速度は原因から外せる。load が長くても3rd partyならDCL後で描画に影響しない</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch13">
+  <h2>13. 【送信＝CV】CV件数とCPA <span class="q-badge">A1</span> <span class="q-badge">A5</span></h2>
+  <p class="lead">CVは通算11日で <span class="num">1</span>件、CPAは基準線に当てて黄（継続・上限内）です。7/28〜29のCV0件には、新LPの評価を左右する情報は含まれていません。</p>
+
+  <table class="data">
+    <thead><tr><th>期間</th><th>クリック</th><th>費用</th><th>CV</th><th>CVR</th><th>CPA</th><th>基準線での判定</th></tr></thead>
+    <tbody>
+      <tr><td>7/19〜7/27（旧LP・9日）</td><td><span class="num">44</span> <span class="badge-n">n不足</span></td><td>¥<span class="num">4,134</span></td><td><span class="num">1</span></td><td>2.27% <span class="badge-n">n不足</span></td><td>¥<span class="num">4,134</span> <span class="badge-n">n不足</span></td><td class="warn">黄（継続・上限内）</td></tr>
+      <tr><td>7/28〜7/29（新LP・2日）</td><td><span class="num">15</span> <span class="badge-n">n不足</span></td><td>¥<span class="num">1,424</span></td><td><span class="num">0</span></td><td>0.0%</td><td class="unk">算出不能</td><td class="unk">判定不能</td></tr>
+      <tr><td>7/19〜7/29（通算11日）</td><td><span class="num">59</span> <span class="badge-n">n不足</span></td><td>¥<span class="num">5,558</span></td><td><span class="num">1</span></td><td>1.69% <span class="badge-n">n不足</span></td><td>¥<span class="num">5,558</span> <span class="badge-n">n不足</span></td><td class="warn">黄（継続・上限内）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="gauge">
+    <div><b>CPA基準線</b> 目標 ¥<span class="num">2,000</span> ／ 上限 ¥<span class="num">6,000</span></div>
+    <div>7/19〜27 CPA ¥<span class="num">4,134</span> … 目標超・上限内 → <b>黄（継続・上限内）</b></div>
+    <div>通算 CPA ¥<span class="num">5,558</span> … 目標超・上限内 → <b>黄（継続・上限内）</b></div>
+    <div>7/28〜29 … CV0件のため算出不能</div>
+  </div>
+  <p>目標¥2,000は超えていますが、撤退ラインの¥6,000には達していません。判定は「継続」の側です。ただしCV1件の平均なので、2件目が出た瞬間に大きく動きます <span class="badge-n">n不足</span>。</p>
+
+  <h3>7/28〜29のCV0件をどう読むか</h3>
+  <p><b>事実。</b>7/28〜29はクリック <span class="num">15</span>・CV <span class="num">0</span>件でした。</p>
+  <p><b>期待値。</b>旧LP期間のCVR <span class="num">2.27</span>% を当てると、15クリックからの期待CVは <b><span class="num">0.34</span>件</b>です。期待値が0.34件のとき、もっとも起こりやすい結果は「1件も出ない」です。<b>0件という結果に、新LPの評価を左右する情報は含まれていません</b>。良いとも悪いとも言えません。</p>
+  <p><b>判定に必要な母数の逆算。</b>CVRの比較ができる水準（CV5件）に必要な量は次のとおりです。</p>
+  <table class="data">
+    <thead><tr><th>項目</th><th>値</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td>CV5件に必要なクリック</td><td>約 <span class="num">220</span>クリック</td><td>CVR2.27%換算</td></tr>
+      <tr><td>そのための費用</td><td>約 ¥<span class="num">20,680</span></td><td>CPC¥94換算</td></tr>
+      <tr><td>月予算（日予算¥500×30日）</td><td>¥<span class="num">15,000</span></td><td>現状</td></tr>
+      <tr><td>月予算で買えるクリック</td><td><span class="num">160</span>クリック</td><td></td></tr>
+      <tr><td>そのときの期待CV</td><td class="warn"><span class="num">3.63</span>件</td><td>CV5件に届かない</td></tr>
+    </tbody>
+  </table>
+  <p><b>現在の予算では、8/18時点でも判定に必要な母数に届かない可能性があります</b>。これはA5（日予算¥500を引き上げるか）に直接跳ね返ります。予算の議論は「表示を増やしたい」ではなく「判定に必要な母数を確保できるか」の話として扱うべきです。</p>
+
+  <h3>ただし予算を増やしても天井がある</h3>
+  <p>章4の市場規模と接続します。主要KW「シェアハウス 神戸／神戸 シェアハウス」の月間検索は <span class="num">590</span>回です。インプレッションシェア（IS）を100%にするという非現実的な仮定を置いても、CTR13.53%を当てて月 <span class="num">79.8</span>クリック、CVR2.27%で期待CVは<b>月 <span class="num">1.81</span>件</b>にとどまります。</p>
+  <table class="data">
+    <thead><tr><th>制約</th><th>内容</th><th>効くこと</th></tr></thead>
+    <tbody>
+      <tr><td>制約1：母数不足</td><td>月予算¥15,000＝160クリック＝期待CV3.63件</td><td>予算を増やせば緩む</td></tr>
+      <tr><td>制約2：市場の天井</td><td>IS100%でも月79.8クリック＝期待CV1.81件</td><td class="bad">予算を増やしても緩まない</td></tr>
+    </tbody>
+  </table>
+  <p>二重の制約がかかっている状態です。予算を増やすと判定に必要な母数には近づきますが、この主要KWだけでは月1.81件が上限です。予算の引き上げを検討する場合は、同時に対象キーワードを広げる（<a href="#ch04">章4</a>で挙げた未出稿KW候補）ことが前提になります。8/18に判断するのはこの2点セットです。</p>
+
+  <div class="cannot"><b>この数字から言えないこと</b>
+    <p>CV1件のCPAは「CPAが¥5,558である」という主張には使えません。1件が2件になればCPAは半分、0件だったら算出不能という水準です <span class="badge-n">n不足</span>。また新LPと旧LPのCVR比較は、新LP側が15クリック・0件なので成立しません。上の期待CV計算はすべてCVR2.27%（旧LP・44クリック・1件）を係数として使っており、その係数自体もn=1の推定です。数字の桁感を掴むための試算であり、予測ではありません。</p>
+  </div>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads → キャンペーン</li>
+      <li>表の右上「表示項目」→ 表示項目を変更</li>
+      <li>コンバージョン → 「コンバージョン」「コンバージョン単価」「コンバージョン率」にチェック</li>
+      <li>どのCVが計上対象かは ツールと設定 → 測定 → コンバージョン で確認</li>
+      <li>検索語句レポートにコンバージョン列を足すと、どの語句からCVしたかが分かる</li>
+    </ol>
+    <p>計上対象はGA4からインポートした <code>contact_submit</code> が主で、<code>waitlist_submit</code> も対象です。Ads側のCV件数がGA4のイベント件数と合わない場合は、まずここで対象の設定を確認します。</p>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>コンバージョン</td><td>期間内のCV件数</td><td>10件未満なら率（CVR・CPA）の比較には使わない。件数として読む</td></tr>
+        <tr><td>コンバージョン単価（CPA）</td><td>1CVあたり広告費</td><td>目標 ¥2,000（ひつじ不動産の問い合わせ課金と同額）／ 上限 ¥6,000（空室1ヶ月の機会損失 × CV→契約率11%）。上限超で停止検討</td></tr>
+        <tr><td>コンバージョン率</td><td>クリックに対するCV率</td><td>旧LP実績2.27%を暫定の基準係数に使う。ただしCV1件の推定値</td></tr>
+        <tr><td>検索語句 × コンバージョン</td><td>CVを生んだ語句</td><td>CV件数が二桁になるまでは「この語句が強い」とは言えない</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch14">
+  <h2>14. 【CVの先】問い合わせ→内見→契約の歩留まり <span class="q-badge">A1</span></h2>
+  <p class="lead">経験値の係数を当てるとCV6〜9件で1契約（CV→契約率11〜17%）で、1契約あたり広告費は¥24,804〜¥50,022です。ただしこの歩留まりの実データは存在せず、記録を始めないと永久に埋まりません。</p>
+
+  <table class="data">
+    <thead><tr><th>段</th><th>歩留まり（仮の係数）</th><th>意味</th></tr></thead>
+    <tbody>
+      <tr><td>問い合わせ → 内見</td><td>約 1/3</td><td>問い合わせ3件で1件が内見に進む</td></tr>
+      <tr><td>内見 → 契約</td><td>1/2 〜 1/3</td><td>内見2〜3件で1件が契約になる</td></tr>
+      <tr><td>合計（CV → 契約）</td><td class="warn"><span class="num">11</span>〜<span class="num">17</span>%</td><td><b>CV <span class="num">6</span>〜<span class="num">9</span>件で1契約</b></td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>この歩留まり率は経験値であり、仮の係数です。</b>この案件の実績から算出したものではありません（実績CVは通算1件で、内見・契約に至った記録はありません）。以下の金額はすべて、この仮の係数を当てた試算です。</div>
+
+  <h3>1契約あたりの広告費</h3>
+  <table class="data">
+    <thead><tr><th>前提CPA</th><th>CV6件で1契約の場合</th><th>CV9件で1契約の場合</th></tr></thead>
+    <tbody>
+      <tr><td>¥<span class="num">4,134</span>（7/19〜27）</td><td>¥<span class="num">24,804</span></td><td>¥<span class="num">37,206</span></td></tr>
+      <tr><td>¥<span class="num">5,558</span>（通算11日）</td><td>¥<span class="num">33,348</span></td><td>¥<span class="num">50,022</span></td></tr>
+    </tbody>
+  </table>
+  <p>これを、契約1件で回収する側の数字と並べます。</p>
+  <table class="data">
+    <thead><tr><th>項目</th><th>金額 / 期間</th></tr></thead>
+    <tbody>
+      <tr><td>空室1ヶ月の機会損失</td><td>¥<span class="num">53,000</span> 〜 ¥<span class="num">61,000</span></td></tr>
+      <tr><td>平均入居期間</td><td><span class="num">12</span>ヶ月</td></tr>
+      <tr><td>1契約あたり広告費（通算CPA基準）</td><td>¥<span class="num">33,348</span> 〜 ¥<span class="num">50,022</span></td></tr>
+    </tbody>
+  </table>
+  <p>1契約あたり広告費の上限側 ¥50,022 は、空室1ヶ月の機会損失（¥53,000〜61,000）とほぼ同額です。平均入居12ヶ月を前提にすれば、広告で埋めた1室は1ヶ月分の機会損失に相当するコストで12ヶ月分の収入を確保する計算になります。CPA上限¥6,000がこの構造から引かれています（機会損失 × CV→契約率11%）。</p>
+  <p>ただしこの試算の中で実測値なのはCPAだけです。歩留まりの2段はどちらも仮の係数で、実際に何%なのかはこの案件では分かっていません。<b>この数字はGoogle AdsにもGA4にも存在しません。</b>広告ツールが追えるのは「送信された」までで、その先の内見と契約は自分で記録するしかありません。CV→契約率が11%なのか5%なのか25%なのかで、CPAの許容ラインは倍以上動きます。8/18の継続/停止の判断は、この係数を仮のまま使うことになります。</p>
+
+  <aside class="howto">
+    <div class="howto-head">この数字はどのツールにも無い。あなたの記録が唯一のソース</div>
+    <p>問い合わせが来た日から、次の5列を1行ずつ足していってください。スプレッドシート1枚で足ります。所要は1件あたり1分未満です。</p>
+    <table class="read">
+      <thead><tr><th>列</th><th>入れるもの</th><th>どこから取るか</th></tr></thead>
+      <tbody>
+        <tr><td>問い合わせ日</td><td>YYYY-MM-DD</td><td>Formspreeの受信メール</td></tr>
+        <tr><td>経路（gclid or utm）</td><td>広告経由か自然流入か</td><td>問い合わせメールに含まれていなければ、フォームにhiddenで gclid / utm_source を持たせる改修が必要</td></tr>
+        <tr><td>内見有無</td><td>あり / なし</td><td>自分の記録</td></tr>
+        <tr><td>契約有無</td><td>あり / なし</td><td>自分の記録</td></tr>
+        <tr><td>家賃</td><td>金額</td><td>契約時。契約1件の価値を確定させるため</td></tr>
+      </tbody>
+    </table>
+    <p>この記録が5〜10行たまると、仮の係数（1/3、1/2〜1/3）を実測値に置き換えられます。置き換わった時点で、CPA上限¥6,000という基準線そのものを引き直します。逆に記録を始めなければ、CVが何件出てもファネルの下段は永久に空欄のままです。開始は今日からで、過去分は問い合わせ1件だけなので遡って埋められます。</p>
+  </aside>
+</section>
+
+<section id="ch15">
+  <h2>15. 広告費以外にかかっているコスト</h2>
+  <p class="lead">この章の役割は、判断の分母を正しくすることです。広告費だけを見ると、実際にかかっているコストを過小に見積もることになります。</p>
+
+  <table class="data">
+    <thead><tr><th>項目</th><th>金額</th><th>期間 / 単位</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr><td>広告費（Google Ads）</td><td>¥<span class="num">5,558</span></td><td>11日（7/19〜7/29）</td><td class="good">実測</td></tr>
+      <tr><td>Formspree（フォーム受信サービス）</td><td class="unk">未確定</td><td>プラン費用（月額）</td><td class="unk">未確定</td></tr>
+      <tr><td>Microsoft Clarity</td><td class="good">¥0</td><td>—</td><td class="good">無料</td></tr>
+      <tr><td>Google Analytics 4</td><td class="good">¥0</td><td>—</td><td class="good">無料</td></tr>
+      <tr><td>LINE導線の構築</td><td class="unk">未確定</td><td>初期工数</td><td class="unk">未確定（章12の改修案(c)）</td></tr>
+      <tr><td>運用工数</td><td class="unk">未確定</td><td>時間</td><td class="unk">未確定</td></tr>
+    </tbody>
+  </table>
+  <p>金額が確定していないものは「未確定」と記載しています。推計で埋めていません。Formspreeのプラン費用と運用工数は、実際の請求額と実際にかけた時間を1度測れば確定します。それまでCPAの評価に含めていません。</p>
+  <p>CPA¥5,558（章13）は広告費のみの数字です。上の未確定項目が確定すると、1CVあたりの実コストはこれより上がります。CPA上限¥6,000という基準線は広告費ベースで引かれているため、未確定分が確定した時点で、上限の意味を「広告費のみで¥6,000」なのか「全コストで¥6,000」なのかを決め直す必要があります。8/18までにFormspreeのプラン費用を確認して、この表の1行を埋めてください。</p>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads → 料金 → お取引 で実際の請求額を確認</li>
+      <li>Formspree の管理画面 → Billing で契約プランと月額を確認</li>
+      <li>運用工数は、次の1週間だけ作業時間を記録して実測する</li>
+      <li>この表に転記して「未確定」を消す</li>
+    </ol>
+    <table class="read">
+      <thead><tr><th>見る項目</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>Ads の請求額</td><td>実際に引き落とされた広告費</td><td>管理画面の「費用」と一致するか。ズレたら期間指定を確認</td></tr>
+        <tr><td>Formspree の月額</td><td>フォーム受信の固定費</td><td>固定費はCV0でも発生する。CVが月1件なら1件あたりコストに丸ごと乗る</td></tr>
+        <tr><td>運用工数（時間）</td><td>確認・改修にかけた時間</td><td>週10分の確認ルーティン（章18）を超える時間がかかっていれば、手順の見直し対象</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch16">
+  <h2>16. この11日間では判定できないこと</h2>
+  <p class="lead">この報告書で判定できるのは上流（表示・クリック・語句）までです。下流の6項目は、いつ・何があれば判定できるようになるかだけを確定させておきます。</p>
+
+  <ol>
+    <li><b>新LP <code>/kobe/</code> の効果</b><br>
+      現状：稼働2日・15クリック・CV0件 <span class="badge-n">n不足</span>。期待CVは0.34件で、0件に情報がない。<br>
+      いつ判定できるか：CVRの比較には約220クリック（CV5件相当）が必要。<br>
+      それには何が必要か：約¥20,680の広告費。月予算¥15,000では160クリック＝期待CV3.63件で足りない。日予算の引き上げ、または期間の延長。</li>
+
+    <li><b>神大LPの価値</b><br>
+      現状：神大系クリックは期間合計 <span class="num">1</span>（「神戸 大学 一人暮らし マンション」1クリック） <span class="badge-n">n不足</span>。<br>
+      いつ判定できるか：神大系だけで30クリック以上が溜まったとき。<br>
+      それには何が必要か：現在の配信量では数ヶ月かかる。神大系の広告グループに予算を寄せるか、A4（追加投資 or 撤退）を母数なしで判断するかの選択になる。</li>
+
+    <li><b>フォーム改修の効果</b><br>
+      現状：未実施。改修前の値は cta_click 3ユーザー → contact_submit 0件 <span class="badge-n">n不足</span>。<br>
+      いつ判定できるか：改修後に、改修前と同程度のCTAクリックが溜まったとき。<br>
+      それには何が必要か：まず改修を実施すること。実施しなければ検証は永久に始まらない。</li>
+
+    <li><b>品質スコア「ランディングページの利便性」の改善</b><br>
+      現状：主力KW「シェアハウス 神戸」は品質スコア7/10、LPの利便性は「平均より下」。7/29にPageSpeedモバイルは55→90という数字になったが、品質スコアへの反映は確認できていない。<br>
+      いつ判定できるか：Googleの再評価は数ヶ月単位。8/18時点でも「平均より下」のままである可能性がある。<br>
+      それには何が必要か：時間。8/18に未改善だったとしても、それは施策が無効だった証拠にはならない。</li>
+
+    <li><b>Clarityの割合的な傾向</b><br>
+      現状：<code>/kobe/</code> は10ページビュー・21タップ <span class="badge-n">n不足</span>。<br>
+      いつ判定できるか：100ページビュー以上。<br>
+      それには何が必要か：クリックの蓄積。到達率・クリック比率を率として語れるようになる。位置と到達の構造（章10）は現時点でも読める。</li>
+
+    <li><b>CVの先の歩留まり（問い合わせ→内見→契約）</b><br>
+      現状：実績0件。使っている11〜17%は仮の係数（章14）。<br>
+      いつ判定できるか：問い合わせ5〜10件の記録が溜まったとき。<br>
+      それには何が必要か：記録の開始。この数字はGoogle AdsにもGA4にも存在しないため、記録しなければ何件CVが出ても埋まらない。</li>
+  </ol>
+
+  <h3>母数の読み方の境界線</h3>
+  <table class="read">
+    <thead><tr><th>母数</th><th>読めること</th><th>読んではいけないこと</th></tr></thead>
+    <tbody>
+      <tr><td>クリック <span class="num">30</span>未満</td><td>件数の事実だけ（「15クリックあった」）</td><td>率（CTR・CVR）の比較。前期間との優劣</td></tr>
+      <tr><td>クリック <span class="num">30</span>〜<span class="num">100</span></td><td>傾向（「〜の可能性がある」）</td><td>断定。「改善した」「効果があった」</td></tr>
+      <tr><td>クリック <span class="num">100</span>以上</td><td>率の比較が可能</td><td>因果の断定（別の変更が同時に入っていないかを確認する）</td></tr>
+      <tr><td>CV <span class="num">10</span>件以上</td><td>CVR・CPAの率としての議論</td><td>CV10件未満での率の議論。1件の増減でCPAが倍動く</td></tr>
+    </tbody>
+  </table>
+  <p>この11日間はクリック59・CV1件です。上の表に当てると、クリックは「傾向」の帯に入り、CVは「件数の事実だけ」の帯にあります。8/18の判定も、月予算¥15,000のままなら CV は「件数の事実だけ」の帯に留まる可能性があります。章13の予算の議論と章17の次アクションはここから来ています。</p>
+
+  <aside class="howto">
+    <div class="howto-head">この数字を自分で見るには</div>
+    <ol class="path">
+      <li>Google Ads → キャンペーン → 期間を指定</li>
+      <li>クリック数とコンバージョン数を確認</li>
+      <li>上の境界線表に当てて、率で語ってよい帯かどうかを先に決める</li>
+      <li>帯が決まってから、CTR・CVR・CPAを読む</li>
+    </ol>
+    <table class="read">
+      <thead><tr><th>見る列</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>クリック数</td><td>率を語る資格の母数</td><td>30未満なら率を出さない。100以上で比較に入る</td></tr>
+        <tr><td>コンバージョン</td><td>CVRとCPAの母数</td><td>10件未満はCPAを平均として扱わない</td></tr>
+        <tr><td>期間の日数</td><td>変更が混ざっていないか</td><td>期間内に施策変更があれば、その前後で切って見る（章2のタイムライン参照）</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch17">
+  <h2>17. 次アクション <span class="q-badge">A1</span> <span class="q-badge">A2</span> <span class="q-badge">A3</span> <span class="q-badge">A5</span></h2>
+  <p class="lead">8/18を待たずに着手できるものが4件あります。うち(1)(3)(4)の3件は計測実装に触れないため、8/18の判定に使う数字の連続性を壊しません（(2)の除外KW追加は配信対象が変わるので、実施日を記録しておきます）。8/18の判定は、下の画面チェックリストの順で見て分岐させます。</p>
+
+  <h3>今すぐ（8/18を待たない）</h3>
+  <ul class="actions">
+    <li>(1) <b><code>/contact/</code> のヘッダーを <code>/kobe/</code> と同じハンバーガー型に統一する</b><span class="cost">実装小・0円</span><br>
+      上部占有が2段（約124px相当）から70pxになり、8リンク・幅749pxの横スクロールストリップが解消されます。CSSとマークアップの調整でイベント実装に触らないため、8/18の判定に使う数字の連続性は保たれます。</li>
+    <li>(2) <b>除外キーワードに「40代」を追加する</b><span class="cost">所要1分・0円</span><br>
+      50代〜80代・シニア・高齢は除外済みですが、40代が入っていません。7/28に「シェア ハウス 神戸 40 代」が実際に表示されています（クリック0）。キャンペーンレベル・インテントマッチで追加します。</li>
+    <li>(3) <b>送信ボタンを1画面目に入れる</b><span class="cost">実装小・0円</span><br>
+      現在は上端から860pxで、iPhoneの実効表示領域約744pxを超えています。フォーム開始位置（259px）と余白の調整で収まります。項目自体は変更しないため計測に影響しません。</li>
+    <li>(4) <b>問い合わせ→内見→契約の記録を開始する</b><span class="cost">所要5分・0円</span><br>
+      問い合わせ日 / 経路（gclid or utm）/ 内見有無 / 契約有無 / 家賃 の5列（章14）。これがないとファネル下段は永久に埋まらず、CPA上限¥6,000の根拠が仮の係数のままになります。</li>
+  </ul>
+
+  <h3>8/18まで</h3>
+  <ul class="actions">
+    <li>(5) <b>Clarityで <code>/contact/</code> のレコーディングを観察する</b><span class="cost">所要10分・0円</span><br>
+      滞在2秒の内訳を目で確認します。本文欄で止まるのか、ナビを横スクロールするのか、すぐ戻るのか。章12の最有力仮説（約束の不一致）を支持する挙動があるかを見ます。</li>
+    <li>(5b) <b>自社指名「シェアハウス the headquarters kobe」の受け皿を用意する</b><span class="cost">所要30分・0円</span><br>
+      屋号で検索している層はもっとも成約に近く、CPCも安く済みます。現在は専用の広告グループも広告文もなく、フレーズ一致の類似パターンで偶然拾っているだけです（章5-3）。指名専用の広告グループを1つ作り、着地は <code>/kobe/</code> にします。</li>
+    <li>(6) <b>キーワードプランナーで次に狙うKWを選定する</b><span class="cost">所要20分・0円</span><br>
+      未出稿で規模があるのは「神戸 賃貸 一人暮らし」月480回、「神戸 大学 一人暮らし」月390回、「神戸 ルーム シェア」月40回です。主要KW1本では市場の天井（IS100%でも期待CV月1.81件）に当たるため、予算引き上げとセットで検討します。</li>
+    <li>(7) <b>日予算の是非を「判定に必要な母数」の観点で再検討する</b><span class="cost">所要15分・0円</span><br>
+      目的は表示を増やすことではありません。CV5件の判定に必要な220クリック（約¥20,680）を確保することです。月予算¥15,000では160クリック＝期待CV3.63件で届きません。ただしIS損失の内訳は予算4.91%・ランク62.68%なので、予算だけを上げても表示は伸びにくい点を織り込んで判断します。</li>
+  </ul>
+
+  <h3>8/18に見る画面チェックリスト（この順で）</h3>
+  <table class="read">
+    <thead><tr><th>#</th><th>画面</th><th>見る指標</th><th>判定分岐</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Ads → キャンペーン（期間比較ON）</td><td>クリック・CTR・CPC・費用・CV</td><td>クリックが累計220に届いているか。届いていなければCVRの比較には入らず、件数の事実だけで読む</td></tr>
+      <tr><td>2</td><td>Ads → キーワード → 品質スコア</td><td>「シェアハウス 神戸」のQSと「LPの利便性」</td><td>「平均より下」→ 未反映。数ヶ月単位なので8/18時点の未改善は施策無効の証拠にしない ／ 「平均的」以上 → 7/29の速度改善が反映された</td></tr>
+      <tr><td>3</td><td>Ads → 検索語句</td><td>新しく出た語句・除外候補</td><td>シニア系が再出現 → 除外の抜けを確認 ／ 40代が残っている → (2)が未反映</td></tr>
+      <tr><td>4</td><td>GA4 → ページとスクリーン</td><td><code>/kobe/</code> のユーザー数・滞在、<code>/contact/</code> の滞在</td><td><code>/contact/</code> の滞在が2秒台のまま → フォーム側の問題が継続 ／ 数十秒に伸びた → 入力は始まっている（送信で落ちている）</td></tr>
+      <tr><td>5</td><td>GA4 → イベント</td><td>cta_click / contact_submit</td><td><b>cta_click あり × contact_submit 0 → フォーム側</b>（章12の改修案(b)(c)へ）／ <b>cta_click が少ない → LP上部の訴求</b>（ファーストビューのCTA1本で勝負している構造なので、そこの文言と表示）</td></tr>
+      <tr><td>6</td><td>Clarity → ヒートマップ / レコーディング</td><td>ページビュー数・スクロール到達率・タップ上位</td><td>100ページビュー以上 → 到達率を率として読む ／ 未達 → 引き続き件数と構造だけを読む。タップ1位がハンバーガーのままか（回遊志向の継続）を確認</td></tr>
+    </tbody>
+  </table>
+
+  <h3>8/18の判定後</h3>
+  <ul class="actions">
+    <li>(8) <b>LP内へのフォーム埋め込み</b><span class="cost">実装中</span><br>
+      <code>contact_submit</code> の発火場所が変わり、AdsへのCVインポートに影響します。判定に使う数字の定義が変わるため、8/18の判定後に実施します。</li>
+    <li>(9) <b>用件・希望日時の選択式化とLINE導線の追加</b><span class="cost">実装中</span><br>
+      必須の白紙フリーテキストを任意化し、「内見予約」の約束と着地を一致させます。LINE導線はフォームが唯一の経路という状態の解消です。どちらもフォーム項目とCV経路が変わるため判定後です。</li>
+  </ul>
+  <p>直近で着手が必要なのは(1)〜(4)の4件、合計コスト0円です。このうち(4)だけは、着手が遅れるほど後から取り返せません（記録がない期間の内見・契約は遡って復元できないため）。8/18に上のチェックリストを6画面順に見て、#5の分岐で「フォーム側」か「LP上部の訴求」かを決めます。</p>
+
+  <aside class="howto">
+    <div class="howto-head">この操作を自分でやるには（除外KW「40代」の追加）</div>
+    <ol class="path">
+      <li>Google Ads</li>
+      <li>キャンペーン</li>
+      <li>オーディエンス、キーワード、コンテンツ</li>
+      <li>キーワード → 除外キーワード タブ</li>
+      <li>「+」→ 「40代」を追加 → インテント マッチ を選択</li>
+      <li>保存後、検索語句レポートで数日後に再出現していないか確認</li>
+    </ol>
+    <table class="read">
+      <thead><tr><th>見る項目</th><th>意味</th><th>判断ライン</th></tr></thead>
+      <tbody>
+        <tr><td>除外キーワードの本数</td><td>現在18本</td><td>追加後19本になっているか</td></tr>
+        <tr><td>マッチタイプ</td><td>インテント マッチ</td><td>既存18本と同じレベル・同じマッチタイプに揃える</td></tr>
+        <tr><td>検索語句レポート（追加後）</td><td>実際に止まったか</td><td>「40 代」を含む語句が消えていれば反映済み。7/27追加のシニア系6本は7/28〜29でゼロになっている</td></tr>
+      </tbody>
+    </table>
+  </aside>
+</section>
+
+<section id="ch18">
+  <h2>18. 付録A：週10分の確認ルーティン</h2>
+  <p class="lead">毎週これだけを見れば、異常の検知と8/18判定の準備が両方できます。合計10分です。</p>
+
+  <table class="read">
+    <thead><tr><th>時間</th><th>ツール / 画面</th><th>見る指標</th><th>異常のサイン</th><th>詳しくは</th></tr></thead>
+    <tbody>
+      <tr>
+        <td rowspan="3">Ads<br><b>4分</b></td>
+        <td>キャンペーン（期間：先週1週間）</td>
+        <td>クリック・CTR・CPC・費用・CV</td>
+        <td>CPCが¥100（上限）に張り付く／費用が日予算¥500×日数を大きく下回る</td>
+        <td><a href="#ch08">→ 章8</a></td>
+      </tr>
+      <tr>
+        <td>検索語句</td>
+        <td>新しく出た語句・クリックのあった語句</td>
+        <td>シニア系・求人系・他エリアが出る（除外の抜け）／自社指名が出ている（受け皿がない）</td>
+        <td><a href="#ch05">→ 章5</a></td>
+      </tr>
+      <tr>
+        <td>キーワード → 品質スコア</td>
+        <td>「シェアハウス 神戸」のQSと「LPの利便性」</td>
+        <td>QSが7から下がる／IS損失(ランク)が62.68%から悪い方へ動く</td>
+        <td><a href="#ch06">→ 章6</a></td>
+      </tr>
+      <tr>
+        <td rowspan="2">GA4<br><b>4分</b></td>
+        <td>レポート → エンゲージメント → ページとスクリーン</td>
+        <td><code>/kobe/</code> のユーザー数と滞在（基準29秒）、<code>/contact/</code> の滞在（現状2秒）</td>
+        <td><code>/kobe/</code> の滞在が29秒を大きく下回る／<code>/contact/</code> が2秒台のまま</td>
+        <td><a href="#ch09">→ 章9</a> <a href="#ch12">章12</a></td>
+      </tr>
+      <tr>
+        <td>レポート → エンゲージメント → イベント</td>
+        <td>cta_click の件数・ユーザー数、contact_submit が一覧にあるか</td>
+        <td>cta_click が0（LP上部の訴求）／cta_click ありで contact_submit が一覧に無い（フォーム側）</td>
+        <td><a href="#ch11">→ 章11</a> <a href="#ch13">章13</a></td>
+      </tr>
+      <tr>
+        <td>Clarity<br><b>2分</b></td>
+        <td>レコーディング（<code>/kobe/</code> または <code>/contact/</code> で絞る）</td>
+        <td>セッション1本を再生。どこで止まったか</td>
+        <td>本文欄で止まる／ナビを横スクロールしている／デッドクリックが出る</td>
+        <td><a href="#ch10">→ 章10</a> <a href="#ch12">章12</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>加えて、問い合わせが来た週だけ記録シート（章14の5列）に1行追加します<span class="cost">所要1分・0円</span>。この10分に含まれるのは確認だけで、改修の判断は8/18のチェックリスト（<a href="#ch17">章17</a>）で行います。</p>
+</section>
+
+<section id="ch19">
+  <h2>19. 付録B：用語・基準値・計測仕様</h2>
+  <p class="lead">この案件で使っている設定値と基準線、および各指標を「いくらならどう読むか」だけを並べます。</p>
+
+  <h3>(1) アカウント情報</h3>
+  <table class="data">
+    <thead><tr><th>項目</th><th>値</th></tr></thead>
+    <tbody>
+      <tr><td>Google Ads アカウント</td><td>229-876-1950（ocid=8415800760）</td></tr>
+      <tr><td>キャンペーン</td><td>HQ-Search-01（ID 24040704846）</td></tr>
+      <tr><td>GA4 プロパティ</td><td>a135936060p366565170</td></tr>
+      <tr><td>Microsoft Clarity プロジェクト</td><td>xqy9wgrfmx</td></tr>
+      <tr><td>日予算</td><td>¥<span class="num">500</span></td></tr>
+      <tr><td>上限CPC</td><td>¥<span class="num">100</span></td></tr>
+      <tr><td>入札戦略</td><td>クリック数の最大化（上限CPC¥100）</td></tr>
+      <tr><td>キャンペーンの状態表示</td><td class="warn">「入札単価の設定が制限されています」</td></tr>
+      <tr><td>配信面 / マッチタイプ</td><td>検索のみ。フレーズ一致・完全一致のみ</td></tr>
+      <tr><td>広告グループと着地先</td><td>広告グループ 1 個（神戸×シェアハウス）→ <code>/kobe/</code> ／ 02-エリア名（三宮・三ノ宮）→ <code>/kobe/</code>（ともに7/28変更）／ 03-神戸大学 → <code>/kobe-university/</code> ／ 04-英語 → 英語ページ（<code>/kobe/</code> は日本語のみのため据え置き）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>(2) CPA基準の根拠</h3>
+  <table class="data">
+    <thead><tr><th>基準</th><th>金額</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td>目標CPA</td><td>¥<span class="num">2,000</span></td><td>ひつじ不動産の問い合わせ課金（平均家賃の5%≒¥2,000/件）と同額。外部ポータルに払う額と同じなら、自社広告で獲る意味がある</td></tr>
+      <tr><td>上限CPA（撤退ライン）</td><td>¥<span class="num">6,000</span></td><td>空室1ヶ月の機会損失 ¥53,000〜61,000 × CV→契約率 <span class="num">11</span>%（保守側）</td></tr>
+      <tr><td>CV→契約率</td><td><span class="num">11</span>〜<span class="num">17</span>%</td><td>問い合わせ→内見 約1/3 × 内見→契約 1/2〜1/3。<b>仮の係数</b>（実績なし）</td></tr>
+      <tr><td>CV / 1契約</td><td><span class="num">6</span>〜<span class="num">9</span>件</td><td>上記の逆数</td></tr>
+      <tr><td>平均入居期間</td><td><span class="num">12</span>ヶ月</td><td>1契約の価値を測る前提</td></tr>
+      <tr><td>実測CPA（7/19〜27）</td><td>¥<span class="num">4,134</span></td><td class="warn">黄（継続・上限内）</td></tr>
+      <tr><td>実測CPA（通算11日）</td><td>¥<span class="num">5,558</span></td><td class="warn">黄（継続・上限内）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>(3) 除外キーワード18本と欠落</h3>
+  <p>設定レベル：キャンペーン / インテント マッチ。</p>
+  <table class="data">
+    <thead><tr><th>#</th><th>除外KW</th><th>#</th><th>除外KW</th><th>#</th><th>除外KW</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>求人</td><td>7</td><td>ゲストハウス 予約</td><td>13</td><td>50代</td></tr>
+      <tr><td>2</td><td>バイト</td><td>8</td><td>ホテル</td><td>14</td><td>60代</td></tr>
+      <tr><td>3</td><td>仕事</td><td>9</td><td>高齢者</td><td>15</td><td>70代</td></tr>
+      <tr><td>4</td><td>大阪</td><td>10</td><td>食事付き</td><td>16</td><td>80代</td></tr>
+      <tr><td>5</td><td>京都</td><td>11</td><td>食事 付き</td><td>17</td><td>シニア</td></tr>
+      <tr><td>6</td><td>姫路</td><td>12</td><td>長田</td><td>18</td><td>高齢</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>欠落：「40代」が入っていません。</b>50代〜80代・シニア・高齢は7/25と7/27に追加済みで、7/28〜29の検索語句にシニア系はゼロです。一方で「シェア ハウス 神戸 40 代」は7/28に実際に表示されています（クリック0）。追加は所要1分・0円です（<a href="#ch17">章17</a> のアクション(2)）。</div>
+  <figure><img class="shot-ui" src="img/20_ads_negative_kw.webp" alt="Google Ads 除外キーワード一覧（18本）"><figcaption>図9 Ads 除外キーワード一覧（18本。50代〜80代・シニア・高齢は除外済みだが「40代」がない）</figcaption></figure>
+
+  <h3>(4) 指標の定義（この案件での読み方）</h3>
+  <table class="read">
+    <thead><tr><th>指標</th><th>この案件での値</th><th>いくらならどう読むか</th></tr></thead>
+    <tbody>
+      <tr><td>IS（インプレッションシェア）</td><td>32.41%</td><td>出られる検索のうち3回に1回しか出ていない。残り67.6%の内訳（下2行）を見ないと打ち手が決まらない</td></tr>
+      <tr><td>IS損失（ランク）</td><td class="bad">62.68%</td><td>広告ランク不足で出られなかった分。この案件ではここが最大。上限CPC¥100 &lt; 上部掲載入札の高額帯¥153 が効いている。予算を上げてもここは動かない</td></tr>
+      <tr><td>IS損失（予算）</td><td class="good">4.91%</td><td>予算不足で出られなかった分。5%未満なら予算はほぼ足りている。「表示が伸びない原因は予算」ではないと読む</td></tr>
+      <tr><td>重複率（オークション分析）</td><td>20.19%（和楽居）</td><td>同じオークションに両方出た回数の割合。20%なら5回に1回だけ同席している。低いほど「別の検索で戦っている」</td></tr>
+      <tr><td>上位掲載率（相手が自分より上に出た率）</td><td class="bad">84.38%（和楽居）</td><td>同席したときの負け率。8割超なら、同席した場面ではほぼ勝てていないと読む</td></tr>
+      <tr><td>品質スコア（10点満点）</td><td>主力KW「シェアハウス 神戸」7/10、最弱「神戸 大学 一人暮らし 家賃」3/10</td><td>7以上なら維持、4以下は要対処（章6の教育カードと同基準）、3は広告文・LP・KWの組み合わせを見直す水準</td></tr>
+      <tr><td>├ 推定クリック率</td><td>主力：平均より上</td><td>広告文とKWの噛み合い。「平均より上」なら広告文側は問題ない</td></tr>
+      <tr><td>├ ランディングページの利便性</td><td class="warn">主力：平均より下</td><td><b>本命</b>。7/29に速度対応（PageSpeedモバイル55→90）を実施したが未反映。Googleの再評価は数ヶ月単位</td></tr>
+      <tr><td>└ 広告の関連性</td><td>主力：平均より上</td><td>KWと広告文のテーマ一致。「平均より下」なら広告グループの分割を検討</td></tr>
+      <tr><td>エンゲージメント時間（GA4）</td><td><code>/kobe/</code> 29秒 / トップ 12秒 / <code>/contact/</code> 2秒</td><td>29秒なら読まれている側。2秒は「見て何もせず戻った」以外に解釈の幅が狭い。ただし離脱最終ページでは短く出る性質がある</td></tr>
+      <tr><td><code>cta_click</code></td><td>4件・3ユーザー</td><td><code>/kobe/</code> のCTA（7本すべて <code>/contact/</code> への素のリンク）クリック時に発火。到達13ユーザーに対し23.1%。0件ならLP上部の訴求を疑う</td></tr>
+      <tr><td><code>contact_submit</code></td><td class="bad">0件（イベント一覧に存在しない）</td><td><code>/contact/</code> の送信ハンドラ内で発火（event_category: conversion）。preventDefault + fetch でFormspreeへ非同期POST。<b>一覧に名前が出てこない＝期間中0回</b>。実装が健全なので、0件は計測漏れではなく実際に送信されていないという意味</td></tr>
+      <tr><td><code>waitlist_submit</code></td><td class="bad">0件（イベント一覧に存在しない）</td><td>AdsのCVインポート対象。同じく一覧に無ければ期間中0回</td></tr>
+    </tbody>
+  </table>
+
+  <p>作成 2026-07-30 / 対象期間 2026-07-19〜2026-07-29 / 数値はすべて管理画面からの実測値。派生値は verify.py でコード検算済み。</p>
+</section>
+
+<footer class="rpt-foot">
+  <p><b>作成</b> 2026-07-30 ／ <b>対象期間</b> 2026-07-19 〜 2026-07-29（11日間）</p>
+  <p>数値はすべて Google Ads / GA4 / Microsoft Clarity / キーワードプランナーの管理画面から取得した実測値です。割り算・換算などの派生値は検算スクリプト（verify.py）でコードによる再計算・突合を行い、60項目すべて一致を確認しています。</p>
+  <p>新LP <code>/kobe/</code> は 2026-07-28 公開のため、11日間のうち稼働は最後の2日のみです。本書は継続/停止の判定書ではなく、2026-08-18 の判定に用いる基準値の記録です。</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  function onScroll(){
+    var y=window.scrollY+120, cur=-1;
+    for(var i=0;i<secs.length;i++){ if(secs[i].offsetTop<=y) cur=i; }
+    links.forEach(function(a,i){ a.style.fontWeight = (i===cur)?'700':'400'; });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  // 各h2に「目次へ戻る」を付与
+  [].slice.call(document.querySelectorAll('section h2')).forEach(function(h){
+    var a=document.createElement('a'); a.href='#'; a.className='totop'; a.textContent='▲目次';
+    a.addEventListener('click',function(e){e.preventDefault();document.querySelector('.toc').scrollIntoView({behavior:'smooth'})});
+    h.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>

@@ -42,9 +42,7 @@ categories: ["ハウス暮らし"]
 
 ここが**この仕組みのいちばんの主眼**です。当番表があっても、見なければ意味がありません。なので前日の夜18時ごろに、ハウスのグループLINEにBotが投稿します。
 
-> 【ゴミ当番のお知らせ】
-> 明日は【缶・プラ・瓶】の日です。
-> 当番は4号室さんです。よろしくお願いします。
+![ハウスのグループLINEに届く自動リマインド。「明日は【缶・プラ・瓶】の日です。当番は4号室さんです。よろしくお願いします」「完了報告は【ハウスのグループLINE】で『#ゴミ完了』と送ってください」](/images/blog/sharehouse-gomi-touban-system/line-reminder.jpg)
 
 こだわったのは3点。
 
@@ -58,8 +56,7 @@ categories: ["ハウス暮らし"]
 
 終わったらグループLINEに `#ゴミ完了` と送るだけ。それ以上は何も求めません。
 
-> （住人）#ゴミ完了
-> （Bot）5号室担当のカセットボンベ・不燃ごみ、完了ですね！ ゴミ捨てお疲れ様でした！
+![住人が「#ゴミ完了」と投稿し、Botが「5号室担当のカセットボンベ・不燃ごみ、完了ですね！ゴミ捨てお疲れ様でした！」と自動で返信しているLINE画面](/images/blog/sharehouse-gomi-touban-system/line-report.jpg)
 
 Botが「◯号室担当の△△、完了ですね！ ゴミ捨てお疲れ様でした！」と返してくれます。この「お疲れ様」の一言、最初は完全におまけのつもりで付けたんですが、これが意外と効いていたようです（後述）。
 
@@ -85,6 +82,8 @@ Botが「◯号室担当の△△、完了ですね！ ゴミ捨てお疲れ様�
 ## 住人からの反応
 
 住人のひとりがグループにこう書いてくれていました。
+
+![LINEでの住人の反応。「前日にお知らせが来るのはとてもわかりやすくて、助かります。ゴミ捨てお疲れ様の一言も何気に嬉しいです」](/images/blog/sharehouse-gomi-touban-system/resident-voice.jpg)
 
 > 前日にお知らせが来るのはとてもわかりやすくて、助かります。
 > ゴミ捨てお疲れ様の一言も何気に嬉しいです🙌
@@ -143,8 +142,7 @@ Generated automatically against Kobe City's collection calendar. Nobody makes a 
 
 **This is the whole point of the thing.** A roster nobody looks at is useless, so at around 6pm the day before, the bot posts to the house group chat.
 
-> Bin duty for tomorrow: cans, plastics and bottles.
-> Room 4 is on. Thanks in advance.
+![Automated LINE reminder posted to the house group chat, naming the room on duty and the waste category for the next day](/images/blog/sharehouse-gomi-touban-system/line-reminder.jpg)
 
 Three deliberate choices: send it the night before (morning-of is too late for anyone leaving early), name the room (address "everyone" and it belongs to nobody), and say exactly what to do.
 
@@ -154,8 +152,7 @@ The right thing, to the right person, in time to act on it. That's all. **Not ma
 
 Post `#ゴミ完了` ("bin duty done") in the group when you're finished. Nothing more is asked of anyone.
 
-> (resident) #ゴミ完了
-> (bot) Room 5's aerosols and non-burnables — done! Thanks for taking the bins out.
+![LINE screen showing a resident posting the completion hashtag and the bot replying to confirm which room and which waste category was completed](/images/blog/sharehouse-gomi-touban-system/line-report.jpg)
 
 The bot replies confirming what was done and adds a "thanks for taking the bins out." I threw that line in as an afterthought. Turns out it mattered — more on that below.
 
@@ -181,6 +178,8 @@ What the numbers showed: **completion had climbed further than I expected.** I'd
 ## What the residents said
 
 One of them posted this in the group chat:
+
+![A resident's reaction in LINE, saying the day-before notice is easy to follow and helpful, and that the bot's thank-you message is quietly nice to receive](/images/blog/sharehouse-gomi-touban-system/resident-voice.jpg)
 
 > Getting the notice the day before is really clear and helpful.
 > And the little "thanks for taking the bins out" is unexpectedly nice. 🙌

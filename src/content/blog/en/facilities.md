@@ -1,6 +1,6 @@
 ---
-title: "Common Areas & Facilities"
-description: "The Headquarters Kobe features generous shared spaces — nearly half the total floor area is common space. Well-equipped and regularly cleaned."
+title: "Shared Kitchen, Bath & Rooftop — Share House in Kobe | The Headquarters Kobe"
+description: "Inside The Headquarters Kobe: shared kitchen, plentiful bath and toilet facilities, study room and a rooftop terrace. Nearly half the floor area is common space, cleaned regularly."
 pubDate: 2019-03-05
 kind: page
 lang: en

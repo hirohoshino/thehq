@@ -1,6 +1,6 @@
 ---
-title: "Room Guide"
-description: "The Headquarters Kobe has 10 private rooms across the 3rd and 4th floors. Most rooms feature loft beds and study desks."
+title: "Rooms, Rent & Current Vacancies — Share House in Kobe | The Headquarters Kobe"
+description: "10 private furnished rooms on floors 3 and 4, most with a loft bed and study desk. Rent, room-by-room photos and up-to-date vacancies for our share house in Nada, Kobe."
 pubDate: 2019-03-05
 kind: page
 lang: en

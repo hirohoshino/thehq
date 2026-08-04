@@ -3,17 +3,96 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AvailabilityBanner from '../../components/AvailabilityBanner.astro';
-import { minRentYen, commonFeeYen } from '../../data/pricing.mjs';
+import { minRentYen, maxRentYen, commonFeeYen, totalMin, totalMax } from '../../data/pricing.mjs';
+
+// 英語ページは和文の波ダッシュではなくenダッシュで表記する（英語SERPでの見え方のため）。
+// 数値そのものは rooms.json 由来なので、家賃改定時もここを触る必要はない。
+const yen = (n) => '¥' + Number(n).toLocaleString('en-US');
+const rentRange = `${minRentYen}–${maxRentYen}`;
+const totalRange = `${yen(totalMin)}–${yen(totalMax)}`;
 import { img } from '../../data/site-images.mjs';
 
 // 日本語トップと同じく、幅違いWebPがあればそれを配信する（無ければ元のJPEG）。
 const hero = img('/images/hero.jpg');
 const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
+
+// 英語圏の検索意図（gaijin house / apartment in kobe / no guarantor / cost）に答えるFAQ。
+// ここに書いた内容をそのまま FAQPage 構造化データにも出力する（単一データソース）。
+const faqs = [
+  {
+    q: 'Is this a "gaijin house"?',
+    a: 'It is an international share house. In Japan the words "gaijin house", "guest house" and "share house" are often used for the same kind of place. Residents here are a mix of people from Kobe, from elsewhere in Japan, and from other countries — it is not a foreigners-only building.',
+  },
+  {
+    q: 'How much does it cost per month?',
+    a: `Rent is ${rentRange} depending on the room, plus a flat common fee of ${commonFeeYen} per month — ${totalRange} in total. The common fee covers electricity, gas, water, internet and shared consumables, so there are no separate utility contracts to sign or bills to pay.`,
+  },
+  {
+    q: 'What do I pay to move in?',
+    a: 'A flat ¥50,000, plus prorated rent for your first month. The ¥50,000 breaks down into ¥25,000 for contract and cleaning and ¥25,000 as a refundable deposit, returned in full when you leave if there is no damage. There is no key money (reikin) and no agency fee.',
+  },
+  {
+    q: 'Do I need a Japanese guarantor?',
+    a: 'In principle, no. A guarantor is not required. For the contract you will need a valid ID, a personal seal (hanko), and an emergency contact phone number. The contract is a fixed-term tenancy agreement.',
+  },
+  {
+    q: 'Is the room furnished?',
+    a: 'Yes. Each room comes with a bed, futon and sheets, a desk, a chair and an air conditioner, so you can move in with just your personal belongings. The shared kitchen and living areas are fully equipped, so personal fridges, cooking appliances and heaters are not needed in the rooms.',
+  },
+  {
+    q: 'How long do I have to stay?',
+    a: 'We generally expect residents to stay six months or longer. Shorter stays can be discussed and may carry a surcharge. To move out, please give at least one month of notice.',
+  },
+  {
+    q: 'Can I apply from outside Japan?',
+    a: 'Please get in touch through the contact form and tell us your planned arrival date. Our policy is to meet in person and show you the house before we both decide, so a viewing is part of the process — we will work out the timing with you.',
+  },
+  {
+    q: 'Where exactly is the house?',
+    a: 'Nada Ward, Kobe, inside the covered Suidosuji shopping arcade. It is a 7-minute walk from JR Maya Station or Hankyu Ojikoen Station, and two stops from Sannomiya, the centre of Kobe. Kobe University and Osaka are both an easy commute.',
+  },
+];
+
+const pageTitle = `Share House in Kobe — from ${minRentYen}/mo, No Key Money | The Headquarters Kobe`;
+const pageDesc = `Rooms ${rentRange} plus ${commonFeeYen} all-in common fee. Move in for ¥50,000 — no key money, no agency fee, no guarantor. Furnished international share house in Nada, Kobe. Viewings open.`;
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const lodgingLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  name: 'The Headquarters Kobe',
+  alternateName: ['The Headquarters Kobe Share House', 'シェアハウスThe Headquarters KOBE'],
+  description: `An international share house in Nada Ward, Kobe, inside the Suidosuji shopping arcade. 10 furnished rooms, ${rentRange} per month plus a ${commonFeeYen} all-inclusive common fee. No key money, no agency fee, guarantor not required in principle.`,
+  url: 'https://theheadquarters.jp/en/',
+  image: 'https://theheadquarters.jp/images/hero.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Nada Ward, Kobe',
+    addressRegion: 'Hyogo',
+    addressCountry: 'JP',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 34.7125986, longitude: 135.2235467 },
+  priceRange: `${minRentYen}–${maxRentYen} per month (plus ${commonFeeYen} common fee)`,
+  numberOfRooms: 10,
+  petsAllowed: false,
+  sameAs: ['https://www.instagram.com/theheadquarters.kobe/'],
+};
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title="The Headquarters Kobe — Share House in Kobe, Japan" description={`A share house in the heart of the Suidosuji shopping arcade, Nada, Kobe. Rooms from ${minRentYen}/month, no key money, no agency fee. Open-minded residents from Japan and around the world.`} />
+    <BaseHead title={pageTitle} description={pageDesc} />
+    <script type="application/ld+json" set:html={JSON.stringify(lodgingLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
     {hero.webpSrcset && (
       <link
         rel="preload"
@@ -35,7 +114,7 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
           {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
           <img
             src={hero.src}
-            alt="The Headquarters Kobe"
+            alt="The Headquarters Kobe share house in the Suidosuji arcade, Nada Ward, Kobe"
             class="heroImage"
             width={hero.width}
             height={hero.height}
@@ -45,9 +124,9 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
         </picture>
         <div class="heroText">
           <p class="kicker">THE HEADQUARTERS KOBE</p>
-          <h1>Where life and people naturally connect.</h1>
-          <p class="lead">A share house in the heart of Kobe's Suidosuji arcade. Share daily life with open-minded residents from Japan and around the world.</p>
-          <p class="heroPrice">Rooms from {minRentYen}/month (+{commonFeeYen} common fee) · No key money, no agency fee</p>
+          <h1>A share house in Kobe, for people from anywhere.</h1>
+          <p class="lead">Furnished rooms in the heart of the Suidosuji arcade, Nada Ward — 7 minutes on foot from JR Maya or Hankyu Ojikoen, two stops from Sannomiya.</p>
+          <p class="heroPrice">{rentRange}/month + {commonFeeYen} all-in common fee · Move in for ¥50,000 · No key money, no agency fee, no guarantor</p>
           <div class="heroActions">
             <a class="btnPrimary" href="/en/contact">Inquire / Book a Viewing</a>
           </div>
@@ -57,15 +136,106 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
       <AvailabilityBanner lang="en" />
 
       <section class="section">
+        <h2 class="sectionTitle">What it costs to live here</h2>
+        <div class="card prose">
+          <p>
+            Everything below is the full price. There is no key money (<em>reikin</em>), no agency fee, and no guarantor company fee —
+            the three charges that usually make renting an apartment in Kobe expensive to start.
+          </p>
+          <div class="tableWrap">
+            <table class="costTable">
+              <tbody>
+                <tr><th>Rent</th><td>{rentRange} / month, depending on the room</td></tr>
+                <tr><th>Common fee</th><td>{commonFeeYen} / month — electricity, gas, water, internet and shared consumables included</td></tr>
+                <tr><th><strong>Total each month</strong></th><td><strong>{totalRange}</strong></td></tr>
+                <tr><th>To move in</th><td>¥50,000 flat (¥25,000 contract &amp; cleaning + ¥25,000 refundable deposit), plus prorated first-month rent</td></tr>
+                <tr><th>Key money</th><td>¥0</td></tr>
+                <tr><th>Agency fee</th><td>¥0</td></tr>
+                <tr><th>Guarantor</th><td>Not required, in principle</td></tr>
+                <tr><th>Furniture &amp; appliances</th><td>¥0 — bed, futon and sheets, desk, chair and air conditioner are already in the room</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted">Common fees may vary depending on circumstances. Rooms: 10 in total, across floors 3–5 of the building, plus a rooftop.</p>
+          <a class="aboutLink" href="/en/rooms">See rooms and current vacancies →</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">Renting an apartment in Kobe vs. living here</h2>
+        <div class="card prose">
+          <p>
+            If you are comparing this with a regular rental apartment in Kobe, the monthly rent is only part of the picture.
+            A standard Japanese lease commonly asks for key money, a deposit, an agency fee and a guarantor company fee before you get the key,
+            and you still have to buy furniture and set up utility contracts yourself.
+          </p>
+          <div class="tableWrap">
+            <table class="costTable">
+              <thead>
+                <tr><th></th><th>Typical apartment in Kobe</th><th>The Headquarters Kobe</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>Upfront cost</th><td>Commonly several months of rent (key money, deposit, agency fee, guarantor fee)</td><td>¥50,000 flat, half of it refundable</td></tr>
+                <tr><th>Guarantor</th><td>Usually required, or a paid guarantor company</td><td>Not required, in principle</td></tr>
+                <tr><th>Furniture</th><td>Buy it yourself</td><td>Already in the room</td></tr>
+                <tr><th>Utilities</th><td>Separate contracts and monthly bills</td><td>Included in the common fee</td></tr>
+                <tr><th>Internet</th><td>Contract and installation</td><td>Already connected</td></tr>
+                <tr><th>Minimum term</th><td>Usually two years</td><td>Six months as a guide</td></tr>
+                <tr><th>Neighbours</th><td>Strangers behind a door</td><td>A shared kitchen, living room and rooftop</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The trade-off is honest: you get a private room, not a private home. Kitchen, bathroom, living room and rooftop are shared.
+            If that suits you, it is the cheapest realistic way to start living in central Kobe.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">Moving here from overseas</h2>
+        <div class="card prose">
+          <p>
+            A good share of the people who have lived here came from outside Japan — students, working-holiday travellers and people starting a job in Kansai.
+            The practical questions usually come down to these.
+          </p>
+          <ul>
+            <li><strong>No guarantor.</strong> In principle you do not need a Japanese guarantor or a guarantor company. You will need a valid ID, a personal seal (<em>hanko</em>) and an emergency contact number.</li>
+            <li><strong>Nothing to buy.</strong> The room is furnished and the common fee covers utilities and internet, so there are no contracts to arrange in Japanese before you can live normally.</li>
+            <li><strong>English is fine.</strong> Send your enquiry in English through the contact form — we will reply in English.</li>
+            <li><strong>A viewing is part of the process.</strong> We show you the house, sit down in the living room and talk before either side decides. If you are still abroad, tell us your arrival date and we will plan around it.</li>
+            <li><strong>Getting around.</strong> Sannomiya is two stops away, Kobe University is a short commute, and Osaka is comfortably in range for work or study.</li>
+          </ul>
+          <a class="aboutLink" href="/en/procedures">Full move-in process and FAQ →</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">The neighbourhood</h2>
+        <div class="card prose">
+          <p>
+            The house sits on the main street of the Suidosuji shopping arcade, under the covered roof, next door to the local police box (<em>koban</em>) —
+            which makes it easy to find on any map app. This is a working local shopping street, not a tourist one: cheap vegetables, a fishmonger, a public bathhouse.
+          </p>
+          <ul class="factList">
+            <li><span>Greengrocer</span> right in front of the building</li>
+            <li><span>Convenience store</span> 30 seconds</li>
+            <li><span>Supermarket</span> 2 minutes</li>
+            <li><span>100-yen shop</span> 2 minutes</li>
+            <li><span>Ojikoen park</span> 8 minutes</li>
+            <li><span>JR Maya / Hankyu Ojikoen</span> 7 minutes on foot</li>
+            <li><span>Sannomiya</span> two stops by train</li>
+          </ul>
+          <a class="aboutLink" href="/en/location">Access and area guide →</a>
+        </div>
+      </section>
+
+      <section class="section">
         <h2 class="sectionTitle">About The Headquarters Kobe</h2>
         <div class="card prose">
           <p>
             The Headquarters Kobe is a share house near Ojikoen Station in Nada Ward, Kobe — right in the middle of the lively Suidosuji shopping arcade.
-            Open-minded residents from the neighborhood, across Japan, and around the world live together here, sharing inspiration and everyday life.
-          </p>
-          <p>
-            Sannomiya (Kobe's city center) is about 10 minutes away. Kobe University is close, and Osaka is easily accessible.
-            Fresh produce and daily essentials are steps away at the shopping arcade, with a hot spring bathhouse nearby too.
+            Open-minded residents from the neighbourhood, across Japan, and around the world live together here, sharing inspiration and everyday life.
           </p>
           <p>
             Every morning starts with a "good morning," and every evening someone greets you home. Cook together, host parties, read on the rooftop, or fire up the BBQ in summer.
@@ -77,6 +247,18 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
             <div><span class="statNum">~280</span><span class="statLabel"> m²</span></div>
           </div>
           <a class="aboutLink" href="/en/hq-kobe">Learn more →</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="sectionTitle">Frequently asked questions</h2>
+        <div class="card prose faqList">
+          {faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
         </div>
       </section>
 
@@ -95,7 +277,7 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
               )}
               <img
                 src={im.src}
-                alt={`Instagram photo ${i + 1}`}
+                alt={`Life at The Headquarters Kobe share house ${i + 1}`}
                 width={im.width}
                 height={im.height}
                 loading="lazy"
@@ -131,12 +313,12 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
           </a>
           <a class="infoCard" href="/en/location">
             <div class="infoKicker">ACCESS</div>
-            <div class="infoTitle">Access & Area</div>
+            <div class="infoTitle">Access &amp; Area</div>
             <div class="infoDesc">A short walk from Ojikoen Station, right next to Suidosuji arcade.</div>
           </a>
           <a class="infoCard" href="/en/procedures">
             <div class="infoKicker">HOW TO</div>
-            <div class="infoTitle">Move-in Process & FAQ</div>
+            <div class="infoTitle">Move-in Process &amp; FAQ</div>
             <div class="infoDesc">From viewing to move-in day, plus frequently asked questions.</div>
           </a>
           <a class="infoCard" href="/en/contact">
@@ -194,4 +376,26 @@ const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
   }
   .heroOverlay h1 { font-size: 1.5em; }
 }
+</style>
+
+<style>
+  .tableWrap { overflow-x: auto; margin: 16px 0; }
+  .costTable { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .costTable th, .costTable td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .costTable thead th { font-size: 13px; color: rgb(var(--gray)); border-bottom: 2px solid #e5e5e5; }
+  .costTable tbody th { width: 30%; font-weight: 600; color: rgb(var(--gray-dark)); white-space: nowrap; }
+  .prose ul { padding-left: 1.2em; line-height: 1.7; }
+  .prose li { margin-bottom: 8px; }
+  .factList { list-style: none; padding-left: 0; }
+  .factList li { display: flex; gap: 10px; border-bottom: 1px solid #f0f0f0; padding: 8px 0; margin: 0; }
+  .factList span { min-width: 210px; font-weight: 600; color: rgb(var(--gray-dark)); }
+  .faqList details { border-bottom: 1px solid #eee; padding: 12px 0; }
+  .faqList details:last-child { border-bottom: none; }
+  .faqList summary { cursor: pointer; font-weight: 600; color: rgb(var(--gray-dark)); }
+  .faqList details p { margin: 10px 0 0; line-height: 1.7; color: rgb(var(--gray-dark)); }
+  @media (max-width: 600px) {
+    .costTable tbody th { width: auto; white-space: normal; }
+    .factList li { flex-direction: column; gap: 2px; }
+    .factList span { min-width: 0; }
+  }
 </style>

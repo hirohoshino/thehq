@@ -1,6 +1,6 @@
 ---
-title: "Access & Area Guide"
-description: "The Headquarters Kobe is a 7-minute walk from JR Maya Station or Hankyu Ojikoen Station — 2 stops from Sannomiya, right in the heart of a vibrant local shopping arcade."
+title: "Access & Area — Share House in Nada, Kobe | The Headquarters Kobe"
+description: "A 7-minute walk from JR Maya or Hankyu Ojikoen, two stops from Sannomiya, with Kobe University and Osaka an easy commute. Inside the Suidosuji shopping arcade: greengrocer, supermarket and bathhouse on the doorstep."
 pubDate: 2019-03-05
 kind: page
 lang: en

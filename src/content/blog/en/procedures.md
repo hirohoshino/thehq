@@ -1,6 +1,6 @@
 ---
-title: "Move-in Process & FAQ"
-description: "How to move into The Headquarters Kobe — from a viewing to move-in day — plus answers to frequently asked questions."
+title: "Move-in Costs, No Guarantor & FAQ — Share House in Kobe | The Headquarters Kobe"
+description: "Move in for a flat ¥50,000 with no key money and no agency fee, and no guarantor required in principle. Viewing, contract and move-in explained, plus answers on costs, minimum stay and what to bring."
 pubDate: 2019-03-05
 kind: page
 lang: en

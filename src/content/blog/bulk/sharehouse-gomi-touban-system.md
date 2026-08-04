@@ -38,19 +38,21 @@ categories: ["ハウス暮らし"]
 
 ![ツールが自動生成した2026年9月のゴミ当番カレンダー。燃えるごみは火・金、缶びんペットボトルと容器包装プラは毎週水曜、燃えないごみとカセットボンベは第1・第3月曜、資源ごみは第2・第4金曜、冷蔵庫整理は第2土曜。日付の下の丸数字が当番の部屋番号](/images/blog/sharehouse-gomi-touban-system/touban-calendar.jpg)
 
-### ② 前日の夜に、当番の部屋を名指しでLINEに流す
+### ② 前日の夜に、当番本人へ個別にLINEを送る
 
-ここが**この仕組みのいちばんの主眼**です。当番表があっても、見なければ意味がありません。なので前日の夜18時ごろに、ハウスのグループLINEにBotが投稿します。
+ここが**この仕組みのいちばんの主眼**です。当番表があっても、見なければ意味がありません。なので前日の夜18時ごろに、Botが当番の人へ個別にメッセージを送ります。グループではなく、本人に直接です。
 
-![ハウスのグループLINEに届く自動リマインド。「明日は【缶・プラ・瓶】の日です。当番は4号室さんです。よろしくお願いします」「完了報告は【ハウスのグループLINE】で『#ゴミ完了』と送ってください」](/images/blog/sharehouse-gomi-touban-system/line-reminder.jpg)
+![Botから当番本人に個別で届く自動リマインド。「明日は【缶・プラ・瓶】の日です。当番は4号室さんです。よろしくお願いします」「完了報告は【ハウスのグループLINE】で『#ゴミ完了』と送ってください」](/images/blog/sharehouse-gomi-touban-system/line-reminder.jpg)
 
 こだわったのは3点。
 
 - 前日に流す（当日の朝だと、早く出る人はもう間に合わない）
-- 部屋を名指しする（「みなさん」だと誰も自分ごとにしない）
+- 本人に個別で送る（グループに流すと、誰も自分ごとにしない）
 - 何をすればいいかまで書く
 
 やるべきことを、やるべき人に、間に合うタイミングで伝える。それだけです。**結果を管理するのではなく、実行される前に思い出させる**というのが全部でした。
+
+ちなみに向きが決まっていて、**リマインドは本人にだけ、完了報告はグループに**流れます。せっつくのは人目のないところで済ませて、やったことのほうが全員に見える。これが逆だったら、たぶんうまくいっていません。
 
 ### ③ 「#ゴミ完了」と送るとBotが返事をする
 
@@ -138,15 +140,17 @@ We'd tried low-tech fixes — there's a rule where a bandana gets hung on the do
 
 Generated automatically against Kobe City's collection calendar. Nobody makes a table anymore.
 
-### 2. The evening before, it posts to LINE naming the room on duty
+### 2. The evening before, a direct message to whoever is on duty
 
-**This is the whole point of the thing.** A roster nobody looks at is useless, so at around 6pm the day before, the bot posts to the house group chat.
+**This is the whole point of the thing.** A roster nobody looks at is useless, so at around 6pm the day before, the bot messages the person on duty directly — not the group, the individual.
 
-![Automated LINE reminder posted to the house group chat, naming the room on duty and the waste category for the next day](/images/blog/sharehouse-gomi-touban-system/line-reminder.jpg)
+![Automated LINE reminder sent directly to the resident on duty, naming the room and the waste category for the next day](/images/blog/sharehouse-gomi-touban-system/line-reminder.jpg)
 
-Three deliberate choices: send it the night before (morning-of is too late for anyone leaving early), name the room (address "everyone" and it belongs to nobody), and say exactly what to do.
+Three deliberate choices: send it the night before (morning-of is too late for anyone leaving early), send it to the person rather than the group (address everyone and it belongs to nobody), and say exactly what to do.
 
 The right thing, to the right person, in time to act on it. That's all. **Not managing the outcome — reminding before the fact.**
+
+The direction matters, too: **the reminder goes to one person, the completion report goes to the group.** The nudging happens out of sight; what gets done is what everyone sees. The other way round would probably have failed.
 
 ### 3. You reply with a hashtag and the bot answers
 

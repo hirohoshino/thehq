@@ -155,6 +155,23 @@ const jsonLd = {
             <text x="380" y="197" class="tHq">The Headquarters Kobe</text>
             <text x="380" y="216" class="tHqSub">兵庫県神戸市灘区</text>
           </svg>
+          {/* モバイル代替: 760px設計のSVGは390px幅では文字が5px相当に潰れるため、
+              同じ情報をHTMLのリストで出す（PCはSVGのまま） */}
+          <div class="figMobile mapList" aria-hidden="false">
+            <p class="mapFrom">HQ（神戸市灘区）から</p>
+            <div class="mapRow">
+              <div class="mapPlace">神戸大学<span>六甲台キャンパス</span></div>
+              <div class="mapHow">バス乗り継ぎ 約25分<b>片道 210円</b></div>
+            </div>
+            <div class="mapRow">
+              <div class="mapPlace">三宮<span>神戸の中心街</span></div>
+              <div class="mapHow">徒歩＋電車で 約10分</div>
+            </div>
+            <div class="mapRow">
+              <div class="mapPlace">水道筋商店街<span>八百屋・スーパー・銭湯</span></div>
+              <div class="mapHow"><b>徒歩 0分</b></div>
+            </div>
+          </div>
         </figure>
 
         <div class="grid3">
@@ -271,6 +288,24 @@ const jsonLd = {
             <text x="450" y="332" class="tSeg">阪急神戸線</text>
             <text x="616" y="332" class="tSeg">市バス36系統</text>
           </svg>
+          {/* モバイル代替: 3ルートを縦積みカードで */}
+          <div class="figMobile routeList">
+            <div class="routeCard routeCardBest">
+              <div class="routeHead"><span class="routePill">おすすめ</span><b class="routeTime">約25分</b><span class="routeFare">片道 210円</span></div>
+              <div class="routeStops">HQ → 水道筋3丁目 → 六甲口 → 神大正門前</div>
+              <div class="routeLegs">徒歩1分 ／ 市バス92系統 ／ 36系統に乗換</div>
+            </div>
+            <div class="routeCard">
+              <div class="routeHead"><b class="routeTime routeTimeSub">約30分</b><span class="routeFare">片道 340円</span></div>
+              <div class="routeStops">HQ → JR摩耶 → JR六甲道 → 神大正門前</div>
+              <div class="routeLegs">徒歩6分 ／ JR神戸線 ／ 市バス36系統</div>
+            </div>
+            <div class="routeCard">
+              <div class="routeHead"><b class="routeTime routeTimeSub">約30分</b><span class="routeFare">片道 370円</span></div>
+              <div class="routeStops">HQ → 阪急王子公園 → 阪急六甲 → 神大正門前</div>
+              <div class="routeLegs">徒歩7分 ／ 阪急神戸線 ／ 市バス36系統</div>
+            </div>
+          </div>
           <figcaption>所要時間は乗り継ぎ・時間帯により前後します。このほか、自転車・原付でも通えます。帰りは下り坂なので、歩いて30分弱かけて帰る住人も。</figcaption>
         </figure>
       </section>
@@ -316,6 +351,24 @@ const jsonLd = {
             <text x="310" y="306" class="tZero">家具・家電 0円</text>
             <text x="450" y="306" class="tZero">連帯保証人 原則不要</text>
           </svg>
+          {/* モバイル代替: 費用の内訳を行形式で（数値は pricing.mjs 経由） */}
+          <div class="figMobile costMob">
+            <div class="costBlock">
+              <p class="costLabel">毎月の支払い</p>
+              <div class="costRow"><span>家賃</span><b>{fmt(minRent)}〜{fmt(maxRent)}円</b></div>
+              <div class="costRow"><span>共益費（水道光熱・ネット・消耗品込み）</span><b>{fmt(commonFee)}円</b></div>
+              <div class="costRow costTotalRow"><span>合計</span><b>{totalRange}</b></div>
+            </div>
+            <div class="costBlock">
+              <p class="costLabel">入居時にかかる費用</p>
+              <div class="costRow"><span>契約手数料・清掃費</span><b>25,000円</b></div>
+              <div class="costRow"><span>デポジット（退去時に問題がなければ全額返金）</span><b>25,000円</b></div>
+              <div class="costRow costTotalRow"><span>合計</span><b>50,000円</b></div>
+            </div>
+            <div class="costZeros">
+              <span>礼金 0円</span><span>仲介手数料 0円</span><span>家具・家電 0円</span><span>保証人 原則不要</span>
+            </div>
+          </div>
           <figcaption>金額は{asOf}のものです。部屋ごとの家賃は見学時にご案内します。</figcaption>
         </figure>
       </section>
@@ -624,6 +677,9 @@ const jsonLd = {
   .lpFoot p { margin: 0; }
   .lpFoot .copy { margin-top: 6px; color: rgba(255,255,255,.5); font-size: 11.5px; }
 
+  /* ---------- モバイル用の図版代替（PCでは非表示） ---------- */
+  .figMobile { display: none; }
+
   /* ---------- 追従CTA（モバイル） ---------- */
   .stickyCta { display: none; }
 
@@ -640,6 +696,51 @@ const jsonLd = {
     .brSp { display: inline; }
     .lpBrand span:last-child { display: none; }
     .lpFoot { padding-bottom: 96px; }
+
+    /* CTAは追従バー1本に集約する（ヘッダー・ヒーローの重複ボタンは隠す）。
+       同一画面に青ボタンが3つ並ぶと、どれも主役でなくなる */
+    .lpBar .btnSm { display: none; }
+    .hero .btnLg { display: none; }
+
+    /* 760px設計のSVG図版は390px幅では文字が5px相当に潰れて読めない。
+       SVGを隠し、同じ情報のHTML版（.figMobile）に切り替える */
+    .fig .figSvg { display: none; }
+    .figMobile { display: block; }
+
+    /* 近さマップの代替リスト */
+    .mapList { background: #f7f8fc; border-radius: 14px; padding: 16px; }
+    .mapFrom { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #60739f; }
+    .mapRow { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #fff; border: 1px solid #e3e7f2; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
+    .mapRow:last-child { margin-bottom: 0; }
+    .mapPlace { font-size: 15px; font-weight: 700; color: #222939; line-height: 1.35; }
+    .mapPlace span { display: block; font-size: 11px; font-weight: 400; color: #78839f; margin-top: 2px; }
+    .mapHow { text-align: right; font-size: 12.5px; color: #60739f; line-height: 1.5; flex-shrink: 0; }
+    .mapHow b { display: block; font-size: 14px; color: var(--accent); }
+
+    /* 3ルートの代替カード */
+    .routeList { display: grid; gap: 10px; }
+    .routeCard { background: #fff; border: 1.5px solid #e3e7f2; border-radius: 12px; padding: 14px 16px; }
+    .routeCard.routeCardBest { border-color: var(--accent); }
+    .routeHead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+    .routePill { background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 3px 10px; align-self: center; }
+    .routeTime { font-size: 20px; font-weight: 700; color: var(--accent); }
+    .routeTime.routeTimeSub { color: #3a4562; }
+    .routeFare { font-size: 12.5px; color: #78839f; margin-left: auto; }
+    .routeStops { font-size: 13.5px; font-weight: 700; color: #222939; line-height: 1.6; }
+    .routeLegs { margin-top: 4px; font-size: 12px; color: #78839f; }
+
+    /* 費用の代替 */
+    .costMob { background: #f7f8fc; border-radius: 14px; padding: 16px; }
+    .costBlock { background: #fff; border: 1px solid #e3e7f2; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+    .costLabel { margin: 0 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: #60739f; }
+    .costRow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px solid #f0f2f8; }
+    .costRow span { font-size: 12.5px; color: #3a4562; line-height: 1.5; }
+    .costRow b { font-size: 14.5px; color: #222939; white-space: nowrap; }
+    .costRow.costTotalRow { border-bottom: none; padding-bottom: 0; }
+    .costRow.costTotalRow span { font-weight: 700; }
+    .costRow.costTotalRow b { font-size: 17px; color: var(--accent); }
+    .costZeros { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+    .costZeros span { font-size: 12.5px; font-weight: 700; color: #16794a; }
     .stickyCta {
       display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
       padding: 10px 14px calc(10px + env(safe-area-inset-bottom));

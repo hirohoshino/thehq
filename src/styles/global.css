@@ -43,8 +43,11 @@ body {
 	line-height: 1.7;
 }
 main {
-	width: 960px;
-	max-width: calc(100% - 2em);
+	/* 固定幅(width:960px)はモバイルのレイアウトビューポート(ICB)を960px超まで
+	   押し広げ、ページ全体がズームアウトされる（2026-08-05 神大LPで実測）。
+	   レイアウト幅は max-width のみで指定する。 */
+	width: auto;
+	max-width: 960px;
 	margin: auto;
 	padding: 1.2em 1em 3em;
 }

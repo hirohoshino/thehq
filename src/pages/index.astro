@@ -132,37 +132,6 @@ const latestPosts = entries
 
     <main style="width: auto; max-width: 1080px; margin: 0 auto; padding: 24px;">
 
-      <!-- 最新ブログ -->
-      <section class="section">
-        <h2 class="sectionTitle">最新ブログ</h2>
-        <div class="grid">
-          {latestPosts.map((post) => (
-            <a class="card linkCard" href={`/blog/${post.id}/`}>
-              {post.firstImage && (
-                <img
-                  src={thumbOf(post.firstImage).src ?? post.firstImage}
-                  width={thumbOf(post.firstImage).w}
-                  height={thumbOf(post.firstImage).h}
-                  loading="lazy"
-                  decoding="async"
-                  alt={post.data.title}
-                  class="cardThumb"
-                />
-              )}
-              <div class="cardBody">
-                {post.data.categories.length > 0 && (
-                  <div class="cardCats">
-                    {post.data.categories.map((cat) => <span class="catBadge" data-cat={cat}>{cat}</span>)}
-                  </div>
-                )}
-                <h3>{post.data.title}</h3>
-                <p>{post.desc}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
       <!-- Overview -->
       <section class="section">
         <h2 class="sectionTitle">The Headquarters Kobe について</h2>
@@ -185,41 +154,6 @@ const latestPosts = entries
         </div>
         <a class="aboutLink" href="/blog/hq-kobe">詳しく見る →</a>
       </section>
-<section class="section">
-  <h2 class="sectionTitle">Instagram</h2>
-  <p class="muted">暮らしの様子はこちら</p>
-
-  <div class="instaGrid">
-    {insta.map((im, i) => (
-      <picture>
-        {im.webpSrcset && (
-          <source
-            type="image/webp"
-            srcset={im.webpSrcset}
-            sizes="(max-width: 600px) 32vw, 336px"
-          />
-        )}
-        <img
-          src={im.src}
-          alt={`Instagram photo ${i + 1}`}
-          width={im.width}
-          height={im.height}
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
-    ))}
-  </div>
-
-  <p style="margin-top:16px;">
-    <a class="btnGhost"
-       href="https://www.instagram.com/theheadquarters.kobe/"
-       target="_blank"
-       rel="noopener">
-      Instagramで見る →
-    </a>
-  </p>
-</section>
 <section class="section">
   <h2 class="sectionTitle">住まいについて</h2>
   <div class="infoGrid">
@@ -256,8 +190,83 @@ const latestPosts = entries
   </div>
 </section>
 
+      <!-- 最新ブログ -->
+      <section class="section">
+        <h2 class="sectionTitle">最新ブログ</h2>
+        <div class="grid">
+          {latestPosts.map((post) => (
+            <a class="card linkCard" href={`/blog/${post.id}/`}>
+              {post.firstImage && (
+                <img
+                  src={thumbOf(post.firstImage).src ?? post.firstImage}
+                  width={thumbOf(post.firstImage).w}
+                  height={thumbOf(post.firstImage).h}
+                  loading="lazy"
+                  decoding="async"
+                  alt={post.data.title}
+                  class="cardThumb"
+                />
+              )}
+              <div class="cardBody">
+                {post.data.categories.length > 0 && (
+                  <div class="cardCats">
+                    {post.data.categories.map((cat) => <span class="catBadge" data-cat={cat}>{cat}</span>)}
+                  </div>
+                )}
+                <h3>{post.data.title}</h3>
+                <p>{post.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <p style="margin-top:16px;">
+          <a class="btnGhost" href="/blog">ブログをもっと見る →</a>
+        </p>
+      </section>
+
+<section class="section">
+  <h2 class="sectionTitle">Instagram</h2>
+  <p class="muted">暮らしの様子はこちら</p>
+
+  <div class="instaGrid">
+    {insta.map((im, i) => (
+      <picture>
+        {im.webpSrcset && (
+          <source
+            type="image/webp"
+            srcset={im.webpSrcset}
+            sizes="(max-width: 600px) 32vw, 336px"
+          />
+        )}
+        <img
+          src={im.src}
+          alt={`Instagram photo ${i + 1}`}
+          width={im.width}
+          height={im.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    ))}
+  </div>
+
+  <p style="margin-top:16px;">
+    <a class="btnGhost"
+       href="https://www.instagram.com/theheadquarters.kobe/"
+       target="_blank"
+       rel="noopener">
+      Instagramで見る →
+    </a>
+  </p>
+</section>
+
     </main>
     <Footer />
+
+    <!-- モバイル用の追従CTA -->
+    <div class="stickyCta">
+      <a class="stickyCtaBtn" href="/contact">内見を申し込む（無料）</a>
+    </div>
   </body>
 </html>
 
@@ -549,6 +558,7 @@ const latestPosts = entries
 .aboutLink {
   display: inline-block;
   margin-top: 12px;
+  padding: 10px 0;
   font-size: 0.9rem;
   font-weight: 600;
   color: #3355cc;
@@ -556,6 +566,8 @@ const latestPosts = entries
 }
 .aboutLink:hover { text-decoration: underline; }
 
+/* モバイル用の追従CTA（PCでは非表示） */
+.stickyCta { display: none; }
 
 @media (max-width: 600px) {
   .heroOverlay .heroImage {
@@ -563,6 +575,57 @@ const latestPosts = entries
     min-height: 380px;
   }
   .heroOverlay h1 { font-size: 1.5em; }
+
+  /* セクション余白の圧縮（16:9でない縦長画面で本文幅を確保する） */
+  main { padding: 12px !important; }
+  .section { padding: 22px 16px; margin-top: 20px; border-radius: 18px; }
+
+  /* ブログカードはモバイルでは横並びの小型カードにする
+     （縦積みの大型カードはファーストビュー級の面積を食うため） */
+  .grid { gap: 10px; }
+  .linkCard { display: flex; align-items: stretch; }
+  .cardThumb { width: 108px; min-width: 108px; height: auto; object-fit: cover; }
+  .cardBody { padding: 10px 12px; min-width: 0; }
+  .cardBody h3 {
+    font-size: 0.9em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .cardBody p { -webkit-line-clamp: 2; font-size: 0.78em; }
+  .cardCats { margin-bottom: 6px; }
+  .catBadge { font-size: 10px; padding: 2px 8px; }
+
+  .aboutStats { gap: 18px; flex-wrap: wrap; }
+}
+
+@media (max-width: 720px) {
+  body { padding-bottom: 72px; }
+  .stickyCta {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgb(var(--gray-light));
+  }
+  .stickyCtaBtn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(35, 55, 255, 0.28);
+  }
 }
 </style>
 

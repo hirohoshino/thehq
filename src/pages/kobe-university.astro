@@ -482,13 +482,13 @@ const jsonLd = {
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px 40px; }
 
   .btn {
-    display: inline-block; border: 0; border-radius: 999px; cursor: pointer;
+    display: inline-block; box-sizing: border-box; border: 0; border-radius: 999px; cursor: pointer;
     font-family: inherit; font-weight: 700; text-decoration: none; text-align: center;
     transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
   }
   .btnPrimary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(35,55,255,.28); }
   .btnPrimary:hover { background: var(--accent-dark); transform: translateY(-1px); }
-  .btnSm { padding: 8px 16px; font-size: 13px; }
+  .btnSm { padding: 12px 16px; font-size: 13px; }
   .btnLg { padding: 16px 34px; font-size: 17px; }
   .btnBlock { display: block; width: 100%; }
 

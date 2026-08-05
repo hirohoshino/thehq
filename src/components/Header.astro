@@ -137,6 +137,8 @@ function _jaPath(path: string): string {
 			justify-content: flex-start;
 			gap: 0.2em;
 		}
-		nav a { padding: 0.7em 0.5em; }
+		/* タップ領域44px確保（0.7em時代は実測34pxしかなかった） */
+		nav a { padding: 1.05em 0.6em; }
+		.lang-btn { padding: 10px; }
 	}
 </style>

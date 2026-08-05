@@ -47,6 +47,11 @@ const { lang = 'ja' } = Astro.props;
   .ab-text { flex: 1 1 200px; }
   .ab-cta {
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 44px; /* タップ領域の下限 */
     padding: 0.5em 1.2em;
     border-radius: 6px;
     font-weight: 600;

@@ -175,13 +175,13 @@ const lodgingLd = {
                 <tr><th></th><th>Typical apartment in Kobe</th><th>The Headquarters Kobe</th></tr>
               </thead>
               <tbody>
-                <tr><th>Upfront cost</th><td>Commonly several months of rent (key money, deposit, agency fee, guarantor fee)</td><td>¥50,000 flat, half of it refundable</td></tr>
-                <tr><th>Guarantor</th><td>Usually required, or a paid guarantor company</td><td>Not required, in principle</td></tr>
-                <tr><th>Furniture</th><td>Buy it yourself</td><td>Already in the room</td></tr>
-                <tr><th>Utilities</th><td>Separate contracts and monthly bills</td><td>Included in the common fee</td></tr>
-                <tr><th>Internet</th><td>Contract and installation</td><td>Already connected</td></tr>
-                <tr><th>Minimum term</th><td>Usually two years</td><td>Six months as a guide</td></tr>
-                <tr><th>Neighbours</th><td>Strangers behind a door</td><td>A shared kitchen, living room and rooftop</td></tr>
+                <tr><th>Upfront cost</th><td data-label="Typical apartment">Commonly several months of rent (key money, deposit, agency fee, guarantor fee)</td><td data-label="The Headquarters Kobe">¥50,000 flat, half of it refundable</td></tr>
+                <tr><th>Guarantor</th><td data-label="Typical apartment">Usually required, or a paid guarantor company</td><td data-label="The Headquarters Kobe">Not required, in principle</td></tr>
+                <tr><th>Furniture</th><td data-label="Typical apartment">Buy it yourself</td><td data-label="The Headquarters Kobe">Already in the room</td></tr>
+                <tr><th>Utilities</th><td data-label="Typical apartment">Separate contracts and monthly bills</td><td data-label="The Headquarters Kobe">Included in the common fee</td></tr>
+                <tr><th>Internet</th><td data-label="Typical apartment">Contract and installation</td><td data-label="The Headquarters Kobe">Already connected</td></tr>
+                <tr><th>Minimum term</th><td data-label="Typical apartment">Usually two years</td><td data-label="The Headquarters Kobe">Six months as a guide</td></tr>
+                <tr><th>Neighbours</th><td data-label="Typical apartment">Strangers behind a door</td><td data-label="The Headquarters Kobe">A shared kitchen, living room and rooftop</td></tr>
               </tbody>
             </table>
           </div>
@@ -331,6 +331,11 @@ const lodgingLd = {
 
     </main>
     <Footer />
+
+    <!-- Mobile sticky CTA -->
+    <div class="stickyCta">
+      <a class="stickyCtaBtn" href="/en/contact">Inquire / Book a Viewing</a>
+    </div>
   </body>
 </html>
 
@@ -366,8 +371,11 @@ const lodgingLd = {
   .aboutStats { display: flex; gap: 32px; margin: 20px 0 16px; padding: 20px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
   .statNum { font-size: 1.8rem; font-weight: 700; color: #1a1a2e; }
   .statLabel { font-size: 0.85rem; color: #666; }
-  .aboutLink { display: inline-block; margin-top: 12px; font-size: 0.9rem; font-weight: 600; color: #3355cc; text-decoration: none; }
+  .aboutLink { display: inline-block; margin-top: 12px; padding: 10px 0; font-size: 0.9rem; font-weight: 600; color: #3355cc; text-decoration: none; }
   .aboutLink:hover { text-decoration: underline; }
+
+  /* Mobile sticky CTA (hidden on desktop) */
+  .stickyCta { display: none; }
 
 @media (max-width: 600px) {
   .heroOverlay .heroImage {
@@ -375,6 +383,40 @@ const lodgingLd = {
     min-height: 380px;
   }
   .heroOverlay h1 { font-size: 1.5em; }
+
+  /* 三重パディング（main24+section32+card20）で本文が細長くなるのを解消 */
+  main { padding: 12px !important; }
+  .section { padding: 20px 14px; margin-top: 20px; border-radius: 18px; }
+  .card { padding: 16px 14px; }
+  .aboutStats { gap: 18px; flex-wrap: wrap; }
+}
+
+@media (max-width: 720px) {
+  body { padding-bottom: 72px; }
+  .stickyCta {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgb(var(--gray-light));
+  }
+  .stickyCtaBtn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(35, 55, 255, 0.28);
+  }
 }
 </style>
 
@@ -391,10 +433,23 @@ const lodgingLd = {
   .factList span { min-width: 210px; font-weight: 600; color: rgb(var(--gray-dark)); }
   .faqList details { border-bottom: 1px solid #eee; padding: 12px 0; }
   .faqList details:last-child { border-bottom: none; }
-  .faqList summary { cursor: pointer; font-weight: 600; color: rgb(var(--gray-dark)); }
+  .faqList summary { cursor: pointer; padding: 8px 0; font-weight: 600; color: rgb(var(--gray-dark)); }
   .faqList details p { margin: 10px 0 0; line-height: 1.7; color: rgb(var(--gray-dark)); }
   @media (max-width: 600px) {
-    .costTable tbody th { width: auto; white-space: normal; }
+    /* テーブルはモバイルでは「ラベル＋値」の縦積みカードに変換する。
+       2列を横に維持すると1列あたり100px台になり、1行1〜2語の縦長表示になるため。 */
+    .costTable, .costTable tbody, .costTable tr, .costTable tbody th, .costTable td { display: block; width: auto; }
+    .costTable thead { display: none; }
+    .costTable tr { padding: 10px 0; border-bottom: 1px solid #eee; }
+    .costTable tbody th { white-space: normal; padding: 0 0 2px; border-bottom: none; font-size: 13px; color: rgb(var(--gray)); }
+    .costTable td { padding: 0 0 6px; border-bottom: none; }
+    .costTable td:last-child { padding-bottom: 0; }
+    .costTable td[data-label]::before {
+      content: attr(data-label) ': ';
+      font-weight: 700;
+      font-size: 12px;
+      color: rgb(var(--gray));
+    }
     .factList li { flex-direction: column; gap: 2px; }
     .factList span { min-width: 0; }
   }

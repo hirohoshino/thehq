@@ -16,6 +16,13 @@ import {
   totalMax,
   asOf,
 } from '../data/pricing.mjs';
+import { img } from '../data/site-images.mjs';
+
+// ヒーロー画像。PC(>600px)は従来どおり /images/hero.jpg（1189x438のパノラマ）。
+// モバイルはヒーロー枠が高さ420px超の縦長になり、パノラマだと中央のごく一部しか映らない。
+// 正方形(1080x1080)の insta-1（住人が一緒に料理している場面）に差し替える。
+// 差し替えは <picture> の media ソースのみ。構成・コピー・CSSの骨格は変えない。
+const heroMob = img('/images/insta-1.jpg');
 
 const fmt = (n) => Number(n).toLocaleString('en-US');
 
@@ -70,7 +77,13 @@ const jsonLd = {
 
     <!-- Hero -->
     <section class="hero">
-      <img src="/images/hero.jpg" alt="The Headquarters Kobe のリビング" class="heroImg" />
+      <picture>
+        {heroMob.webpSrcset && (
+          <source media="(max-width: 600px)" type="image/webp" srcset={heroMob.webpSrcset} sizes="100vw" />
+        )}
+        <source media="(max-width: 600px)" srcset={heroMob.src} />
+        <img src="/images/hero.jpg" alt="The Headquarters Kobe のリビング" class="heroImg" />
+      </picture>
       <div class="heroInner">
         <p class="kicker">FOR KOBE UNIVERSITY STUDENTS</p>
         <h1>神戸のど真ん中で、<br />学生生活を。</h1>

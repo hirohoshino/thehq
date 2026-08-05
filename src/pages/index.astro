@@ -4,7 +4,7 @@ import AvailabilityBanner from '../components/AvailabilityBanner.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { minRentYen, maxRentYen, rentRange, commonFeeYen } from '../data/pricing.mjs';
+import { minRentYen, maxRentYen, rentRange, commonFeeYen, roomCount } from '../data/pricing.mjs';
 import thumbs from '../data/thumbs.json';
 import { img } from '../data/site-images.mjs';
 
@@ -12,6 +12,21 @@ import { img } from '../data/site-images.mjs';
 // 未生成のときは元のJPEGにフォールバックするので表示は変わらない。
 const hero = img('/images/hero.jpg');
 const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
+
+// モバイル(<=600px)専用のヒーローモザイク。
+// /images/hero.jpg は 1189x438 の超横長パノラマで、390px幅・高さ380pxの枠では
+// 中央のごく一部（人物2人）しか見えず、ハウスの賑わいも建物も伝わらなかった。
+// そこで「賑わい1枚＋屋上・個室の2枚」に組み替える。PC(>600px)はパノラマのまま。
+const heroMob = {
+  // リビングでの鍋パーティー。10人前後の住人の顔と食卓が1枚に入る＝賑わいの証拠。
+  // 屋上BBQの写真も候補だったが、16:10に切るとグリルが画面の半分を占めて
+  // 「人が集まっている家」に見えなかったため不採用。
+  crowd: img('/wp-content/uploads/2019/11/なべ-1-1024x768.jpg'),
+  // 屋上テラス（昼）。デッキ・家具・六甲の山並みが入り、小さいタイルでも一目で「屋上」と分かる
+  roof: img('/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg'),
+  // 個室301（家賃レンジの下限の部屋）。「全10室個室」バッジの裏づけになる
+  room: img('/wp-content/uploads/2021/09/301-1024x683.jpg'),
+};
 
 // ブログカードは原寸ではなく一覧用サムネイル（500px）を使う。
 // 原寸のままだと1枚あたり400KB超がトップページに乗り、LCPを直撃する。
@@ -88,11 +103,24 @@ const latestPosts = entries
         ],
       })}
     />
+    {/* LCP画像はビューポートで変わる。PCはパノラマ、モバイルはモザイクの大タイル。
+        media を付けないと両方ダウンロードしてしまうので必ず出し分ける。 */}
     {hero.webpSrcset && (
       <link
         rel="preload"
         as="image"
+        media="(min-width: 601px)"
         imagesrcset={hero.webpSrcset}
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )}
+    {heroMob.crowd.webpSrcset && (
+      <link
+        rel="preload"
+        as="image"
+        media="(max-width: 600px)"
+        imagesrcset={heroMob.crowd.webpSrcset}
         imagesizes="100vw"
         fetchpriority="high"
       />
@@ -102,20 +130,60 @@ const latestPosts = entries
   <body>
     <Header />
 
-    <!-- Hero（全幅） -->
+    <!-- Hero（全幅）
+         PC(>600px): パノラマ1枚＋テキスト重ね（従来どおり）
+         モバイル(<=600px): コピー帯 → 写真モザイク3枚 → 実データバッジ に組み替える。
+         並べ替えは .heroOverlay を flex-column にして order で行う（DOM順は据え置き）。 -->
     <section class="hero heroOverlay">
-      <picture>
-        {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
-        <img
-          src={hero.src}
-          alt="The Headquarters Kobe"
-          class="heroImage"
-          width={hero.width}
-          height={hero.height}
-          fetchpriority="high"
-          decoding="async"
-        />
-      </picture>
+      <div class="heroMedia">
+        <picture>
+          {/* モバイルは同じ <img> の中身だけ賑わい写真に差し替える（二重ダウンロードを避ける） */}
+          {heroMob.crowd.webpSrcset && (
+            <source media="(max-width: 600px)" type="image/webp" srcset={heroMob.crowd.webpSrcset} sizes="100vw" />
+          )}
+          <source media="(max-width: 600px)" srcset={heroMob.crowd.src} />
+          {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
+          <img
+            src={hero.src}
+            alt="The Headquarters Kobe の暮らし"
+            class="heroImage"
+            width={hero.width}
+            height={hero.height}
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+        {/* 以下2枚はモバイル専用。PCでは display:none なので loading="lazy" と合わせて
+            ビューポートに入らず＝ダウンロードも発生しない。 */}
+        <picture>
+          {heroMob.roof.webpSrcset && (
+            <source type="image/webp" srcset={heroMob.roof.webpSrcset} sizes="50vw" />
+          )}
+          <img
+            src={heroMob.roof.src}
+            alt="屋上テラス（神戸の山と街を望む）"
+            class="heroTile"
+            width={heroMob.roof.width}
+            height={heroMob.roof.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+        <picture>
+          {heroMob.room.webpSrcset && (
+            <source type="image/webp" srcset={heroMob.room.webpSrcset} sizes="50vw" />
+          )}
+          <img
+            src={heroMob.room.src}
+            alt="個室（家具・家電つき）"
+            class="heroTile"
+            width={heroMob.room.width}
+            height={heroMob.room.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
       <div class="heroText">
         <p class="kicker">THE HEADQUARTERS KOBE</p>
         <h1>ここで過ごした日々が、一生の宝になる。</h1>
@@ -124,6 +192,12 @@ const latestPosts = entries
           <a class="btnPrimary" href="/contact">内見・お問い合わせ</a>
         </div>
       </div>
+      {/* モバイル専用の実データ帯。数値は rooms.json（pricing.mjs）が単一データソース */}
+      <ul class="heroFacts">
+        <li><b>家賃 {minRentYen}〜</b><span>＋共益費{commonFeeYen}</span></li>
+        <li><b>全{roomCount}室 個室</b><span>家具・家電つき</span></li>
+        <li><b>駅 徒歩7分</b><span>王子公園／JR摩耶</span></li>
+      </ul>
     </section>
 
     <div style="padding: 0 24px;">
@@ -461,6 +535,11 @@ const latestPosts = entries
   color: white;
   background: rgba(0,0,0,.25);
 }
+
+/* --- モバイル専用ヒーロー要素（PCでは存在しないものとして扱う） --- */
+/* .heroMedia は PC では素の block。ラッパーが増えるだけで従来のレイアウトは変わらない。 */
+.heroTile { display: none; }
+.heroFacts { display: none; }
 .muted {
   color: rgb(var(--gray));
   font-size: 14px;
@@ -570,11 +649,109 @@ const latestPosts = entries
 .stickyCta { display: none; }
 
 @media (max-width: 600px) {
-  .heroOverlay .heroImage {
-    aspect-ratio: auto;
-    min-height: 380px;
+  /* ヒーローを「コピー帯 → 写真モザイク → 実データ帯」の縦積みに組み替える。
+     テキストの重ね置き（position:absolute）を解除するのが起点。 */
+  .heroOverlay {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 4px;
   }
-  .heroOverlay h1 { font-size: 1.5em; }
+  .heroOverlay .heroText {
+    order: 1;
+    position: static;
+    inset: auto;
+    display: block;
+    padding: 14px 16px 12px;
+    text-align: left;
+    color: inherit;
+  }
+  .heroOverlay .kicker {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .heroOverlay h1 {
+    font-size: 1.42em;
+    line-height: 1.28;
+    margin: 0 0 8px;
+    color: rgb(var(--gray-dark));
+    text-shadow: none;
+  }
+  .heroOverlay .lead {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgb(var(--gray));
+  }
+  /* CTAは画面下の追従バー（.stickyCta）が常時出ているので、
+     ファーストビューを写真と数値に使うためヒーロー内の重複ボタンは出さない。 */
+  .heroOverlay .heroActions { display: none; }
+
+  /* 写真モザイク: 上に賑わい1枚（全幅）、下に暮らし2枚（2列） */
+  .heroMedia {
+    order: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 0 12px;
+  }
+  .heroOverlay .heroImage {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center 45%;
+    border-radius: 14px;
+    filter: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  }
+  .heroTile {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  }
+
+  /* 実データ帯: 家賃・部屋数・アクセスを3列で。数値は pricing.mjs 由来 */
+  .heroFacts {
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    list-style: none;
+    margin: 12px 12px 0;
+    padding: 10px 4px;
+    border: 1px solid rgba(35, 55, 255, .18);
+    background: rgba(35, 55, 255, .05);
+    border-radius: 14px;
+  }
+  .heroFacts li {
+    min-width: 0;
+    padding: 0 6px;
+    text-align: center;
+  }
+  .heroFacts li + li { border-left: 1px solid rgba(35, 55, 255, .18); }
+  .heroFacts b {
+    display: block;
+    font-size: 13px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+  }
+  .heroFacts span {
+    display: block;
+    margin-top: 2px;
+    font-size: 10px;
+    line-height: 1.3;
+    color: rgb(var(--gray));
+  }
 
   /* セクション余白の圧縮（16:9でない縦長画面で本文幅を確保する） */
   main { padding: 12px !important; }

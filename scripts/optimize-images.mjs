@@ -36,7 +36,9 @@ const WEBP_QUALITY = 78;
  */
 const SITE_IMAGES = [
 	{ src: '/images/hero.jpg', widths: [640, 1024, 1536] },
-	{ src: '/images/insta-1.jpg', widths: [240, 480] },
+	// insta-1 は Instagram グリッド（〜336px）に加えて、神大LPのモバイル用ヒーロー
+	// （画面幅いっぱい・Retinaで最大780px相当）にも使うので 768 を足している。
+	{ src: '/images/insta-1.jpg', widths: [240, 480, 768] },
 	{ src: '/images/insta-2.jpg', widths: [240, 480] },
 	{ src: '/images/insta-3.jpg', widths: [240, 480] },
 	// 広告着地LP /kobe/ のヒーロー全面コラージュ。PCは1タイル=画面幅の半分、
@@ -45,6 +47,12 @@ const SITE_IMAGES = [
 	{ src: '/wp-content/uploads/2019/08/HQbbq1-2-1024x682.jpg', widths: [480, 768, 1024] },
 	{ src: '/wp-content/uploads/2019/07/HQinterior-6-1024x682.jpg', widths: [480, 768, 1024] },
 	{ src: '/wp-content/uploads/2019/07/HQinterior-4-1-1024x682.jpg', widths: [480, 768, 1024] },
+	// トップ / /en/ のモバイル・ヒーローモザイク（PCでは <img> ごと display:none にするため
+	// ダウンロードも発生しない）。大タイルは画面幅いっぱい＝Retinaで最大780px相当なので
+	// 480/768、小タイルは2列＝約175px幅なので 480 で足りる。
+	{ src: '/wp-content/uploads/2019/11/なべ-1-1024x768.jpg', widths: [480, 768] },
+	{ src: '/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg', widths: [480] },
+	{ src: '/wp-content/uploads/2021/09/301-1024x683.jpg', widths: [480] },
 ];
 const SITE_IMAGES_MANIFEST = path.join(ROOT, 'src/data/site-images.json');
 const THUMB_WIDTH = 500;

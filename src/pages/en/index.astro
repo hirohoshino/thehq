@@ -3,7 +3,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import AvailabilityBanner from '../../components/AvailabilityBanner.astro';
-import { minRentYen, maxRentYen, commonFeeYen, totalMin, totalMax } from '../../data/pricing.mjs';
+import { minRentYen, maxRentYen, commonFeeYen, totalMin, totalMax, roomCount } from '../../data/pricing.mjs';
 
 // 英語ページは和文の波ダッシュではなくenダッシュで表記する（英語SERPでの見え方のため）。
 // 数値そのものは rooms.json 由来なので、家賃改定時もここを触る必要はない。
@@ -15,6 +15,14 @@ import { img } from '../../data/site-images.mjs';
 // 日本語トップと同じく、幅違いWebPがあればそれを配信する（無ければ元のJPEG）。
 const hero = img('/images/hero.jpg');
 const insta = [1, 2, 3].map((n) => img(`/images/insta-${n}.jpg`));
+
+// モバイル(<=600px)専用のヒーローモザイク（日本語トップと同じ素材・同じ構成）。
+// 1189x438のパノラマは390px幅では中央の一部しか映らず、家の様子が伝わらないため。
+const heroMob = {
+  crowd: img('/wp-content/uploads/2019/11/なべ-1-1024x768.jpg'),
+  roof: img('/wp-content/uploads/2019/08/HQbbq6-1-1024x682.jpg'),
+  room: img('/wp-content/uploads/2021/09/301-1024x683.jpg'),
+};
 
 // 英語圏の検索意図（gaijin house / apartment in kobe / no guarantor / cost）に答えるFAQ。
 // ここに書いた内容をそのまま FAQPage 構造化データにも出力する（単一データソース）。
@@ -93,11 +101,23 @@ const lodgingLd = {
     <BaseHead title={pageTitle} description={pageDesc} />
     <script type="application/ld+json" set:html={JSON.stringify(lodgingLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+    {/* LCPはビューポートで変わる（PC=パノラマ / モバイル=モザイク大タイル）ので media で出し分ける */}
     {hero.webpSrcset && (
       <link
         rel="preload"
         as="image"
+        media="(min-width: 601px)"
         imagesrcset={hero.webpSrcset}
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )}
+    {heroMob.crowd.webpSrcset && (
+      <link
+        rel="preload"
+        as="image"
+        media="(max-width: 600px)"
+        imagesrcset={heroMob.crowd.webpSrcset}
         imagesizes="100vw"
         fetchpriority="high"
       />
@@ -109,19 +129,57 @@ const lodgingLd = {
 
     <main style="width: auto; max-width: 1080px; margin: 0 auto; padding: 24px;">
 
+      <!-- PC(>600px)は従来どおりパノラマ＋重ねテキスト。
+           モバイル(<=600px)のみ「コピー帯 → 写真モザイク3枚 → 実データ帯」に組み替える。 -->
       <section class="hero heroOverlay">
-        <picture>
-          {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
-          <img
-            src={hero.src}
-            alt="The Headquarters Kobe share house in the Suidosuji arcade, Nada Ward, Kobe"
-            class="heroImage"
-            width={hero.width}
-            height={hero.height}
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
+        <div class="heroMedia">
+          <picture>
+            {/* モバイルは同じ <img> の中身だけ差し替える（二重ダウンロードを避ける） */}
+            {heroMob.crowd.webpSrcset && (
+              <source media="(max-width: 600px)" type="image/webp" srcset={heroMob.crowd.webpSrcset} sizes="100vw" />
+            )}
+            <source media="(max-width: 600px)" srcset={heroMob.crowd.src} />
+            {hero.webpSrcset && <source type="image/webp" srcset={hero.webpSrcset} sizes="100vw" />}
+            <img
+              src={hero.src}
+              alt="The Headquarters Kobe share house in the Suidosuji arcade, Nada Ward, Kobe"
+              class="heroImage"
+              width={hero.width}
+              height={hero.height}
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+          {/* 以下2枚はモバイル専用。PCでは display:none + loading="lazy" なので読み込まれない */}
+          <picture>
+            {heroMob.roof.webpSrcset && (
+              <source type="image/webp" srcset={heroMob.roof.webpSrcset} sizes="50vw" />
+            )}
+            <img
+              src={heroMob.roof.src}
+              alt="Rooftop terrace"
+              class="heroTile"
+              width={heroMob.roof.width}
+              height={heroMob.roof.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <picture>
+            {heroMob.room.webpSrcset && (
+              <source type="image/webp" srcset={heroMob.room.webpSrcset} sizes="50vw" />
+            )}
+            <img
+              src={heroMob.room.src}
+              alt="A furnished private room"
+              class="heroTile"
+              width={heroMob.room.width}
+              height={heroMob.room.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
         <div class="heroText">
           <p class="kicker">THE HEADQUARTERS KOBE</p>
           <h1>A share house in Kobe, for people from anywhere.</h1>
@@ -131,6 +189,12 @@ const lodgingLd = {
             <a class="btnPrimary" href="/en/contact">Inquire / Book a Viewing</a>
           </div>
         </div>
+        {/* モバイル専用の実データ帯。数値は rooms.json（pricing.mjs）が単一データソース */}
+        <ul class="heroFacts">
+          <li><b>From {minRentYen}/mo</b><span>+ {commonFeeYen} all-in</span></li>
+          <li><b>No key money</b><span>no agency fee</span></li>
+          <li><b>Furnished</b><span>{roomCount} private rooms</span></li>
+        </ul>
       </section>
 
       <AvailabilityBanner lang="en" />
@@ -356,6 +420,9 @@ const lodgingLd = {
   .heroOverlay .kicker { color: rgba(255,255,255,.8); }
   .heroOverlay h1 { color: white; text-shadow: 0 6px 24px rgba(0,0,0,.35); }
   .heroOverlay .lead { color: rgba(255,255,255,.9); }
+  /* Mobile-only hero pieces — treated as non-existent on desktop */
+  .heroTile { display: none; }
+  .heroFacts { display: none; }
   .section { padding: 32px; background: linear-gradient(180deg, rgba(var(--gray-light), 0.6), rgba(var(--gray-light), 0.2)); border-radius: 24px; margin-top: 32px; }
   .sectionTitle { margin: 0 0 16px; font-size: 22px; }
   .card { background: white; border-radius: 16px; padding: 20px; box-shadow: var(--box-shadow); }
@@ -378,11 +445,106 @@ const lodgingLd = {
   .stickyCta { display: none; }
 
 @media (max-width: 600px) {
-  .heroOverlay .heroImage {
-    aspect-ratio: auto;
-    min-height: 380px;
+  /* ヒーローを「コピー帯 → 写真モザイク → 実データ帯」の縦積みに組み替える */
+  .heroOverlay {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
-  .heroOverlay h1 { font-size: 1.5em; }
+  .heroOverlay .heroText {
+    order: 1;
+    position: static;
+    inset: auto;
+    display: block;
+    padding: 2px 2px 12px;
+    text-align: left;
+    color: inherit;
+  }
+  .heroOverlay .kicker {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .heroOverlay h1 {
+    font-size: 1.3em;
+    line-height: 1.24;
+    margin: 0 0 8px;
+    color: rgb(var(--gray-dark));
+    text-shadow: none;
+  }
+  .heroOverlay .lead {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgb(var(--gray));
+  }
+  /* 価格の一文とヒーロー内ボタンは、下の実データ帯と追従CTAに役割を譲る */
+  .heroOverlay .heroPrice { display: none; }
+  .heroOverlay .heroActions { display: none; }
+
+  .heroMedia {
+    order: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .heroOverlay .heroImage {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center 45%;
+    border-radius: 14px;
+    filter: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  }
+  .heroTile {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  }
+
+  .heroFacts {
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 10px 2px;
+    border: 1px solid rgba(35, 55, 255, .18);
+    background: rgba(35, 55, 255, .05);
+    border-radius: 14px;
+  }
+  .heroFacts li {
+    min-width: 0;
+    padding: 0 5px;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+  .heroFacts li + li { border-left: 1px solid rgba(35, 55, 255, .18); }
+  .heroFacts b {
+    display: block;
+    font-size: 12.5px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--accent);
+  }
+  .heroFacts span {
+    display: block;
+    margin-top: 2px;
+    font-size: 10px;
+    line-height: 1.25;
+    color: rgb(var(--gray));
+  }
 
   /* 三重パディング（main24+section32+card20）で本文が細長くなるのを解消 */
   main { padding: 12px !important; }

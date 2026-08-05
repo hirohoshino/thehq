@@ -11,6 +11,8 @@ export const commonFee = data.commonFee;
 export const asOf = data.asOf;
 
 const values = Object.values(data.rents).map(Number);
+// 部屋数も rooms.json 由来にする（「全10室」のような表示をハードコードしないため）
+export const roomCount = Object.keys(data.rents).length;
 export const minRent = Math.min(...values);
 export const maxRent = Math.max(...values);
 
